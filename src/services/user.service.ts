@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "../app/models/user";
+import { map } from 'rxjs/operators';
+import {Deserialize, IJsonObject} from "dcerialize";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,9 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   public getUser(id: number): Observable<User> {
-    console.log(this.userUrl + id)
-    return this.http.get<User>(this.userUrl + id);
+    return this.http.get<IJsonObject>(this.userUrl + id).pipe(
+      map((data) => Deserialize(data, () => User )
+      )
+    )
   }
 }

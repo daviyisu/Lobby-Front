@@ -1,11 +1,26 @@
-export class User {
-  id: number;
-  username: string;
-  steam_id: number;
+import {Game} from "./game";
+import {autoserializeAs, autoserializeAsArray} from "dcerialize";
 
-  constructor(id: number, username: string, steam_id: number) {
-    this.id = id;
+export class User {
+  /**
+   * User name
+   */
+  @autoserializeAs(() => String) username: string;
+
+  /**
+   * User Steam ID
+   */
+  @autoserializeAs(() => Number) steamId: Number;
+
+  /**
+   * User owned game list
+   */
+  @autoserializeAsArray(() => Game) gamesOwned: Array<Game>;
+
+  constructor(username: string, steamId: number, gamesOwned: Array<Game>) {
     this.username = username;
-    this.steam_id = steam_id;
+    this.steamId = steamId;
+    this.gamesOwned = gamesOwned;
   }
+
 }

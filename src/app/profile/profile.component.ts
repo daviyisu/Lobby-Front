@@ -18,10 +18,10 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe( params => {
-      let a = params['id'];
-      console.log(a);
-      this.userService.getUser(params['id']).subscribe( (currentUser) => {
-        this.currentUser = currentUser;
+      let userId = params['id'];
+      sessionStorage.setItem('userId', userId);
+      this.userService.getUser(params['id']).subscribe( (response) => {
+        this.currentUser = response;
       });
     });
 
