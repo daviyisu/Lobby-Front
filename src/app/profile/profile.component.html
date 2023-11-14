@@ -1,8 +1,13 @@
-<div *ngIf="currentUser">
-  <h2>Your username: </h2> {{ currentUser.username }}
-  <h3>Your games: </h3>
-  <span *ngFor="let game of currentUser.gamesOwned">
+<div class="container" *ngIf="currentUser">
+  <div class="data">
+    <h2>Your username: </h2> {{ currentUser.username }}
+  </div>
+  <div class="data">
+    <h3>Your games: </h3>
+    <span *ngFor="let game of currentUser.gamesOwned">
     {{game.name}}
   </span>
+  </div>
+  <button>Sync steam</button>
 </div>
 
