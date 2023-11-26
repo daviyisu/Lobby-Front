@@ -1,0 +1,14 @@
+.container {
+  align-items: flex-start;
+  padding: 2.5rem;
+}
+
+.data {
+  align-items: center;
+}
+
+.button {
+  background-color: beige;
+}
+
+/*# sourceMappingURL=profile.component.css.map */

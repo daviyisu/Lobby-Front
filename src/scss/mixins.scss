@@ -1,0 +1,22 @@
+@mixin column() {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin row() {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin gap-lg() {
+  gap: 1.5rem;
+}
+
+@mixin gap() {
+  gap: 1rem;
+}
+
+@mixin gap-sm() {
+  gap: 0.5rem;
+}
+

@@ -1,19 +1,21 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {User} from "../models/user";
+import {User} from "../../models/user";
 import {UserService} from "../../services/user.service";
+import {GameService} from "../../services/game.service";
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
 
   public currentUser?: User;
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private gameService: GameService
   ) {}
 
   ngOnInit() {

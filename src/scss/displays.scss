@@ -1,0 +1,21 @@
+@import "src/scss/mixins";
+
+.column {
+  @include column;
+}
+
+.row {
+  @include row;
+}
+
+.gap-lg {
+  @include gap-lg;
+}
+
+.gap {
+  @include gap;
+}
+
+.gap-sm {
+  @include gap-sm;
+}

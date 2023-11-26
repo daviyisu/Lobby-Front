@@ -1,0 +1,31 @@
+@import "src/scss/mixins";
+
+.container {
+  @include column;
+  @include gap;
+  align-items: flex-start;
+  padding: 2.5rem;
+}
+
+.data {
+  @include row;
+  @include gap;
+  align-items: center;
+
+  h2 {
+    margin: 0;
+  }
+
+  .game {
+    @include column;
+  }
+
+}
+
+.button {
+  border-radius: 1rem;
+  background-color: blueviolet;
+  color: black;
+}
+
+
