@@ -1,5 +1,5 @@
-import {Game} from "./game";
-import {autoserializeAs, autoserializeAsArray} from "dcerialize";
+import { Game } from './game';
+import { autoserializeAs, autoserializeAsArray } from 'dcerialize';
 
 export class User {
   /**
@@ -22,5 +22,4 @@ export class User {
     this.steamId = steamId;
     this.gamesOwned = gamesOwned;
   }
-
 }

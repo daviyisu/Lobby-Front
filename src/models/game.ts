@@ -1,4 +1,4 @@
-import {autoserializeAs} from "dcerialize";
+import { autoserializeAs } from 'dcerialize';
 
 export class Game {
   /**
@@ -32,12 +32,13 @@ export class Game {
   @autoserializeAs(() => String) platforms: string;
 
   constructor(
-              name: string,
-              coverArtId: string,
-              rating: string,
-              company: string,
-              releaseDate: Date,
-              platforms: string) {
+    name: string,
+    coverArtId: string,
+    rating: string,
+    company: string,
+    releaseDate: Date,
+    platforms: string,
+  ) {
     this.name = name;
     this.coverArtId = coverArtId;
     this.rating = rating;
