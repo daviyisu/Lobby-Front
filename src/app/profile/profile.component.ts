@@ -11,6 +11,12 @@ import { GameService } from '../../services/game.service';
 })
 export class ProfileComponent implements OnInit {
   public currentUser?: User;
+  public tempArray = [
+    'Mario Odyssey',
+    'Red Dead Redemption 2',
+    'Uncharted 4',
+    'Starfield',
+  ];
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
@@ -18,12 +24,12 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      let userId = params['id'];
-      sessionStorage.setItem('userId', userId);
-      this.userService.getUser(params['id']).subscribe((response) => {
-        this.currentUser = response;
-      });
-    });
+    // this.route.params.subscribe((params) => {
+    //   let userId = params['id'];
+    //   sessionStorage.setItem('userId', userId);
+    //   this.userService.getUser(params['id']).subscribe((response) => {
+    //     this.currentUser = response;
+    //   });
+    // });
   }
 }

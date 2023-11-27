@@ -1,19 +1,16 @@
-<div class="container" *ngIf="currentUser">
-  <div class="data">
-    <h2>Your username:</h2>
-    {{ currentUser.username }}
+<div class="banner">
+  <div class="profile-photo">
+    <img class="user-photo" src="assets/img/default-photo.svg" />
+    <h2>daviyisu</h2>
   </div>
-  <div class="data">
-    <h2>Your games:</h2>
+</div>
 
-    <span *ngFor="let game of currentUser.gamesOwned">
-      <div class="data game">
-        <img
-          src="https://images.igdb.com/igdb/image/upload/t_1080p/co3cwt.jpg"
-        />
-      </div>
-      {{ game.name }}
-    </span>
-  </div>
+<div class="container">
+  <span *ngFor="let element of tempArray">
+    <img
+      src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
+    />
+    {{ element }}
+  </span>
   <button mat-button class="button">Sync Steam</button>
 </div>
