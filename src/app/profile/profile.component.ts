@@ -11,12 +11,19 @@ import { GameService } from '../../services/game.service';
 })
 export class ProfileComponent implements OnInit {
   public currentUser?: User;
-  public tempArray = [
-    'Mario Odyssey',
-    'Red Dead Redemption 2',
-    'Uncharted 4',
-    'Starfield',
+  links = [
+    {
+      label: 'Collection',
+      route: 'mygames',
+    },
+    {
+      label: 'Profile',
+      route: 'myprofile',
+    },
   ];
+
+  activeLink = this.links[0];
+
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,

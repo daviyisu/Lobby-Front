@@ -8,6 +8,10 @@
   @include row;
 }
 
+.center {
+  @include center;
+}
+
 .gap-lg {
   @include gap-lg;
 }

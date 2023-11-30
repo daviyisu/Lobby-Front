@@ -8,6 +8,12 @@
   flex-direction: row;
 }
 
+@mixin center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @mixin gap-lg() {
   gap: 1.5rem;
 }

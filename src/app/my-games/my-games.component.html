@@ -1,0 +1,11 @@
+<mat-grid-list cols="4" rowHeight="1:1">
+  <mat-grid-tile *ngFor="let game of tempArray">
+    <div class="column center gap-sm">
+      <img
+        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
+        alt=""
+      />
+      <span> {{ game }} </span>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

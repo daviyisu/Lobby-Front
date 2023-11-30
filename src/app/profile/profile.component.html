@@ -1,16 +1,20 @@
-<div class="banner">
+<div class="column banner">
   <div class="profile-photo">
-    <img class="user-photo" src="assets/img/default-photo.svg" />
+    <img class="user-photo" src="assets/img/default-photo.svg" alt="" />
     <h2>daviyisu</h2>
   </div>
 </div>
 
-<div class="container">
-  <span *ngFor="let element of tempArray">
-    <img
-      src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-    />
-    {{ element }}
-  </span>
-  <button mat-button class="button">Sync Steam</button>
-</div>
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+  <a
+    mat-tab-link
+    *ngFor="let link of links"
+    [routerLink]="link.route"
+    routerLinkActive
+    #rla="routerLinkActive"
+    [active]="rla.isActive"
+  >
+    {{ link.label }}
+  </a>
+</nav>
+<mat-tab-nav-panel #tabPanel><router-outlet></router-outlet></mat-tab-nav-panel>
