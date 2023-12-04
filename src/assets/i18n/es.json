@@ -2,5 +2,10 @@
   "profile": {
     "collection": "Colección",
     "statistics": "Estadísticas"
+  },
+  "stats": {
+    "gamesOwned": "Juegos en propiedad",
+    "unplayedSteamGames": "Juegos de Steam sin estrenar",
+    "estimatedTime": "Tiempo de juego estimado"
   }
 }

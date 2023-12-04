@@ -1,0 +1,11 @@
+@import "src/scss/mixins";
+
+.stats-wrapper {
+  @include column;
+  @include gap-lg;
+  padding: 15rem 20rem;
+}
+
+h2 {
+  margin: 0;
+}

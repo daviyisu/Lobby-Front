@@ -1,10 +1,5 @@
 @import "src/scss/mixins";
 
-.container {
-  @include column;
-  @include gap;
-}
-
 .banner {
   @include center;
   background-color: gray;
@@ -24,6 +19,6 @@
   height: auto;
 }
 
-.temp {
-  background-color: gray;
+.tab {
+  background-color: beige;
 }
