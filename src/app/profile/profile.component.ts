@@ -13,12 +13,12 @@ export class ProfileComponent implements OnInit {
   public currentUser?: User;
   links = [
     {
-      label: 'Collection',
+      label: 'profile.collection',
       route: 'mygames',
     },
     {
-      label: 'Profile',
-      route: 'myprofile',
+      label: 'profile.statistics',
+      route: 'mystats',
     },
   ];
 

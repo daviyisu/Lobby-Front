@@ -14,7 +14,7 @@
     #rla="routerLinkActive"
     [active]="rla.isActive"
   >
-    {{ link.label }}
+    {{ link.label | translate }}
   </a>
 </nav>
 <mat-tab-nav-panel #tabPanel><router-outlet></router-outlet></mat-tab-nav-panel>

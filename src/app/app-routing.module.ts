@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { MyGamesComponent } from './my-games/my-games.component';
-import { MyProfileComponent } from './my-profile/my-profile.component';
+import { MyStatsComponent } from './my-stats/my-stats.component';
 
 const routes: Routes = [
   {
@@ -10,7 +10,7 @@ const routes: Routes = [
     component: ProfileComponent,
     children: [
       { path: 'mygames', component: MyGamesComponent },
-      { path: 'myprofile', component: MyProfileComponent },
+      { path: 'mystats', component: MyStatsComponent },
     ],
   },
 ];
