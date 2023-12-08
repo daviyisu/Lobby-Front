@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
@@ -9,8 +9,12 @@ import { GameService } from '../../services/game.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, AfterViewInit {
   public currentUser?: User;
+
+  /**
+   * Links of the tabs
+   */
   links = [
     {
       label: 'profile.collection',
@@ -21,8 +25,6 @@ export class ProfileComponent implements OnInit {
       route: 'mystats',
     },
   ];
-
-  activeLink = this.links[0];
 
   constructor(
     private route: ActivatedRoute,
@@ -38,5 +40,12 @@ export class ProfileComponent implements OnInit {
     //     this.currentUser = response;
     //   });
     // });
+  }
+
+  ngAfterViewInit() {
+    const element = document.getElementById('tab-mygames');
+    if (element) {
+      element.click();
+    }
   }
 }

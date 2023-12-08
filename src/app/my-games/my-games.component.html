@@ -1,9 +1,12 @@
 <mat-grid-list cols="4" rowHeight="1:1">
   <mat-grid-tile *ngFor="let game of tempArray">
-    <div class="column center gap-sm">
+    <div
+      class="column center gap-sm cursor-pointer dark-when-hover"
+      (click)="navigateToGameDetail()"
+    >
       <img
         src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-        alt=""
+        alt="Cover of the game"
       />
       <span> {{ game }} </span>
     </div>

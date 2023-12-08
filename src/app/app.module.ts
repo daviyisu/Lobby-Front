@@ -12,6 +12,7 @@ import { MyGamesComponent } from './my-games/my-games.component';
 import { MyStatsComponent } from './my-stats/my-stats.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { GameDetailComponent } from './game-detail/game-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     ProfileComponent,
     MyGamesComponent,
     MyStatsComponent,
+    GameDetailComponent,
   ],
   imports: [
     BrowserModule,

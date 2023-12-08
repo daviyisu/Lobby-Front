@@ -9,6 +9,7 @@
   <a
     mat-tab-link
     *ngFor="let link of links"
+    id="tab-{{ link.route }}"
     [routerLink]="link.route"
     routerLinkActive
     #rla="routerLinkActive"
@@ -17,4 +18,6 @@
     {{ link.label | translate }}
   </a>
 </nav>
-<mat-tab-nav-panel #tabPanel><router-outlet></router-outlet></mat-tab-nav-panel>
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>

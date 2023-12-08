@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-games',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./my-games.component.scss'],
 })
 export class MyGamesComponent {
+  constructor(private router: Router) {}
+
   public tempArray = [
     'Mario Odyssey',
     'Red Dead Redemption 2',
@@ -14,4 +17,8 @@ export class MyGamesComponent {
     'Starfield',
     'Starfield',
   ];
+
+  navigateToGameDetail() {
+    this.router.navigateByUrl('gamedetail');
+  }
 }
