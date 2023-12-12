@@ -1,7 +1,7 @@
 @import "src/scss/mixins";
 
 .container-padding {
-  padding: 1.5rem;
+  padding: 3.5rem;
 }
 
 .dark-when-hover:hover {
@@ -42,4 +42,16 @@
 
 .gap-sm {
   @include gap-sm;
+}
+
+/**
+ * Font shortcuts
+ */
+
+.text-md {
+  @include text-md;
+}
+
+.medium {
+  @include medium;
 }

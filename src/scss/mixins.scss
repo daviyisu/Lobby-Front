@@ -25,3 +25,12 @@
 @mixin gap-sm() {
   gap: 0.5rem;
 }
+
+@mixin text-md() {
+  font-size: 1rem;
+  line-height: 1.2rem;
+}
+
+@mixin medium() {
+  font-weight: 500;
+}

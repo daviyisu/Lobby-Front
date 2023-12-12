@@ -13,6 +13,7 @@ import { MyStatsComponent } from './my-stats/my-stats.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { GameDetailComponent } from './game-detail/game-detail.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { GameDetailComponent } from './game-detail/game-detail.component';
         deps: [HttpClient],
       },
     }),
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
