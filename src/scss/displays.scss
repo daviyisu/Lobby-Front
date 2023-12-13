@@ -1,7 +1,7 @@
 @import "src/scss/mixins";
 
 .container-padding {
-  padding: 3.5rem;
+  @include default-container-padding;
 }
 
 .dark-when-hover:hover {

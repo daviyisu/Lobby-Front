@@ -1,3 +1,5 @@
+@import "src/scss/screens.scss";
+
 @mixin column() {
   display: flex;
   flex-direction: column;
@@ -33,4 +35,28 @@
 
 @mixin medium() {
   font-weight: 500;
+}
+
+@mixin default-container-padding($vertical-padding: 2rem) {
+  padding: $vertical-padding 2rem;
+
+  @include xxl {
+    padding: $vertical-padding 25rem;
+  }
+
+  @include xl {
+    padding: $vertical-padding 10rem;
+  }
+
+  @include lg {
+    padding: $vertical-padding 5rem;
+  }
+
+  @include sm {
+    padding: $vertical-padding 1rem;
+  }
+
+  @include xs {
+    padding: $vertical-padding 0.5rem;
+  }
 }

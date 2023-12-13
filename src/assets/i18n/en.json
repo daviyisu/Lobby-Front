@@ -7,5 +7,10 @@
     "gamesOwned": "Games owned",
     "unplayedSteamGames": "Untouched Steam games",
     "estimatedTime": "Estimated play time"
+  },
+  "gameDetail": {
+    "createReview": "Create review",
+    "addGame": "Add game to collection",
+    "screenshots": "Screenshots"
   }
 }

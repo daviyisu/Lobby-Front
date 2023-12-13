@@ -14,6 +14,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { GameDetailComponent } from './game-detail/game-detail.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MatChipsModule } from '@angular/material/chips';
       },
     }),
     MatChipsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -7,5 +7,10 @@
     "gamesOwned": "Juegos en propiedad",
     "unplayedSteamGames": "Juegos de Steam sin estrenar",
     "estimatedTime": "Tiempo de juego estimado"
+  },
+  "gameDetail": {
+    "createReview": "Crear reseña",
+    "addGame": "Añadir juego a colección",
+    "screenshots": "Capturas de pantalla"
   }
 }
