@@ -32,6 +32,14 @@
  * Gap shortcuts
  */
 
+.gap-xxl {
+  @include gap-xxl;
+}
+
+.gap-xl {
+  @include gap-xl;
+}
+
 .gap-lg {
   @include gap-lg;
 }

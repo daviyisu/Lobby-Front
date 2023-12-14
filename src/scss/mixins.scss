@@ -16,6 +16,14 @@
   align-items: center;
 }
 
+@mixin gap-xxl() {
+  gap: 5rem;
+}
+
+@mixin gap-xl() {
+  gap: 3.5rem;
+}
+
 @mixin gap-lg() {
   gap: 1.5rem;
 }
