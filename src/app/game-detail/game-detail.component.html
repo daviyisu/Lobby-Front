@@ -8,7 +8,12 @@
           alt="Cover of the game"
         />
         <div class="column gap-sm">
-          <button mat-flat-button color="primary" class="btn primary">
+          <button
+            mat-flat-button
+            (click)="openNewReviewModal()"
+            color="primary"
+            class="btn primary"
+          >
             <span class="text-md">
               {{ "gameDetail.createReview" | translate }}
             </span>
@@ -23,6 +28,10 @@
       </div>
       <div class="column gap-sm">
         <h1 class="game-title">Call of Duty: Modern Warfare 2</h1>
+        <div class="row gap-sm">
+          <mat-chip class="chip blue-dark">PS3</mat-chip>
+          <mat-chip class="chip blue-dark">PC</mat-chip>
+        </div>
         <div class="row gap-sm">
           <mat-chip>Shooter</mat-chip>
           <mat-chip>Action</mat-chip>

@@ -15,6 +15,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { GameDetailComponent } from './game-detail/game-detail.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { NewReviewComponent } from './new-review/new-review.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
     MyGamesComponent,
     MyStatsComponent,
     GameDetailComponent,
+    NewReviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +35,7 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatDialogModule,
     MatGridListModule,
     MatTabsModule,
     TranslateModule.forRoot({
@@ -41,6 +47,8 @@ import { MatIconModule } from '@angular/material/icon';
     }),
     MatChipsModule,
     MatIconModule,
+    ReactiveFormsModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -16,6 +16,11 @@
   align-items: center;
 }
 
+@mixin vertical-center() {
+  display: flex;
+  align-items: center;
+}
+
 @mixin gap-xxl() {
   gap: 5rem;
 }

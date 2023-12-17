@@ -1,3 +1,5 @@
+@import "src/scss/mixins";
+
 html,
 body {
   height: 100%;
@@ -10,6 +12,13 @@ body {
 
 mat-chip {
   width: fit-content;
+  pointer-events: none;
+}
+
+.chip {
+  &.blue-dark {
+    background-color: cornflowerblue !important;
+  }
 }
 
 .btn {
@@ -17,4 +26,24 @@ mat-chip {
     border-radius: 1rem;
     width: fit-content;
   }
+}
+
+// Override default modals
+.mat-mdc-dialog-surface {
+  border-radius: 1.4rem !important;
+  padding: 1.8em;
+  overflow-y: hidden !important;
+}
+
+.modal-actions,
+.mat-mdc-dialog-actions {
+  @include gap;
+  @include vertical-center;
+  justify-content: flex-end !important;
+  margin-top: 1rem;
+}
+
+.mat-mdc-dialog-content {
+  // Leave a space to the right side for the scroll bar
+  padding: 0 0.6rem 0 0 !important;
 }
