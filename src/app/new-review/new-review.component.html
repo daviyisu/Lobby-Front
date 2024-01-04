@@ -1,19 +1,21 @@
 <div class="column gap">
-  <h2>New review for Call of Duty: Modern Warfare 2</h2>
+  <h2>
+    {{ "newReview.newReview" | translate }} Call of Duty: Modern Warfare 2
+  </h2>
   <form [formGroup]="form" class="column gap">
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <input
         matInput
         formControlName="summary"
-        placeholder="Resume en una frase corta tu opinión"
+        placeholder="{{ 'newReview.summarize' | translate }}"
       />
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <textarea
         rows="5"
         matInput
         formControlName="review"
-        placeholder="Escribe aquí tu reseña..."
+        placeholder="{{ 'newReview.writeHere' | translate }}..."
       >
       </textarea>
     </mat-form-field>
@@ -25,7 +27,7 @@
       color="accent"
       class="btn primary"
     >
-      <span class="text-md"> Atrás </span>
+      <span class="text-md"> {{ "global.back" | translate }} </span>
     </button>
     <button mat-flat-button color="primary" class="btn primary">
       <span class="text-md">

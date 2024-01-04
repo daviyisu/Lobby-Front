@@ -1,4 +1,7 @@
 {
+  "global": {
+    "back": "Atrás"
+  },
   "profile": {
     "collection": "Colección",
     "statistics": "Estadísticas"
@@ -12,5 +15,10 @@
     "createReview": "Crear reseña",
     "addGame": "Añadir juego a colección",
     "screenshots": "Capturas de pantalla"
+  },
+  "newReview": {
+    "newReview": "Nueva reseña para",
+    "summarize": "Resume en una frase corta tu opinión",
+    "writeHere": "Escribe aquí tu reseña"
   }
 }

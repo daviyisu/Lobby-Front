@@ -1,4 +1,7 @@
 {
+  "global": {
+    "back": "Back"
+  },
   "profile": {
     "collection": "Collection",
     "statistics": "Statistics"
@@ -12,5 +15,10 @@
     "createReview": "Create review",
     "addGame": "Add game to collection",
     "screenshots": "Screenshots"
+  },
+  "newReview": {
+    "newReview": "New review for",
+    "summarize": "Summarize your thoughts in a short sentence",
+    "writeHere": "Write here your review"
   }
 }
