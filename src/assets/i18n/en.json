@@ -20,5 +20,11 @@
     "newReview": "New review for",
     "summarize": "Summarize your thoughts in a short sentence",
     "writeHere": "Write here your review"
+  },
+  "addGameStatus": {
+    "completed": "Completed",
+    "played": "Played",
+    "abandoned": "Abandoned",
+    "retired": "Retired"
   }
 }

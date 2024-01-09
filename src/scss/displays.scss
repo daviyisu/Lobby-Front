@@ -4,6 +4,10 @@
   @include default-container-padding;
 }
 
+.padding-sm {
+  @include padding-sm;
+}
+
 .dark-when-hover:hover {
   opacity: 0.8;
 }

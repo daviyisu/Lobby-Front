@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Game } from '../../models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { NewReviewComponent } from '../new-review/new-review.component';
+import { AddedGameStatusModalComponent } from '../added-game-status-modal/added-game-status-modal.component';
 
 @Component({
   selector: 'app-game-detail',
@@ -18,5 +19,11 @@ export class GameDetailComponent {
 
   openNewReviewModal() {
     this.dialogRef.open(NewReviewComponent, {});
+  }
+
+  openAddGameModal() {
+    this.dialogRef.open(AddedGameStatusModalComponent, {
+      minWidth: '20rem',
+    });
   }
 }

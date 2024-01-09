@@ -21,6 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { AddedGameStatusModalComponent } from './added-game-status-modal/added-game-status-modal.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { MatCardModule } from '@angular/material/card';
     MyStatsComponent,
     GameDetailComponent,
     NewReviewComponent,
+    AddedGameStatusModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     MatSelectModule,
     MatCardModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

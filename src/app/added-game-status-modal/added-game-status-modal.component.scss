@@ -1,0 +1,19 @@
+@import "src/scss/mixins";
+
+.container {
+  @include column;
+  @include gap;
+  text-align: center;
+  font-size: large;
+}
+
+.option {
+  @include padding-sm;
+  @include center;
+  @include gap-sm;
+  cursor: pointer;
+}
+
+.option:hover {
+  opacity: 0.5;
+}

@@ -73,3 +73,7 @@
     padding: $vertical-padding 0.5rem;
   }
 }
+
+@mixin padding-sm {
+  padding: 0.5rem;
+}
