@@ -23,8 +23,12 @@
   },
   "addGameStatus": {
     "completed": "Completado",
+    "completed-text": "Has completado el objetivo principal",
     "played": "Jugado",
+    "played-text": "Simplemente lo has jugado",
     "abandoned": "Abandonado",
-    "retired": "Retirado"
+    "abandoned-text": "Has dejado de jugar sin intención de volver",
+    "retired": "Retirado",
+    "retired-text": "Has acabado con un juego que carece de final"
   }
 }

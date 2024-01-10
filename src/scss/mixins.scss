@@ -41,9 +41,19 @@
   gap: 0.5rem;
 }
 
+@mixin text-lg() {
+  font-size: 1.25rem;
+  line-height: 1.4rem;
+}
+
 @mixin text-md() {
   font-size: 1rem;
   line-height: 1.2rem;
+}
+
+@mixin text-sm() {
+  font-size: 0.875rem;
+  line-height: 1.05rem;
 }
 
 @mixin medium() {

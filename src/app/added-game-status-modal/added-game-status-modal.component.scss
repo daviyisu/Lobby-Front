@@ -8,10 +8,34 @@
 }
 
 .option {
+  @include row;
   @include padding-sm;
-  @include center;
   @include gap-sm;
+  align-items: center;
   cursor: pointer;
+
+  &__text {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+  }
+
+  .completed {
+    color: green;
+  }
+
+  .abandoned {
+    color: red;
+  }
+
+  .retired {
+    color: blue;
+  }
+
+  .subtitle {
+    @include text-sm;
+    color: grey;
+  }
 }
 
 .option:hover {

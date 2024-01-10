@@ -23,8 +23,12 @@
   },
   "addGameStatus": {
     "completed": "Completed",
+    "completed-text": "Beat your main objective",
     "played": "Played",
+    "played-text": "Simply played",
     "abandoned": "Abandoned",
-    "retired": "Retired"
+    "abandoned-text": "Stopped playing and without intention of coming back",
+    "retired": "Retired",
+    "retired-text": "Finished with a game that lacks an ending"
   }
 }

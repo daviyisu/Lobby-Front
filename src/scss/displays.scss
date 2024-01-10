@@ -60,8 +60,16 @@
  * Font shortcuts
  */
 
+.text-lg {
+  @include text-lg;
+}
+
 .text-md {
   @include text-md;
+}
+
+.text-sm {
+  @include text-sm;
 }
 
 .medium {
