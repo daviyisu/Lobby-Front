@@ -24,6 +24,10 @@ export class ProfileComponent implements OnInit, AfterViewInit {
       label: 'profile.statistics',
       route: 'mystats',
     },
+    {
+      label: 'profile.lists',
+      route: 'mylists',
+    },
   ];
 
   constructor(

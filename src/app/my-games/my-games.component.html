@@ -1,14 +1,13 @@
-<mat-grid-list cols="4" rowHeight="1:1">
-  <mat-grid-tile *ngFor="let game of tempArray">
-    <div
-      class="column center gap-sm cursor-pointer dark-when-hover"
-      (click)="navigateToGameDetail()"
-    >
-      <img
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-        alt="Cover of the game"
-      />
-      <span> {{ game }} </span>
-    </div>
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="temp flex-wrap row gap-lg center">
+  <div
+    *ngFor="let game of tempArray"
+    class="column center gap-sm cursor-pointer dark-when-hover"
+    (click)="navigateToGameDetail()"
+  >
+    <img
+      src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
+      alt="Cover of the game"
+    />
+    <span> {{ game }} </span>
+  </div>
+</div>

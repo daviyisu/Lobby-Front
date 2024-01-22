@@ -23,6 +23,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { AddedGameStatusModalComponent } from './added-game-status-modal/added-game-status-modal.component';
 import { MatListModule } from '@angular/material/list';
+import { MyListsComponent } from './my-lists/my-lists.component';
+import { ListComponent } from './my-lists/list/list.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { MatListModule } from '@angular/material/list';
     GameDetailComponent,
     NewReviewComponent,
     AddedGameStatusModalComponent,
+    MyListsComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
