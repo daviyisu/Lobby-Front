@@ -1,5 +1,9 @@
 @import "src/scss/screens.scss";
 
+/**
+ * Flex mixins
+ */
+
 @mixin column() {
   display: flex;
   flex-direction: column;
@@ -21,6 +25,10 @@
   align-items: center;
 }
 
+/**
+ * Gap mixins
+ */
+
 @mixin gap-xxl() {
   gap: 5rem;
 }
@@ -41,6 +49,10 @@
   gap: 0.5rem;
 }
 
+/**
+ * Font mixins
+ */
+
 @mixin text-lg() {
   font-size: 1.25rem;
   line-height: 1.4rem;
@@ -59,6 +71,10 @@
 @mixin medium() {
   font-weight: 500;
 }
+
+/**
+ * Padding mixins
+ */
 
 @mixin default-container-padding($vertical-padding: 2rem) {
   padding: $vertical-padding 2rem;
@@ -86,4 +102,15 @@
 
 @mixin padding-sm {
   padding: 0.5rem;
+}
+
+/**
+ * Media queries mixins
+ */
+
+@mixin column-gap-at-900 {
+  @media only screen and (max-width: 900px) {
+    @include column;
+    @include gap;
+  }
 }

@@ -1,3 +1,5 @@
+@import "src/scss/mixins";
+
 .description {
   max-width: 40rem;
 }
@@ -8,9 +10,22 @@
 
 .game-title {
   font-size: 3rem;
+  line-height: 2.5rem;
 }
 
 .review_avatar {
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
+}
+
+.screenshots {
+  @include row;
+  @include gap-xl;
+  @include column-gap-at-900;
+}
+
+.game-header {
+  @include row;
+  @include gap;
+  @include column-gap-at-900;
 }
