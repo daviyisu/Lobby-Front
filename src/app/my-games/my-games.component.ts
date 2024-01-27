@@ -25,6 +25,6 @@ export class MyGamesComponent {
   ];
 
   navigateToGameDetail() {
-    this.router.navigateByUrl('gamedetail');
+    this.router.navigateByUrl('gamedetail/' + 136001);
   }
 }

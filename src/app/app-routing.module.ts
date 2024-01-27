@@ -17,7 +17,7 @@ const routes: Routes = [
   },
   { path: 'mylists', component: MyListsComponent },
   {
-    path: 'gamedetail',
+    path: 'gamedetail/:id',
     component: GameDetailComponent,
   },
   {

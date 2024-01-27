@@ -2,48 +2,90 @@ import { autoserializeAs } from 'dcerialize';
 
 export class Game {
   /**
+   * User ID
+   */
+  @autoserializeAs(() => Number) id: Number;
+
+  /**
    * Game name
    */
   @autoserializeAs(() => String) name: string;
 
   /**
-   * IGDB ID of the cover
+   * Summary of the game
    */
-  @autoserializeAs(() => String) coverArtId: string;
+  @autoserializeAs(() => String) summary: string;
 
   /**
-   * Game rating
+   * Storyline of the game
    */
-  @autoserializeAs(() => String) rating: string;
+  @autoserializeAs(() => String) storyline: string;
 
   /**
-   * Company name
+   * Rating based on external critic scores
    */
-  @autoserializeAs(() => String) company: string;
+  @autoserializeAs(() => Number) aggregatedRating: number;
 
   /**
-   * Release date of the game
+   * ID of the parent game if any
    */
-  @autoserializeAs(() => Date) releaseDate: Date;
+  @autoserializeAs(() => Number) parentGame: number;
 
   /**
-   * Platforms in which the game is available
+   * First release date of the game
    */
-  @autoserializeAs(() => String) platforms: string;
+  @autoserializeAs(() => String) firstReleaseDate: string;
+
+  /**
+   * Array of Screenshot IDs
+   */
+  @autoserializeAs(() => String) screenshots: string;
+
+  /**
+   * Array of Screenshot IDs
+   */
+  @autoserializeAs(() => String) videos: string;
+
+  /**
+   * ID of the cover of the game
+   */
+  @autoserializeAs(() => Number) cover: number;
+
+  /**
+   * Array of Involved Company IDs
+   */
+  @autoserializeAs(() => String) involvedCompanies: string;
+
+  /**
+   * Array of Artwork IDs
+   */
+  @autoserializeAs(() => String) artworks: string;
 
   constructor(
+    id: number,
     name: string,
-    coverArtId: string,
-    rating: string,
-    company: string,
-    releaseDate: Date,
-    platforms: string,
+    summary: string,
+    storyline: string,
+    aggregatedRating: number,
+    parentGame: number,
+    firstReleaseDate: string,
+    screenshots: string,
+    videos: string,
+    cover: number,
+    involvedCompanies: string,
+    artworks: string,
   ) {
+    this.id = id;
     this.name = name;
-    this.coverArtId = coverArtId;
-    this.rating = rating;
-    this.company = company;
-    this.releaseDate = releaseDate;
-    this.platforms = platforms;
+    this.summary = summary;
+    this.storyline = storyline;
+    this.aggregatedRating = aggregatedRating;
+    this.parentGame = parentGame;
+    this.firstReleaseDate = firstReleaseDate;
+    this.screenshots = screenshots;
+    this.videos = videos;
+    this.cover = cover;
+    this.involvedCompanies = involvedCompanies;
+    this.artworks = artworks;
   }
 }
