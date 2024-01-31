@@ -1,4 +1,4 @@
-<div class="container-padding column gap-xxl center">
+<div *ngIf="game" class="container-padding column gap-xxl center">
   <div class="column gap">
     <div class="game-header">
       <div class="column gap">
@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="column gap-sm">
-        <h1 class="game-title">{{ game.name }}</h1>
+        <h1 *ngIf="game.name" class="game-title">{{ game.name }}</h1>
         <div class="row gap-sm">
           <mat-chip class="chip blue-dark">PS3</mat-chip>
           <mat-chip class="chip blue-dark">PC</mat-chip>
@@ -42,35 +42,19 @@
           <mat-chip>Action</mat-chip>
           <mat-chip>Otra vez shooter</mat-chip>
         </div>
-        <span class="medium"
-          >Publicado el {{ game.firstReleaseDate }} por Ciribute Studios</span
-        >
-        <div class="description">
+        <span *ngIf="game.firstReleaseDate" class="medium">
+          {{
+            "gameDetail.releaseDate"
+              | translate
+                : {
+                    day: game.firstReleaseDate.getDate(),
+                    month: game.firstReleaseDate.getMonth(),
+                    year: game.firstReleaseDate.getFullYear()
+                  }
+          }}
+        </span>
+        <div *ngIf="game.summary" class="description">
           <p class="text-md">
-            <!--            Call of Duty: Modern Warfare 2 is a first-person shooter video game-->
-            <!--            developed by Infinity Ward and published by Activision for the Xbox-->
-            <!--            360 and PlayStation 3 video game consoles and the Microsoft Windows-->
-            <!--            operating system. Officially announced on February 11, 2009, the-->
-            <!--            game was released worldwide on November 10, 2009. It is the sixth-->
-            <!--            installment of the Call of Duty series and the direct sequel to Call-->
-            <!--            of Duty 4: Modern Warfare, continuing the same storyline, with Call-->
-            <!--            of Duty: Modern Warfare 3 set to end the storyline. Call of Duty:-->
-            <!--            Modern Warfare 2 is a first-person shooter video game developed by-->
-            <!--            Infinity Ward and published by Activision for the<br /><br />-->
-            <!--            Xbox 360 and PlayStation 3 video game consoles and the Microsoft-->
-            <!--            Windows operating system. Officially announced on February 11, 2009-->
-            <!--            Call of Duty: Modern Warfare 2 is a first-person shooter video game-->
-            <!--            developed by Infinity Ward and published by Activision for the Xbox-->
-            <!--            360 and PlayStation 3 video game consoles and the Microsoft Windows-->
-            <!--            operating system. Officially announced on February 11, 200 Call of-->
-            <!--            Duty: Modern Warfare 2 is a first-person shooter video game-->
-            <!--            developed by Infinity Ward and published by Activision for the Xbox-->
-            <!--            360 and PlayStation 3 video game consoles and the Microsoft Windows-->
-            <!--            operating system. Officially announced on February 11, 200 Call of-->
-            <!--            Duty: Modern Warfare 2 is a first-person shooter video game-->
-            <!--            developed by Infinity Ward and published by Activision for the Xbox-->
-            <!--            360 and PlayStation 3 video game consoles and the Microsoft Windows-->
-            <!--            operating system. Officially announced on February 11, 200-->
             {{ game.summary }}
           </p>
         </div>

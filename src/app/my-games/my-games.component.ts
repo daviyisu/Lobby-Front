@@ -10,21 +10,57 @@ export class MyGamesComponent {
   constructor(private router: Router) {}
 
   public tempArray = [
-    'Mario Odyssey',
-    'Red Dead Redemption 2',
-    'Uncharted 4',
-    'Starfield',
-    'Jak 3',
-    'Cuphead',
-    'Celeste',
-    'Final Fantasy VII',
-    'Animal Crossing: Wild World',
-    'The Legend of Zelda: Ocarina of Time',
-    'Battlefield 3',
-    'Fallout 3',
+    {
+      name: 'Mario Odyssey',
+      id: 26758,
+    },
+    {
+      name: 'Red Dead Redemption 2',
+      id: 25076,
+    },
+    {
+      name: 'Battlefield 4',
+      id: 51530,
+    },
+    {
+      name: 'Tekken',
+      id: 1242,
+    },
+    {
+      name: "Uncharted 4: A Thief's End",
+      id: 7331,
+    },
+    {
+      name: 'Super Mario 64',
+      id: 1074,
+    },
+    {
+      name: 'The Legend of Zelda: Twilight Princess',
+      id: 1036,
+    },
+    {
+      name: 'Animal Crossing: City Folk',
+      id: 2688,
+    },
+    {
+      name: 'Final Fantasy VII',
+      id: 2406,
+    },
+    {
+      name: 'Celeste',
+      id: 26226,
+    },
+    {
+      name: 'God of War II',
+      id: 117882,
+    },
+    {
+      name: 'Hotel Dusk: Room 215',
+      id: 9249,
+    },
   ];
 
-  navigateToGameDetail() {
-    this.router.navigateByUrl('gamedetail/' + 136001);
+  navigateToGameDetail(id: number) {
+    this.router.navigateByUrl('gamedetail/' + id);
   }
 }

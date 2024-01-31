@@ -2,12 +2,12 @@
   <div
     *ngFor="let game of tempArray"
     class="column center gap-sm cursor-pointer dark-when-hover"
-    (click)="navigateToGameDetail()"
+    (click)="navigateToGameDetail(game.id)"
   >
     <img
       src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
       alt="Cover of the game"
     />
-    <span> {{ game }} </span>
+    <span> {{ game.name }} </span>
   </div>
 </div>

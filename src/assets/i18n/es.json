@@ -15,7 +15,8 @@
   "gameDetail": {
     "createReview": "Crear reseña",
     "addGame": "Añadir juego a colección",
-    "screenshots": "Capturas de pantalla"
+    "screenshots": "Capturas de pantalla",
+    "releaseDate": "Fecha de estreno: {{day}}/{{month}}/{{year}}"
   },
   "newReview": {
     "newReview": "Nueva reseña para",

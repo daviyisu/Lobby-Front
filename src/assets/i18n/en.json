@@ -15,7 +15,8 @@
   "gameDetail": {
     "createReview": "Create review",
     "addGame": "Add game to collection",
-    "screenshots": "Screenshots"
+    "screenshots": "Screenshots",
+    "releaseDate": "Released date: {{day}}/{{month}}/{{year}}"
   },
   "newReview": {
     "newReview": "New review for",

@@ -1,10 +1,10 @@
-import { autoserializeAs } from 'dcerialize';
+import { autoserializeAs, autoserializeAsArray } from 'dcerialize';
 
 export class Game {
   /**
    * User ID
    */
-  @autoserializeAs(() => Number) id: Number;
+  @autoserializeAs(() => Number) id: number;
 
   /**
    * Game name
@@ -34,17 +34,17 @@ export class Game {
   /**
    * First release date of the game
    */
-  @autoserializeAs(() => String) firstReleaseDate: string;
+  @autoserializeAs(() => Date) firstReleaseDate: Date;
 
   /**
    * Array of Screenshot IDs
    */
-  @autoserializeAs(() => String) screenshots: string;
+  @autoserializeAsArray(() => Number) screenshots: number[];
 
   /**
    * Array of Screenshot IDs
    */
-  @autoserializeAs(() => String) videos: string;
+  @autoserializeAsArray(() => Number) videos: number[];
 
   /**
    * ID of the cover of the game
@@ -54,12 +54,12 @@ export class Game {
   /**
    * Array of Involved Company IDs
    */
-  @autoserializeAs(() => String) involvedCompanies: string;
+  @autoserializeAsArray(() => Number) involvedCompanies: number[];
 
   /**
    * Array of Artwork IDs
    */
-  @autoserializeAs(() => String) artworks: string;
+  @autoserializeAsArray(() => Number) artworks: number[];
 
   constructor(
     id: number,
@@ -68,12 +68,12 @@ export class Game {
     storyline: string,
     aggregatedRating: number,
     parentGame: number,
-    firstReleaseDate: string,
-    screenshots: string,
-    videos: string,
+    firstReleaseDate: Date,
+    screenshots: number[],
+    videos: number[],
     cover: number,
-    involvedCompanies: string,
-    artworks: string,
+    involvedCompanies: number[],
+    artworks: number[],
   ) {
     this.id = id;
     this.name = name;
