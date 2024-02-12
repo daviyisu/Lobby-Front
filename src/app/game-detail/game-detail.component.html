@@ -66,19 +66,8 @@
     <h2>{{ "gameDetail.screenshots" | translate }}</h2>
     <div class="screenshots">
       <img
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-        alt="Cover of the game"
-      />
-      <img
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-        alt="Cover of the game"
-      />
-      <img
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-        alt="Cover of the game"
-      />
-      <img
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
+        *ngFor="let screenshots of screenshots"
+        [src]="getIgdbImage(screenshots.imageId)"
         alt="Cover of the game"
       />
     </div>

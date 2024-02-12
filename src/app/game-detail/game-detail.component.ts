@@ -6,6 +6,7 @@ import { AddedGameStatusModalComponent } from '../added-game-status-modal/added-
 import { GameService } from '../../services/game.service';
 import { ActivatedRoute } from '@angular/router';
 import { ScreenshotService } from '../../services/screenshot.service';
+import { Screenshot } from '../../models/screenshot';
 
 @Component({
   selector: 'app-game-detail',
@@ -25,6 +26,11 @@ export class GameDetailComponent implements OnInit {
    */
   game!: Game;
 
+  /**
+   * Game screenshots
+   */
+  screenshots?: Screenshot[];
+
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.gameService.getGameById(params['id']).subscribe((data) => {
@@ -32,18 +38,23 @@ export class GameDetailComponent implements OnInit {
         if (this.game.id) {
           this.screenshotService
             .getScreenshotsByGame(this.game.id)
-            .subscribe((data) => {
-              console.log(data);
+            .subscribe((screenshots) => {
+              this.screenshots = screenshots;
             });
         }
-
-        console.log(this.game);
       });
     });
   }
 
   openNewReviewModal() {
     this.dialogRef.open(NewReviewComponent, {});
+  }
+
+  /**
+   * Method to build the IGDB image with the image id
+   */
+  getIgdbImage(imageId: string): string {
+    return `https://images.igdb.com/igdb/image/upload/t_cover_big/${imageId}.jpg`;
   }
 
   openAddGameModal() {
