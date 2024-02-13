@@ -42,7 +42,7 @@ export class Game {
   @autoserializeAsArray(() => Number) screenshots: number[];
 
   /**
-   * Array of Screenshot IDs
+   * Array of Video IDs
    */
   @autoserializeAsArray(() => Number) videos: number[];
 

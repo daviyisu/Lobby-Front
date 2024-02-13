@@ -1,6 +1,6 @@
 import { autoserializeAs } from 'dcerialize';
 
-export class Screenshot {
+export class Image {
   /**
    * Image id to construct an IGDB image link
    */

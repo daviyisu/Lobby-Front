@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class GameService {
-  private gameApiPath = 'http://localhost:8080/games/';
+  private gameApiPath = 'http://localhost:8080/game/';
 
   constructor(private http: HttpClient) {}
 

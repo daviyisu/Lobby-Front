@@ -3,8 +3,9 @@
     <div class="game-header">
       <div class="column gap">
         <img
+          *ngIf="coverId"
           class="main-cover"
-          src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
+          [src]="getIgdbImage(coverId)"
           alt="Cover of the game"
         />
         <div class="column gap-sm">

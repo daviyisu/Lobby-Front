@@ -5,8 +5,8 @@ import { NewReviewComponent } from '../new-review/new-review.component';
 import { AddedGameStatusModalComponent } from '../added-game-status-modal/added-game-status-modal.component';
 import { GameService } from '../../services/game.service';
 import { ActivatedRoute } from '@angular/router';
-import { ScreenshotService } from '../../services/screenshot.service';
-import { Screenshot } from '../../models/screenshot';
+import { ImageService } from '../../services/image.service';
+import { Image } from '../../models/image';
 
 @Component({
   selector: 'app-game-detail',
@@ -17,7 +17,7 @@ export class GameDetailComponent implements OnInit {
   constructor(
     private dialogRef: MatDialog,
     private gameService: GameService,
-    private screenshotService: ScreenshotService,
+    private imageService: ImageService,
     private route: ActivatedRoute,
   ) {}
 
@@ -29,18 +29,26 @@ export class GameDetailComponent implements OnInit {
   /**
    * Game screenshots
    */
-  screenshots?: Screenshot[];
+  screenshots?: Image[];
+
+  /**
+   * Game cover
+   */
+  coverId?: string;
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.gameService.getGameById(params['id']).subscribe((data) => {
         this.game = data;
         if (this.game.id) {
-          this.screenshotService
+          this.imageService
             .getScreenshotsByGame(this.game.id)
             .subscribe((screenshots) => {
-              this.screenshots = screenshots;
+              this.screenshots = screenshots.slice(0, 6); //This should be made directly on back-end
             });
+          this.imageService.getGameCover(this.game.id).subscribe((cover) => {
+            this.coverId = cover.imageId;
+          });
         }
       });
     });
