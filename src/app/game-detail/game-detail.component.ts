@@ -7,6 +7,7 @@ import { GameService } from '../../services/game.service';
 import { ActivatedRoute } from '@angular/router';
 import { ImageService } from '../../services/image.service';
 import { Image } from '../../models/image';
+import { genresEnum } from '../../models/enums';
 
 @Component({
   selector: 'app-game-detail',
@@ -56,6 +57,13 @@ export class GameDetailComponent implements OnInit {
 
   openNewReviewModal() {
     this.dialogRef.open(NewReviewComponent, {});
+  }
+
+  /**
+   * Getter for genresEnum for accessing it form HTML
+   */
+  getGenreEnum(): any {
+    return genresEnum;
   }
 
   /**

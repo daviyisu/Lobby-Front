@@ -39,9 +39,9 @@
           <mat-chip class="chip blue-dark">PC</mat-chip>
         </div>
         <div class="row gap-sm">
-          <mat-chip>Shooter</mat-chip>
-          <mat-chip>Action</mat-chip>
-          <mat-chip>Otra vez shooter</mat-chip>
+          <mat-chip *ngFor="let genre of game.genres">
+            {{ getGenreEnum()[genre] }}
+          </mat-chip>
         </div>
         <span *ngIf="game.firstReleaseDate" class="medium">
           {{

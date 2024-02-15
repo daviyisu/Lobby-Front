@@ -42,6 +42,11 @@ export class Game {
   @autoserializeAsArray(() => Number) screenshots: number[];
 
   /**
+   * Array of Genre IDs
+   */
+  @autoserializeAsArray(() => Number) genres: number[];
+
+  /**
    * Array of Video IDs
    */
   @autoserializeAsArray(() => Number) videos: number[];
@@ -70,6 +75,7 @@ export class Game {
     parentGame: number,
     firstReleaseDate: Date,
     screenshots: number[],
+    genres: number[],
     videos: number[],
     cover: number,
     involvedCompanies: number[],
@@ -83,6 +89,7 @@ export class Game {
     this.parentGame = parentGame;
     this.firstReleaseDate = firstReleaseDate;
     this.screenshots = screenshots;
+    this.genres = genres;
     this.videos = videos;
     this.cover = cover;
     this.involvedCompanies = involvedCompanies;
