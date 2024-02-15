@@ -38,7 +38,7 @@
           <mat-chip class="chip blue-dark">PS3</mat-chip>
           <mat-chip class="chip blue-dark">PC</mat-chip>
         </div>
-        <div class="row gap-sm">
+        <div *ngIf="game.genres && game.genres.length > 0" class="row gap-sm">
           <mat-chip *ngFor="let genre of game.genres">
             {{ getGenreEnum()[genre] }}
           </mat-chip>
