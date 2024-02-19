@@ -34,9 +34,10 @@
       </div>
       <div class="column gap-sm">
         <h1 *ngIf="game.name" class="game-title">{{ game.name }}</h1>
-        <div class="row gap-sm">
-          <mat-chip class="chip blue-dark">PS3</mat-chip>
-          <mat-chip class="chip blue-dark">PC</mat-chip>
+        <div *ngIf="platforms && platforms.length > 0" class="row gap-sm">
+          <mat-chip *ngFor="let platform of platforms" class="chip blue-dark">
+            {{ platform }}
+          </mat-chip>
         </div>
         <div *ngIf="game.genres && game.genres.length > 0" class="row gap-sm">
           <mat-chip *ngFor="let genre of game.genres">

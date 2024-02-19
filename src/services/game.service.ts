@@ -18,4 +18,8 @@ export class GameService {
       .get<IJsonObject>(this.gameApiPath + id)
       .pipe(map((data) => Deserialize(data, () => Game)));
   }
+
+  public getPlatformsFromGame(id: number): Observable<string[]> {
+    return this.http.get<string[]>(this.gameApiPath + id + '/platforms');
+  }
 }

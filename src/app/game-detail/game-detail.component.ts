@@ -33,6 +33,11 @@ export class GameDetailComponent implements OnInit {
   screenshots?: Image[];
 
   /**
+   * Game platforms
+   */
+  platforms?: string[];
+
+  /**
    * Game cover
    */
   coverId?: string;
@@ -50,6 +55,11 @@ export class GameDetailComponent implements OnInit {
           this.imageService.getGameCover(this.game.id).subscribe((cover) => {
             this.coverId = cover.imageId;
           });
+          this.gameService
+            .getPlatformsFromGame(this.game.id)
+            .subscribe((response) => {
+              this.platforms = response;
+            });
         }
       });
     });
