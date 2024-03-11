@@ -47,9 +47,9 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const element = document.getElementById('tab-mygames');
-    if (element) {
-      element.click();
-    }
+    // const element = document.getElementById('tab-mygames');
+    // if (element) {
+    //   element.click();
+    // }
   }
 }

@@ -1,0 +1,21 @@
+<div class="column gap">
+  <form class="custom-form" method="post">
+    <h1>Login</h1>
+    <input
+      type="email"
+      [(ngModel)]="username"
+      name="username"
+      placeholder="Username"
+      required="required"
+    />
+    <input
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+      placeholder="Password"
+      required="required"
+    />
+    <button type="submit" (click)="login()">Log in</button>
+    <button (click)="logout()">Log out</button>
+  </form>
+</div>

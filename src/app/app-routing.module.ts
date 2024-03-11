@@ -5,8 +5,13 @@ import { MyStatsComponent } from './my-stats/my-stats.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
 import { MyListsComponent } from './my-lists/my-lists.component';
 import { ListComponent } from './my-lists/list/list.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
   {
     path: 'mygames',
     component: MyGamesComponent,

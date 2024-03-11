@@ -3,7 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -17,7 +21,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { NewReviewComponent } from './new-review/new-review.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
@@ -25,6 +29,18 @@ import { AddedGameStatusModalComponent } from './added-game-status-modal/added-g
 import { MatListModule } from '@angular/material/list';
 import { MyListsComponent } from './my-lists/my-lists.component';
 import { ListComponent } from './my-lists/list/list.component';
+import { LoginComponent } from './login/login.component';
+import { JwtInterceptorService } from '../services/jwt-interceptor.service';
+
+export const globalImports = [
+  TranslateModule.forRoot({
+    loader: {
+      provide: TranslateLoader,
+      useFactory: HttpLoaderFactory,
+      deps: [HttpClient],
+    },
+  }),
+];
 
 @NgModule({
   declarations: [
@@ -37,8 +53,10 @@ import { ListComponent } from './my-lists/list/list.component';
     AddedGameStatusModalComponent,
     MyListsComponent,
     ListComponent,
+    LoginComponent,
   ],
   imports: [
+    ...globalImports,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -47,13 +65,6 @@ import { ListComponent } from './my-lists/list/list.component';
     MatDialogModule,
     MatGridListModule,
     MatTabsModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      },
-    }),
     MatChipsModule,
     MatIconModule,
     ReactiveFormsModule,
@@ -61,8 +72,15 @@ import { ListComponent } from './my-lists/list/list.component';
     MatSelectModule,
     MatCardModule,
     MatListModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
