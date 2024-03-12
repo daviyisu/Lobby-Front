@@ -6,28 +6,46 @@ import { GameDetailComponent } from './game-detail/game-detail.component';
 import { MyListsComponent } from './my-lists/my-lists.component';
 import { ListComponent } from './my-lists/list/list.component';
 import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
+import { AuthGuard } from '../services/auth.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    component: MainComponent,
+    canActivate: [AuthGuard],
+    runGuardsAndResolvers: 'always',
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/mygames',
+      },
+      {
+        path: 'mygames',
+        component: MyGamesComponent,
+      },
+      {
+        path: 'mystats',
+        component: MyStatsComponent,
+      },
+      {
+        path: 'mylists',
+        component: MyListsComponent,
+      },
+      {
+        path: 'gamedetail/:id',
+        component: GameDetailComponent,
+      },
+      {
+        path: 'list',
+        component: ListComponent,
+      },
+    ],
+  },
+  {
     path: 'login',
     component: LoginComponent,
-  },
-  {
-    path: 'mygames',
-    component: MyGamesComponent,
-  },
-  {
-    path: 'mystats',
-    component: MyStatsComponent,
-  },
-  { path: 'mylists', component: MyListsComponent },
-  {
-    path: 'gamedetail/:id',
-    component: GameDetailComponent,
-  },
-  {
-    path: 'list',
-    component: ListComponent,
   },
 ];
 

@@ -31,6 +31,7 @@ import { MyListsComponent } from './my-lists/my-lists.component';
 import { ListComponent } from './my-lists/list/list.component';
 import { LoginComponent } from './login/login.component';
 import { JwtInterceptorService } from '../services/jwt-interceptor.service';
+import { MainComponent } from './main/main.component';
 
 export const globalImports = [
   TranslateModule.forRoot({
@@ -54,6 +55,7 @@ export const globalImports = [
     MyListsComponent,
     ListComponent,
     LoginComponent,
+    MainComponent,
   ],
   imports: [
     ...globalImports,
