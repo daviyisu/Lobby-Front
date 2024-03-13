@@ -5,7 +5,8 @@
   "profile": {
     "collection": "Colección",
     "statistics": "Estadísticas",
-    "lists": "Listas"
+    "lists": "Listas",
+    "logout": "Cerrar sesión"
   },
   "stats": {
     "gamesOwned": "Juegos en propiedad",

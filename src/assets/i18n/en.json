@@ -5,7 +5,8 @@
   "profile": {
     "collection": "Collection",
     "statistics": "Statistics",
-    "lists": "Lists"
+    "lists": "Lists",
+    "logout": "Log out"
   },
   "stats": {
     "gamesOwned": "Games owned",

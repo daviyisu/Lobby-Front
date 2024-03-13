@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { GameService } from '../../services/game.service';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,6 +12,8 @@ import { GameService } from '../../services/game.service';
 })
 export class ProfileComponent implements OnInit, AfterViewInit {
   public currentUser?: User;
+  private loginService = inject(LoginService);
+  private router = inject(Router);
 
   /**
    * Links of the tabs
@@ -31,7 +34,6 @@ export class ProfileComponent implements OnInit, AfterViewInit {
   ];
 
   constructor(
-    private route: ActivatedRoute,
     private userService: UserService,
     private gameService: GameService,
   ) {}
@@ -44,6 +46,11 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     //     this.currentUser = response;
     //   });
     // });
+  }
+
+  logout(): void {
+    this.loginService.logout();
+    this.router.navigateByUrl('login');
   }
 
   ngAfterViewInit() {

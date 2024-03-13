@@ -1,9 +1,10 @@
 @import "src/scss/mixins";
 
 .banner {
-  @include center;
   background-color: gray;
   height: 25%;
+  min-height: 250px;
+  max-height: 350px;
   width: 100%;
 
   .profile-photo {
@@ -11,12 +12,18 @@
     @include gap-sm;
     @include center;
     width: 25%;
+    margin: auto;
+  }
+
+  .logout-button {
+    margin: 2rem;
+    position: fixed;
   }
 }
 
 .user-photo {
   width: 20%;
-  height: auto;
+  min-width: 100px;
 }
 
 .tab {

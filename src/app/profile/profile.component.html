@@ -1,8 +1,16 @@
-<div class="column banner">
+<div class="row banner">
   <div class="profile-photo">
     <img class="user-photo" src="assets/img/default-photo.svg" alt="" />
     <h2>daviyisu</h2>
   </div>
+  <button
+    class="logout-button"
+    (click)="logout()"
+    mat-raised-button
+    color="accent"
+  >
+    {{ "profile.logout" | translate }}
+  </button>
 </div>
 
 <nav mat-tab-nav-bar class="tab" [tabPanel]="tabPanel">
@@ -18,5 +26,4 @@
     {{ link.label | translate }}
   </a>
 </nav>
-<mat-tab-nav-panel #tabPanel>
-</mat-tab-nav-panel>
+<mat-tab-nav-panel #tabPanel> </mat-tab-nav-panel>

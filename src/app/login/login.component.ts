@@ -34,8 +34,4 @@ export class LoginComponent {
       },
     );
   }
-
-  logout() {
-    this.cookieService.delete('token');
-  }
 }
