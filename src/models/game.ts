@@ -66,6 +66,11 @@ export class Game {
    */
   @autoserializeAsArray(() => Number) artworks: number[];
 
+  /**
+   * Cover image ID to construct the IGDB image of the cover
+   */
+  @autoserializeAs(() => String) coverImageId: string;
+
   constructor(
     id: number,
     name: string,
@@ -80,6 +85,7 @@ export class Game {
     cover: number,
     involvedCompanies: number[],
     artworks: number[],
+    coverImageId: string,
   ) {
     this.id = id;
     this.name = name;
@@ -94,5 +100,6 @@ export class Game {
     this.cover = cover;
     this.involvedCompanies = involvedCompanies;
     this.artworks = artworks;
+    this.coverImageId = coverImageId;
   }
 }
