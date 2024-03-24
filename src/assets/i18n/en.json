@@ -33,5 +33,11 @@
     "abandoned-text": "Stopped playing and without intention of coming back",
     "retired": "Retired",
     "retired-text": "Finished with a game that lacks an ending"
+  },
+  "auth": {
+    "login": "Log in",
+    "register": "register",
+    "notAccountYet": "Don't have an account yet? Register here",
+    "alreadyHaveAccount": "Already have an account? Log in here"
   }
 }

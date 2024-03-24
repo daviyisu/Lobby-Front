@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../services/login.service';
-import { LoginRequest } from '../../models/login-request';
+import { UsernamePassRequest } from '../../models/auth';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
@@ -19,8 +19,8 @@ export class LoginComponent {
     private router: Router,
   ) {}
 
-  login() {
-    let request: LoginRequest = {
+  login(): void {
+    let request: UsernamePassRequest = {
       username: this.username,
       password: this.password,
     };
@@ -33,5 +33,9 @@ export class LoginComponent {
         console.log('Error en el login');
       },
     );
+  }
+
+  goToRegister(): void {
+    this.router.navigateByUrl('/register');
   }
 }

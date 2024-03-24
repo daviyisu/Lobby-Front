@@ -1,9 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { LoginRequest } from '../models/login-request';
+import { AuthResponse, UsernamePassRequest } from '../models/auth';
 import { environment } from '../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
+import { map } from 'rxjs/operators';
+import { Deserialize, IJsonObject } from 'dcerialize';
 
 @Injectable({
   providedIn: 'root',
@@ -14,12 +16,22 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
-  login(request: LoginRequest): Observable<any> {
-    //TODO cuidado con esto
-    return this.http.post<any>(
-      environment.apiPath + this.AuthApiPath + 'login',
-      request,
-    );
+  login(request: UsernamePassRequest): Observable<AuthResponse> {
+    return this.http
+      .post<IJsonObject>(
+        environment.apiPath + this.AuthApiPath + 'login',
+        request,
+      )
+      .pipe(map((response) => Deserialize(response, () => AuthResponse)));
+  }
+
+  register(request: UsernamePassRequest): Observable<any> {
+    return this.http
+      .post<IJsonObject>(
+        environment.apiPath + this.AuthApiPath + 'register',
+        request,
+      )
+      .pipe(map((response) => Deserialize(response, () => AuthResponse)));
   }
 
   logout() {
