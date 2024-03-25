@@ -5,7 +5,8 @@
   "profile": {
     "collection": "Collection",
     "statistics": "Statistics",
-    "lists": "Lists"
+    "lists": "Lists",
+    "logout": "Log out"
   },
   "stats": {
     "gamesOwned": "Games owned",
@@ -32,5 +33,20 @@
     "abandoned-text": "Stopped playing and without intention of coming back",
     "retired": "Retired",
     "retired-text": "Finished with a game that lacks an ending"
+  },
+  "auth": {
+    "login": "Log in",
+    "register": "Register",
+    "notAccountYet": "Don't have an account yet? Register here",
+    "alreadyHaveAccount": "Already have an account? Log in here",
+    "username": "Username",
+    "password": "Password",
+    "confirmPassword": "Confirm the password",
+    "notMatchPassword": "Passwords does not match"
+  },
+  "forms": {
+    "required": "This field is required",
+    "tooShort": "Too short",
+    "tooLarge": "Too many characters"
   }
 }

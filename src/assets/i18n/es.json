@@ -5,7 +5,8 @@
   "profile": {
     "collection": "Colección",
     "statistics": "Estadísticas",
-    "lists": "Listas"
+    "lists": "Listas",
+    "logout": "Cerrar sesión"
   },
   "stats": {
     "gamesOwned": "Juegos en propiedad",
@@ -32,5 +33,20 @@
     "abandoned-text": "Has dejado de jugar sin intención de volver",
     "retired": "Retirado",
     "retired-text": "Has acabado con un juego que carece de final"
+  },
+  "auth": {
+    "login": "Iniciar sesión",
+    "register": "Registro",
+    "notAccountYet": "¿Aún no tienes una cuenta? Registrate aquí",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta? Inicia sesión aquí",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "confirmPassword": "Confirma la contraseña",
+    "notMatchPassword": "Las contraseñas no coinciden"
+  },
+  "forms": {
+    "required": "Este campo es obligatorio",
+    "tooShort": "Demasiado corto",
+    "tooLarge": "Demasiados caracteres"
   }
 }

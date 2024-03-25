@@ -3,9 +3,9 @@
     <div class="game-header">
       <div class="column gap">
         <img
-          *ngIf="coverId"
+          *ngIf="cover"
           class="main-cover"
-          [src]="getIgdbImage(coverId)"
+          [src]="cover"
           alt="Cover of the game"
         />
         <div class="column gap-sm">
@@ -64,12 +64,12 @@
     </div>
   </div>
 
-  <div class="column">
+  <div *ngIf="screenshots.length > 0" class="column">
     <h2>{{ "gameDetail.screenshots" | translate }}</h2>
     <div class="screenshots">
       <img
-        *ngFor="let screenshots of screenshots"
-        [src]="getIgdbImage(screenshots.imageId)"
+        *ngFor="let screenshot of screenshots"
+        [src]="screenshot"
         alt="Cover of the game"
       />
     </div>

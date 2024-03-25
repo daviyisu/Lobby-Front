@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Game } from '../../models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { NewReviewComponent } from '../new-review/new-review.component';
@@ -6,7 +6,6 @@ import { AddedGameStatusModalComponent } from '../added-game-status-modal/added-
 import { GameService } from '../../services/game.service';
 import { ActivatedRoute } from '@angular/router';
 import { ImageService } from '../../services/image.service';
-import { Image } from '../../models/image';
 import { genresEnum } from '../../models/enums';
 
 @Component({
@@ -15,10 +14,11 @@ import { genresEnum } from '../../models/enums';
   styleUrls: ['./game-detail.component.scss'],
 })
 export class GameDetailComponent implements OnInit {
+  private imageService = inject(ImageService);
+
   constructor(
     private dialogRef: MatDialog,
     private gameService: GameService,
-    private imageService: ImageService,
     private route: ActivatedRoute,
   ) {}
 
@@ -30,7 +30,7 @@ export class GameDetailComponent implements OnInit {
   /**
    * Game screenshots
    */
-  screenshots?: Image[];
+  screenshots: string[] = [];
 
   /**
    * Game platforms
@@ -40,7 +40,7 @@ export class GameDetailComponent implements OnInit {
   /**
    * Game cover
    */
-  coverId?: string;
+  cover?: string;
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -50,11 +50,13 @@ export class GameDetailComponent implements OnInit {
           this.imageService
             .getScreenshotsByGame(this.game.id)
             .subscribe((screenshots) => {
-              this.screenshots = screenshots.slice(0, 6); //This should be made directly on back-end
+              screenshots.slice(0, 6).forEach((screenshot) => {
+                this.screenshots.push(
+                  this.imageService.getIgdbImage(screenshot.imageId),
+                );
+              });
             });
-          this.imageService.getGameCover(this.game.id).subscribe((cover) => {
-            this.coverId = cover.imageId;
-          });
+          this.cover = this.imageService.getIgdbImage(this.game.coverImageId);
           this.gameService
             .getPlatformsFromGame(this.game.id)
             .subscribe((response) => {
@@ -74,13 +76,6 @@ export class GameDetailComponent implements OnInit {
    */
   getGenreEnum(): any {
     return genresEnum;
-  }
-
-  /**
-   * Method to build the IGDB image with the image id
-   */
-  getIgdbImage(imageId: string): string {
-    return `https://images.igdb.com/igdb/image/upload/t_cover_big/${imageId}.jpg`;
   }
 
   openAddGameModal() {

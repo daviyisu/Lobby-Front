@@ -8,18 +8,18 @@ export class User {
   @autoserializeAs(() => String) username: string;
 
   /**
+   * User password
+   */
+  @autoserializeAs(() => String) password: string;
+
+  /**
    * User Steam ID
    */
   @autoserializeAs(() => Number) steamId: Number;
 
-  /**
-   * User owned game list
-   */
-  @autoserializeAsArray(() => Game) gamesOwned: Array<Game>;
-
-  constructor(username: string, steamId: number, gamesOwned: Array<Game>) {
+  constructor(username: string, steamId: number, password: string) {
     this.username = username;
+    this.password = password;
     this.steamId = steamId;
-    this.gamesOwned = gamesOwned;
   }
 }

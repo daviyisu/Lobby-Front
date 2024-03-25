@@ -5,24 +5,52 @@ import { MyStatsComponent } from './my-stats/my-stats.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';
 import { MyListsComponent } from './my-lists/my-lists.component';
 import { ListComponent } from './my-lists/list/list.component';
+import { LoginComponent } from './login/login.component';
+import { MainComponent } from './main/main.component';
+import { AuthGuard } from '../services/auth.guard';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
-    path: 'mygames',
-    component: MyGamesComponent,
+    path: '',
+    component: MainComponent,
+    canActivate: [AuthGuard],
+    runGuardsAndResolvers: 'always',
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/mygames',
+      },
+      {
+        path: 'mygames',
+        component: MyGamesComponent,
+      },
+      {
+        path: 'mystats',
+        component: MyStatsComponent,
+      },
+      {
+        path: 'mylists',
+        component: MyListsComponent,
+      },
+      {
+        path: 'gamedetail/:id',
+        component: GameDetailComponent,
+      },
+      {
+        path: 'list',
+        component: ListComponent,
+      },
+    ],
   },
   {
-    path: 'mystats',
-    component: MyStatsComponent,
-  },
-  { path: 'mylists', component: MyListsComponent },
-  {
-    path: 'gamedetail/:id',
-    component: GameDetailComponent,
+    path: 'login',
+    component: LoginComponent,
   },
   {
-    path: 'list',
-    component: ListComponent,
+    path: 'register',
+    component: RegisterComponent,
   },
 ];
 
