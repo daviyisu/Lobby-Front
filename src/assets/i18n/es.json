@@ -38,6 +38,15 @@
     "login": "Iniciar sesión",
     "register": "Registro",
     "notAccountYet": "¿Aún no tienes una cuenta? Registrate aquí",
-    "alreadyHaveAccount": "¿Ya tienes una cuenta? Inicia sesión aquí"
+    "alreadyHaveAccount": "¿Ya tienes una cuenta? Inicia sesión aquí",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "confirmPassword": "Confirma la contraseña",
+    "notMatchPassword": "Las contraseñas no coinciden"
+  },
+  "forms": {
+    "required": "Este campo es obligatorio",
+    "tooShort": "Demasiado corto",
+    "tooLarge": "Demasiados caracteres"
   }
 }

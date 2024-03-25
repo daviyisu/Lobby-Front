@@ -36,8 +36,17 @@
   },
   "auth": {
     "login": "Log in",
-    "register": "register",
+    "register": "Register",
     "notAccountYet": "Don't have an account yet? Register here",
-    "alreadyHaveAccount": "Already have an account? Log in here"
+    "alreadyHaveAccount": "Already have an account? Log in here",
+    "username": "Username",
+    "password": "Password",
+    "confirmPassword": "Confirm the password",
+    "notMatchPassword": "Passwords does not match"
+  },
+  "forms": {
+    "required": "This field is required",
+    "tooShort": "Too short",
+    "tooLarge": "Too many characters"
   }
 }
