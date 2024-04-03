@@ -10,9 +10,9 @@ import { Game } from '../../models/game';
 })
 export class MyGamesComponent implements OnInit {
   private gameService = inject(GameService);
+  private router = inject(Router);
 
   userGames: Game[] = [];
-  constructor(private router: Router) {}
 
   ngOnInit() {
     this.gameService.getUserGames().subscribe((data) => {

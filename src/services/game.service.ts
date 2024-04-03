@@ -27,4 +27,10 @@ export class GameService {
   public getPlatformsFromGame(id: number): Observable<string[]> {
     return this.http.get<string[]>(this.gameApiPath + id + '/platforms');
   }
+
+  public searchGamesByName(name: string): Observable<Game[]> {
+    return this.http.get<Game[]>(
+      this.gameApiPath + 'searchbyname?query=' + name,
+    );
+  }
 }

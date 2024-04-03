@@ -44,6 +44,7 @@ export class GameDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
+      this.screenshots = [];
       this.gameService.getGameById(params['id']).subscribe((data) => {
         this.game = data;
         if (this.game.id) {

@@ -11,6 +11,24 @@
   >
     {{ "profile.logout" | translate }}
   </button>
+  <mat-form-field class="search-bar">
+    <input
+      type="text"
+      placeholder="Search games here"
+      [formControl]="gameSearch"
+      matInput
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let option of queryResults"
+        [value]="option.name"
+        (click)="goToGame(option.id)"
+      >
+        {{ option.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
 </div>
 
 <nav mat-tab-nav-bar class="tab" [tabPanel]="tabPanel">
