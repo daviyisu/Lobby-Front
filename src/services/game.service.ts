@@ -5,6 +5,7 @@ import { Game } from '../models/game';
 import { Deserialize, IJsonObject } from 'dcerialize';
 import { map } from 'rxjs/operators';
 import { environment } from '../environments/environment';
+import { CollectionStatusEnum } from '../models/enums';
 
 @Injectable({
   providedIn: 'root',
@@ -32,5 +33,17 @@ export class GameService {
     return this.http.get<Game[]>(
       this.gameApiPath + 'searchbyname?query=' + name,
     );
+  }
+
+  public addGame(
+    status: CollectionStatusEnum,
+    gameId: number,
+  ): Observable<void> {
+    const body = {
+      gameId: gameId,
+      status: status,
+    };
+
+    return this.http.post<void>(this.gameApiPath + 'addgame', body);
   }
 }

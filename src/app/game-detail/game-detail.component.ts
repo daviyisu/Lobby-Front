@@ -82,6 +82,9 @@ export class GameDetailComponent implements OnInit {
   openAddGameModal() {
     this.dialogRef.open(AddedGameStatusModalComponent, {
       minWidth: '20rem',
+      data: {
+        gameId: this.game.id,
+      },
     });
   }
 }
