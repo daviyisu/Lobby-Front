@@ -47,7 +47,9 @@ export class GameService {
     return this.http.post<void>(this.gameApiPath + 'addgame', body);
   }
 
-  public checkOwned(gameId: number): Observable<boolean> {
-    return this.http.get<boolean>(this.gameApiPath + 'owns/' + gameId);
+  public getStatus(gameId: number): Observable<CollectionStatusEnum> {
+    return this.http.get<CollectionStatusEnum>(
+      this.gameApiPath + 'owns/' + gameId,
+    );
   }
 }

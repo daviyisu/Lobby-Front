@@ -29,4 +29,5 @@ export enum CollectionStatusEnum {
   played = 'PLAYED',
   abandoned = 'ABANDONED',
   retired = 'RETIRED',
+  not_owned = 'NOT_OWNED',
 }
