@@ -7,6 +7,7 @@ import { GameService } from '../../services/game.service';
 import { ActivatedRoute } from '@angular/router';
 import { ImageService } from '../../services/image.service';
 import { genresEnum } from '../../models/enums';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-game-detail',
@@ -42,6 +43,11 @@ export class GameDetailComponent implements OnInit {
    */
   cover?: string;
 
+  /**
+   * Whether the current user owns the game
+   */
+  userHasGame = false;
+
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.screenshots = [];
@@ -63,6 +69,9 @@ export class GameDetailComponent implements OnInit {
             .subscribe((response) => {
               this.platforms = response;
             });
+          this.gameService.checkOwned(this.game.id).subscribe((response) => {
+            this.userHasGame = response;
+          });
         }
       });
     });
