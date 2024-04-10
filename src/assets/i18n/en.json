@@ -32,7 +32,9 @@
     "abandoned": "Abandoned",
     "abandoned-text": "Stopped playing and without intention of coming back",
     "retired": "Retired",
-    "retired-text": "Finished with a game that lacks an ending"
+    "retired-text": "Finished with a game that lacks an ending",
+    "playing": "Playing",
+    "playing-text": "Currently playing"
   },
   "auth": {
     "login": "Log in",
@@ -48,5 +50,12 @@
     "required": "This field is required",
     "tooShort": "Too short",
     "tooLarge": "Too many characters"
+  },
+  "gameStatus": {
+    "COMPLETED": "Completed",
+    "RETIRED": "Retired",
+    "PLAYED": "Played",
+    "ABANDONED": "Abandoned",
+    "PLAYING": "Playing"
   }
 }

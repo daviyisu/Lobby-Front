@@ -33,6 +33,12 @@
           </button>
           <button
             *ngIf="gameStatus != CollectionStatusEnum.not_owned"
+            [ngClass]="{
+              completed: gameStatus === CollectionStatusEnum.completed,
+              retired: gameStatus === CollectionStatusEnum.retired,
+              abandoned: gameStatus === CollectionStatusEnum.abandoned,
+              playing: gameStatus === CollectionStatusEnum.playing
+            }"
             mat-flat-button
             color="accent"
             class="btn primary"
@@ -40,7 +46,7 @@
           >
             <mat-icon svgIcon="joystick"></mat-icon>
             <span class="text-md">
-              {{ "gameDetail.addGame" | translate }}
+              {{ "gameStatus." + this.gameStatus | translate }}
             </span>
           </button>
         </div>

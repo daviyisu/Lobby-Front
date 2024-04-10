@@ -17,7 +17,7 @@ export class AddedGameStatusModalComponent {
   ) {}
   addGame(status: CollectionStatusEnum): void {
     this.gameService.addGame(status, this.data.gameId).subscribe();
-    this.dialogRef.close();
+    this.dialogRef.close(status);
   }
 
   protected readonly CollectionStatusEnum = CollectionStatusEnum;

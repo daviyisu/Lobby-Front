@@ -29,3 +29,19 @@
   @include gap;
   @include column-gap-at-900;
 }
+
+.completed {
+  color: green;
+}
+
+.abandoned {
+  color: red;
+}
+
+.retired {
+  color: blue;
+}
+
+.playing {
+  color: darkgoldenrod;
+}

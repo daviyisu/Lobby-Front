@@ -88,11 +88,17 @@ export class GameDetailComponent implements OnInit {
   }
 
   openAddGameModal() {
-    this.dialogRef.open(AddedGameStatusModalComponent, {
+    const modalRef = this.dialogRef.open(AddedGameStatusModalComponent, {
       minWidth: '20rem',
       data: {
         gameId: this.game.id,
+        currentStatus: this.gameStatus,
       },
+    });
+    modalRef.afterClosed().subscribe((statusSelected) => {
+      if (statusSelected) {
+        this.gameStatus = statusSelected;
+      }
     });
   }
 

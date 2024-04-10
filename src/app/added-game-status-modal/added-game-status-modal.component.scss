@@ -32,10 +32,17 @@
     color: blue;
   }
 
+  .playing {
+    color: darkgoldenrod;
+  }
+
   .subtitle {
     @include text-sm;
     color: grey;
   }
+}
+
+.selected {
 }
 
 .option:hover {
