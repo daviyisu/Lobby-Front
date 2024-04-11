@@ -16,7 +16,12 @@ export class AddedGameStatusModalComponent {
     private dialogRef: MatDialogRef<AddedGameStatusModalComponent>,
   ) {}
   addGame(status: CollectionStatusEnum): void {
-    this.gameService.addGame(status, this.data.gameId).subscribe();
+    if (status == this.data.currentStatus) {
+      status = CollectionStatusEnum.not_owned;
+      this.gameService.addGame(status, this.data.gameId).subscribe();
+    } else {
+      this.gameService.addGame(status, this.data.gameId).subscribe();
+    }
     this.dialogRef.close(status);
   }
 
