@@ -23,3 +23,12 @@ export const genresEnum = {
   35: 'Card & Board Game',
   36: 'MOBA',
 };
+
+export enum CollectionStatusEnum {
+  completed = 'COMPLETED',
+  played = 'PLAYED',
+  abandoned = 'ABANDONED',
+  retired = 'RETIRED',
+  not_owned = 'NOT_OWNED',
+  playing = 'PLAYING',
+}

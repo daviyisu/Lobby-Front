@@ -5,6 +5,7 @@ import { Game } from '../models/game';
 import { Deserialize, IJsonObject } from 'dcerialize';
 import { map } from 'rxjs/operators';
 import { environment } from '../environments/environment';
+import { CollectionStatusEnum } from '../models/enums';
 
 @Injectable({
   providedIn: 'root',
@@ -26,5 +27,29 @@ export class GameService {
 
   public getPlatformsFromGame(id: number): Observable<string[]> {
     return this.http.get<string[]>(this.gameApiPath + id + '/platforms');
+  }
+
+  public searchGamesByName(name: string): Observable<Game[]> {
+    return this.http.get<Game[]>(
+      this.gameApiPath + 'searchbyname?query=' + name,
+    );
+  }
+
+  public addGame(
+    status: CollectionStatusEnum,
+    gameId: number,
+  ): Observable<void> {
+    const body = {
+      gameId: gameId,
+      status: status,
+    };
+
+    return this.http.post<void>(this.gameApiPath + 'addgame', body);
+  }
+
+  public getStatus(gameId: number): Observable<CollectionStatusEnum> {
+    return this.http.get<CollectionStatusEnum>(
+      this.gameApiPath + 'owns/' + gameId,
+    );
   }
 }

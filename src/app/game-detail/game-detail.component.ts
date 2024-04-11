@@ -6,7 +6,7 @@ import { AddedGameStatusModalComponent } from '../added-game-status-modal/added-
 import { GameService } from '../../services/game.service';
 import { ActivatedRoute } from '@angular/router';
 import { ImageService } from '../../services/image.service';
-import { genresEnum } from '../../models/enums';
+import { CollectionStatusEnum, genresEnum } from '../../models/enums';
 
 @Component({
   selector: 'app-game-detail',
@@ -42,8 +42,14 @@ export class GameDetailComponent implements OnInit {
    */
   cover?: string;
 
+  /**
+   * Status of the game in the current user collection
+   */
+  gameStatus = CollectionStatusEnum.not_owned;
+
   ngOnInit() {
     this.route.params.subscribe((params) => {
+      this.screenshots = [];
       this.gameService.getGameById(params['id']).subscribe((data) => {
         this.game = data;
         if (this.game.id) {
@@ -62,6 +68,9 @@ export class GameDetailComponent implements OnInit {
             .subscribe((response) => {
               this.platforms = response;
             });
+          this.gameService.getStatus(this.game.id).subscribe((response) => {
+            this.gameStatus = response;
+          });
         }
       });
     });
@@ -79,8 +88,19 @@ export class GameDetailComponent implements OnInit {
   }
 
   openAddGameModal() {
-    this.dialogRef.open(AddedGameStatusModalComponent, {
+    const modalRef = this.dialogRef.open(AddedGameStatusModalComponent, {
       minWidth: '20rem',
+      data: {
+        gameId: this.game.id,
+        currentStatus: this.gameStatus,
+      },
+    });
+    modalRef.afterClosed().subscribe((statusSelected) => {
+      if (statusSelected) {
+        this.gameStatus = statusSelected;
+      }
     });
   }
+
+  protected readonly CollectionStatusEnum = CollectionStatusEnum;
 }

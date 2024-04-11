@@ -20,6 +20,7 @@
             </span>
           </button>
           <button
+            *ngIf="gameStatus == CollectionStatusEnum.not_owned"
             mat-flat-button
             color="accent"
             class="btn primary"
@@ -28,6 +29,24 @@
             <mat-icon svgIcon="add"></mat-icon>
             <span class="text-md">
               {{ "gameDetail.addGame" | translate }}
+            </span>
+          </button>
+          <button
+            *ngIf="gameStatus != CollectionStatusEnum.not_owned"
+            [ngClass]="{
+              completed: gameStatus === CollectionStatusEnum.completed,
+              retired: gameStatus === CollectionStatusEnum.retired,
+              abandoned: gameStatus === CollectionStatusEnum.abandoned,
+              playing: gameStatus === CollectionStatusEnum.playing
+            }"
+            mat-flat-button
+            color="accent"
+            class="btn primary"
+            (click)="openAddGameModal()"
+          >
+            <mat-icon svgIcon="joystick"></mat-icon>
+            <span class="text-md">
+              {{ "gameStatus." + this.gameStatus | translate }}
             </span>
           </button>
         </div>

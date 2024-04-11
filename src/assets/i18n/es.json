@@ -32,7 +32,9 @@
     "abandoned": "Abandonado",
     "abandoned-text": "Has dejado de jugar sin intención de volver",
     "retired": "Retirado",
-    "retired-text": "Has acabado con un juego que carece de final"
+    "retired-text": "Has acabado con un juego que carece de final",
+    "playing": "Jugando",
+    "playing-text": "Actualmente jugando"
   },
   "auth": {
     "login": "Iniciar sesión",
@@ -48,5 +50,12 @@
     "required": "Este campo es obligatorio",
     "tooShort": "Demasiado corto",
     "tooLarge": "Demasiados caracteres"
+  },
+  "gameStatus": {
+    "COMPLETED": "Completado",
+    "RETIRED": "Retirado",
+    "PLAYED": "Jugado",
+    "ABANDONED": "Abandonado",
+    "PLAYING": "Jugando"
   }
 }

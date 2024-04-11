@@ -33,6 +33,7 @@ import { LoginComponent } from './login/login.component';
 import { JwtInterceptorService } from '../services/jwt-interceptor.service';
 import { MainComponent } from './main/main.component';
 import { RegisterComponent } from './register/register.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 export const globalImports = [
   TranslateModule.forRoot({
@@ -77,6 +78,7 @@ export const globalImports = [
     MatCardModule,
     MatListModule,
     FormsModule,
+    MatAutocompleteModule,
   ],
   providers: [
     {

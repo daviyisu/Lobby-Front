@@ -1,5 +1,9 @@
 <div class="container">
-  <div class="option">
+  <div
+    (click)="addGame(CollectionStatusEnum.completed)"
+    class="option"
+    [ngClass]="{ selected: data.currentStatus === 'COMPLETED' }"
+  >
     <mat-icon class="completed" svgIcon="joystick"></mat-icon>
     <div class="option__text">
       <div class="column gap-sm">
@@ -11,7 +15,11 @@
     </div>
   </div>
   <mat-divider></mat-divider>
-  <div class="option">
+  <div
+    (click)="addGame(CollectionStatusEnum.played)"
+    class="option"
+    [ngClass]="{ selected: data.currentStatus === 'PLAYED' }"
+  >
     <mat-icon svgIcon="joystick"></mat-icon>
     <div class="option__text">
       <div class="column gap-sm">
@@ -23,7 +31,11 @@
     </div>
   </div>
   <mat-divider></mat-divider>
-  <div class="option">
+  <div
+    (click)="addGame(CollectionStatusEnum.abandoned)"
+    class="option"
+    [ngClass]="{ selected: data.currentStatus === 'ABANDONED' }"
+  >
     <mat-icon class="abandoned" svgIcon="joystick"></mat-icon>
     <div class="option__text">
       <div class="column gap-sm">
@@ -35,13 +47,33 @@
     </div>
   </div>
   <mat-divider></mat-divider>
-  <div class="option">
+  <div
+    (click)="addGame(CollectionStatusEnum.retired)"
+    class="option"
+    [ngClass]="{ selected: data.currentStatus === 'RETIRED' }"
+  >
     <mat-icon class="retired" svgIcon="joystick"></mat-icon>
     <div class="option__text">
       <div class="column gap-sm">
         {{ "addGameStatus.retired" | translate }}
         <span class="subtitle">{{
           "addGameStatus.retired-text" | translate
+        }}</span>
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div
+    (click)="addGame(CollectionStatusEnum.playing)"
+    class="option"
+    [ngClass]="{ selected: data.currentStatus === 'PLAYING' }"
+  >
+    <mat-icon class="playing" svgIcon="joystick"></mat-icon>
+    <div class="option__text">
+      <div class="column gap-sm">
+        {{ "addGameStatus.playing" | translate }}
+        <span class="subtitle">{{
+          "addGameStatus.playing-text" | translate
         }}</span>
       </div>
     </div>
