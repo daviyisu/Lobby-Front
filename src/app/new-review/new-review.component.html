@@ -1,8 +1,5 @@
 <div class="column gap">
-  <!-- TODO HACER QUE PILLE EL NOMBRE REAL -->
-  <h2>
-    {{ "newReview.newReview" | translate }} Call of Duty: Modern Warfare 2
-  </h2>
+  <h2>{{ "newReview.newReview" | translate }} {{ data.gameName }}</h2>
   <form [formGroup]="form" class="column gap">
     <mat-form-field appearance="outline">
       <input
@@ -30,7 +27,12 @@
     >
       <span class="text-md"> {{ "global.back" | translate }} </span>
     </button>
-    <button mat-flat-button color="primary" class="btn primary">
+    <button
+      (click)="sendReview()"
+      mat-flat-button
+      color="primary"
+      class="btn primary"
+    >
       <span class="text-md">
         {{ "gameDetail.createReview" | translate }}
       </span>

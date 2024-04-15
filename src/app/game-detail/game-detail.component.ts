@@ -77,7 +77,12 @@ export class GameDetailComponent implements OnInit {
   }
 
   openNewReviewModal() {
-    this.dialogRef.open(NewReviewComponent, {});
+    this.dialogRef.open(NewReviewComponent, {
+      data: {
+        gameId: this.game.id,
+        gameName: this.game.name,
+      },
+    });
   }
 
   /**
