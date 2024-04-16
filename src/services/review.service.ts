@@ -18,11 +18,13 @@ export class ReviewService {
     gameId: number,
     rating: number,
     reviewText: string,
+    summary: string,
   ): Observable<void> {
     const body = {
       gameId: gameId,
       rating: rating,
       review_text: reviewText,
+      summary: summary,
     };
 
     return this.http.post<void>(this.reviewApiPath + 'addreview', body);

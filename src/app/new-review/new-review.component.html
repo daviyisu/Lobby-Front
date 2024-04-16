@@ -1,4 +1,4 @@
-<div class="column gap">
+<div class="modal-container">
   <h2>{{ "newReview.newReview" | translate }} {{ data.gameName }}</h2>
   <form [formGroup]="form" class="column gap">
     <mat-form-field appearance="outline">
@@ -7,6 +7,12 @@
         formControlName="summary"
         placeholder="{{ 'newReview.summarize' | translate }}"
       />
+      <mat-error *ngIf="form.get('summary')?.hasError('required')">
+        {{ "forms.required" | translate }}
+      </mat-error>
+      <mat-error *ngIf="form.get('summary')?.hasError('minlength')">
+        {{ "forms.tooShort" | translate }}
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <textarea
@@ -16,6 +22,12 @@
         placeholder="{{ 'newReview.writeHere' | translate }}..."
       >
       </textarea>
+      <mat-error *ngIf="form.get('review')?.hasError('required')">
+        {{ "forms.required" | translate }}
+      </mat-error>
+      <mat-error *ngIf="form.get('review')?.hasError('minlength')">
+        {{ "forms.tooShort" | translate }}
+      </mat-error>
     </mat-form-field>
   </form>
   <div class="modal-actions">

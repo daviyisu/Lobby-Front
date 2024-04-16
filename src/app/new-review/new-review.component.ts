@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NewReviewDialogInterface } from '../../models/new-review-dialog.interface';
 import { ReviewService } from '../../services/review.service';
+import {
+  ReviewSummaryValidator,
+  ReviewTextValidator,
+} from '../../utils/validators';
 
 @Component({
   selector: 'app-new-review',
@@ -27,16 +31,23 @@ export class NewReviewComponent {
     private reviewService: ReviewService,
   ) {
     this.form = this.builder.group({
-      summary: [''],
-      review: [''],
+      summary: ['', ReviewSummaryValidator],
+      review: ['', ReviewTextValidator],
     });
   }
 
   sendReview(): void {
-    this.reviewService
-      .addReview(this.data.gameId, this.rating, this.form.value.review)
-      .subscribe();
-    this.closeModal();
+    if (this.form.valid) {
+      this.reviewService
+        .addReview(
+          this.data.gameId,
+          this.rating,
+          this.form.value.review,
+          this.form.value.summary,
+        )
+        .subscribe();
+      this.closeModal();
+    }
   }
 
   closeModal(): void {

@@ -4,7 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { UsernamePassRequest } from '../../models/auth';
 import { FormBuilder } from '@angular/forms';
-import { formRequiredValidator } from '../../utils/validators';
+import { LoginFormRequiredValidator } from '../../utils/validators';
 
 @Component({
   selector: 'app-register',
@@ -16,9 +16,9 @@ export class RegisterComponent {
 
   private formBuilder = inject(FormBuilder);
   registerForm = this.formBuilder.group({
-    username: ['', formRequiredValidator],
-    password: ['', formRequiredValidator],
-    confirmPassword: ['', formRequiredValidator],
+    username: ['', LoginFormRequiredValidator],
+    password: ['', LoginFormRequiredValidator],
+    confirmPassword: ['', LoginFormRequiredValidator],
   });
 
   constructor(
