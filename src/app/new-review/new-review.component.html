@@ -28,6 +28,9 @@
       <mat-error *ngIf="form.get('review')?.hasError('minlength')">
         {{ "forms.tooShort" | translate }}
       </mat-error>
+      <mat-error *ngIf="form.get('review')?.hasError('maxlength')">
+        {{ "forms.tooLarge" | translate }}
+      </mat-error>
     </mat-form-field>
   </form>
   <div class="modal-actions">

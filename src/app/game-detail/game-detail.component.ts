@@ -7,6 +7,8 @@ import { GameService } from '../../services/game.service';
 import { ActivatedRoute } from '@angular/router';
 import { ImageService } from '../../services/image.service';
 import { CollectionStatusEnum, genresEnum } from '../../models/enums';
+import { ReviewService } from '../../services/review.service';
+import { Review } from '../../models/review';
 
 @Component({
   selector: 'app-game-detail',
@@ -15,6 +17,7 @@ import { CollectionStatusEnum, genresEnum } from '../../models/enums';
 })
 export class GameDetailComponent implements OnInit {
   private imageService = inject(ImageService);
+  private reviewService = inject(ReviewService);
 
   constructor(
     private dialogRef: MatDialog,
@@ -47,8 +50,14 @@ export class GameDetailComponent implements OnInit {
    */
   gameStatus = CollectionStatusEnum.not_owned;
 
+  /**
+   * Reviews of this game
+   */
+  reviews: Review[] = [];
+
   ngOnInit() {
     this.route.params.subscribe((params) => {
+      // Double initialization intentionally made
       this.screenshots = [];
       this.gameService.getGameById(params['id']).subscribe((data) => {
         this.game = data;
@@ -71,6 +80,11 @@ export class GameDetailComponent implements OnInit {
           this.gameService.getStatus(this.game.id).subscribe((response) => {
             this.gameStatus = response;
           });
+          this.reviewService
+            .getReviewsFromGame(this.game.id)
+            .subscribe((reviews) => {
+              this.reviews = reviews;
+            });
         }
       });
     });
