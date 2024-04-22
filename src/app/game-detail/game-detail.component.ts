@@ -9,6 +9,8 @@ import { ImageService } from '../../services/image.service';
 import { CollectionStatusEnum, genresEnum } from '../../models/enums';
 import { ReviewService } from '../../services/review.service';
 import { Review } from '../../models/review';
+import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -18,6 +20,7 @@ import { Review } from '../../models/review';
 export class GameDetailComponent implements OnInit {
   private imageService = inject(ImageService);
   private reviewService = inject(ReviewService);
+  private userService = inject(UserService);
 
   constructor(
     private dialogRef: MatDialog,
@@ -55,6 +58,11 @@ export class GameDetailComponent implements OnInit {
    */
   reviews: Review[] = [];
 
+  /**
+   * Current user
+   */
+  currentUser!: User;
+
   ngOnInit() {
     this.route.params.subscribe((params) => {
       // Double initialization intentionally made
@@ -88,9 +96,12 @@ export class GameDetailComponent implements OnInit {
         }
       });
     });
+    this.userService.getCurrentUser().subscribe((user) => {
+      this.currentUser = user;
+    });
   }
 
-  openNewReviewModal() {
+  openNewReviewModal(): void {
     this.dialogRef.open(NewReviewComponent, {
       data: {
         gameId: this.game.id,
@@ -100,7 +111,7 @@ export class GameDetailComponent implements OnInit {
   }
 
   /**
-   * Getter for genresEnum for accessing it form HTML
+   * Getter for genresEnum for accessing it from the template
    */
   getGenreEnum(): any {
     return genresEnum;
@@ -118,6 +129,24 @@ export class GameDetailComponent implements OnInit {
       if (statusSelected) {
         this.gameStatus = statusSelected;
       }
+    });
+  }
+
+  deleteReview(reviewId: number): void {
+    this.reviewService.deleteReview(reviewId).subscribe(() => {
+      this.reviewService
+        .getReviewsFromGame(this.game.id)
+        .subscribe((reviews) => {
+          this.reviews = reviews;
+        });
+    });
+  }
+
+  updateReview(review: Review): void {
+    this.dialogRef.open(NewReviewComponent, {
+      data: {
+        review: review,
+      },
     });
   }
 

@@ -24,6 +24,10 @@
     "summarize": "Summarize your thoughts in a short sentence",
     "writeHere": "Write here your review"
   },
+  "editReview": {
+    "editReview": "Edit review for",
+    "buttonText": "Edit"
+  },
   "addGameStatus": {
     "completed": "Completed",
     "completed-text": "Beat your main objective",
@@ -57,5 +61,10 @@
     "PLAYED": "Played",
     "ABANDONED": "Abandoned",
     "PLAYING": "Playing"
+  },
+  "comment": {
+    "like": "Like",
+    "delete": "Delete",
+    "edit": "Edit"
   }
 }

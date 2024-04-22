@@ -24,15 +24,27 @@ export class NewReviewComponent {
    */
   rating = 0;
 
+  /**
+   * Whether the modal was open to edit the review
+   */
+  editReview = false;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: NewReviewDialogInterface,
     private builder: FormBuilder,
     public newReviewDialogRef: MatDialogRef<NewReviewComponent>,
     private reviewService: ReviewService,
   ) {
+    this.editReview = !!this.data.review;
     this.form = this.builder.group({
-      summary: ['', ReviewSummaryValidator],
-      review: ['', ReviewTextValidator],
+      summary: [
+        this.editReview ? this.data.review.summary : '',
+        ReviewSummaryValidator,
+      ],
+      review: [
+        this.editReview ? this.data.review.review_text : '',
+        ReviewTextValidator,
+      ],
     });
   }
 
@@ -42,6 +54,19 @@ export class NewReviewComponent {
         .addReview(
           this.data.gameId,
           this.rating,
+          this.form.value.review,
+          this.form.value.summary,
+        )
+        .subscribe();
+      this.closeModal();
+    }
+  }
+
+  updateReview(): void {
+    if (this.form.valid) {
+      this.reviewService
+        .editReview(
+          this.data.review.id,
           this.form.value.review,
           this.form.value.summary,
         )

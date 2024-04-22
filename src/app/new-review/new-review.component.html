@@ -1,5 +1,10 @@
 <div class="modal-container">
-  <h2>{{ "newReview.newReview" | translate }} {{ data.gameName }}</h2>
+  <h2 *ngIf="!editReview">
+    {{ "newReview.newReview" | translate }} {{ data.gameName }}
+  </h2>
+  <h2 *ngIf="editReview">
+    {{ "editReview.editReview" | translate }} {{ data.gameName }}
+  </h2>
   <form [formGroup]="form" class="column gap">
     <mat-form-field appearance="outline">
       <input
@@ -43,6 +48,7 @@
       <span class="text-md"> {{ "global.back" | translate }} </span>
     </button>
     <button
+      *ngIf="!editReview"
       (click)="sendReview()"
       mat-flat-button
       color="primary"
@@ -50,6 +56,17 @@
     >
       <span class="text-md">
         {{ "gameDetail.createReview" | translate }}
+      </span>
+    </button>
+    <button
+      *ngIf="editReview"
+      (click)="updateReview()"
+      mat-flat-button
+      color="primary"
+      class="btn primary"
+    >
+      <span class="text-md">
+        {{ "editReview.buttonText" | translate }}
       </span>
     </button>
   </div>

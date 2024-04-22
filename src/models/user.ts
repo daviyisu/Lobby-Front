@@ -1,25 +1,23 @@
-import { Game } from './game';
-import { autoserializeAs, autoserializeAsArray } from 'dcerialize';
+import { autoserializeAs } from 'dcerialize';
 
 export class User {
+  /**
+   * User id
+   */
+  @autoserializeAs(() => Number) id: Number;
+
   /**
    * User name
    */
   @autoserializeAs(() => String) username: string;
 
   /**
-   * User password
-   */
-  @autoserializeAs(() => String) password: string;
-
-  /**
    * User Steam ID
    */
-  @autoserializeAs(() => Number) steamId: Number;
+  // @autoserializeAs(() => Number) steamId: Number;
 
-  constructor(username: string, steamId: number, password: string) {
+  constructor(id: number, username: string) {
+    this.id = id;
     this.username = username;
-    this.password = password;
-    this.steamId = steamId;
   }
 }

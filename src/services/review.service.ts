@@ -31,7 +31,25 @@ export class ReviewService {
     return this.http.post<void>(this.reviewApiPath + 'addreview', body);
   }
 
+  public editReview(
+    reviewId: number,
+    reviewText: string,
+    summary: string,
+  ): Observable<void> {
+    const body = {
+      reviewId: reviewId,
+      reviewText: reviewText,
+      summary: summary,
+    };
+
+    return this.http.put<void>(this.reviewApiPath + 'editreview', body);
+  }
+
   public getReviewsFromGame(gameId: number): Observable<Review[]> {
     return this.http.get<Review[]>(this.reviewApiPath + 'ofgame/' + gameId);
+  }
+
+  public deleteReview(reviewId: number): Observable<void> {
+    return this.http.delete<void>(this.reviewApiPath + reviewId);
   }
 }

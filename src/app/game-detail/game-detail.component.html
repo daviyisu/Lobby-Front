@@ -110,10 +110,27 @@
           {{ review.review_text }}
         </p>
       </mat-card-content>
-      <mat-card-actions>
+      <mat-card-actions class="row gap-sm">
         <button mat-button>
           <mat-icon svgIcon="like"></mat-icon>
-          LIKE
+          {{ "comment.like" | translate }}
+        </button>
+        <button
+          (click)="updateReview(review)"
+          *ngIf="currentUser.id == review.userId"
+          mat-button
+        >
+          <mat-icon svgIcon="edit"></mat-icon>
+          {{ "comment.edit" | translate }}
+        </button>
+        <button
+          (click)="deleteReview(review.id)"
+          *ngIf="currentUser.id == review.userId"
+          color="warn"
+          mat-button
+        >
+          <mat-icon svgIcon="delete"></mat-icon>
+          {{ "comment.delete" | translate }}
         </button>
       </mat-card-actions>
     </mat-card>
