@@ -42,7 +42,7 @@ export class ReviewService {
       summary: summary,
     };
 
-    return this.http.put<void>(this.reviewApiPath + 'editreview', body);
+    return this.http.put<void>(environment.apiPath + 'review', body);
   }
 
   public getReviewsFromGame(gameId: number): Observable<Review[]> {

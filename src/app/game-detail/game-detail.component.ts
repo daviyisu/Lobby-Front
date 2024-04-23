@@ -102,11 +102,16 @@ export class GameDetailComponent implements OnInit {
   }
 
   openNewReviewModal(): void {
-    this.dialogRef.open(NewReviewComponent, {
+    const dialogRef = this.dialogRef.open(NewReviewComponent, {
       data: {
         gameId: this.game.id,
         gameName: this.game.name,
       },
+    });
+    dialogRef.afterClosed().subscribe((needRefresh) => {
+      if (needRefresh) {
+        this.refreshComments();
+      }
     });
   }
 
@@ -134,19 +139,27 @@ export class GameDetailComponent implements OnInit {
 
   deleteReview(reviewId: number): void {
     this.reviewService.deleteReview(reviewId).subscribe(() => {
-      this.reviewService
-        .getReviewsFromGame(this.game.id)
-        .subscribe((reviews) => {
-          this.reviews = reviews;
-        });
+      this.refreshComments();
     });
   }
 
   updateReview(review: Review): void {
-    this.dialogRef.open(NewReviewComponent, {
+    const dialogRef = this.dialogRef.open(NewReviewComponent, {
       data: {
         review: review,
+        gameName: this.game.name,
       },
+    });
+    dialogRef.afterClosed().subscribe((needRefresh) => {
+      if (needRefresh) {
+        this.refreshComments();
+      }
+    });
+  }
+
+  refreshComments(): void {
+    this.reviewService.getReviewsFromGame(this.game.id).subscribe((reviews) => {
+      this.reviews = reviews;
     });
   }
 

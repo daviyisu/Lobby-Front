@@ -58,7 +58,7 @@ export class NewReviewComponent {
           this.form.value.summary,
         )
         .subscribe();
-      this.closeModal();
+      this.closeModal(true);
     }
   }
 
@@ -71,11 +71,11 @@ export class NewReviewComponent {
           this.form.value.summary,
         )
         .subscribe();
-      this.closeModal();
+      this.closeModal(true);
     }
   }
 
-  closeModal(): void {
-    this.newReviewDialogRef.close();
+  closeModal(needRefresh?: boolean): void {
+    this.newReviewDialogRef.close(needRefresh);
   }
 }
