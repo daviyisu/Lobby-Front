@@ -163,5 +163,9 @@ export class GameDetailComponent implements OnInit {
     });
   }
 
+  formatDate(date: string): string {
+    return date.split('T')[0];
+  }
+
   protected readonly CollectionStatusEnum = CollectionStatusEnum;
 }

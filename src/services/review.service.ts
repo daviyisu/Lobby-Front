@@ -35,11 +35,13 @@ export class ReviewService {
     reviewId: number,
     reviewText: string,
     summary: string,
+    rating: number,
   ): Observable<void> {
     const body = {
       reviewId: reviewId,
       reviewText: reviewText,
       summary: summary,
+      rating: rating,
     };
 
     return this.http.put<void>(environment.apiPath + 'review', body);

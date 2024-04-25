@@ -37,6 +37,40 @@
         {{ "forms.tooLarge" | translate }}
       </mat-error>
     </mat-form-field>
+    <div class="row gap center">
+      <div class="column">
+        <mat-form-field appearance="outline" class="rating">
+          <input
+            matInput
+            max="10"
+            formControlName="rating"
+            min="0"
+            type="number"
+            placeholder="Rating..."
+          />
+        </mat-form-field>
+      </div>
+      <mat-icon
+        [ngClass]="form.value.rating < 5 ? 'bad' : ''"
+        svgIcon="bad"
+      ></mat-icon>
+      <mat-icon
+        [ngClass]="
+          form.value.rating >= 5 && form.value.rating <= 7 ? 'good' : ''
+        "
+        svgIcon="good"
+      ></mat-icon>
+      <mat-icon
+        [ngClass]="
+          form.value.rating >= 8 && form.value.rating <= 9 ? 'very_good' : ''
+        "
+        svgIcon="very_good"
+      ></mat-icon>
+      <mat-icon
+        [ngClass]="form.value.rating == 10 ? 'perfect' : ''"
+        svgIcon="perfect"
+      ></mat-icon>
+    </div>
   </form>
   <div class="modal-actions">
     <button

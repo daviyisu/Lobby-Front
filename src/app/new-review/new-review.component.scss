@@ -4,4 +4,25 @@
   @include column;
   @include gap;
   min-width: 23rem;
+
+  .rating {
+    width: fit-content;
+    border-radius: 2rem;
+  }
+
+  .bad {
+    color: red;
+  }
+
+  .good {
+    color: green;
+  }
+
+  .very_good {
+    color: blue;
+  }
+
+  .perfect {
+    color: darkturquoise;
+  }
 }

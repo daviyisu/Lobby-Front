@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NewReviewDialogInterface } from '../../models/new-review-dialog.interface';
 import { ReviewService } from '../../services/review.service';
@@ -18,11 +18,6 @@ export class NewReviewComponent {
    * Form group
    */
   form: FormGroup;
-
-  /**
-   * Review rating
-   */
-  rating = 0;
 
   /**
    * Whether the modal was open to edit the review
@@ -45,6 +40,10 @@ export class NewReviewComponent {
         this.editReview ? this.data.review.review_text : '',
         ReviewTextValidator,
       ],
+      rating: [
+        this.editReview ? this.data.review.rating : '',
+        Validators.required,
+      ],
     });
   }
 
@@ -53,7 +52,7 @@ export class NewReviewComponent {
       this.reviewService
         .addReview(
           this.data.gameId,
-          this.rating,
+          this.form.value.rating,
           this.form.value.review,
           this.form.value.summary,
         )
@@ -69,6 +68,7 @@ export class NewReviewComponent {
           this.data.review.id,
           this.form.value.review,
           this.form.value.summary,
+          this.form.value.rating,
         )
         .subscribe();
       this.closeModal(true);

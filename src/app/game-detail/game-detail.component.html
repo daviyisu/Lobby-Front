@@ -98,12 +98,37 @@
     <mat-card *ngFor="let review of reviews" appearance="outlined">
       <mat-card-header>
         <div mat-card-avatar class="review_avatar"></div>
-        <mat-card-title>random_user</mat-card-title>
+        <mat-card-title>{{ review.writtenBy }}</mat-card-title>
 
-        <mat-card-subtitle>{{ review.createdAt }}</mat-card-subtitle>
-        <mat-card-subtitle class="review-summary">{{
-          review.summary
+        <mat-card-subtitle>{{
+          formatDate(review.createdAt.toString())
         }}</mat-card-subtitle>
+        <mat-card-subtitle>
+          <div class="review-summary row gap-sm center">
+            <span>{{ review.summary }}</span>
+            <span class="review_number">{{ review.rating }}</span>
+            <mat-icon
+              *ngIf="review.rating < 5"
+              class="bad"
+              svgIcon="bad"
+            ></mat-icon>
+            <mat-icon
+              *ngIf="review.rating >= 5 && review.rating <= 7"
+              class="good"
+              svgIcon="good"
+            ></mat-icon>
+            <mat-icon
+              *ngIf="review.rating >= 8 && review.rating <= 9"
+              class="very_good"
+              svgIcon="very_good"
+            ></mat-icon>
+            <mat-icon
+              *ngIf="review.rating == 10"
+              class="perfect"
+              svgIcon="perfect"
+            ></mat-icon>
+          </div>
+        </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content class="review-text">
         <p>
@@ -111,10 +136,6 @@
         </p>
       </mat-card-content>
       <mat-card-actions class="row gap-sm">
-        <button mat-button>
-          <mat-icon svgIcon="like"></mat-icon>
-          {{ "comment.like" | translate }}
-        </button>
         <button
           (click)="updateReview(review)"
           *ngIf="currentUser.id == review.userId"

@@ -41,6 +41,11 @@ export class Review {
    */
   @autoserializeAs(() => Date) createdAt: Date;
 
+  /**
+   * Username of the user that wrote the review
+   */
+  @autoserializeAs(() => String) writtenBy: string;
+
   constructor(
     id: number,
     userId: number,
@@ -50,6 +55,7 @@ export class Review {
     likes: number,
     rating: number,
     createdAt: Date,
+    writtenBy: string,
   ) {
     this.id = id;
     this.userId = userId;
@@ -59,5 +65,6 @@ export class Review {
     this.likes = likes;
     this.rating = rating;
     this.createdAt = createdAt;
+    this.writtenBy = writtenBy;
   }
 }
