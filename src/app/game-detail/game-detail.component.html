@@ -94,67 +94,64 @@
     </div>
   </div>
 
-  <div class="column gap">
-    <mat-card appearance="outlined">
+  <div *ngIf="reviews" class="review-container column gap">
+    <mat-card *ngFor="let review of reviews" appearance="outlined">
       <mat-card-header>
         <div mat-card-avatar class="review_avatar"></div>
-        <mat-card-title>random_user</mat-card-title>
-        <mat-card-subtitle>13-05-22</mat-card-subtitle>
+        <mat-card-title>{{ review.writtenBy }}</mat-card-title>
+
+        <mat-card-subtitle>{{
+          formatDate(review.createdAt.toString())
+        }}</mat-card-subtitle>
+        <mat-card-subtitle>
+          <div class="review-summary row gap-sm center">
+            <span>{{ review.summary }}</span>
+            <span class="review_number">{{ review.rating }}</span>
+            <mat-icon
+              *ngIf="review.rating < 5"
+              class="bad"
+              svgIcon="bad"
+            ></mat-icon>
+            <mat-icon
+              *ngIf="review.rating >= 5 && review.rating <= 7"
+              class="good"
+              svgIcon="good"
+            ></mat-icon>
+            <mat-icon
+              *ngIf="review.rating >= 8 && review.rating <= 9"
+              class="very_good"
+              svgIcon="very_good"
+            ></mat-icon>
+            <mat-icon
+              *ngIf="review.rating == 10"
+              class="perfect"
+              svgIcon="perfect"
+            ></mat-icon>
+          </div>
+        </mat-card-subtitle>
       </mat-card-header>
-      <mat-card-content>
+      <mat-card-content class="review-text">
         <p>
-          One of the best FPS campaigns of all time and BEST multiplayer of all
-          time. IDK if I feel like the rose tinted glasses are kicking in, this
-          game had the best mp ever for the time and still holds up to this day.
-          Better than any modern cod game they've Sh*t out
+          {{ review.review_text }}
         </p>
       </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>
-          <mat-icon svgIcon="like"></mat-icon>
-          LIKE
+      <mat-card-actions class="row gap-sm">
+        <button
+          (click)="updateReview(review)"
+          *ngIf="currentUser.id == review.userId"
+          mat-button
+        >
+          <mat-icon svgIcon="edit"></mat-icon>
+          {{ "comment.edit" | translate }}
         </button>
-      </mat-card-actions>
-    </mat-card>
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <div mat-card-avatar class="review_avatar"></div>
-        <mat-card-title>random_user</mat-card-title>
-        <mat-card-subtitle>13-05-22</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          One of the best FPS campaigns of all time and BEST multiplayer of all
-          time. IDK if I feel like the rose tinted glasses are kicking in, this
-          game had the best mp ever for the time and still holds up to this day.
-          Better than any modern cod game they've Sh*t out
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>
-          <mat-icon svgIcon="like"></mat-icon>
-          LIKE
-        </button>
-      </mat-card-actions>
-    </mat-card>
-    <mat-card appearance="outlined">
-      <mat-card-header>
-        <div mat-card-avatar class="review_avatar"></div>
-        <mat-card-title>random_user</mat-card-title>
-        <mat-card-subtitle>13-05-22</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>
-          One of the best FPS campaigns of all time and BEST multiplayer of all
-          time. IDK if I feel like the rose tinted glasses are kicking in, this
-          game had the best mp ever for the time and still holds up to this day.
-          Better than any modern cod game they've Sh*t out
-        </p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>
-          <mat-icon svgIcon="like"></mat-icon>
-          LIKE
+        <button
+          (click)="deleteReview(review.id)"
+          *ngIf="currentUser.id == review.userId"
+          color="warn"
+          mat-button
+        >
+          <mat-icon svgIcon="delete"></mat-icon>
+          {{ "comment.delete" | translate }}
         </button>
       </mat-card-actions>
     </mat-card>

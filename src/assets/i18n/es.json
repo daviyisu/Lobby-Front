@@ -24,6 +24,10 @@
     "summarize": "Resume en una frase corta tu opinión",
     "writeHere": "Escribe aquí tu reseña"
   },
+  "editReview": {
+    "editReview": "Editar reseña para",
+    "buttonText": "Editar"
+  },
   "addGameStatus": {
     "completed": "Completado",
     "completed-text": "Has completado el objetivo principal",
@@ -57,5 +61,10 @@
     "PLAYED": "Jugado",
     "ABANDONED": "Abandonado",
     "PLAYING": "Jugando"
+  },
+  "comment": {
+    "like": "Me gusta",
+    "delete": "Borrar",
+    "edit": "Editar"
   }
 }

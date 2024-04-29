@@ -45,3 +45,37 @@
 .playing {
   color: darkgoldenrod;
 }
+
+.review-container {
+  width: 100%;
+
+  .review-summary {
+    padding-top: 0.5rem;
+    color: black;
+    font-size: medium;
+  }
+
+  .review-text {
+    padding-top: 1rem;
+  }
+
+  .review_number {
+    font-size: 1.5rem;
+  }
+
+  .bad {
+    color: red;
+  }
+
+  .good {
+    color: green;
+  }
+
+  .very_good {
+    color: blue;
+  }
+
+  .perfect {
+    color: darkturquoise;
+  }
+}

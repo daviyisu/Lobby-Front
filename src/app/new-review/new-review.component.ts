@@ -1,6 +1,12 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { NewReviewDialogInterface } from '../../models/new-review-dialog.interface';
+import { ReviewService } from '../../services/review.service';
+import {
+  ReviewSummaryValidator,
+  ReviewTextValidator,
+} from '../../utils/validators';
 
 @Component({
   selector: 'app-new-review',
@@ -13,17 +19,63 @@ export class NewReviewComponent {
    */
   form: FormGroup;
 
+  /**
+   * Whether the modal was open to edit the review
+   */
+  editReview = false;
+
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: NewReviewDialogInterface,
     private builder: FormBuilder,
     public newReviewDialogRef: MatDialogRef<NewReviewComponent>,
+    private reviewService: ReviewService,
   ) {
+    this.editReview = !!this.data.review;
     this.form = this.builder.group({
-      summary: [''],
-      review: [''],
+      summary: [
+        this.editReview ? this.data.review.summary : '',
+        ReviewSummaryValidator,
+      ],
+      review: [
+        this.editReview ? this.data.review.review_text : '',
+        ReviewTextValidator,
+      ],
+      rating: [
+        this.editReview ? this.data.review.rating : '',
+        Validators.required,
+      ],
     });
   }
 
-  closeModal(): void {
-    this.newReviewDialogRef.close();
+  sendReview(): void {
+    if (this.form.valid) {
+      this.reviewService
+        .addReview(
+          this.data.gameId,
+          this.form.value.rating,
+          this.form.value.review,
+          this.form.value.summary,
+        )
+        .subscribe();
+      this.closeModal(true);
+    }
+  }
+
+  updateReview(): void {
+    if (this.form.valid) {
+      this.reviewService
+        .editReview(
+          this.data.review.id,
+          this.form.value.review,
+          this.form.value.summary,
+          this.form.value.rating,
+        )
+        .subscribe();
+      this.closeModal(true);
+    }
+  }
+
+  closeModal(needRefresh?: boolean): void {
+    this.newReviewDialogRef.close(needRefresh);
   }
 }

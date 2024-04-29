@@ -5,6 +5,8 @@ import { FormControl } from '@angular/forms';
 import { Game } from '../../models/game';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { GameService } from '../../services/game.service';
+import { UserService } from '../../services/user.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +17,9 @@ export class ProfileComponent implements OnInit {
   private loginService = inject(LoginService);
   private router = inject(Router);
   private gameService = inject(GameService);
+  private userService = inject(UserService);
+
+  user!: User;
 
   gameSearch = new FormControl('');
   queryResults?: Game[] = [];
@@ -38,6 +43,9 @@ export class ProfileComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.userService.getCurrentUser().subscribe((user) => {
+      this.user = user;
+    });
     this.gameSearch.valueChanges
       .pipe(
         debounceTime(300),

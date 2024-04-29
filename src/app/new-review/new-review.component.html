@@ -1,7 +1,9 @@
-<div class="column gap">
-  <!-- TODO HACER QUE PILLE EL NOMBRE REAL -->
-  <h2>
-    {{ "newReview.newReview" | translate }} Call of Duty: Modern Warfare 2
+<div class="modal-container">
+  <h2 *ngIf="!editReview">
+    {{ "newReview.newReview" | translate }} {{ data.gameName }}
+  </h2>
+  <h2 *ngIf="editReview">
+    {{ "editReview.editReview" | translate }} {{ data.gameName }}
   </h2>
   <form [formGroup]="form" class="column gap">
     <mat-form-field appearance="outline">
@@ -10,6 +12,12 @@
         formControlName="summary"
         placeholder="{{ 'newReview.summarize' | translate }}"
       />
+      <mat-error *ngIf="form.get('summary')?.hasError('required')">
+        {{ "forms.required" | translate }}
+      </mat-error>
+      <mat-error *ngIf="form.get('summary')?.hasError('minlength')">
+        {{ "forms.tooShort" | translate }}
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <textarea
@@ -19,7 +27,50 @@
         placeholder="{{ 'newReview.writeHere' | translate }}..."
       >
       </textarea>
+      <mat-error *ngIf="form.get('review')?.hasError('required')">
+        {{ "forms.required" | translate }}
+      </mat-error>
+      <mat-error *ngIf="form.get('review')?.hasError('minlength')">
+        {{ "forms.tooShort" | translate }}
+      </mat-error>
+      <mat-error *ngIf="form.get('review')?.hasError('maxlength')">
+        {{ "forms.tooLarge" | translate }}
+      </mat-error>
     </mat-form-field>
+    <div class="row gap center">
+      <div class="column">
+        <mat-form-field appearance="outline" class="rating">
+          <input
+            matInput
+            max="10"
+            formControlName="rating"
+            min="0"
+            type="number"
+            placeholder="Rating..."
+          />
+        </mat-form-field>
+      </div>
+      <mat-icon
+        [ngClass]="form.value.rating < 5 ? 'bad' : ''"
+        svgIcon="bad"
+      ></mat-icon>
+      <mat-icon
+        [ngClass]="
+          form.value.rating >= 5 && form.value.rating <= 7 ? 'good' : ''
+        "
+        svgIcon="good"
+      ></mat-icon>
+      <mat-icon
+        [ngClass]="
+          form.value.rating >= 8 && form.value.rating <= 9 ? 'very_good' : ''
+        "
+        svgIcon="very_good"
+      ></mat-icon>
+      <mat-icon
+        [ngClass]="form.value.rating == 10 ? 'perfect' : ''"
+        svgIcon="perfect"
+      ></mat-icon>
+    </div>
   </form>
   <div class="modal-actions">
     <button
@@ -30,9 +81,26 @@
     >
       <span class="text-md"> {{ "global.back" | translate }} </span>
     </button>
-    <button mat-flat-button color="primary" class="btn primary">
+    <button
+      *ngIf="!editReview"
+      (click)="sendReview()"
+      mat-flat-button
+      color="primary"
+      class="btn primary"
+    >
       <span class="text-md">
         {{ "gameDetail.createReview" | translate }}
+      </span>
+    </button>
+    <button
+      *ngIf="editReview"
+      (click)="updateReview()"
+      mat-flat-button
+      color="primary"
+      class="btn primary"
+    >
+      <span class="text-md">
+        {{ "editReview.buttonText" | translate }}
       </span>
     </button>
   </div>

@@ -4,7 +4,7 @@ import { UsernamePassRequest } from '../../models/auth';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
-import { formRequiredValidator } from '../../utils/validators';
+import { LoginFormRequiredValidator } from '../../utils/validators';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +16,8 @@ export class LoginComponent {
 
   private formBuilder = inject(FormBuilder);
   loginForm = this.formBuilder.group({
-    username: ['', formRequiredValidator],
-    password: ['', formRequiredValidator],
+    username: ['', LoginFormRequiredValidator],
+    password: ['', LoginFormRequiredValidator],
   });
 
   constructor(

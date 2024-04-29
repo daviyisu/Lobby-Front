@@ -7,6 +7,10 @@ import { GameService } from '../../services/game.service';
 import { ActivatedRoute } from '@angular/router';
 import { ImageService } from '../../services/image.service';
 import { CollectionStatusEnum, genresEnum } from '../../models/enums';
+import { ReviewService } from '../../services/review.service';
+import { Review } from '../../models/review';
+import { User } from '../../models/user';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -15,6 +19,8 @@ import { CollectionStatusEnum, genresEnum } from '../../models/enums';
 })
 export class GameDetailComponent implements OnInit {
   private imageService = inject(ImageService);
+  private reviewService = inject(ReviewService);
+  private userService = inject(UserService);
 
   constructor(
     private dialogRef: MatDialog,
@@ -47,8 +53,19 @@ export class GameDetailComponent implements OnInit {
    */
   gameStatus = CollectionStatusEnum.not_owned;
 
+  /**
+   * Reviews of this game
+   */
+  reviews: Review[] = [];
+
+  /**
+   * Current user
+   */
+  currentUser!: User;
+
   ngOnInit() {
     this.route.params.subscribe((params) => {
+      // Double initialization intentionally made
       this.screenshots = [];
       this.gameService.getGameById(params['id']).subscribe((data) => {
         this.game = data;
@@ -71,17 +88,35 @@ export class GameDetailComponent implements OnInit {
           this.gameService.getStatus(this.game.id).subscribe((response) => {
             this.gameStatus = response;
           });
+          this.reviewService
+            .getReviewsFromGame(this.game.id)
+            .subscribe((reviews) => {
+              this.reviews = reviews;
+            });
         }
       });
     });
+    this.userService.getCurrentUser().subscribe((user) => {
+      this.currentUser = user;
+    });
   }
 
-  openNewReviewModal() {
-    this.dialogRef.open(NewReviewComponent, {});
+  openNewReviewModal(): void {
+    const dialogRef = this.dialogRef.open(NewReviewComponent, {
+      data: {
+        gameId: this.game.id,
+        gameName: this.game.name,
+      },
+    });
+    dialogRef.afterClosed().subscribe((needRefresh) => {
+      if (needRefresh) {
+        this.refreshComments();
+      }
+    });
   }
 
   /**
-   * Getter for genresEnum for accessing it form HTML
+   * Getter for genresEnum for accessing it from the template
    */
   getGenreEnum(): any {
     return genresEnum;
@@ -100,6 +135,36 @@ export class GameDetailComponent implements OnInit {
         this.gameStatus = statusSelected;
       }
     });
+  }
+
+  deleteReview(reviewId: number): void {
+    this.reviewService.deleteReview(reviewId).subscribe(() => {
+      this.refreshComments();
+    });
+  }
+
+  updateReview(review: Review): void {
+    const dialogRef = this.dialogRef.open(NewReviewComponent, {
+      data: {
+        review: review,
+        gameName: this.game.name,
+      },
+    });
+    dialogRef.afterClosed().subscribe((needRefresh) => {
+      if (needRefresh) {
+        this.refreshComments();
+      }
+    });
+  }
+
+  refreshComments(): void {
+    this.reviewService.getReviewsFromGame(this.game.id).subscribe((reviews) => {
+      this.reviews = reviews;
+    });
+  }
+
+  formatDate(date: string): string {
+    return date.split('T')[0];
   }
 
   protected readonly CollectionStatusEnum = CollectionStatusEnum;
