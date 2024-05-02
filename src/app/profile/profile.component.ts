@@ -7,6 +7,7 @@ import { debounceTime, switchMap } from 'rxjs/operators';
 import { GameService } from '../../services/game.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profile',
@@ -18,6 +19,7 @@ export class ProfileComponent implements OnInit {
   private router = inject(Router);
   private gameService = inject(GameService);
   private userService = inject(UserService);
+  private translateService = inject(TranslateService);
 
   user!: User;
 
@@ -63,6 +65,10 @@ export class ProfileComponent implements OnInit {
 
   goToGame(id: number): void {
     this.router.navigateByUrl('gamedetail/' + id);
+  }
+
+  getSearchBarPlaceholder(): string {
+    return this.translateService.instant('profile.searchBarPlaceholder');
   }
 
   logout(): void {

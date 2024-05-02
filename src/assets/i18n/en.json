@@ -6,7 +6,8 @@
     "collection": "Collection",
     "statistics": "Statistics",
     "lists": "Lists",
-    "logout": "Log out"
+    "logout": "Log out",
+    "searchBarPlaceholder": "Search your games here!"
   },
   "stats": {
     "gamesOwned": "Games owned:",

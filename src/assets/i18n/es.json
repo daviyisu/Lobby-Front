@@ -6,7 +6,8 @@
     "collection": "Colección",
     "statistics": "Estadísticas",
     "lists": "Listas",
-    "logout": "Cerrar sesión"
+    "logout": "Cerrar sesión",
+    "searchBarPlaceholder": "¡Busca tus juegos aquí!"
   },
   "stats": {
     "gamesOwned": "Juegos en propiedad:",
@@ -19,7 +20,7 @@
     "createReview": "Crear reseña",
     "addGame": "Añadir juego a colección",
     "screenshots": "Capturas de pantalla",
-    "releaseDate": "Fecha de estreno: {{day}}/{{month}}/{{year}}"
+    "releaseDate": "Fecha de lanzamiento: {{day}}/{{month}}/{{year}}"
   },
   "newReview": {
     "newReview": "Nueva reseña para",
