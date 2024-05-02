@@ -9,9 +9,11 @@
     "logout": "Log out"
   },
   "stats": {
-    "gamesOwned": "Games owned",
-    "unplayedSteamGames": "Untouched Steam games",
-    "estimatedTime": "Estimated play time"
+    "gamesOwned": "Games owned:",
+    "gamesAbandoned": "Games abandoned:",
+    "gamesCompleted": "Games completed:",
+    "gamesPlaying": "Games you are currently playing:",
+    "totalReviews": "Total of games reviewed:"
   },
   "gameDetail": {
     "createReview": "Create review",

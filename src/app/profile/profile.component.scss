@@ -1,6 +1,8 @@
 @import "src/scss/mixins";
 
 .banner {
+  @include row;
+  justify-content: space-between;
   background-color: gray;
   height: 25%;
   min-height: 250px;
@@ -11,18 +13,18 @@
     @include column;
     @include gap-sm;
     @include center;
-    width: 25%;
-    margin: auto;
   }
 
   .logout-button {
     margin: 2rem;
-    position: fixed;
+    min-width: 130px;
   }
 
   .search-bar {
     height: 100px;
     margin: 2rem;
+    width: 20%;
+    min-width: 200px;
   }
 }
 

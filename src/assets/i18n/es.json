@@ -9,9 +9,11 @@
     "logout": "Cerrar sesión"
   },
   "stats": {
-    "gamesOwned": "Juegos en propiedad",
-    "unplayedSteamGames": "Juegos de Steam sin estrenar",
-    "estimatedTime": "Tiempo de juego estimado"
+    "gamesOwned": "Juegos en propiedad:",
+    "gamesAbandoned": "Juegos abandonados:",
+    "gamesCompleted": "Juegos completados:",
+    "gamesPlaying": "Juegos que estás jugando actualmente:",
+    "totalReviews": "Total de juegos reseñados:"
   },
   "gameDetail": {
     "createReview": "Crear reseña",
