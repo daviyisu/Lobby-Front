@@ -1,15 +1,44 @@
 <div *ngIf="collectionCount" class="stat first_stat">
-  <h2>{{ "stats.gamesOwned" | translate }} {{ collectionCount }}</h2>
+  <mat-icon class="icon" svgIcon="collection"></mat-icon>
+  <div class="text">
+    <span class="subtitle">{{ "stats.gamesOwned" | translate }}</span>
+    <span class="number">{{ collectionCount }}</span>
+  </div>
+  <mat-icon class="icon" svgIcon="collection"></mat-icon>
 </div>
+
 <div *ngIf="countDroppedGames" class="stat second_stat">
-  <h2>{{ "stats.gamesAbandoned" | translate }} {{ countDroppedGames }}</h2>
+  <mat-icon class="icon" svgIcon="cancel"></mat-icon>
+  <div class="text">
+    <span class="subtitle">{{ "stats.gamesAbandoned" | translate }}</span>
+    <span class="number"> {{ countDroppedGames }}</span>
+  </div>
+  <mat-icon class="icon" svgIcon="cancel"></mat-icon>
 </div>
+
 <div *ngIf="countCompletedGames" class="stat third_stat">
-  <h2>{{ "stats.gamesCompleted" | translate }} {{ countCompletedGames }}</h2>
+  <mat-icon class="icon" svgIcon="done"></mat-icon>
+  <div class="text">
+    <span class="subtitle">{{ "stats.gamesCompleted" | translate }}</span>
+    <span class="number">{{ countCompletedGames }}</span>
+  </div>
+  <mat-icon class="icon" svgIcon="done"></mat-icon>
 </div>
+
 <div *ngIf="countPlayingGames" class="stat fourth_stat">
-  <h2>{{ "stats.gamesPlaying" | translate }} {{ countPlayingGames }}</h2>
+  <mat-icon class="icon" svgIcon="joystick"></mat-icon>
+  <div class="text">
+    <span class="subtitle">{{ "stats.gamesPlaying" | translate }}</span>
+    <span class="number">{{ countPlayingGames }}</span>
+  </div>
+  <mat-icon class="icon" svgIcon="joystick"></mat-icon>
 </div>
+
 <div *ngIf="countTotalReviews" class="stat fifth_stat">
-  <h2>{{ "stats.totalReviews" | translate }} {{ countTotalReviews }}</h2>
+  <mat-icon class="icon" svgIcon="rate"></mat-icon>
+  <div class="text">
+    <span class="subtitle">{{ "stats.totalReviews" | translate }}</span>
+    <span class="number">{{ countTotalReviews }}</span>
+  </div>
+  <mat-icon class="icon" svgIcon="rate"></mat-icon>
 </div>
