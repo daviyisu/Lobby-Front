@@ -54,4 +54,8 @@ export class ReviewService {
   public deleteReview(reviewId: number): Observable<void> {
     return this.http.delete<void>(this.reviewApiPath + reviewId);
   }
+
+  public countReviews(): Observable<number> {
+    return this.http.get<number>(this.reviewApiPath + 'countreviews');
+  }
 }

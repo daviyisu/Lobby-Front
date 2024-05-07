@@ -52,4 +52,14 @@ export class GameService {
       this.gameApiPath + 'owns/' + gameId,
     );
   }
+
+  public getCountUserGames(): Observable<number> {
+    return this.http.get<number>(this.gameApiPath + 'collectioncount');
+  }
+
+  public getCountCollectionByStatus(
+    status: CollectionStatusEnum,
+  ): Observable<number> {
+    return this.http.get<number>(this.gameApiPath + 'countbystatus/' + status);
+  }
 }

@@ -8,4 +8,8 @@ export enum Icons {
   good = 'good',
   perfect = 'perfect',
   very_good = 'very_good',
+  collection = 'collection',
+  done = 'done',
+  cancel = 'cancel',
+  rate = 'rate',
 }
