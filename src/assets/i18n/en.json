@@ -69,5 +69,11 @@
     "like": "Like",
     "delete": "Delete",
     "edit": "Edit"
+  },
+  "myLists": {
+    "createList": "Create list",
+    "createListModal": {
+      "title": "New list"
+    }
   }
 }

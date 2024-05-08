@@ -34,6 +34,8 @@ import { JwtInterceptorService } from '../services/jwt-interceptor.service';
 import { MainComponent } from './main/main.component';
 import { RegisterComponent } from './register/register.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ListCardComponent } from './my-lists/list-card/list-card.component';
+import { CreateListModalComponent } from './my-lists/create-list-modal/create-list-modal.component';
 
 export const globalImports = [
   TranslateModule.forRoot({
@@ -59,6 +61,8 @@ export const globalImports = [
     LoginComponent,
     MainComponent,
     RegisterComponent,
+    ListCardComponent,
+    CreateListModalComponent,
   ],
   imports: [
     ...globalImports,

@@ -1,0 +1,7 @@
+@import "src/scss/mixins";
+
+.modal-container {
+  @include column;
+  @include gap;
+  min-width: 23rem;
+}

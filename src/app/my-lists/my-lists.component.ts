@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateListModalComponent } from './create-list-modal/create-list-modal.component';
 
 @Component({
   selector: 'app-my-lists',
@@ -7,9 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./my-lists.component.scss'],
 })
 export class MyListsComponent {
-  constructor(private router: Router) {}
+  private dialogRef = inject(MatDialog);
 
-  goToList() {
-    this.router.navigateByUrl('list');
+  openCreateListModal(): void {
+    this.dialogRef.open(CreateListModalComponent);
   }
 }
