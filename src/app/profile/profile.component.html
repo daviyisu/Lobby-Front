@@ -11,7 +11,10 @@
     <img class="user-photo" src="assets/img/default-photo.svg" alt="" />
     <h2>{{ user.username }}</h2>
   </div>
-  <app-game-search-bar class="search-bar"></app-game-search-bar>
+  <app-game-search-bar
+    (selectedGameId)="goToGame($event)"
+    class="search-bar"
+  ></app-game-search-bar>
 </div>
 
 <nav mat-tab-nav-bar class="tab" [tabPanel]="tabPanel">

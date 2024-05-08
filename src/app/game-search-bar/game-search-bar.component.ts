@@ -1,10 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { GameService } from '../../services/game.service';
 import { FormControl } from '@angular/forms';
 import { Game } from '../../models/game';
 import { TranslateService } from '@ngx-translate/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-search-bar',
@@ -14,10 +13,10 @@ import { Router } from '@angular/router';
 export class GameSearchBarComponent implements OnInit {
   private gameService = inject(GameService);
   private translateService = inject(TranslateService);
-  private router = inject(Router);
 
   gameSearch = new FormControl('');
   queryResults?: Game[] = [];
+  @Output() selectedGameId = new EventEmitter<number>();
 
   ngOnInit() {
     this.gameSearch.valueChanges
@@ -35,8 +34,8 @@ export class GameSearchBarComponent implements OnInit {
       );
   }
 
-  goToGame(id: number): void {
-    this.router.navigateByUrl('gamedetail/' + id);
+  emitSelectedGame(id: number): void {
+    this.selectedGameId.emit(id);
   }
 
   getSearchBarPlaceholder(): string {

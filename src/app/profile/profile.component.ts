@@ -40,6 +40,10 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  goToGame(id: number): void {
+    this.router.navigateByUrl('gamedetail/' + id);
+  }
+
   logout(): void {
     this.loginService.logout();
     this.router.navigateByUrl('login');

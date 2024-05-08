@@ -10,7 +10,7 @@
     <mat-option
       *ngFor="let option of queryResults"
       [value]="option.name"
-      (click)="goToGame(option.id)"
+      (click)="emitSelectedGame(option.id)"
     >
       {{ option.name }}
     </mat-option>

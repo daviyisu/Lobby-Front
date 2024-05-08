@@ -1,3 +1,9 @@
 <div class="modal-container">
   <h2>{{ "myLists.createListModal.title" | translate }}</h2>
+  <app-game-search-bar
+    (selectedGameId)="addGameToList($event)"
+  ></app-game-search-bar>
+  <mat-chip *ngFor="let game of initialGamesToAdd">
+    {{ game.name }}
+  </mat-chip>
 </div>
