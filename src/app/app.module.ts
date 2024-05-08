@@ -36,6 +36,7 @@ import { RegisterComponent } from './register/register.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ListCardComponent } from './my-lists/list-card/list-card.component';
 import { CreateListModalComponent } from './my-lists/create-list-modal/create-list-modal.component';
+import { GameSearchBarComponent } from './game-search-bar/game-search-bar.component';
 
 export const globalImports = [
   TranslateModule.forRoot({
@@ -63,6 +64,7 @@ export const globalImports = [
     RegisterComponent,
     ListCardComponent,
     CreateListModalComponent,
+    GameSearchBarComponent,
   ],
   imports: [
     ...globalImports,
