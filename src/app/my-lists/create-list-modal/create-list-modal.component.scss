@@ -4,4 +4,15 @@
   @include column;
   @include gap;
   min-width: 23rem;
+  width: 420px;
+}
+
+.game_chips {
+  @include row;
+  @include gap-sm;
+  flex-wrap: wrap;
+
+  .chip {
+    overflow: hidden;
+  }
 }

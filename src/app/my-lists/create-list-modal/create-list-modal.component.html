@@ -3,7 +3,9 @@
   <app-game-search-bar
     (selectedGameId)="addGameToList($event)"
   ></app-game-search-bar>
-  <mat-chip *ngFor="let game of initialGamesToAdd">
-    {{ game.name }}
-  </mat-chip>
+  <div class="game_chips">
+    <mat-chip class="chip" *ngFor="let game of initialGamesToAdd">
+      <span class="chip__text">{{ game.name }}</span>
+    </mat-chip>
+  </div>
 </div>
