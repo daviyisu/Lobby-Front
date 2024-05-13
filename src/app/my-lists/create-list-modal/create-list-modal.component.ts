@@ -26,5 +26,6 @@ export class CreateListModalComponent {
 
   closeModal(): void {
     this.createListDialogRef.close();
+    //
   }
 }
