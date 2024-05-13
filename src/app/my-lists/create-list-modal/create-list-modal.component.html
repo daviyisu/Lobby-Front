@@ -18,6 +18,7 @@
       <span class="text-md"> {{ "global.back" | translate }} </span>
     </button>
   <button
+    [disabled]="initialGamesToAdd.length === 0"
     mat-flat-button
     color="primary"
     class="btn primary"
