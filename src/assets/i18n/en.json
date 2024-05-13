@@ -73,7 +73,8 @@
   "myLists": {
     "createList": "Create list",
     "createListModal": {
-      "title": "New list"
+      "title": "New list",
+      "done": "Done"
     }
   }
 }

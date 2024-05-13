@@ -8,4 +8,23 @@
       <span class="chip__text">{{ game.name }}</span>
     </mat-chip>
   </div>
+  <div class="modal-actions">
+    <button
+      (click)="closeModal()"
+      mat-flat-button
+      color="accent"
+      class="btn primary"
+    >
+      <span class="text-md"> {{ "global.back" | translate }} </span>
+    </button>
+  <button
+    mat-flat-button
+    color="primary"
+    class="btn primary"
+  >
+    <span class="text-md">
+        {{ "myLists.createListModal.done" | translate }}
+      </span>
+  </button>
+  </div>
 </div>

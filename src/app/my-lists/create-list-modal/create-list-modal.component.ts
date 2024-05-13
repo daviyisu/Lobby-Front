@@ -1,6 +1,7 @@
-import { Component, inject } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { Game } from '../../../models/game';
 import { GameService } from '../../../services/game.service';
+import { MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-create-list-modal',
@@ -12,9 +13,18 @@ export class CreateListModalComponent {
 
   initialGamesToAdd: Game[] = [];
 
+  constructor(
+    public createListDialogRef: MatDialogRef<CreateListModalComponent>
+  ) {
+  }
+
   addGameToList(id: number): void {
     this.gameService
       .getGameById(id)
       .subscribe((game) => this.initialGamesToAdd.push(game));
+  }
+
+  closeModal(): void {
+    this.createListDialogRef.close();
   }
 }
