@@ -1,7 +1,8 @@
-import {Component, inject} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Game } from '../../../models/game';
 import { GameService } from '../../../services/game.service';
-import { MatDialogRef} from "@angular/material/dialog";
+import { MatDialogRef } from '@angular/material/dialog';
+import { ListService } from '../../../services/list-service.service';
 
 @Component({
   selector: 'app-create-list-modal',
@@ -10,22 +11,30 @@ import { MatDialogRef} from "@angular/material/dialog";
 })
 export class CreateListModalComponent {
   private gameService = inject(GameService);
+  private listService = inject(ListService);
 
   initialGamesToAdd: Game[] = [];
 
   constructor(
-    public createListDialogRef: MatDialogRef<CreateListModalComponent>
-  ) {
-  }
+    public createListDialogRef: MatDialogRef<CreateListModalComponent>,
+  ) {}
 
   addGameToList(id: number): void {
     this.gameService
       .getGameById(id)
       .subscribe((game) => this.initialGamesToAdd.push(game));
-    //test
   }
 
   closeModal(): void {
     this.createListDialogRef.close();
+  }
+
+  createList(): void {
+    this.listService
+      .createList(
+        'Temporal',
+        this.initialGamesToAdd.map((game) => game.id),
+      )
+      .subscribe();
   }
 }
