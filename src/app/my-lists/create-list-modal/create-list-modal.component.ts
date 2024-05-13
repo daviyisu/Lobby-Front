@@ -22,6 +22,7 @@ export class CreateListModalComponent {
     this.gameService
       .getGameById(id)
       .subscribe((game) => this.initialGamesToAdd.push(game));
+    //test
   }
 
   closeModal(): void {
