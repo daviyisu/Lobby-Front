@@ -1,46 +1,22 @@
 import { autoserializeAs, autoserializeAsArray } from 'dcerialize';
+import {Game} from "./game";
+import {User} from "./user";
 
-export class GameList {
-  /**
-   * Game list ID
-   */
-  id: number;
-
-  /**
-   * Name of the list
-   */
-  name: string;
-
-  /**
-   * Array of game IDs from the list
-   */
-  games_ids: number[];
-
-  constructor(id: number, name: string, games_ids: number[]) {
-    this.id = id;
-    this.name = name;
-    this.games_ids = games_ids;
-  }
-}
 
 export class GameListDTO {
-  /**
-   * Game list ID
-   */
-  @autoserializeAs(() => Number) userId: number;
 
-  /**
-   * Name of the list
-   */
-  @autoserializeAs(() => String) createdBy: string;
+  @autoserializeAs(() => Number) id: number;
 
-  // /**
-  //  * Array of game IDs from the list
-  //  */
-  // @autoserializeAsArray(() => GameList) gameLists: GameList[];
+  @autoserializeAs(() => String) name: string;
 
-  constructor(userId: number, createdBy: string) {
-    this.userId = userId;
-    this.createdBy = createdBy;
+  @autoserializeAs(() => User) user: User;
+
+  @autoserializeAsArray(() => Game) games?: Game[];
+
+  constructor(id: number, name: string, user: User, games: Game[]) {
+    this.id = id;
+    this.name = name;
+    this.user = user;
+    this.games = games;
   }
 }

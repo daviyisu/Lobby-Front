@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { GameList, GameListDTO } from '../models/GameList';
+import { GameListDTO } from '../models/GameList';
 import { Game } from '../models/game';
 
 @Injectable({

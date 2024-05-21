@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateListModalComponent } from './create-list-modal/create-list-modal.component';
 import { ListService } from '../../services/list-service.service';
-import { GameList, GameListDTO } from '../../models/GameList';
+import { GameListDTO } from '../../models/GameList';
 
 @Component({
   selector: 'app-my-lists',
@@ -16,10 +16,9 @@ export class MyListsComponent implements OnInit {
   userLists: GameListDTO[] = [];
 
   ngOnInit() {
-    // this.listService.getUserLists().subscribe((result) => {
-    //   this.userLists = result;
-    //   console.log(this.userLists);
-    // })
+    this.listService.getUserLists().subscribe((result) => {
+      this.userLists = result;
+    })
   }
 
   openCreateListModal(): void {

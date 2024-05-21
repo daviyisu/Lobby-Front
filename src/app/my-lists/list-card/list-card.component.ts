@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { Router } from '@angular/router';
+import {GameListDTO} from "../../../models/GameList";
 
 @Component({
   selector: 'app-list-card',
@@ -7,6 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-card.component.scss'],
 })
 export class ListCardComponent {
+
+  @Input() list!: GameListDTO;
+
   constructor(private router: Router) {}
 
   goToList() {
