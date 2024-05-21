@@ -74,7 +74,8 @@
     "createList": "Create list",
     "createListModal": {
       "title": "New list",
-      "done": "Done"
+      "done": "Done",
+      "namePlaceholder": "Name of your list"
     }
   }
 }

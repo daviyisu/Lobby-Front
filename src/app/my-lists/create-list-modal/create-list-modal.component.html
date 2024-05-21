@@ -1,5 +1,19 @@
 <div class="modal-container">
   <h2>{{ "myLists.createListModal.title" | translate }}</h2>
+  <form>
+    <mat-form-field appearance="outline">
+      <input
+        matInput
+        [formControl]="listNameFormControl"
+        placeholder="{{
+          'myLists.createListModal.namePlaceholder' | translate
+        }}"
+      />
+      <mat-error *ngIf="listNameFormControl.hasError('required')">
+        {{ "forms.required" | translate }}
+      </mat-error>
+    </mat-form-field>
+  </form>
   <app-game-search-bar
     (selectedGameId)="addGameToList($event)"
   ></app-game-search-bar>
@@ -18,7 +32,7 @@
       <span class="text-md"> {{ "global.back" | translate }} </span>
     </button>
     <button
-      [disabled]="initialGamesToAdd.length === 0"
+      [disabled]="initialGamesToAdd.length === 0 || !listNameFormControl.valid"
       mat-flat-button
       (click)="createList()"
       color="primary"
