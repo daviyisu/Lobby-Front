@@ -11,6 +11,8 @@
         {{ "myLists.createList" | translate }}
       </span>
     </button>
-    <app-list-card [list]="list" *ngFor="let list of userLists"></app-list-card>
+    <div class="column center">
+      <app-list-card [list]="list" *ngFor="let list of userLists"></app-list-card>
+    </div>
   </div>
 </div>

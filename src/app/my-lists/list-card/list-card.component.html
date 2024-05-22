@@ -1,25 +1,11 @@
 <div (click)="goToList()" class="list-container dark-when-hover">
   <div class="cards">
     <img
-      class="first-card"
-      src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
+      *ngFor="let image of getImagesFrontView(); let i = index"
+      [class]="'card-' + i + ' shadow'"
+      [src] = "image"
       alt="Cover of the game"
-    />
-    <img
-      class="second-card"
-      src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-      alt="Cover of the game"
-    />
-    <img
-      class="third-card"
-      src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-      alt="Cover of the game"
-    />
-    <img
-      class="fourth-card"
-      src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-      alt="Cover of the game"
-    />
+      />
   </div>
   <h2>{{ list.name }}</h2>
 </div>

@@ -1,6 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, inject, Input} from '@angular/core';
 import { Router } from '@angular/router';
-import {GameListDTO} from "../../../models/GameList";
+import { GameList } from "../../../models/GameList";
+import {ImageService} from "../../../services/image.service";
 
 @Component({
   selector: 'app-list-card',
@@ -9,11 +10,28 @@ import {GameListDTO} from "../../../models/GameList";
 })
 export class ListCardComponent {
 
-  @Input() list!: GameListDTO;
+  private router = inject(Router);
+  private imageService = inject(ImageService);
 
-  constructor(private router: Router) {}
+  private placeholderImage = 'assets/img/gamelist_placeholder.png'
+
+  @Input() list!: GameList;
+
+  getImagesFrontView(): string[] {
+    let images: string[] = []
+    this.list.games.slice(0,5).forEach((game) => {
+      if (game.coverImageId) {
+        images.push(this.imageService.getIgdbImage(game.coverImageId))
+      }
+    })
+    while (images.length < 5) {
+      images.push(this.placeholderImage);
+    }
+    return images;
+  }
 
   goToList() {
-    this.router.navigateByUrl('list');
+    console.log(this.list)
+    console.log(this.getImagesFrontView())
   }
 }

@@ -3,7 +3,7 @@ import {Game} from "./game";
 import {User} from "./user";
 
 
-export class GameListDTO {
+export class GameList {
 
   @autoserializeAs(() => Number) id: number;
 
@@ -11,9 +11,9 @@ export class GameListDTO {
 
   @autoserializeAs(() => User) user: User;
 
-  @autoserializeAsArray(() => Game) games?: Game[];
+  @autoserializeAsArray(() => Game) games: Game[];
 
-  constructor(id: number, name: string, user: User, games: Game[]) {
+  constructor(id: number, name: string, user: User, games: Game[] = []) {
     this.id = id;
     this.name = name;
     this.user = user;
