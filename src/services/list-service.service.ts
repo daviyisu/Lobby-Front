@@ -24,4 +24,16 @@ export class ListService {
   public getUserLists(): Observable<GameList[]> {
     return this.http.get<GameList[]>(this.listApiPath + 'from_user');
   }
+
+  public getListById(id: number): Observable<GameList> {
+    return this.http.get<GameList>(this.listApiPath + id);
+  }
+
+  public addGameToList(listId: number, gameId: number): Observable<GameList> {
+    const body = {
+      listId: listId,
+      gameId: gameId
+    }
+    return this.http.patch<GameList>(this.listApiPath + 'add_to_list', body);
+  }
 }

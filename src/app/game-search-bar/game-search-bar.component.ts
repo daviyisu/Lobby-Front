@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { GameService } from '../../services/game.service';
 import { FormControl } from '@angular/forms';
@@ -17,6 +17,7 @@ export class GameSearchBarComponent implements OnInit {
   gameSearch = new FormControl('');
   queryResults?: Game[] = [];
   @Output() selectedGameId = new EventEmitter<number>();
+  @Input() placeholder?: string;
 
   ngOnInit() {
     this.gameSearch.valueChanges
@@ -39,6 +40,10 @@ export class GameSearchBarComponent implements OnInit {
   }
 
   getSearchBarPlaceholder(): string {
-    return this.translateService.instant('profile.searchBarPlaceholder');
+    let result = 'profile.searchBarPlaceholder';
+    if (this.placeholder) {
+      result = this.placeholder;
+    }
+    return this.translateService.instant(result);
   }
 }

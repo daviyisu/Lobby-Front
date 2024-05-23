@@ -30,8 +30,7 @@ export class ListCardComponent {
     return images;
   }
 
-  goToList() {
-    console.log(this.list)
-    console.log(this.getImagesFrontView())
+  goToList(id: number) {
+    this.router.navigate(['/list', id], {state: {list: this.list}});
   }
 }

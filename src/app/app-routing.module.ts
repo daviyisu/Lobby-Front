@@ -39,7 +39,7 @@ const routes: Routes = [
         component: GameDetailComponent,
       },
       {
-        path: 'list',
+        path: 'list/:id',
         component: ListComponent,
       },
     ],
