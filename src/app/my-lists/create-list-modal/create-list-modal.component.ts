@@ -1,26 +1,34 @@
-import { Component, inject } from '@angular/core';
+import {Component, Inject, inject, OnInit} from '@angular/core';
 import { Game } from '../../../models/game';
 import { GameService } from '../../../services/game.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ListService } from '../../../services/list-service.service';
 import { FormControl, Validators } from '@angular/forms';
+import {CreateListDialogInterface} from "../../../models/create-list-dialog.interface";
 
 @Component({
   selector: 'app-create-list-modal',
   templateUrl: './create-list-modal.component.html',
   styleUrls: ['./create-list-modal.component.scss'],
 })
-export class CreateListModalComponent {
+export class CreateListModalComponent implements OnInit {
   private gameService = inject(GameService);
   private listService = inject(ListService);
+  public createListDialogRef = inject(MatDialogRef<CreateListModalComponent>);
 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: CreateListDialogInterface) {}
+
+  editMode = false;
   listNameFormControl = new FormControl('', Validators.required);
-
   initialGamesToAdd: Game[] = [];
 
-  constructor(
-    public createListDialogRef: MatDialogRef<CreateListModalComponent>,
-  ) {}
+  ngOnInit() {
+    if (this.data) {
+      this.editMode = true;
+      this.listNameFormControl.setValue(this.data.list.name);
+      this.initialGamesToAdd = this.data.list.games;
+    }
+  }
 
   addGameToList(id: number): void {
     this.gameService
@@ -32,12 +40,20 @@ export class CreateListModalComponent {
     this.createListDialogRef.close();
   }
 
+  deleteList(): void {
+
+  }
+
+  deleteGame(id: number): void {
+    this.initialGamesToAdd = this.initialGamesToAdd.filter(game => game.id !== id);
+  }
+
   createList(): void {
     if (this.listNameFormControl.valid) {
       this.listService
         .createList(this.listNameFormControl.value!, this.initialGamesToAdd)
-        .subscribe(() => {
-          this.closeModal();
+        .subscribe((createdList) => {
+          this.createListDialogRef.close(createdList);
         });
     }
   }

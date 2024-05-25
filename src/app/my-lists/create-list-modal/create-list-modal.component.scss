@@ -13,6 +13,8 @@
   flex-wrap: wrap;
 
   .chip {
+    @include row;
+    align-items: center;
     overflow: hidden;
   }
 }

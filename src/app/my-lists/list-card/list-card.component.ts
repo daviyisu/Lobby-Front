@@ -31,6 +31,6 @@ export class ListCardComponent {
   }
 
   goToList(id: number) {
-    this.router.navigate(['/list', id], {state: {list: this.list}});
+    this.router.navigate(['/list', id]);
   }
 }

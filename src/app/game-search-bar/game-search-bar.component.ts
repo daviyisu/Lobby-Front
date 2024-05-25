@@ -36,6 +36,7 @@ export class GameSearchBarComponent implements OnInit {
   }
 
   emitSelectedGame(id: number): void {
+    this.gameSearch.reset();
     this.selectedGameId.emit(id);
   }
 

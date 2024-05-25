@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateListModalComponent } from './create-list-modal/create-list-modal.component';
 import { ListService } from '../../services/list-service.service';
 import { GameList } from '../../models/GameList';
+import {lastValueFrom} from "rxjs";
 
 @Component({
   selector: 'app-my-lists',
@@ -21,7 +22,11 @@ export class MyListsComponent implements OnInit {
     })
   }
 
-  openCreateListModal(): void {
-    this.dialogRef.open(CreateListModalComponent);
+  async openCreateListModal(): Promise<void> {
+    const modalRef = this.dialogRef.open(CreateListModalComponent);
+    const createdList = await lastValueFrom(modalRef.afterClosed()) as GameList;
+    if (createdList) {
+      this.userLists.push(createdList)
+    }
   }
 }

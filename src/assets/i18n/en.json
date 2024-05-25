@@ -74,12 +74,14 @@
     "createList": "Create list",
     "createListModal": {
       "title": "New list",
+      "editTitle": "Edit list",
       "done": "Done",
       "namePlaceholder": "Name of your list"
     }
   },
   "list": {
-    "addGame": "Add game",
+    "editList": "Edit list",
+    "deleteList": "Delete list",
     "gamesToAdd": "Add game to list"
   }
 }

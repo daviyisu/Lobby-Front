@@ -33,7 +33,7 @@
 .list-container {
   @include center;
   @include column;
-  @include gap;
+  @include gap-sm;
   width: fit-content;
 }
 

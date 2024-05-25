@@ -9,10 +9,11 @@
       mat-flat-button
       color="accent"
       class="btn primary"
+      (click)="editList()"
     >
-      <mat-icon svgIcon="add"></mat-icon>
+      <mat-icon svgIcon="edit"></mat-icon>
       <span class="text-md">
-        {{ "list.addGame" | translate }}
+        {{ "list.editList" | translate }}
       </span>
     </button>
   </div>

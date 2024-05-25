@@ -1,5 +1,6 @@
 <div class="modal-container">
-  <h2>{{ "myLists.createListModal.title" | translate }}</h2>
+  <h2 *ngIf="!editMode">{{ "myLists.createListModal.title" | translate }}</h2>
+  <h2 *ngIf="editMode">{{ "myLists.createListModal.editTitle" | translate }}</h2>
   <form>
     <mat-form-field appearance="outline">
       <input
@@ -20,9 +21,27 @@
   <div class="game_chips">
     <mat-chip class="chip" *ngFor="let game of initialGamesToAdd">
       <span class="chip__text">{{ game.name }}</span>
+      <ng-container *ngIf="editMode">
+        <mat-icon
+          class="cursor-pointer"
+          (click)="deleteGame(game.id)"
+          svgIcon="cancel">
+        </mat-icon>
+      </ng-container>
     </mat-chip>
   </div>
   <div class="modal-actions">
+    <button
+      mat-flat-button
+      color="warn"
+      class="btn primary"
+      (click)="deleteList()"
+    >
+      <mat-icon svgIcon="delete"></mat-icon>
+      <span class="text-md">
+        {{ "list.deleteList" | translate }}
+      </span>
+    </button>
     <button
       (click)="closeModal()"
       mat-flat-button

@@ -13,12 +13,12 @@ export class ListService {
 
   private listApiPath = environment.apiPath + 'game_list/';
 
-  public createList(list_name: string, games: Game[]): Observable<void> {
+  public createList(list_name: string, games: Game[]): Observable<GameList> {
     const body = {
       name: list_name,
       games: games,
     };
-    return this.http.post<void>(this.listApiPath + 'new', body);
+    return this.http.post<GameList>(this.listApiPath + 'new', body);
   }
 
   public getUserLists(): Observable<GameList[]> {

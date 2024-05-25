@@ -74,12 +74,14 @@
     "createList": "Crear lista",
     "createListModal": {
       "title": "Nueva lista",
+      "editTitle": "Editar lista",
       "done": "Hecho",
       "namePlaceholder": "Nombre de tu lista"
     }
   },
   "list": {
-    "addGame": "Añadir juego",
+    "editList": "Editar lista",
+    "deleteList": "Borrar lista",
     "gamesToAdd": "Añadir juego a lista"
   }
 }
