@@ -1,1 +1,35 @@
-<p>list works!</p>
+<div class="container-padding column gap">
+  <div class="row gap">
+    <h1 class="list-title">{{ list.name }}</h1>
+    <app-game-search-bar
+      [placeholder]="'list.gamesToAdd'"
+      (selectedGameId)="addGameToList($event)">
+    </app-game-search-bar>
+    <button
+      mat-flat-button
+      color="accent"
+      class="btn primary"
+      (click)="editList()"
+    >
+      <mat-icon svgIcon="edit"></mat-icon>
+      <span class="text-md">
+        {{ "list.editList" | translate }}
+      </span>
+    </button>
+  </div>
+  <div class="row gap-lg flex-wrap center">
+  <div
+    *ngFor="let game of list.games"
+    class="column center gap-sm cursor-pointer dark-when-hover"
+    (click)="navigateToGameDetail(game.id)"
+  >
+    <img
+      src="https://images.igdb.com/igdb/image/upload/t_cover_big/{{
+        game.coverImageId
+      }}.jpg"
+      alt="Cover of the game"
+    />
+    <span class="title"> {{ game.name }} </span>
+  </div>
+  </div>
+</div>

@@ -1,5 +1,9 @@
 @import "src/scss/mixins";
 
+mat-chip {
+  pointer-events: none;
+}
+
 .description {
   max-width: 40rem;
 }

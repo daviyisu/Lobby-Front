@@ -1,52 +1,18 @@
 <div class="container-padding">
-  <div (click)="goToList()" class="list-container dark-when-hover">
-    <div class="cards">
-      <img
-        class="first-card"
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-        alt="Cover of the game"
-      />
-      <img
-        class="second-card"
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-        alt="Cover of the game"
-      />
-      <img
-        class="third-card"
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-        alt="Cover of the game"
-      />
-      <img
-        class="fourth-card"
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-        alt="Cover of the game"
-      />
+  <div class="column gap-lg">
+    <button
+      mat-flat-button
+      color="accent"
+      class="btn primary"
+      (click)="openCreateListModal()"
+    >
+      <mat-icon svgIcon="add"></mat-icon>
+      <span class="text-md">
+        {{ "myLists.createList" | translate }}
+      </span>
+    </button>
+    <div class="column center gap">
+      <app-list-card [list]="list" *ngFor="let list of userLists"></app-list-card>
     </div>
-    <h2>Lista de ejemplo 1</h2>
-  </div>
-  <div (click)="goToList()" class="list-container dark-when-hover">
-    <div class="cards">
-      <img
-        class="first-card"
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-        alt="Cover of the game"
-      />
-      <img
-        class="second-card"
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-        alt="Cover of the game"
-      />
-      <img
-        class="third-card"
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-        alt="Cover of the game"
-      />
-      <img
-        class="fourth-card"
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/co3cwt.jpg"
-        alt="Cover of the game"
-      />
-    </div>
-    <h2>Lista de ejemplo 2</h2>
   </div>
 </div>

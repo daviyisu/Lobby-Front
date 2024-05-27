@@ -1,0 +1,51 @@
+@import "src/scss/mixins";
+
+.card-0 {
+  z-index: 5;
+  transform: translateX(-20rem);
+}
+
+.card-1 {
+  position: absolute;
+  transform: translateX(-10rem);
+  z-index: 4;
+
+}
+
+.card-2 {
+  position: absolute;
+  z-index: 3;
+
+}
+
+.card-3 {
+  position: absolute;
+  transform: translateX(10rem);
+  z-index: 2;
+}
+
+.card-4 {
+  position: absolute;
+  transform: translateX(20rem);
+  z-index: 1;
+}
+
+.list-container {
+  @include center;
+  @include column;
+  @include gap-sm;
+  width: fit-content;
+}
+
+.cards {
+  display: flex;
+
+  img {
+    width: 264px;
+    height: 352px;
+  }
+}
+
+.shadow {
+  box-shadow: 10px 2px 5px rgba(0, 0, 0, 0.3);
+}

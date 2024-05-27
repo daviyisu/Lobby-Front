@@ -1,0 +1,65 @@
+<div class="modal-container">
+  <h2 *ngIf="!editMode">{{ "myLists.createListModal.title" | translate }}</h2>
+  <h2 *ngIf="editMode">{{ "myLists.createListModal.editTitle" | translate }}</h2>
+  <form>
+    <mat-form-field appearance="outline">
+      <input
+        matInput
+        [formControl]="listNameFormControl"
+        placeholder="{{
+          'myLists.createListModal.namePlaceholder' | translate
+        }}"
+      />
+      <mat-error *ngIf="listNameFormControl.hasError('required')">
+        {{ "forms.required" | translate }}
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <app-game-search-bar
+    (selectedGameId)="addGameToList($event)"
+  ></app-game-search-bar>
+  <div class="game-chips-container">
+    <mat-chip class="chip with-icon" *ngFor="let game of initialGamesToAdd">
+      <span class="chip__text">{{ game.name }}</span>
+      <ng-container *ngIf="editMode">
+        <mat-icon
+          matChipRemove
+          (click)="deleteGame(game.id)"
+          svgIcon="cancel">
+        </mat-icon>
+      </ng-container>
+    </mat-chip>
+  </div>
+  <div class="modal-actions">
+    <button
+      mat-flat-button
+      color="warn"
+      class="btn primary"
+      (click)="deleteList()"
+    >
+      <mat-icon svgIcon="delete"></mat-icon>
+      <span class="text-md">
+        {{ "list.deleteList" | translate }}
+      </span>
+    </button>
+    <button
+      (click)="closeModal()"
+      mat-flat-button
+      color="accent"
+      class="btn primary"
+    >
+      <span class="text-md"> {{ "global.back" | translate }} </span>
+    </button>
+    <button
+      [disabled]="initialGamesToAdd.length === 0 || !listNameFormControl.valid"
+      mat-flat-button
+      (click)="!editMode? createList(): updateList()"
+      color="primary"
+      class="btn primary"
+    >
+      <span class="text-md">
+        {{ "myLists.createListModal.done" | translate }}
+      </span>
+    </button>
+  </div>
+</div>

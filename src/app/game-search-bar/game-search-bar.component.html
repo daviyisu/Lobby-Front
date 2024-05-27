@@ -1,0 +1,18 @@
+<mat-form-field class="bar-container">
+  <input
+    type="text"
+    [placeholder]="getSearchBarPlaceholder()"
+    [formControl]="gameSearch"
+    matInput
+    [matAutocomplete]="auto"
+  />
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option
+      *ngFor="let option of queryResults"
+      [value]="option.name"
+      (click)="emitSelectedGame(option.id)"
+    >
+      {{ option.name }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

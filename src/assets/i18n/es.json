@@ -69,5 +69,19 @@
     "like": "Me gusta",
     "delete": "Borrar",
     "edit": "Editar"
+  },
+  "myLists": {
+    "createList": "Crear lista",
+    "createListModal": {
+      "title": "Nueva lista",
+      "editTitle": "Editar lista",
+      "done": "Hecho",
+      "namePlaceholder": "Nombre de tu lista"
+    }
+  },
+  "list": {
+    "editList": "Editar lista",
+    "deleteList": "Borrar lista",
+    "gamesToAdd": "Añadir juego a lista"
   }
 }
