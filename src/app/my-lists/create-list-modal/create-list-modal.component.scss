@@ -7,13 +7,14 @@
   width: 420px;
 }
 
-.game_chips {
+.game-chips-container {
   @include row;
   @include gap-sm;
   flex-wrap: wrap;
 
-  .chip {
+  .game-chip {
     @include row;
+    color: red;
     align-items: center;
     overflow: hidden;
   }

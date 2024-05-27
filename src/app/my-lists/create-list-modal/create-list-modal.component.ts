@@ -5,6 +5,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ListService } from '../../../services/list-service.service';
 import { FormControl, Validators } from '@angular/forms';
 import {CreateListDialogInterface} from "../../../models/create-list-dialog.interface";
+import {GameList} from "../../../models/GameList";
 
 @Component({
   selector: 'app-create-list-modal',
@@ -55,6 +56,20 @@ export class CreateListModalComponent implements OnInit {
         .subscribe((createdList) => {
           this.createListDialogRef.close(createdList);
         });
+    }
+  }
+
+  updateList(): void {
+    if (this.listNameFormControl.valid && this.listNameFormControl.value != null) {
+      const updatedList = new GameList(
+        this.data.list.id,
+        this.listNameFormControl.value,
+        this.data.list.user,
+        this.initialGamesToAdd);
+
+      this.listService.updateList(this.data.list.id, updatedList).subscribe((updatedList) => {
+        this.createListDialogRef.close(updatedList);
+      })
     }
   }
 }

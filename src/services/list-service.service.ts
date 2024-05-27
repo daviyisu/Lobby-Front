@@ -36,4 +36,12 @@ export class ListService {
     }
     return this.http.patch<GameList>(this.listApiPath + 'add_to_list', body);
   }
+
+  public updateList(listId: number, updatedList: GameList): Observable<GameList> {
+    const body = {
+      idList: listId,
+      updatedList: updatedList,
+    };
+    return this.http.patch<GameList>(this.listApiPath + 'update_list', body);
+  }
 }

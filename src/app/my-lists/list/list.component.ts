@@ -26,12 +26,16 @@ export class ListComponent implements OnInit {
     }
   }
 
-  editList(): void {
+  async editList(): Promise<void> {
     const dialogRef = this.dialogRef.open(CreateListModalComponent, {
       data: {
         list: this.list
       }
     })
+    const updatedList = await lastValueFrom(dialogRef.afterClosed()) as GameList;
+    if (updatedList) {
+      this.list = updatedList;
+    }
   }
 
   navigateToGameDetail(id: number) {
