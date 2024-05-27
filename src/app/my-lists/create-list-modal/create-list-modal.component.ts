@@ -6,6 +6,7 @@ import { ListService } from '../../../services/list-service.service';
 import { FormControl, Validators } from '@angular/forms';
 import {CreateListDialogInterface} from "../../../models/create-list-dialog.interface";
 import {GameList} from "../../../models/GameList";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-list-modal',
@@ -16,6 +17,7 @@ export class CreateListModalComponent implements OnInit {
   private gameService = inject(GameService);
   private listService = inject(ListService);
   public createListDialogRef = inject(MatDialogRef<CreateListModalComponent>);
+  private router = inject(Router);
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: CreateListDialogInterface) {}
 
@@ -42,7 +44,9 @@ export class CreateListModalComponent implements OnInit {
   }
 
   deleteList(): void {
-
+    this.listService.deleteList(this.data.list.id).subscribe(() => {
+      this.router.navigateByUrl("mylists").then(r => this.createListDialogRef.close());
+    })
   }
 
   deleteGame(id: number): void {

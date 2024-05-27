@@ -44,4 +44,8 @@ export class ListService {
     };
     return this.http.patch<GameList>(this.listApiPath + 'update_list', body);
   }
+
+  public deleteList(listId: number): Observable<void> {
+    return this.http.delete<void>(this.listApiPath + listId);
+  }
 }
