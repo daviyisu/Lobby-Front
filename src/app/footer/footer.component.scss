@@ -1,0 +1,19 @@
+@import "src/scss/mixins";
+
+.footer {
+  @include row;
+  @include center;
+  bottom: 0;
+  position: relative;
+  margin: 0;
+  width: 100%;
+  background-color: plum;
+  height: 2.5rem;
+  padding-top: 0.5rem;
+
+  &__text {
+    color: white;
+    text-decoration: unset;
+    font-size: large;
+  }
+}

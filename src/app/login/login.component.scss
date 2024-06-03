@@ -4,6 +4,7 @@
   @include column;
   @include center;
   @include gap-sm;
+  position: absolute;
   width: 100%;
   height: 100%;
 }

@@ -10,6 +10,15 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.content-wrapper {
+  @include column;
+  min-height: 100%;
+}
+
+app-footer {
+  margin-top: auto;
+}
+
 mat-chip {
   width: fit-content;
 }
