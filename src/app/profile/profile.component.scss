@@ -1,9 +1,10 @@
 @import "src/scss/mixins";
 
 .banner {
+
   @include row;
-  justify-content: space-between;
-  background-color: gray;
+  @include center;
+  background-color: #006BA6;
   height: 25%;
   min-height: 250px;
   max-height: 350px;
@@ -13,16 +14,24 @@
     @include column;
     @include gap-sm;
     @include center;
+
+    .username {
+      color: floralwhite;
+    }
   }
 
   .logout-button {
-    margin: 2rem;
-    min-width: 130px;
+    min-width: fit-content;
+    position: absolute;
+    left: 20px;
+    top: 20px;
   }
 
   .search-bar {
+    position: absolute;
+    right: 250px;
     width: 20%;
-    margin: 2rem;
+    max-width: 370px;
   }
 }
 
@@ -32,5 +41,9 @@
 }
 
 .tab {
-  background-color: beige;
+  background-color: cornflowerblue;
+
+  &__text {
+    color: floralwhite;
+  }
 }

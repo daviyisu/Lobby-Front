@@ -9,7 +9,7 @@
   </button>
   <div class="profile-photo">
     <img class="user-photo" src="assets/img/default-photo.svg" alt="" />
-    <h2>{{ user.username }}</h2>
+    <h2 class="username">{{ user.username }}</h2>
   </div>
   <app-game-search-bar
     (selectedGameId)="goToGame($event)"
@@ -27,7 +27,7 @@
     #rla="routerLinkActive"
     [active]="rla.isActive"
   >
-    {{ link.label | translate }}
+    <span class="tab__text">{{ link.label | translate }}</span>
   </a>
 </nav>
 <mat-tab-nav-panel #tabPanel> </mat-tab-nav-panel>
