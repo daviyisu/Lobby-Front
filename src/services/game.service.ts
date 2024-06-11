@@ -62,4 +62,8 @@ export class GameService {
   ): Observable<number> {
     return this.http.get<number>(this.gameApiPath + 'countbystatus/' + status);
   }
+
+  public getRecentAddedGames(): Observable<Game[]> {
+    return this.http.get<Game[]>(this.gameApiPath + 'recentgames');
+  }
 }

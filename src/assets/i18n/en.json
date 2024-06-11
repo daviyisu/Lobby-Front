@@ -83,5 +83,8 @@
     "editList": "Edit list",
     "deleteList": "Delete list",
     "gamesToAdd": "Add game to list"
+  },
+  "recentGames": {
+    "title": "Recently added"
   }
 }

@@ -1,0 +1,13 @@
+<div class="container-padding column">
+  <h1>{{'recentGames.title' | translate}}</h1>
+  <div class="column" *ngFor="let game of recentGames">
+    <div (click)="goToGame(game.id)" class="row gap padding dark-when-hover">
+      <img class="game-cover" [src]="imageService.getIgdbImage(game.coverImageId)">
+      <div class="column">
+      <span class="text-lg semi-bold">{{game.name}}</span>
+        <span class="game-summary">{{game.summary}}</span>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+</div>

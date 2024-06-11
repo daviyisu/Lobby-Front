@@ -1,13 +1,12 @@
 <div class="container flex-wrap row gap-lg center">
   <div
     *ngFor="let game of userGames"
-    class="column center gap-sm cursor-pointer dark-when-hover"
+    class="column center gap-sm dark-when-hover"
     (click)="navigateToGameDetail(game.id)"
   >
     <img
-      src="https://images.igdb.com/igdb/image/upload/t_cover_big/{{
-        game.coverImageId
-      }}.jpg"
+      class="game-cover"
+      [src]="imageService.getIgdbImage(game.coverImageId)"
       alt="Cover of the game"
     />
     <span class="title"> {{ game.name }} </span>

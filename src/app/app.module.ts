@@ -38,6 +38,7 @@ import { ListCardComponent } from './my-lists/list-card/list-card.component';
 import { CreateListModalComponent } from './my-lists/create-list-modal/create-list-modal.component';
 import { GameSearchBarComponent } from './game-search-bar/game-search-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { RecentGamesComponent } from './recent-games/recent-games.component';
 
 export const globalImports = [
   TranslateModule.forRoot({
@@ -67,6 +68,7 @@ export const globalImports = [
     CreateListModalComponent,
     GameSearchBarComponent,
     FooterComponent,
+    RecentGamesComponent,
   ],
   imports: [
     ...globalImports,

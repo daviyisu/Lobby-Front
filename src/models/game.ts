@@ -69,7 +69,7 @@ export class Game {
   /**
    * Cover image ID to construct the IGDB image of the cover
    */
-  @autoserializeAs(() => String) coverImageId: string;
+  @autoserializeAs(() => String) coverImageId: string | undefined;
 
   constructor(
     id: number,
@@ -85,7 +85,7 @@ export class Game {
     cover: number,
     involvedCompanies: number[],
     artworks: number[],
-    coverImageId: string,
+    coverImageId: string | undefined,
   ) {
     this.id = id;
     this.name = name;
