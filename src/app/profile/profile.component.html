@@ -15,6 +15,7 @@
     (selectedGameId)="goToGame($event)"
     class="search-bar"
   ></app-game-search-bar>
+  <mat-icon (click)="goToRecents()" class="new-icon dark-when-hover" svgIcon="new"></mat-icon>
 </div>
 
 <nav mat-tab-nav-bar class="tab" [tabPanel]="tabPanel">

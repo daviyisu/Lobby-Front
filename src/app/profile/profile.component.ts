@@ -48,4 +48,8 @@ export class ProfileComponent implements OnInit {
     this.loginService.logout();
     this.router.navigateByUrl('login');
   }
+
+  goToRecents(): void {
+    this.router.navigateByUrl('recent')
+  }
 }
