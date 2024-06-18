@@ -1,6 +1,7 @@
 {
   "global": {
-    "back": "Back"
+    "back": "Back",
+    "continue": "Continue"
   },
   "profile": {
     "collection": "Collection",
@@ -86,5 +87,11 @@
   },
   "recentGames": {
     "title": "Recently added"
+  },
+  "steamSync": {
+    "title": "Synchronization with Steam",
+    "explanation": "With Steam synchronization, you can register the games from your Steam account in Lobby.",
+    "reminder": "Remember that your Steam account must be public for the synchronization to work."
   }
+
 }

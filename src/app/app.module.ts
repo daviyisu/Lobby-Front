@@ -39,6 +39,7 @@ import { CreateListModalComponent } from './my-lists/create-list-modal/create-li
 import { GameSearchBarComponent } from './game-search-bar/game-search-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RecentGamesComponent } from './recent-games/recent-games.component';
+import { SteamSyncModalComponent } from './steam-sync-modal/steam-sync-modal.component';
 
 export const globalImports = [
   TranslateModule.forRoot({
@@ -69,6 +70,7 @@ export const globalImports = [
     GameSearchBarComponent,
     FooterComponent,
     RecentGamesComponent,
+    SteamSyncModalComponent,
   ],
   imports: [
     ...globalImports,

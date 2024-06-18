@@ -1,6 +1,7 @@
 {
   "global": {
-    "back": "Atrás"
+    "back": "Atrás",
+    "continue": "Continuar"
   },
   "profile": {
     "collection": "Colección",
@@ -86,5 +87,10 @@
   },
   "recentGames": {
     "title": "Recientemente añadidos"
+  },
+  "steamSync": {
+    "title": "Sincronización con Steam",
+    "explanation": "Con la sincronización de Steam podrás registrar los juegos de tu cuenta de Steam en Lobby.",
+    "reminder": "Recuerda que tu cuenta de Steam debe ser pública para que la sincronización funcione."
   }
 }

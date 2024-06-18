@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+import {MatDialog} from "@angular/material/dialog";
+import {SteamSyncModalComponent} from "../steam-sync-modal/steam-sync-modal.component";
 
 @Component({
   selector: 'app-profile',
@@ -13,6 +15,7 @@ export class ProfileComponent implements OnInit {
   private loginService = inject(LoginService);
   private router = inject(Router);
   private userService = inject(UserService);
+  private dialogRef = inject(MatDialog);
 
   user!: User;
 
@@ -42,6 +45,10 @@ export class ProfileComponent implements OnInit {
 
   goToGame(id: number): void {
     this.router.navigateByUrl('gamedetail/' + id);
+  }
+
+  openSteamSyncModal(): void {
+    const modalRef = this.dialogRef.open(SteamSyncModalComponent);
   }
 
   logout(): void {

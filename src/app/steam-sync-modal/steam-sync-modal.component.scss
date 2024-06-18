@@ -1,0 +1,22 @@
+@import "src/scss/mixins";
+
+.modal-container {
+  @include column;
+  @include center;
+  @include gap;
+  max-width: 400px;
+
+  .steam-icon {
+    transform: scale(3);
+    margin-bottom: 2rem;
+  }
+
+  .lobby-icon {
+    width: 63px;
+    height: 63px;
+  }
+}
+
+.steam-avatar {
+  width: 100px;
+}

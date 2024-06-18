@@ -11,6 +11,7 @@
     <img class="user-photo" src="assets/img/default-photo.svg" alt="" />
     <h2 class="username">{{ user.username }}</h2>
   </div>
+  <mat-icon (click)="openSteamSyncModal()" class="steam-icon dark-when-hover" svgIcon="steam"></mat-icon>
   <app-game-search-bar
     (selectedGameId)="goToGame($event)"
     class="search-bar"

@@ -12,5 +12,6 @@ export enum Icons {
   done = 'done',
   cancel = 'cancel',
   rate = 'rate',
-  new = 'new'
+  new = 'new',
+  steam = 'steam'
 }
