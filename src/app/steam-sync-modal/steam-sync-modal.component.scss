@@ -10,13 +10,31 @@
     transform: scale(3);
     margin-bottom: 2rem;
   }
+}
 
-  .lobby-icon {
-    width: 63px;
-    height: 63px;
-  }
+.lobby-icon {
+  width: 63px;
+  height: 63px;
+}
+
+.arrow-icon {
+  width: 25rem;
+  height: 200px;
 }
 
 .steam-avatar {
   width: 100px;
+  height: auto;
+}
+
+.flow-image {
+  @include row;
+  @include center;
+}
+
+.last-step-sync {
+  @include column;
+  @include gap;
+  @include center;
+  max-width: 600px;
 }

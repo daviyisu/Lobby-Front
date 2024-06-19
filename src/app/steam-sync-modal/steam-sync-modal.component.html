@@ -44,10 +44,39 @@
 </ng-container>
 
 <ng-container *ngIf="steamUser">
-  <div class="column gap">
-    <img class="steam-avatar" src="{{steamUser.avatar}}">
-    <span class="text-md">{{steamUser.username}}</span>
-    <span *ngIf="steamUser.communityVisibilityState === -1">Cuenta privada</span>
-    <span *ngIf="steamUser.communityVisibilityState === 3">Cuenta pública</span>
+  <div class="last-step-sync">
+    <h1>{{ 'steamSync.title' | translate }}</h1>
+    <div class="flow-image">
+      <div class="column gap-sm center">
+        <span class="semi-bold">{{ 'steamSync.yourAccount' | translate }}</span>
+        <img class="lobby-icon" src="{{steamUser.avatar}}">
+        <span class="text-md">{{steamUser.username}}</span>
+      </div>
+      <img src="assets/img/arrow.png" class="arrow-icon">
+      <img src="favicon.ico" class="lobby-icon">
+    </div>
+    <p class="text-md">{{'steamSync.message' | translate}}</p>
+    <mat-checkbox> <span class="text-md">{{ 'steamSync.checkBox' | translate }}</span></mat-checkbox>
+  </div>
+  <div class="modal-actions">
+    <button
+      mat-flat-button
+      (click)="closeModal()"
+      color="accent"
+      class="btn primary"
+    >
+      <span class="text-md"> {{ "global.back" | translate }} </span>
+    </button>
+    <button
+      mat-flat-button
+      (click)="synchronizeSteamLibrary()"
+      type="submit"
+      color="primary"
+      class="btn primary"
+    >
+      <span class="text-md">
+        {{ "steamSync.textBtn" | translate }}
+      </span>
+    </button>
   </div>
 </ng-container>

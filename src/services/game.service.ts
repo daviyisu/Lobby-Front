@@ -66,4 +66,8 @@ export class GameService {
   public getRecentAddedGames(): Observable<Game[]> {
     return this.http.get<Game[]>(this.gameApiPath + 'recentgames');
   }
+
+  public synchronizeSteamAccount(steamId: string): Observable<void> {
+    return this.http.post<void>(this.gameApiPath + 'steamgames', {steamId: steamId})
+  }
 }

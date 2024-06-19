@@ -91,6 +91,10 @@
   "steamSync": {
     "title": "Sincronización con Steam",
     "explanation": "Con la sincronización de Steam podrás registrar los juegos de tu cuenta de Steam en Lobby.",
-    "reminder": "Recuerda que tu cuenta de Steam debe ser pública para que la sincronización funcione."
+    "reminder": "Recuerda que tu cuenta de Steam debe ser pública para que la sincronización funcione.",
+    "yourAccount": "Tu cuenta de Steam:",
+    "message": "Estás apunto de sincronizar tu biblioteca de Steam con tu cuenta de Lobby, todos los juegos que tengas en propiedad en Steam se añadirán a tu colección en Lobby.",
+    "textBtn": "Sincronizar",
+    "checkBox": "Usar mi avatar de Steam como mi avatar en Lobby"
   }
 }
