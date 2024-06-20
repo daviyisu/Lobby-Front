@@ -12,12 +12,13 @@ export class User {
   @autoserializeAs(() => String) username: string;
 
   /**
-   * User Steam ID
+   * User avatar url
    */
-  // @autoserializeAs(() => Number) steamId: Number;
+  @autoserializeAs(() => String) avatar_url: String;
 
-  constructor(id: number, username: string) {
+  constructor(id: number, username: string, avatar_url: string) {
     this.id = id;
     this.username = username;
+    this.avatar_url = avatar_url;
   }
 }

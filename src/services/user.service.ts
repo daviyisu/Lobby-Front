@@ -20,4 +20,8 @@ export class UserService {
   public getSteamUserData(steamId: string): Observable<SteamUser> {
     return this.http.get<SteamUser>(this.userUrl + 'steam_data/' + steamId);
   }
+
+  public updateAvatar(avatarUrl: string): Observable<void> {
+    return this.http.post<void>(this.userUrl + 'avatar', { avatarUrl: avatarUrl });
+  }
 }

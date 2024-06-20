@@ -41,6 +41,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RecentGamesComponent } from './recent-games/recent-games.component';
 import { SteamSyncModalComponent } from './steam-sync-modal/steam-sync-modal.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 export const globalImports = [
   TranslateModule.forRoot({
@@ -72,6 +73,7 @@ export const globalImports = [
     FooterComponent,
     RecentGamesComponent,
     SteamSyncModalComponent,
+
   ],
     imports: [
         ...globalImports,
@@ -93,6 +95,7 @@ export const globalImports = [
         FormsModule,
         MatAutocompleteModule,
         MatCheckboxModule,
+        MatSnackBarModule
     ],
   providers: [
     {

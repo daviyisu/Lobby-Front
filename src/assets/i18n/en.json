@@ -95,7 +95,10 @@
     "yourAccount": "Your Steam account:",
     "message": "You are about to sync your Steam library with your Lobby account. All the games you own on Steam will be added to your collection in Lobby.",
     "textBtn": "Synchronize",
-    "checkBox": "Use my Steam avatar as my avatar in Lobby"
+    "checkBox": "Use my Steam avatar as my avatar in Lobby",
+    "showAccountNotExistsError": "The Steam account was not found",
+    "showPrivateError": "The Steam account is private! Go to Account Details and then Privacy on Steam to change it",
+    "snackBarSuccess": "Your Steam library has been successfully synchronized!"
   }
 
 }

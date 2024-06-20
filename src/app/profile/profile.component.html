@@ -8,7 +8,8 @@
     {{ "profile.logout" | translate }}
   </button>
   <div class="profile-photo">
-    <img class="user-photo" src="assets/img/default-photo.svg" alt="" />
+    <img *ngIf="!user.avatar_url" class="user-photo" src="assets/img/default-photo.svg" alt="" />
+    <img *ngIf="user.avatar_url" class="user-photo" [src]="user.avatar_url" alt="" />
     <h2 class="username">{{ user.username }}</h2>
   </div>
   <mat-icon (click)="openSteamSyncModal()" class="steam-icon dark-when-hover" svgIcon="steam"></mat-icon>

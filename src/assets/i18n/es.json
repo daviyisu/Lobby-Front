@@ -95,6 +95,9 @@
     "yourAccount": "Tu cuenta de Steam:",
     "message": "Estás apunto de sincronizar tu biblioteca de Steam con tu cuenta de Lobby, todos los juegos que tengas en propiedad en Steam se añadirán a tu colección en Lobby.",
     "textBtn": "Sincronizar",
-    "checkBox": "Usar mi avatar de Steam como mi avatar en Lobby"
+    "checkBox": "Usar mi avatar de Steam como mi avatar en Lobby",
+    "showAccountNotExistsError": "La cuenta de Steam no fue encontrada",
+    "showPrivateError": "¡La cuenta de Steam es privada! Ve a Detalles de la cuenta y privacidad en Steam para cambiarlo",
+    "snackBarSuccess": "¡Tu biblioteca de Steam ha sido sincronizada correctamente!"
   }
 }

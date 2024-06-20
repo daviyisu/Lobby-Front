@@ -6,7 +6,7 @@
     <img class="lobby-icon" src="assets/img/steam_icon.png" />
   </div>
   <p class="text-md">{{ 'steamSync.explanation' | translate }}</p>
-  <form>
+  <form class="column">
     <mat-form-field appearance="outline">
       <input
         matInput
@@ -18,6 +18,8 @@
       </mat-error>
     </mat-form-field>
   </form>
+  <span *ngIf="showAccountNotExistsError" class="mat-mdc-form-field-error">{{'steamSync.showAccountNotExistsError' | translate }}</span>
+  <span *ngIf="showPrivateError" class="mat-mdc-form-field-error">{{'steamSync.showPrivateError' | translate }}</span>
   <span class="text-sm">{{ 'steamSync.reminder' | translate }}</span>
 </div>
 <div class="modal-actions">
@@ -31,6 +33,7 @@
   </button>
   <button
     mat-flat-button
+    [disabled]="loading"
     type="submit"
     color="primary"
     (click)="checkSteamId()"
@@ -49,14 +52,15 @@
     <div class="flow-image">
       <div class="column gap-sm center">
         <span class="semi-bold">{{ 'steamSync.yourAccount' | translate }}</span>
-        <img class="lobby-icon" src="{{steamUser.avatar}}">
+        <img *ngIf="steamUser.avatar" class="lobby-icon" src="{{steamUser.avatar}}">
+        <img *ngIf="!steamUser.avatar" class="lobby-icon" src="assets/img/steam_icon.png" >
         <span class="text-md">{{steamUser.username}}</span>
       </div>
       <img src="assets/img/arrow.png" class="arrow-icon">
       <img src="favicon.ico" class="lobby-icon">
     </div>
     <p class="text-md">{{'steamSync.message' | translate}}</p>
-    <mat-checkbox> <span class="text-md">{{ 'steamSync.checkBox' | translate }}</span></mat-checkbox>
+    <mat-checkbox *ngIf="steamUser.avatar" (change)="wantToKeepSteamAvatar=!wantToKeepSteamAvatar"> <span class="text-md">{{ 'steamSync.checkBox' | translate }}</span></mat-checkbox>
   </div>
   <div class="modal-actions">
     <button
@@ -69,6 +73,7 @@
     </button>
     <button
       mat-flat-button
+      [disabled]="loading"
       (click)="synchronizeSteamLibrary()"
       type="submit"
       color="primary"
