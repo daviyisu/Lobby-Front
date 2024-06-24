@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import { Game } from '../models/game';
 import { Deserialize, IJsonObject } from 'dcerialize';
 import { map } from 'rxjs/operators';
@@ -13,12 +13,19 @@ import { CollectionStatusEnum } from '../models/enums';
 export class GameService {
   private gameApiPath = environment.apiPath + 'game/';
 
+  private gamesSubject = new Subject()
+  public userGames$ = this.gamesSubject.asObservable();
+
   constructor(private http: HttpClient) {}
 
   public getGameById(id: number): Observable<Game> {
     return this.http
       .get<IJsonObject>(this.gameApiPath + id)
       .pipe(map((data) => Deserialize(data, () => Game)));
+  }
+
+  setUserGames(): void {
+    this.gamesSubject.next(null);
   }
 
   public getUserGames(): Observable<Game[]> {

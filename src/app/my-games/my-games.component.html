@@ -1,6 +1,16 @@
 <div class="container flex-wrap row gap-lg center">
+  <div *ngIf="!(userGames$ | async)" class="column gap-sm">
+    <div class="row gap-lg">
+      <ngx-skeleton-loader *ngFor="let loader of loaders"
+                           [theme]="{ height: '374px', width: '264px', margin: '0' }"></ngx-skeleton-loader>
+    </div>
+    <div class="row gap-lg">
+      <ngx-skeleton-loader *ngFor="let loader of loaders"
+                           [theme]="{ height: '374px', width: '264px', margin: '0' }"></ngx-skeleton-loader>
+    </div>
+  </div>
   <div
-    *ngFor="let game of userGames"
+    *ngFor="let game of (userGames$ | async)"
     class="column center gap-sm dark-when-hover"
     (click)="navigateToGameDetail(game.id)"
   >

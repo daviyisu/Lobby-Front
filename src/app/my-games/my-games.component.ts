@@ -3,24 +3,24 @@ import { Router } from '@angular/router';
 import { GameService } from '../../services/game.service';
 import { Game } from '../../models/game';
 import {ImageService} from "../../services/image.service";
+import {startWith, switchMap} from "rxjs";
 
 @Component({
   selector: 'app-my-games',
   templateUrl: './my-games.component.html',
   styleUrls: ['./my-games.component.scss'],
 })
-export class MyGamesComponent implements OnInit {
+export class MyGamesComponent {
   private gameService = inject(GameService);
   private router = inject(Router);
   protected imageService = inject(ImageService);
 
-  userGames: Game[] = [];
+  loaders = Array(5).fill(0);
 
-  ngOnInit() {
-    this.gameService.getUserGames().subscribe((data) => {
-      this.userGames = data;
-    });
-  }
+  userGames$ = this.gameService.userGames$.pipe(
+    startWith(null),
+    switchMap(() => this.gameService.getUserGames())
+  )
 
   navigateToGameDetail(id: number) {
     this.router.navigateByUrl('gamedetail/' + id);

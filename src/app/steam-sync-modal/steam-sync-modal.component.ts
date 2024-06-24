@@ -71,7 +71,7 @@ export class SteamSyncModalComponent {
        await lastValueFrom(this.userService.updateAvatar(this.steamUser.avatar));
       }
       this.snackBar.open(this.translate.instant('steamSync.snackBarSuccess') ,'', {duration: 3000, panelClass: ['blue-snackbar']})
-      this.steamSynctDialogRef.close();
+      this.steamSynctDialogRef.close({avatar: this.steamUser?.avatar, changeAvatar: (this.wantToKeepSteamAvatar && this.steamUser?.avatar)});
     } catch (e) {
       throw e;
     } finally {
