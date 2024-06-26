@@ -9,3 +9,16 @@
   @include text-md;
   align-self: flex-end;
 }
+
+.no-games {
+  @include center;
+  @include column;
+  @include gap-lg;
+  width: 100%;
+  height: 100%;
+
+  &--image {
+    width: 22rem;
+    opacity: 0.8;
+  }
+}

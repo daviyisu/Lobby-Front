@@ -10,4 +10,8 @@
     </div>
     <mat-divider></mat-divider>
   </div>
+  <div *ngIf="recentGames.length === 0" class="no-games">
+    <img class="no-games--image" src="favicon.ico">
+    <p class="text-lg">{{ 'noElements.noRecentGames' | translate }}</p>
+  </div>
 </div>

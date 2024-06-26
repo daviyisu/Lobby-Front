@@ -63,7 +63,7 @@ export class GameDetailComponent implements OnInit {
    */
   currentUser!: User;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.params.subscribe((params) => {
       // Double initialization intentionally made
       this.screenshots = [];
@@ -88,11 +88,7 @@ export class GameDetailComponent implements OnInit {
           this.gameService.getStatus(this.game.id).subscribe((response) => {
             this.gameStatus = response;
           });
-          this.reviewService
-            .getReviewsFromGame(this.game.id)
-            .subscribe((reviews) => {
-              this.reviews = reviews;
-            });
+          this.refreshComments();
         }
       });
     });

@@ -24,6 +24,10 @@ mat-chip {
   background-size: cover;
 }
 
+.review-user-avatar {
+  background-size: cover;
+}
+
 .screenshots {
   @include row;
   @include gap-xl;

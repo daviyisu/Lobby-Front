@@ -99,6 +99,11 @@
     "showAccountNotExistsError": "The Steam account was not found",
     "showPrivateError": "The Steam account is private! Go to Account Details and then Privacy on Steam to change it",
     "snackBarSuccess": "Your Steam library has been successfully synchronized!"
+  },
+  "noElements": {
+    "noGames": "You haven't added any games to your collection yet. Use the search bar to add your favorite games!",
+    "noLists": "You haven't created any list yet!",
+    "noRecentGames": "There have been no recent games for a week"
   }
 
 }

@@ -1,6 +1,7 @@
 <div class="container">
   <img class="logo" src="favicon.ico" />
-  <h1>{{ "auth.login" | translate }}</h1>
+  <h1 class="lobby-title">LOBBY</h1>
+  <h2>{{ "auth.login" | translate }}</h2>
   <form class="column gap-sm" [formGroup]="loginForm" (ngSubmit)="login()">
     <mat-form-field appearance="outline">
       <mat-label>{{ "auth.username" | translate }}</mat-label>

@@ -99,5 +99,10 @@
     "showAccountNotExistsError": "La cuenta de Steam no fue encontrada",
     "showPrivateError": "¡La cuenta de Steam es privada! Ve a Detalles de la cuenta y privacidad en Steam para cambiarlo",
     "snackBarSuccess": "¡Tu biblioteca de Steam ha sido sincronizada correctamente!"
+  },
+  "noElements": {
+    "noGames": "Aún no has añadido ningún juego a tu coleccion, ¡usa la barra de búsqueda para añadir tus juegos favoritos!",
+    "noLists": "¡Aún no has creado ninguna lista!",
+    "noRecentGames": "No hay juegos recientes desde hace una semana"
   }
 }
