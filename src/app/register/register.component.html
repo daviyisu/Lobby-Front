@@ -1,6 +1,7 @@
 <div class="container">
   <img class="logo" src="favicon.ico" />
-  <h1>{{ "auth.register" | translate }}</h1>
+  <h1 class="lobby-title">LOBBY</h1>
+  <h2>{{ "auth.register" | translate }}</h2>
   <form
     class="column gap-sm"
     [formGroup]="registerForm"
@@ -40,6 +41,7 @@
     </mat-form-field>
     <button mat-button type="submit">{{ "auth.register" | translate }}</button>
   </form>
+  <span *ngIf="usernameAlreadyExists" class="mat-mdc-form-field-error text-lg">{{'auth.usernameAlreadyExists' | translate }}</span>
   <a class="underline-text cursor-pointer" (click)="goToLogin()">{{
     "auth.alreadyHaveAccount" | translate
   }}</a>

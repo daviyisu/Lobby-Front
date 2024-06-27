@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { UsernamePassRequest } from '../../models/auth';
 import { FormBuilder } from '@angular/forms';
 import { LoginFormRequiredValidator } from '../../utils/validators';
+import {lastValueFrom} from "rxjs";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-register',
@@ -13,6 +15,7 @@ import { LoginFormRequiredValidator } from '../../utils/validators';
 })
 export class RegisterComponent {
   hide = true;
+  usernameAlreadyExists = false;
 
   private formBuilder = inject(FormBuilder);
   registerForm = this.formBuilder.group({
@@ -27,29 +30,33 @@ export class RegisterComponent {
     private router: Router,
   ) {}
 
-  register(): void {
+  async register(): Promise<void> {
     if (
-      this.registerForm.valid &&
-      this.registerForm.value.password ===
-        this.registerForm.value.confirmPassword
+      !this.registerForm.valid ||
+      this.registerForm.value.password !=
+      this.registerForm.value.confirmPassword
     ) {
-      if (
-        this.registerForm.value.username &&
-        this.registerForm.value.password
-      ) {
-        let request: UsernamePassRequest = {
-          username: this.registerForm.value.username,
-          password: this.registerForm.value.password,
-        };
-        this.loginService.register(request).subscribe(
-          (response) => {
-            this.cookieService.set('token', response.token, 31);
-            this.router.navigateByUrl('/mygames');
-          },
-          () => {
-            console.log('Error en el registro');
-          },
-        );
+      return;
+    }
+    if (
+      !this.registerForm.value.username ||
+      !this.registerForm.value.password
+    ) {
+      return
+    }
+    let request: UsernamePassRequest = {
+      username: this.registerForm.value.username,
+      password: this.registerForm.value.password,
+    };
+    try {
+      const response = await lastValueFrom(this.loginService.register(request));
+      this.cookieService.set('token', response.token, 31);
+      this.router.navigateByUrl('/mygames');
+    } catch (e) {
+      if (e instanceof HttpErrorResponse) {
+        if (e.status === 400) {
+          this.usernameAlreadyExists = true;
+        }
       }
     }
   }

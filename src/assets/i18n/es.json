@@ -1,6 +1,7 @@
 {
   "global": {
-    "back": "Atrás"
+    "back": "Atrás",
+    "continue": "Continuar"
   },
   "profile": {
     "collection": "Colección",
@@ -51,7 +52,9 @@
     "username": "Nombre de usuario",
     "password": "Contraseña",
     "confirmPassword": "Confirma la contraseña",
-    "notMatchPassword": "Las contraseñas no coinciden"
+    "notMatchPassword": "Las contraseñas no coinciden",
+    "loginError": "Usuario o contraseña no correctos",
+    "usernameAlreadyExists": "Nombre de usuario ya en uso, por favor elige otro"
   },
   "forms": {
     "required": "Este campo es obligatorio",
@@ -83,5 +86,25 @@
     "editList": "Editar lista",
     "deleteList": "Borrar lista",
     "gamesToAdd": "Añadir juego a lista"
+  },
+  "recentGames": {
+    "title": "Recientemente añadidos"
+  },
+  "steamSync": {
+    "title": "Sincronización con Steam",
+    "explanation": "Con la sincronización de Steam podrás registrar los juegos de tu cuenta de Steam en Lobby.",
+    "reminder": "Recuerda que tu cuenta de Steam debe ser pública para que la sincronización funcione.",
+    "yourAccount": "Tu cuenta de Steam:",
+    "message": "Estás apunto de sincronizar tu biblioteca de Steam con tu cuenta de Lobby, todos los juegos que tengas en propiedad en Steam se añadirán a tu colección en Lobby.",
+    "textBtn": "Sincronizar",
+    "checkBox": "Usar mi avatar de Steam como mi avatar en Lobby",
+    "showAccountNotExistsError": "La cuenta de Steam no fue encontrada",
+    "showPrivateError": "¡La cuenta de Steam es privada! Ve a Detalles de la cuenta y privacidad en Steam para cambiarlo",
+    "snackBarSuccess": "¡Tu biblioteca de Steam ha sido sincronizada correctamente!"
+  },
+  "noElements": {
+    "noGames": "Aún no has añadido ningún juego a tu coleccion, ¡usa la barra de búsqueda para añadir tus juegos favoritos!",
+    "noLists": "¡Aún no has creado ninguna lista!",
+    "noRecentGames": "No hay juegos recientes desde hace una semana"
   }
 }

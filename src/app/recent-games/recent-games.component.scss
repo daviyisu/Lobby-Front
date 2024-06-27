@@ -1,5 +1,15 @@
 @import "src/scss/mixins";
 
+.game-cover {
+  width: 264px;
+  height: 374px;
+}
+
+.game-summary {
+  @include text-md;
+  align-self: flex-end;
+}
+
 .no-games {
   @include center;
   @include column;

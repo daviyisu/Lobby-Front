@@ -5,6 +5,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { LoginFormRequiredValidator } from '../../utils/validators';
+import {lastValueFrom} from "rxjs";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -13,6 +15,7 @@ import { LoginFormRequiredValidator } from '../../utils/validators';
 })
 export class LoginComponent {
   hide = true;
+  errorWithLogin = false;
 
   private formBuilder = inject(FormBuilder);
   loginForm = this.formBuilder.group({
@@ -26,23 +29,27 @@ export class LoginComponent {
     private router: Router,
   ) {}
 
-  login(): void {
-    if (this.loginForm.valid) {
-      if (this.loginForm.value.username && this.loginForm.value.password) {
-        let request: UsernamePassRequest = {
-          username: this.loginForm.value.username,
-          password: this.loginForm.value.password,
-        };
+  async login(): Promise<void> {
+    if (!this.loginForm.valid) {
+      return;
+    }
+    if (!this.loginForm.value.username || !this.loginForm.value.password) {
+      return;
+    }
+    let request: UsernamePassRequest = {
+      username: this.loginForm.value.username,
+      password: this.loginForm.value.password,
+    };
 
-        this.loginService.login(request).subscribe(
-          (response) => {
-            this.cookieService.set('token', response.token, 31);
-            this.router.navigateByUrl('/mygames');
-          },
-          () => {
-            console.log('Error en el login');
-          },
-        );
+    try {
+      const response = await lastValueFrom(this.loginService.login(request));
+      this.cookieService.set('token', response.token, 31);
+      this.router.navigateByUrl('/mygames');
+    } catch (e) {
+      if (e instanceof HttpErrorResponse) {
+        if (e.status === 403) {
+          this.errorWithLogin = true;
+        }
       }
     }
   }

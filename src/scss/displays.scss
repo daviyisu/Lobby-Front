@@ -4,12 +4,21 @@
   @include default-container-padding;
 }
 
+.padding {
+  @include padding;
+}
+
 .padding-sm {
   @include padding-sm;
 }
 
 .dark-when-hover:hover {
   opacity: 0.8;
+  cursor: pointer;
+}
+
+.semi-bold {
+  font-weight: 500;
 }
 
 .cursor-pointer {

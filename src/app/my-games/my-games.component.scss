@@ -1,7 +1,27 @@
+@import "src/scss/mixins";
+
 .container {
   padding: 2.5% 15% 5rem;
 
   .title {
     font-weight: 500;
+  }
+}
+
+.game-cover {
+  width: 264px;
+  height: 374px;
+}
+
+.no-games {
+  @include center;
+  @include column;
+  @include gap-lg;
+  width: 100%;
+  height: 100%;
+
+  &--image {
+    width: 22rem;
+    opacity: 0.8;
   }
 }

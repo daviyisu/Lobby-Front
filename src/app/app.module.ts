@@ -38,6 +38,11 @@ import { ListCardComponent } from './my-lists/list-card/list-card.component';
 import { CreateListModalComponent } from './my-lists/create-list-modal/create-list-modal.component';
 import { GameSearchBarComponent } from './game-search-bar/game-search-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { RecentGamesComponent } from './recent-games/recent-games.component';
+import { SteamSyncModalComponent } from './steam-sync-modal/steam-sync-modal.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
 
 export const globalImports = [
   TranslateModule.forRoot({
@@ -67,27 +72,33 @@ export const globalImports = [
     CreateListModalComponent,
     GameSearchBarComponent,
     FooterComponent,
+    RecentGamesComponent,
+    SteamSyncModalComponent,
+
   ],
-  imports: [
-    ...globalImports,
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatGridListModule,
-    MatTabsModule,
-    MatChipsModule,
-    MatIconModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatSelectModule,
-    MatCardModule,
-    MatListModule,
-    FormsModule,
-    MatAutocompleteModule,
-  ],
+    imports: [
+        ...globalImports,
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatGridListModule,
+        MatTabsModule,
+        MatChipsModule,
+        MatIconModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatSelectModule,
+        MatCardModule,
+        MatListModule,
+        FormsModule,
+        MatAutocompleteModule,
+        MatCheckboxModule,
+        MatSnackBarModule,
+        NgxSkeletonLoaderModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
