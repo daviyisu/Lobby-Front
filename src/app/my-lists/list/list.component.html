@@ -1,10 +1,6 @@
 <div class="container-padding column gap">
   <div class="row gap">
     <h1 class="list-title">{{ list.name }}</h1>
-    <app-game-search-bar
-      [placeholder]="'list.gamesToAdd'"
-      (selectedGameId)="addGameToList($event)">
-    </app-game-search-bar>
     <button
       mat-flat-button
       color="accent"

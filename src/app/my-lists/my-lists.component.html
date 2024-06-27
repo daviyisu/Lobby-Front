@@ -12,11 +12,13 @@
       </span>
     </button>
     <div class="column center gap">
+      <ng-container *ngIf="userLists">
       <app-list-card [list]="list" *ngFor="let list of userLists"></app-list-card>
       <div *ngIf="userLists.length === 0" class="no-games">
         <img class="no-games--image" src="favicon.ico">
         <p class="text-lg">{{ 'noElements.noLists' | translate }}</p>
       </div>
+      </ng-container>
     </div>
   </div>
 </div>

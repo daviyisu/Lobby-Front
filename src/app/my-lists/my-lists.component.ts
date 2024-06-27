@@ -13,8 +13,9 @@ import {lastValueFrom} from "rxjs";
 export class MyListsComponent implements OnInit {
   private dialogRef = inject(MatDialog);
   private listService = inject(ListService);
+  loaders = Array(3).fill(0);
 
-  userLists: GameList[] = [];
+  userLists: GameList[] | undefined;
 
   ngOnInit() {
     this.listService.getUserLists().subscribe((result) => {
@@ -26,6 +27,7 @@ export class MyListsComponent implements OnInit {
     const modalRef = this.dialogRef.open(CreateListModalComponent);
     const createdList = await lastValueFrom(modalRef.afterClosed()) as GameList;
     if (createdList) {
+      this.userLists = [];
       this.userLists.push(createdList)
     }
   }

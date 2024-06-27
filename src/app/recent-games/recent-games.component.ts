@@ -14,7 +14,8 @@ export class RecentGamesComponent implements OnInit {
   private gameService = inject(GameService);
   private router = inject(Router);
   protected imageService = inject(ImageService);
-  recentGames: Game[] = [];
+  recentGames: Game[] | undefined;
+  loaders = Array(3).fill(0);
 
   async ngOnInit(): Promise<void> {
     this.recentGames = await lastValueFrom(this.gameService.getRecentAddedGames());
