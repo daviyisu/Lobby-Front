@@ -1,5 +1,5 @@
 <div class="container flex-wrap row gap-lg center">
-  <div *ngIf="!(userGames$ | async)" class="column gap-sm">
+  <div *ngIf="!userGames" class="column gap-sm">
     <div class="row gap-lg">
       <ngx-skeleton-loader *ngFor="let loader of loaders"
                            [theme]="{ height: '374px', width: '264px', margin: '0' }"></ngx-skeleton-loader>
@@ -10,7 +10,7 @@
     </div>
   </div>
   <div
-    *ngFor="let game of (userGames$ | async)"
+    *ngFor="let game of userGames"
     class="column center gap-sm dark-when-hover"
     (click)="navigateToGameDetail(game.id)"
   >
@@ -22,7 +22,9 @@
     <span class="title"> {{ game.name }} </span>
   </div>
 </div>
-<div *ngIf="(userGames$ | async)?.length === 0" class="no-games">
+<div *ngIf="userGames?.length === 0" class="no-games">
   <img class="no-games--image" src="favicon.ico">
   <p class="text-lg">{{ 'noElements.noGames' | translate }}</p>
 </div>
+
+

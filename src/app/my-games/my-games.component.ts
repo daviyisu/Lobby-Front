@@ -10,17 +10,23 @@ import {startWith, switchMap} from "rxjs";
   templateUrl: './my-games.component.html',
   styleUrls: ['./my-games.component.scss'],
 })
-export class MyGamesComponent {
+export class MyGamesComponent implements OnInit {
   private gameService = inject(GameService);
   private router = inject(Router);
   protected imageService = inject(ImageService);
 
   loaders = Array(5).fill(0);
 
-  userGames$ = this.gameService.userGames$.pipe(
-    startWith(null),
-    switchMap(() => this.gameService.getUserGames())
-  )
+  userGames: Game[] | undefined;
+
+  ngOnInit(): void {
+    this.gameService.userGames$.pipe(
+      startWith(null),
+      switchMap(() => this.gameService.getUserGames())
+    ).subscribe((games) => {
+      this.userGames = games;
+    })
+  }
 
   navigateToGameDetail(id: number) {
     this.router.navigateByUrl('gamedetail/' + id);

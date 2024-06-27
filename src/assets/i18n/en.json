@@ -52,7 +52,9 @@
     "username": "Username",
     "password": "Password",
     "confirmPassword": "Confirm the password",
-    "notMatchPassword": "Passwords does not match"
+    "notMatchPassword": "Passwords does not match",
+    "loginError": "Username or password not correct",
+    "usernameAlreadyExists": "Username already in use, please choose other one"
   },
   "forms": {
     "required": "This field is required",

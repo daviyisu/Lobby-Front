@@ -52,7 +52,9 @@
     "username": "Nombre de usuario",
     "password": "Contraseña",
     "confirmPassword": "Confirma la contraseña",
-    "notMatchPassword": "Las contraseñas no coinciden"
+    "notMatchPassword": "Las contraseñas no coinciden",
+    "loginError": "Usuario o contraseña no correctos",
+    "usernameAlreadyExists": "Nombre de usuario ya en uso, por favor elige otro"
   },
   "forms": {
     "required": "Este campo es obligatorio",
