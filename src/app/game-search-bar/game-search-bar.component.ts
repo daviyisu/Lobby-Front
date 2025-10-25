@@ -6,9 +6,10 @@ import { Game } from '../../models/game';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-game-search-bar',
-  templateUrl: './game-search-bar.component.html',
-  styleUrls: ['./game-search-bar.component.scss'],
+    selector: 'app-game-search-bar',
+    templateUrl: './game-search-bar.component.html',
+    styleUrls: ['./game-search-bar.component.scss'],
+    standalone: false
 })
 export class GameSearchBarComponent implements OnInit {
   private gameService = inject(GameService);

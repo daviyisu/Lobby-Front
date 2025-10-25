@@ -9,9 +9,10 @@ import {
 } from '../../utils/validators';
 
 @Component({
-  selector: 'app-new-review',
-  templateUrl: './new-review.component.html',
-  styleUrls: ['./new-review.component.scss'],
+    selector: 'app-new-review',
+    templateUrl: './new-review.component.html',
+    styleUrls: ['./new-review.component.scss'],
+    standalone: false
 })
 export class NewReviewComponent {
   /**

@@ -4,9 +4,10 @@ import { CollectionStatusEnum } from '../../models/enums';
 import { ReviewService } from '../../services/review.service';
 
 @Component({
-  selector: 'app-my-stats',
-  templateUrl: './my-stats.component.html',
-  styleUrls: ['./my-stats.component.scss'],
+    selector: 'app-my-stats',
+    templateUrl: './my-stats.component.html',
+    styleUrls: ['./my-stats.component.scss'],
+    standalone: false
 })
 export class MyStatsComponent implements OnInit {
   private gameService = inject(GameService);

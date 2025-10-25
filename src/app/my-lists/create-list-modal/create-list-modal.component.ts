@@ -9,9 +9,10 @@ import {GameList} from "../../../models/GameList";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-create-list-modal',
-  templateUrl: './create-list-modal.component.html',
-  styleUrls: ['./create-list-modal.component.scss'],
+    selector: 'app-create-list-modal',
+    templateUrl: './create-list-modal.component.html',
+    styleUrls: ['./create-list-modal.component.scss'],
+    standalone: false
 })
 export class CreateListModalComponent implements OnInit {
   private gameService = inject(GameService);

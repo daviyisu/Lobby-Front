@@ -10,9 +10,10 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
 
 @Component({
-  selector: 'app-steam-sync-modal',
-  templateUrl: './steam-sync-modal.component.html',
-  styleUrls: ['./steam-sync-modal.component.scss']
+    selector: 'app-steam-sync-modal',
+    templateUrl: './steam-sync-modal.component.html',
+    styleUrls: ['./steam-sync-modal.component.scss'],
+    standalone: false
 })
 export class SteamSyncModalComponent {
   public steamSynctDialogRef = inject(MatDialogRef<SteamSyncModalComponent>);

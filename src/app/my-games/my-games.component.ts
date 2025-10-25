@@ -6,9 +6,10 @@ import {ImageService} from "../../services/image.service";
 import {startWith, switchMap} from "rxjs";
 
 @Component({
-  selector: 'app-my-games',
-  templateUrl: './my-games.component.html',
-  styleUrls: ['./my-games.component.scss'],
+    selector: 'app-my-games',
+    templateUrl: './my-games.component.html',
+    styleUrls: ['./my-games.component.scss'],
+    standalone: false
 })
 export class MyGamesComponent implements OnInit {
   private gameService = inject(GameService);

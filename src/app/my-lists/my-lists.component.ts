@@ -6,9 +6,10 @@ import { GameList } from '../../models/GameList';
 import {lastValueFrom} from "rxjs";
 
 @Component({
-  selector: 'app-my-lists',
-  templateUrl: './my-lists.component.html',
-  styleUrls: ['./my-lists.component.scss'],
+    selector: 'app-my-lists',
+    templateUrl: './my-lists.component.html',
+    styleUrls: ['./my-lists.component.scss'],
+    standalone: false
 })
 export class MyListsComponent implements OnInit {
   private dialogRef = inject(MatDialog);

@@ -7,9 +7,10 @@ import {MatDialog} from "@angular/material/dialog";
 import {CreateListModalComponent} from "../create-list-modal/create-list-modal.component";
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+    selector: 'app-list',
+    templateUrl: './list.component.html',
+    styleUrls: ['./list.component.scss'],
+    standalone: false
 })
 export class ListComponent implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
