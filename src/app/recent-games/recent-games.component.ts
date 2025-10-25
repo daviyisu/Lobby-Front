@@ -6,9 +6,10 @@ import {ImageService} from "../../services/image.service";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-recent-games',
-  templateUrl: './recent-games.component.html',
-  styleUrls: ['./recent-games.component.scss']
+    selector: 'app-recent-games',
+    templateUrl: './recent-games.component.html',
+    styleUrls: ['./recent-games.component.scss'],
+    standalone: false
 })
 export class RecentGamesComponent implements OnInit {
   private gameService = inject(GameService);

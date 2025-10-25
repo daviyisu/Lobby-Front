@@ -4,9 +4,10 @@ import { GameList } from "../../../models/GameList";
 import {ImageService} from "../../../services/image.service";
 
 @Component({
-  selector: 'app-list-card',
-  templateUrl: './list-card.component.html',
-  styleUrls: ['./list-card.component.scss'],
+    selector: 'app-list-card',
+    templateUrl: './list-card.component.html',
+    styleUrls: ['./list-card.component.scss'],
+    standalone: false
 })
 export class ListCardComponent {
 

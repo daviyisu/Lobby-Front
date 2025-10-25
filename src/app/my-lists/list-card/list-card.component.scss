@@ -1,4 +1,4 @@
-@import "src/scss/mixins";
+@use "src/scss/mixins" as mix;
 
 .card-0 {
   z-index: 5;
@@ -31,9 +31,9 @@
 }
 
 .list-container {
-  @include center;
-  @include column;
-  @include gap-sm;
+  @include mix.center;
+  @include mix.column;
+  @include mix.gap-sm;
   width: fit-content;
 }
 

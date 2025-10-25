@@ -1,8 +1,8 @@
-@import "src/scss/mixins";
+@use "src/scss/mixins" as mix;
 
 .footer {
-  @include row;
-  @include center;
+  @include mix.row;
+  @include mix.center;
   bottom: 0;
   position: relative;
   margin: 0;

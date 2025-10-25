@@ -10,9 +10,10 @@ import {GameService} from "../../services/game.service";
 import {SyncSteamModalResponseInterface} from "../../models/sync-steam-modal-response-interface";
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss'],
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.scss'],
+    standalone: false
 })
 export class ProfileComponent implements OnInit {
   private loginService = inject(LoginService);

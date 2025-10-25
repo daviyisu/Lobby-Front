@@ -1,9 +1,9 @@
-@import "src/scss/mixins";
+@use "src/scss/mixins" as mix;
 
 .banner {
 
-  @include row;
-  @include center;
+  @include mix.row;
+  @include mix.center;
   background-color: #006BA6;
   height: 25%;
   min-height: 250px;
@@ -11,9 +11,9 @@
   width: 100%;
 
   .profile-photo {
-    @include column;
-    @include gap-sm;
-    @include center;
+    @include mix.column;
+    @include mix.gap-sm;
+    @include mix.center;
 
     .username {
       color: floralwhite;

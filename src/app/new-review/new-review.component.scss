@@ -1,8 +1,8 @@
-@import "src/scss/mixins";
+@use "src/scss/mixins" as mix;
 
 .modal-container {
-  @include column;
-  @include gap;
+  @include mix.column;
+  @include mix.gap;
   min-width: 23rem;
 
   .rating {

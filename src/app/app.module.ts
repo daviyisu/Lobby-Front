@@ -3,11 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AppRoutingModule } from './app-routing.module';
-import {
-  HTTP_INTERCEPTORS,
-  HttpClient,
-  HttpClientModule,
-} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -54,33 +50,29 @@ export const globalImports = [
   }),
 ];
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    ProfileComponent,
-    MyGamesComponent,
-    MyStatsComponent,
-    GameDetailComponent,
-    NewReviewComponent,
-    AddedGameStatusModalComponent,
-    MyListsComponent,
-    ListComponent,
-    LoginComponent,
-    MainComponent,
-    RegisterComponent,
-    ListCardComponent,
-    CreateListModalComponent,
-    GameSearchBarComponent,
-    FooterComponent,
-    RecentGamesComponent,
-    SteamSyncModalComponent,
-
-  ],
-    imports: [
-        ...globalImports,
+@NgModule({ declarations: [
+        AppComponent,
+        ProfileComponent,
+        MyGamesComponent,
+        MyStatsComponent,
+        GameDetailComponent,
+        NewReviewComponent,
+        AddedGameStatusModalComponent,
+        MyListsComponent,
+        ListComponent,
+        LoginComponent,
+        MainComponent,
+        RegisterComponent,
+        ListCardComponent,
+        CreateListModalComponent,
+        GameSearchBarComponent,
+        FooterComponent,
+        RecentGamesComponent,
+        SteamSyncModalComponent,
+    ],
+    bootstrap: [AppComponent], imports: [...globalImports,
         BrowserModule,
         AppRoutingModule,
-        HttpClientModule,
         BrowserAnimationsModule,
         MatButtonModule,
         MatDialogModule,
@@ -97,17 +89,14 @@ export const globalImports = [
         MatAutocompleteModule,
         MatCheckboxModule,
         MatSnackBarModule,
-        NgxSkeletonLoaderModule
-    ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptorService,
-      multi: true,
-    },
-  ],
-  bootstrap: [AppComponent],
-})
+        NgxSkeletonLoaderModule], providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: JwtInterceptorService,
+            multi: true,
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {

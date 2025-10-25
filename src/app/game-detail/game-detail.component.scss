@@ -1,4 +1,4 @@
-@import "src/scss/mixins";
+@use "src/scss/mixins" as mix;
 
 mat-chip {
   pointer-events: none;
@@ -29,15 +29,15 @@ mat-chip {
 }
 
 .screenshots {
-  @include row;
-  @include gap-xl;
-  @include column-gap-at-900;
+  @include mix.row;
+  @include mix.gap-xl;
+  @include mix.column-gap-at-900;
 }
 
 .game-header {
-  @include row;
-  @include gap;
-  @include column-gap-at-900;
+  @include mix.row;
+  @include mix.gap;
+  @include mix.column-gap-at-900;
 }
 
 .completed {

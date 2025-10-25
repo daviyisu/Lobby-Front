@@ -1,4 +1,4 @@
-@import "src/scss/mixins";
+@use "src/scss/mixins" as mix;
 
 .game-cover {
   width: 264px;
@@ -6,14 +6,14 @@
 }
 
 .game-summary {
-  @include text-md;
+  @include mix.text-md;
   align-self: flex-end;
 }
 
 .no-games {
-  @include center;
-  @include column;
-  @include gap-lg;
+  @include mix.center;
+  @include mix.column;
+  @include mix.gap-lg;
   width: 100%;
   height: 100%;
 
