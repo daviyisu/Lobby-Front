@@ -5,7 +5,7 @@ import {SteamUser} from "../../models/steam-user";
 import {UserService} from "../../services/user.service";
 import {lastValueFrom} from "rxjs";
 import {GameService} from "../../services/game.service";
-import {HttpErrorResponse} from "@angular/common/http";
+import { HttpErrorResponse } from "@angular/common/http";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {TranslateService} from "@ngx-translate/core";
 
