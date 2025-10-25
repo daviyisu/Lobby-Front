@@ -1,4 +1,4 @@
-@import "src/scss/mixins";
+@use "src/scss/mixins" as mix;
 
 html,
 body {
@@ -11,7 +11,7 @@ body {
 }
 
 .content-wrapper {
-  @include column;
+  @include mix.column;
   min-height: 100%;
 }
 
@@ -52,8 +52,8 @@ mat-chip {
 
 .modal-actions,
 .mat-mdc-dialog-actions {
-  @include gap;
-  @include vertical-center;
+  @include mix.gap;
+  @include mix.vertical-center;
   justify-content: flex-end !important;
   margin-top: 1rem;
 }

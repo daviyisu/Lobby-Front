@@ -1,16 +1,16 @@
-@import "src/scss/mixins";
+@use "src/scss/mixins" as mix;
 
 .container {
-  @include column;
-  @include gap;
+  @include mix.column;
+  @include mix.gap;
   text-align: center;
   font-size: large;
 }
 
 .option {
-  @include row;
-  @include padding-sm;
-  @include gap-sm;
+  @include mix.row;
+  @include mix.padding-sm;
+  @include mix.gap-sm;
   align-items: center;
   cursor: pointer;
 
@@ -37,7 +37,7 @@
   }
 
   .subtitle {
-    @include text-sm;
+    @include mix.text-sm;
     color: grey;
   }
 }

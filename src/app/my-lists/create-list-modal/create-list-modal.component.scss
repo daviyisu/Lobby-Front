@@ -1,19 +1,19 @@
-@import "src/scss/mixins";
+@use "src/scss/mixins" as mix;
 
 .modal-container {
-  @include column;
-  @include gap;
+  @include mix.column;
+  @include mix.gap;
   min-width: 23rem;
   width: 420px;
 }
 
 .game-chips-container {
-  @include row;
-  @include gap-sm;
+  @include mix.row;
+  @include mix.gap-sm;
   flex-wrap: wrap;
 
   .game-chip {
-    @include row;
+    @include mix.row;
     color: red;
     align-items: center;
     overflow: hidden;

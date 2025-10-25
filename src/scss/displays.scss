@@ -1,15 +1,15 @@
-@import "src/scss/mixins";
+@use "src/scss/mixins" as mix;
 
 .container-padding {
-  @include default-container-padding;
+  @include mix.default-container-padding;
 }
 
 .padding {
-  @include padding;
+  @include mix.padding;
 }
 
 .padding-sm {
-  @include padding-sm;
+  @include mix.padding-sm;
 }
 
 .dark-when-hover:hover {
@@ -34,15 +34,15 @@
  */
 
 .column {
-  @include column;
+  @include mix.column;
 }
 
 .row {
-  @include row;
+  @include mix.row;
 }
 
 .center {
-  @include center;
+  @include mix.center;
 }
 
 .flex-wrap {
@@ -54,23 +54,23 @@
  */
 
 .gap-xxl {
-  @include gap-xxl;
+  @include mix.gap-xxl;
 }
 
 .gap-xl {
-  @include gap-xl;
+  @include mix.gap-xl;
 }
 
 .gap-lg {
-  @include gap-lg;
+  @include mix.gap-lg;
 }
 
 .gap {
-  @include gap;
+  @include mix.gap;
 }
 
 .gap-sm {
-  @include gap-sm;
+  @include mix.gap-sm;
 }
 
 /**
@@ -78,17 +78,17 @@
  */
 
 .text-lg {
-  @include text-lg;
+  @include mix.text-lg;
 }
 
 .text-md {
-  @include text-md;
+  @include mix.text-md;
 }
 
 .text-sm {
-  @include text-sm;
+  @include mix.text-sm;
 }
 
 .medium {
-  @include medium;
+  @include mix.medium;
 }

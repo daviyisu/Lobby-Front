@@ -1,8 +1,8 @@
-@import "src/scss/mixins";
+@use "src/scss/mixins" as mix;
 
 .stat {
-  @include row;
-  @include center;
+  @include mix.row;
+  @include mix.center;
   width: 100%;
   height: 300px;
 
@@ -13,9 +13,9 @@
 }
 
 .text {
-  @include column;
-  @include center;
-  @include gap-sm;
+  @include mix.column;
+  @include mix.center;
+  @include mix.gap-sm;
   padding: 4rem 10rem;
 
   .subtitle {
