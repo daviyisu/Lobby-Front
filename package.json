@@ -23,11 +23,11 @@
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "dcerialize": "^3.6.8",
+    "ngx-cookie-service": "^17.1.0",
+    "ngx-skeleton-loader": "^8.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.14.0",
-    "ngx-cookie-service": "^16.1.0",
-    "ngx-skeleton-loader": "^8.0.0"
+    "zone.js": "~0.14.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.3.17",
