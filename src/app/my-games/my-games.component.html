@@ -1,12 +1,16 @@
 <div class="container flex-wrap row gap-lg center">
   <div *ngIf="!userGames" class="column gap-sm">
     <div class="row gap-lg">
-      <ngx-skeleton-loader *ngFor="let loader of loaders"
-                           [theme]="{ height: '374px', width: '264px', margin: '0' }"></ngx-skeleton-loader>
+      <ngx-skeleton-loader
+        *ngFor="let loader of loaders"
+        [theme]="{ height: '374px', width: '264px', margin: '0' }"
+      ></ngx-skeleton-loader>
     </div>
     <div class="row gap-lg">
-      <ngx-skeleton-loader *ngFor="let loader of loaders"
-                           [theme]="{ height: '374px', width: '264px', margin: '0' }"></ngx-skeleton-loader>
+      <ngx-skeleton-loader
+        *ngFor="let loader of loaders"
+        [theme]="{ height: '374px', width: '264px', margin: '0' }"
+      ></ngx-skeleton-loader>
     </div>
   </div>
   <div
@@ -23,8 +27,6 @@
   </div>
 </div>
 <div *ngIf="userGames?.length === 0" class="no-games">
-  <img class="no-games--image" src="favicon.ico">
-  <p class="text-lg">{{ 'noElements.noGames' | translate }}</p>
+  <img class="no-games--image" src="favicon.ico" />
+  <p class="text-lg">{{ "noElements.noGames" | translate }}</p>
 </div>
-
-

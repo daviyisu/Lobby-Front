@@ -14,18 +14,18 @@
     </button>
   </div>
   <div class="row gap-lg flex-wrap center">
-  <div
-    *ngFor="let game of list.games"
-    class="column center gap-sm dark-when-hover"
-    (click)="navigateToGameDetail(game.id)"
-  >
-    <img
-      src="https://images.igdb.com/igdb/image/upload/t_cover_big/{{
-        game.coverImageId
-      }}.jpg"
-      alt="Cover of the game"
-    />
-    <span class="title"> {{ game.name }} </span>
-  </div>
+    <div
+      *ngFor="let game of list.games"
+      class="column center gap-sm dark-when-hover"
+      (click)="navigateToGameDetail(game.id)"
+    >
+      <img
+        src="https://images.igdb.com/igdb/image/upload/t_cover_big/{{
+          game.coverImageId
+        }}.jpg"
+        alt="Cover of the game"
+      />
+      <span class="title"> {{ game.name }} </span>
+    </div>
   </div>
 </div>
