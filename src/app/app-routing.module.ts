@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { AuthGuard } from '../services/auth.guard';
 import { RegisterComponent } from './register/register.component';
-import {RecentGamesComponent} from "./recent-games/recent-games.component";
+import { RecentGamesComponent } from './recent-games/recent-games.component';
 
 const routes: Routes = [
   {

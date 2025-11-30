@@ -32,12 +32,15 @@ export class ListService {
   public addGameToList(listId: number, gameId: number): Observable<GameList> {
     const body = {
       listId: listId,
-      gameId: gameId
-    }
+      gameId: gameId,
+    };
     return this.http.patch<GameList>(this.listApiPath + 'add_to_list', body);
   }
 
-  public updateList(listId: number, updatedList: GameList): Observable<GameList> {
+  public updateList(
+    listId: number,
+    updatedList: GameList,
+  ): Observable<GameList> {
     const body = {
       idList: listId,
       updatedList: updatedList,

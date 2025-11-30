@@ -61,7 +61,7 @@ export class Review {
     rating: number,
     createdAt: Date,
     writtenBy: string,
-    userAvatar: string
+    userAvatar: string,
   ) {
     this.id = id;
     this.userId = userId;

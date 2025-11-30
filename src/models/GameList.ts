@@ -1,10 +1,8 @@
 import { autoserializeAs, autoserializeAsArray } from 'dcerialize';
-import {Game} from "./game";
-import {User} from "./user";
-
+import { Game } from './game';
+import { User } from './user';
 
 export class GameList {
-
   @autoserializeAs(() => Number) id: number;
 
   @autoserializeAs(() => String) name: string;

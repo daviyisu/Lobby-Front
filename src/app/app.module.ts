@@ -3,7 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -36,9 +41,9 @@ import { GameSearchBarComponent } from './game-search-bar/game-search-bar.compon
 import { FooterComponent } from './footer/footer.component';
 import { RecentGamesComponent } from './recent-games/recent-games.component';
 import { SteamSyncModalComponent } from './steam-sync-modal/steam-sync-modal.component';
-import {MatCheckboxModule} from "@angular/material/checkbox";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {NgxSkeletonLoaderModule} from "ngx-skeleton-loader";
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 export const globalImports = [
   TranslateModule.forRoot({
@@ -50,53 +55,59 @@ export const globalImports = [
   }),
 ];
 
-@NgModule({ declarations: [
-        AppComponent,
-        ProfileComponent,
-        MyGamesComponent,
-        MyStatsComponent,
-        GameDetailComponent,
-        NewReviewComponent,
-        AddedGameStatusModalComponent,
-        MyListsComponent,
-        ListComponent,
-        LoginComponent,
-        MainComponent,
-        RegisterComponent,
-        ListCardComponent,
-        CreateListModalComponent,
-        GameSearchBarComponent,
-        FooterComponent,
-        RecentGamesComponent,
-        SteamSyncModalComponent,
-    ],
-    bootstrap: [AppComponent], imports: [...globalImports,
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatButtonModule,
-        MatDialogModule,
-        MatGridListModule,
-        MatTabsModule,
-        MatChipsModule,
-        MatIconModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatSelectModule,
-        MatCardModule,
-        MatListModule,
-        FormsModule,
-        MatAutocompleteModule,
-        MatCheckboxModule,
-        MatSnackBarModule,
-        NgxSkeletonLoaderModule], providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: JwtInterceptorService,
-            multi: true,
-        },
-        provideHttpClient(withInterceptorsFromDi()),
-    ] })
+@NgModule({
+  declarations: [
+    AppComponent,
+    ProfileComponent,
+    MyGamesComponent,
+    MyStatsComponent,
+    GameDetailComponent,
+    NewReviewComponent,
+    AddedGameStatusModalComponent,
+    MyListsComponent,
+    ListComponent,
+    LoginComponent,
+    MainComponent,
+    RegisterComponent,
+    ListCardComponent,
+    CreateListModalComponent,
+    GameSearchBarComponent,
+    FooterComponent,
+    RecentGamesComponent,
+    SteamSyncModalComponent,
+  ],
+  bootstrap: [AppComponent],
+  imports: [
+    ...globalImports,
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatGridListModule,
+    MatTabsModule,
+    MatChipsModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
+    MatCardModule,
+    MatListModule,
+    FormsModule,
+    MatAutocompleteModule,
+    MatCheckboxModule,
+    MatSnackBarModule,
+    NgxSkeletonLoaderModule,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorService,
+      multi: true,
+    },
+    provideHttpClient(withInterceptorsFromDi()),
+  ],
+})
 export class AppModule {}
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {

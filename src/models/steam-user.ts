@@ -1,7 +1,6 @@
 import { autoserializeAs } from 'dcerialize';
 
 export class SteamUser {
-
   @autoserializeAs(() => String) steamId: string;
 
   /**
@@ -19,7 +18,12 @@ export class SteamUser {
    */
   @autoserializeAs(() => Number) communityVisibilityState: number;
 
-  constructor(steamId: string, username: string, avatar: string, communityVisibilityState: number) {
+  constructor(
+    steamId: string,
+    username: string,
+    avatar: string,
+    communityVisibilityState: number,
+  ) {
     this.steamId = steamId;
     this.username = username;
     this.avatar = avatar;

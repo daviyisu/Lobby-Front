@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { environment } from '../environments/environment';
-import {SteamUser} from "../models/steam-user";
+import { SteamUser } from '../models/steam-user';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +22,8 @@ export class UserService {
   }
 
   public updateAvatar(avatarUrl: string): Observable<void> {
-    return this.http.post<void>(this.userUrl + 'avatar', { avatarUrl: avatarUrl });
+    return this.http.post<void>(this.userUrl + 'avatar', {
+      avatarUrl: avatarUrl,
+    });
   }
 }

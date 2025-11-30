@@ -97,9 +97,17 @@
   <div *ngIf="reviews" class="review-container column gap">
     <mat-card *ngFor="let review of reviews" appearance="outlined">
       <mat-card-header>
-        <div *ngIf="!review.userAvatar " mat-card-avatar class="review_avatar"></div>
-        <div *ngIf="review.userAvatar" [ngStyle]="{'background-image': 'url(' + review.userAvatar + ')'}" mat-card-avatar class="review-user-avatar">
-        </div>
+        <div
+          *ngIf="!review.userAvatar"
+          mat-card-avatar
+          class="review_avatar"
+        ></div>
+        <div
+          *ngIf="review.userAvatar"
+          [ngStyle]="{ 'background-image': 'url(' + review.userAvatar + ')' }"
+          mat-card-avatar
+          class="review-user-avatar"
+        ></div>
         <mat-card-title>{{ review.writtenBy }}</mat-card-title>
 
         <mat-card-subtitle>{{

@@ -1,10 +1,9 @@
 @use "src/scss/mixins" as mix;
 
 .banner {
-
   @include mix.row;
   @include mix.center;
-  background-color: #006BA6;
+  background-color: #006ba6;
   height: 25%;
   min-height: 250px;
   max-height: 350px;

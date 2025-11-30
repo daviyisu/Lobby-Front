@@ -3,17 +3,17 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
-import {MatDialog} from "@angular/material/dialog";
-import {SteamSyncModalComponent} from "../steam-sync-modal/steam-sync-modal.component";
-import {lastValueFrom} from "rxjs";
-import {GameService} from "../../services/game.service";
-import {SyncSteamModalResponseInterface} from "../../models/sync-steam-modal-response-interface";
+import { MatDialog } from '@angular/material/dialog';
+import { SteamSyncModalComponent } from '../steam-sync-modal/steam-sync-modal.component';
+import { lastValueFrom } from 'rxjs';
+import { GameService } from '../../services/game.service';
+import { SyncSteamModalResponseInterface } from '../../models/sync-steam-modal-response-interface';
 
 @Component({
-    selector: 'app-profile',
-    templateUrl: './profile.component.html',
-    styleUrls: ['./profile.component.scss'],
-    standalone: false
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss'],
+  standalone: false,
 })
 export class ProfileComponent implements OnInit {
   private loginService = inject(LoginService);
@@ -69,6 +69,6 @@ export class ProfileComponent implements OnInit {
   }
 
   goToRecents(): void {
-    this.router.navigateByUrl('recent')
+    this.router.navigateByUrl('recent');
   }
 }

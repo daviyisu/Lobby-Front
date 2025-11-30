@@ -5,14 +5,14 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { LoginFormRequiredValidator } from '../../utils/validators';
-import {lastValueFrom} from "rxjs";
-import { HttpErrorResponse } from "@angular/common/http";
+import { lastValueFrom } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss'],
-    standalone: false
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+  standalone: false,
 })
 export class LoginComponent {
   hide = true;

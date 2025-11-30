@@ -8,16 +8,34 @@
     {{ "profile.logout" | translate }}
   </button>
   <div class="profile-photo">
-    <img *ngIf="!user.avatar_url" class="user-photo" src="assets/img/default-photo.svg" alt="" />
-    <img *ngIf="user.avatar_url" class="user-photo" [src]="user.avatar_url" alt="" />
+    <img
+      *ngIf="!user.avatar_url"
+      class="user-photo"
+      src="assets/img/default-photo.svg"
+      alt=""
+    />
+    <img
+      *ngIf="user.avatar_url"
+      class="user-photo"
+      [src]="user.avatar_url"
+      alt=""
+    />
     <h2 class="username">{{ user.username }}</h2>
   </div>
-  <mat-icon (click)="openSteamSyncModal()" class="steam-icon dark-when-hover" svgIcon="steam"></mat-icon>
+  <mat-icon
+    (click)="openSteamSyncModal()"
+    class="steam-icon dark-when-hover"
+    svgIcon="steam"
+  ></mat-icon>
   <app-game-search-bar
     (selectedGameId)="goToGame($event)"
     class="search-bar"
   ></app-game-search-bar>
-  <mat-icon (click)="goToRecents()" class="new-icon dark-when-hover" svgIcon="new"></mat-icon>
+  <mat-icon
+    (click)="goToRecents()"
+    class="new-icon dark-when-hover"
+    svgIcon="new"
+  ></mat-icon>
 </div>
 
 <nav mat-tab-nav-bar class="tab" [tabPanel]="tabPanel">

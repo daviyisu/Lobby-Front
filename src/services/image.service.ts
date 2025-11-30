@@ -20,7 +20,9 @@ export class ImageService {
    * Method to build the IGDB image with the image id
    */
   getIgdbImage(imageId: string | undefined): string {
-    let igdbImage = 'assets/img/gamelist_placeholder.png'
-    return imageId? `https://images.igdb.com/igdb/image/upload/t_cover_big/${imageId}.jpg`: igdbImage;
+    let igdbImage = 'assets/img/gamelist_placeholder.png';
+    return imageId
+      ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${imageId}.jpg`
+      : igdbImage;
   }
 }

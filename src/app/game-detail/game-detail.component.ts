@@ -13,10 +13,10 @@ import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 
 @Component({
-    selector: 'app-game-detail',
-    templateUrl: './game-detail.component.html',
-    styleUrls: ['./game-detail.component.scss'],
-    standalone: false
+  selector: 'app-game-detail',
+  templateUrl: './game-detail.component.html',
+  styleUrls: ['./game-detail.component.scss'],
+  standalone: false,
 })
 export class GameDetailComponent implements OnInit {
   private imageService = inject(ImageService);

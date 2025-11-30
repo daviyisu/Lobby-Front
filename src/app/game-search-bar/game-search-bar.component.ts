@@ -1,4 +1,11 @@
-import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { GameService } from '../../services/game.service';
 import { FormControl } from '@angular/forms';
@@ -6,10 +13,10 @@ import { Game } from '../../models/game';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-game-search-bar',
-    templateUrl: './game-search-bar.component.html',
-    styleUrls: ['./game-search-bar.component.scss'],
-    standalone: false
+  selector: 'app-game-search-bar',
+  templateUrl: './game-search-bar.component.html',
+  styleUrls: ['./game-search-bar.component.scss'],
+  standalone: false,
 })
 export class GameSearchBarComponent implements OnInit {
   private gameService = inject(GameService);

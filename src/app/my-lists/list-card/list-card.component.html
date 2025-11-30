@@ -3,9 +3,9 @@
     <img
       *ngFor="let image of getImagesFrontView(); let i = index"
       [class]="'card-' + i + ' shadow'"
-      [src] = "image"
+      [src]="image"
       alt="Cover of the game"
-      />
+    />
   </div>
   <h2>{{ list.name }}</h2>
 </div>

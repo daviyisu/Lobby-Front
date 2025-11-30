@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Game } from '../models/game';
 import { Deserialize, IJsonObject } from 'dcerialize';
 import { map } from 'rxjs/operators';
@@ -13,7 +13,7 @@ import { CollectionStatusEnum } from '../models/enums';
 export class GameService {
   private gameApiPath = environment.apiPath + 'game/';
 
-  private gamesSubject = new Subject()
+  private gamesSubject = new Subject();
   public userGames$ = this.gamesSubject.asObservable();
 
   constructor(private http: HttpClient) {}
@@ -75,6 +75,8 @@ export class GameService {
   }
 
   public synchronizeSteamAccount(steamId: string): Observable<void> {
-    return this.http.post<void>(this.gameApiPath + 'steamgames', {steamId: steamId})
+    return this.http.post<void>(this.gameApiPath + 'steamgames', {
+      steamId: steamId,
+    });
   }
 }
