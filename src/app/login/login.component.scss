@@ -1,4 +1,5 @@
 @use "src/scss/mixins" as mix;
+@use "src/scss/variables" as vars;
 
 .container {
   @include mix.column;
@@ -17,4 +18,22 @@
 
 .lobby-title {
   font-size: 3rem;
+}
+
+.login-box {
+  background-color: vars.$primary-two-600;
+  border-radius: 12px;
+  width: 382px;
+  height: 279px;
+  box-shadow: -6px 8px white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-box--title {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Manrope, "Helvetica Neue", sans-serif;
+  color: white;
 }
