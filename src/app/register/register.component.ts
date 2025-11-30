@@ -5,14 +5,14 @@ import { Router } from '@angular/router';
 import { UsernamePassRequest } from '../../models/auth';
 import { FormBuilder } from '@angular/forms';
 import { LoginFormRequiredValidator } from '../../utils/validators';
-import {lastValueFrom} from "rxjs";
-import { HttpErrorResponse } from "@angular/common/http";
+import { lastValueFrom } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-    selector: 'app-register',
-    templateUrl: './register.component.html',
-    styleUrls: ['./register.component.scss'],
-    standalone: false
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
+  standalone: false,
 })
 export class RegisterComponent {
   hide = true;
@@ -35,7 +35,7 @@ export class RegisterComponent {
     if (
       !this.registerForm.valid ||
       this.registerForm.value.password !=
-      this.registerForm.value.confirmPassword
+        this.registerForm.value.confirmPassword
     ) {
       return;
     }
@@ -43,7 +43,7 @@ export class RegisterComponent {
       !this.registerForm.value.username ||
       !this.registerForm.value.password
     ) {
-      return
+      return;
     }
     let request: UsernamePassRequest = {
       username: this.registerForm.value.username,

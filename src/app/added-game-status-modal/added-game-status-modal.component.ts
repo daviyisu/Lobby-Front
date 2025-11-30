@@ -5,10 +5,10 @@ import { GameDialogInterface } from '../../models/game-dialog.interface';
 import { GameService } from '../../services/game.service';
 
 @Component({
-    selector: 'app-added-game-status-modal',
-    templateUrl: './added-game-status-modal.component.html',
-    styleUrls: ['./added-game-status-modal.component.scss'],
-    standalone: false
+  selector: 'app-added-game-status-modal',
+  templateUrl: './added-game-status-modal.component.html',
+  styleUrls: ['./added-game-status-modal.component.scss'],
+  standalone: false,
 })
 export class AddedGameStatusModalComponent {
   constructor(

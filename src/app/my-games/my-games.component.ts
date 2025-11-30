@@ -2,14 +2,14 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameService } from '../../services/game.service';
 import { Game } from '../../models/game';
-import {ImageService} from "../../services/image.service";
-import {startWith, switchMap} from "rxjs";
+import { ImageService } from '../../services/image.service';
+import { startWith, switchMap } from 'rxjs';
 
 @Component({
-    selector: 'app-my-games',
-    templateUrl: './my-games.component.html',
-    styleUrls: ['./my-games.component.scss'],
-    standalone: false
+  selector: 'app-my-games',
+  templateUrl: './my-games.component.html',
+  styleUrls: ['./my-games.component.scss'],
+  standalone: false,
 })
 export class MyGamesComponent implements OnInit {
   private gameService = inject(GameService);
@@ -21,12 +21,14 @@ export class MyGamesComponent implements OnInit {
   userGames: Game[] | undefined;
 
   ngOnInit(): void {
-    this.gameService.userGames$.pipe(
-      startWith(null),
-      switchMap(() => this.gameService.getUserGames())
-    ).subscribe((games) => {
-      this.userGames = games;
-    })
+    this.gameService.userGames$
+      .pipe(
+        startWith(null),
+        switchMap(() => this.gameService.getUserGames()),
+      )
+      .subscribe((games) => {
+        this.userGames = games;
+      });
   }
 
   navigateToGameDetail(id: number) {
