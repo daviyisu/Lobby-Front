@@ -2,12 +2,14 @@ import { Component, inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameList } from '../../../models/GameList';
 import { ImageService } from '../../../services/image.service';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-list-card',
   templateUrl: './list-card.component.html',
   styleUrls: ['./list-card.component.scss'],
-  standalone: false,
+  imports: [NgFor],
+  standalone: true
 })
 export class ListCardComponent {
   private router = inject(Router);

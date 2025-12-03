@@ -7,12 +7,15 @@ import { FormBuilder } from '@angular/forms';
 import { LoginFormRequiredValidator } from '../../utils/validators';
 import { lastValueFrom } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { LobbyInputComponent } from '../components/lobby-input/lobby-input.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  standalone: false,
+  imports: [LobbyInputComponent, TranslateModule],
+  standalone: true
 })
 export class LoginComponent {
   hide = true;

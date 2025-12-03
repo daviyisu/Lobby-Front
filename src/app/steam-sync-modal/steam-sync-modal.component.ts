@@ -1,19 +1,34 @@
 import { Component, inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SteamUser } from '../../models/steam-user';
 import { UserService } from '../../services/user.service';
 import { lastValueFrom } from 'rxjs';
 import { GameService } from '../../services/game.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { NgIf } from '@angular/common';
+import { MatFormField, MatInput, MatError } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { MatCheckbox } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-steam-sync-modal',
   templateUrl: './steam-sync-modal.component.html',
   styleUrls: ['./steam-sync-modal.component.scss'],
-  standalone: false,
+  imports: [
+    NgIf,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormField,
+    MatInput,
+    MatError,
+    MatButton,
+    MatCheckbox,
+    TranslateModule,
+  ],
+  standalone: true
 })
 export class SteamSyncModalComponent {
   public steamSynctDialogRef = inject(MatDialogRef<SteamSyncModalComponent>);

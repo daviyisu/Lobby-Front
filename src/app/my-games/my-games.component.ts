@@ -4,12 +4,21 @@ import { GameService } from '../../services/game.service';
 import { Game } from '../../models/game';
 import { ImageService } from '../../services/image.service';
 import { startWith, switchMap } from 'rxjs';
+import { NgIf, NgFor } from '@angular/common';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-my-games',
   templateUrl: './my-games.component.html',
   styleUrls: ['./my-games.component.scss'],
-  standalone: false,
+  imports: [
+    NgIf,
+    NgFor,
+    NgxSkeletonLoaderModule,
+    TranslateModule,
+  ],
+  standalone: true
 })
 export class MyGamesComponent implements OnInit {
   private gameService = inject(GameService);

@@ -3,12 +3,22 @@ import { CollectionStatusEnum } from '../../models/enums';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { GameDialogInterface } from '../../models/game-dialog.interface';
 import { GameService } from '../../services/game.service';
+import { NgClass } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+import { MatDivider } from '@angular/material/list';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-added-game-status-modal',
   templateUrl: './added-game-status-modal.component.html',
   styleUrls: ['./added-game-status-modal.component.scss'],
-  standalone: false,
+  imports: [
+    NgClass,
+    MatIcon,
+    MatDivider,
+    TranslateModule,
+  ],
+  standalone: true
 })
 export class AddedGameStatusModalComponent {
   constructor(

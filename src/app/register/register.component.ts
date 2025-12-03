@@ -3,16 +3,30 @@ import { LoginService } from '../../services/login.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { UsernamePassRequest } from '../../models/auth';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { LoginFormRequiredValidator } from '../../utils/validators';
 import { lastValueFrom } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatFormField, MatLabel, MatInput, MatError } from '@angular/material/input';
+import { NgIf } from '@angular/common';
+import { MatButton } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  standalone: false,
+  imports: [
+    ReactiveFormsModule,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    NgIf,
+    MatError,
+    MatButton,
+    TranslateModule,
+  ],
+  standalone: true
 })
 export class RegisterComponent {
   hide = true;

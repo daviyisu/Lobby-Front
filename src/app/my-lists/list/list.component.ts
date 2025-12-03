@@ -5,12 +5,22 @@ import { ListService } from '../../../services/list-service.service';
 import { lastValueFrom } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateListModalComponent } from '../create-list-modal/create-list-modal.component';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { NgFor } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  standalone: false,
+  imports: [
+    MatButton,
+    MatIcon,
+    NgFor,
+    TranslateModule,
+  ],
+  standalone: true
 })
 export class ListComponent implements OnInit {
   private activatedRoute = inject(ActivatedRoute);

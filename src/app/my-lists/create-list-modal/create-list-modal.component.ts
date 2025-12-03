@@ -3,16 +3,38 @@ import { Game } from '../../../models/game';
 import { GameService } from '../../../services/game.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ListService } from '../../../services/list-service.service';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CreateListDialogInterface } from '../../../models/create-list-dialog.interface';
 import { GameList } from '../../../models/GameList';
 import { Router } from '@angular/router';
+import { NgIf, NgFor } from '@angular/common';
+import { MatFormField, MatInput, MatError } from '@angular/material/input';
+import { GameSearchBarComponent } from '../../game-search-bar/game-search-bar.component';
+import { MatChip, MatChipRemove } from '@angular/material/chips';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-create-list-modal',
   templateUrl: './create-list-modal.component.html',
   styleUrls: ['./create-list-modal.component.scss'],
-  standalone: false,
+  imports: [
+    NgIf,
+    ReactiveFormsModule,
+    FormsModule,
+    MatFormField,
+    MatInput,
+    MatError,
+    GameSearchBarComponent,
+    NgFor,
+    MatChip,
+    MatIcon,
+    MatChipRemove,
+    MatButton,
+    TranslateModule,
+  ],
+  standalone: true
 })
 export class CreateListModalComponent implements OnInit {
   private gameService = inject(GameService);
@@ -50,7 +72,7 @@ export class CreateListModalComponent implements OnInit {
     this.listService.deleteList(this.data.list.id).subscribe(() => {
       this.router
         .navigateByUrl('mylists')
-        .then((r) => this.createListDialogRef.close());
+        .then(() => this.createListDialogRef.close());
     });
   }
 
