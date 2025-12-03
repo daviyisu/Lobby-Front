@@ -3,7 +3,12 @@ import { Game } from '../../../models/game';
 import { GameService } from '../../../services/game.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ListService } from '../../../services/list-service.service';
-import { FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {
+  FormControl,
+  Validators,
+  ReactiveFormsModule,
+  FormsModule,
+} from '@angular/forms';
 import { CreateListDialogInterface } from '../../../models/create-list-dialog.interface';
 import { GameList } from '../../../models/GameList';
 import { Router } from '@angular/router';
@@ -34,7 +39,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatButton,
     TranslateModule,
   ],
-  standalone: true
+  standalone: true,
 })
 export class CreateListModalComponent implements OnInit {
   private gameService = inject(GameService);

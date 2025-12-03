@@ -7,7 +7,12 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { LoginFormRequiredValidator } from '../../utils/validators';
 import { lastValueFrom } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { MatFormField, MatLabel, MatInput, MatError } from '@angular/material/input';
+import {
+  MatFormField,
+  MatLabel,
+  MatInput,
+  MatError,
+} from '@angular/material/input';
 import { NgIf } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
@@ -26,7 +31,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatButton,
     TranslateModule,
   ],
-  standalone: true
+  standalone: true,
 })
 export class RegisterComponent {
   hide = true;

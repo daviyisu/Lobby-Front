@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IconService } from '../services/icon.service';
-import {FooterComponent} from "./footer/footer.component";
-import {RouterOutlet} from "@angular/router";
+import { FooterComponent } from './footer/footer.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',

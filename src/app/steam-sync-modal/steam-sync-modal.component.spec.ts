@@ -8,8 +8,8 @@ describe('SteamSyncModalComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [SteamSyncModalComponent],
-});
+      imports: [SteamSyncModalComponent],
+    });
     fixture = TestBed.createComponent(SteamSyncModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

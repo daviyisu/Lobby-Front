@@ -1,5 +1,10 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NewReviewDialogInterface } from '../../models/new-review-dialog.interface';
 import { ReviewService } from '../../services/review.service';
@@ -28,7 +33,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatButton,
     TranslateModule,
   ],
-  standalone: true
+  standalone: true,
 })
 export class NewReviewComponent {
   /**

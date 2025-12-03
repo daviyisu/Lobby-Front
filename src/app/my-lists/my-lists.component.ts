@@ -22,7 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ListCardComponent,
     TranslateModule,
   ],
-  standalone: true
+  standalone: true,
 })
 export class MyListsComponent implements OnInit {
   private dialogRef = inject(MatDialog);

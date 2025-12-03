@@ -9,7 +9,7 @@ import { NgFor } from '@angular/common';
   templateUrl: './list-card.component.html',
   styleUrls: ['./list-card.component.scss'],
   imports: [NgFor],
-  standalone: true
+  standalone: true,
 })
 export class ListCardComponent {
   private router = inject(Router);

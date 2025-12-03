@@ -1,6 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormControl, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {
+  FormControl,
+  Validators,
+  ReactiveFormsModule,
+  FormsModule,
+} from '@angular/forms';
 import { SteamUser } from '../../models/steam-user';
 import { UserService } from '../../services/user.service';
 import { lastValueFrom } from 'rxjs';
@@ -28,7 +33,7 @@ import { MatCheckbox } from '@angular/material/checkbox';
     MatCheckbox,
     TranslateModule,
   ],
-  standalone: true
+  standalone: true,
 })
 export class SteamSyncModalComponent {
   public steamSynctDialogRef = inject(MatDialogRef<SteamSyncModalComponent>);

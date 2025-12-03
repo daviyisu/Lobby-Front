@@ -23,7 +23,7 @@ bootstrapApplication(AppComponent, {
           useFactory: httpLoaderFactory,
           deps: [HttpClient],
         },
-      })
+      }),
     ),
   ],
 }).catch((err) => console.error(err));

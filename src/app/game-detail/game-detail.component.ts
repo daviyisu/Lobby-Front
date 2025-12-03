@@ -15,7 +15,15 @@ import { NgIf, NgClass, NgFor, NgStyle } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatChip } from '@angular/material/chips';
-import { MatCard, MatCardHeader, MatCardAvatar, MatCardTitle, MatCardSubtitle, MatCardContent, MatCardActions } from '@angular/material/card';
+import {
+  MatCard,
+  MatCardHeader,
+  MatCardAvatar,
+  MatCardTitle,
+  MatCardSubtitle,
+  MatCardContent,
+  MatCardActions,
+} from '@angular/material/card';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -39,7 +47,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatCardActions,
     TranslateModule,
   ],
-  standalone: true
+  standalone: true,
 })
 export class GameDetailComponent implements OnInit {
   private imageService = inject(ImageService);

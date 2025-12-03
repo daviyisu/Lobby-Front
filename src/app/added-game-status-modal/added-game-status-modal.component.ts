@@ -12,13 +12,8 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'app-added-game-status-modal',
   templateUrl: './added-game-status-modal.component.html',
   styleUrls: ['./added-game-status-modal.component.scss'],
-  imports: [
-    NgClass,
-    MatIcon,
-    MatDivider,
-    TranslateModule,
-  ],
-  standalone: true
+  imports: [NgClass, MatIcon, MatDivider, TranslateModule],
+  standalone: true,
 })
 export class AddedGameStatusModalComponent {
   constructor(

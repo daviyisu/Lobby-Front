@@ -1,4 +1,4 @@
-import {  Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { MyGamesComponent } from './my-games/my-games.component';
 import { MyStatsComponent } from './my-stats/my-stats.component';
 import { GameDetailComponent } from './game-detail/game-detail.component';

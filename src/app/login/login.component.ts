@@ -15,7 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   imports: [LobbyInputComponent, TranslateModule],
-  standalone: true
+  standalone: true,
 })
 export class LoginComponent {
   hide = true;

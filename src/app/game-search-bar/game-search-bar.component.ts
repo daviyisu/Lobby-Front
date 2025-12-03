@@ -12,7 +12,10 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Game } from '../../models/game';
 import { TranslateService } from '@ngx-translate/core';
 import { MatFormField, MatInput } from '@angular/material/input';
-import { MatAutocompleteTrigger, MatAutocomplete } from '@angular/material/autocomplete';
+import {
+  MatAutocompleteTrigger,
+  MatAutocomplete,
+} from '@angular/material/autocomplete';
 import { NgFor } from '@angular/common';
 import { MatOption } from '@angular/material/select';
 
@@ -29,7 +32,7 @@ import { MatOption } from '@angular/material/select';
     NgFor,
     MatOption,
   ],
-  standalone: true
+  standalone: true,
 })
 export class GameSearchBarComponent implements OnInit {
   private gameService = inject(GameService);

@@ -12,13 +12,8 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'app-my-games',
   templateUrl: './my-games.component.html',
   styleUrls: ['./my-games.component.scss'],
-  imports: [
-    NgIf,
-    NgFor,
-    NgxSkeletonLoaderModule,
-    TranslateModule,
-  ],
-  standalone: true
+  imports: [NgIf, NgFor, NgxSkeletonLoaderModule, TranslateModule],
+  standalone: true,
 })
 export class MyGamesComponent implements OnInit {
   private gameService = inject(GameService);

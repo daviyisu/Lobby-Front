@@ -32,7 +32,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatTabNavPanel,
     TranslateModule,
   ],
-  standalone: true
+  standalone: true,
 })
 export class ProfileComponent implements OnInit {
   private loginService = inject(LoginService);

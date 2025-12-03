@@ -8,8 +8,8 @@ describe('AddedGameStatusModalComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [AddedGameStatusModalComponent],
-});
+      imports: [AddedGameStatusModalComponent],
+    });
     fixture = TestBed.createComponent(AddedGameStatusModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

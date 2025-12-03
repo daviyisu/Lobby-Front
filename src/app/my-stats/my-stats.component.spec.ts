@@ -8,8 +8,8 @@ describe('MyStatsComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [MyStatsComponent],
-});
+      imports: [MyStatsComponent],
+    });
     fixture = TestBed.createComponent(MyStatsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

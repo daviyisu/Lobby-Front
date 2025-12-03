@@ -7,6 +7,6 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
   imports: [ProfileComponent, RouterOutlet],
-  standalone: true
+  standalone: true,
 })
 export class MainComponent {}

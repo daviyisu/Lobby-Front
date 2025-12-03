@@ -8,8 +8,8 @@ describe('GameSearchBarComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [GameSearchBarComponent],
-});
+      imports: [GameSearchBarComponent],
+    });
     fixture = TestBed.createComponent(GameSearchBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -8,8 +8,8 @@ describe('RecentGamesComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [RecentGamesComponent],
-});
+      imports: [RecentGamesComponent],
+    });
     fixture = TestBed.createComponent(RecentGamesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

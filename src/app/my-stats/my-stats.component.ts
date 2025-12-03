@@ -10,7 +10,7 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './my-stats.component.html',
   styleUrls: ['./my-stats.component.scss'],
   imports: [MatIcon, TranslateModule],
-  standalone: true
+  standalone: true,
 })
 export class MyStatsComponent implements OnInit {
   private gameService = inject(GameService);

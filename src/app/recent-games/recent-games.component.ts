@@ -13,14 +13,8 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'app-recent-games',
   templateUrl: './recent-games.component.html',
   styleUrls: ['./recent-games.component.scss'],
-  imports: [
-    NgIf,
-    NgFor,
-    MatDivider,
-    NgxSkeletonLoaderModule,
-    TranslateModule,
-  ],
-  standalone: true
+  imports: [NgIf, NgFor, MatDivider, NgxSkeletonLoaderModule, TranslateModule],
+  standalone: true,
 })
 export class RecentGamesComponent implements OnInit {
   private gameService = inject(GameService);

@@ -8,8 +8,8 @@ describe('GameDetailComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [GameDetailComponent],
-});
+      imports: [GameDetailComponent],
+    });
     fixture = TestBed.createComponent(GameDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

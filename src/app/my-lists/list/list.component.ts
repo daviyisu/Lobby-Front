@@ -14,13 +14,8 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  imports: [
-    MatButton,
-    MatIcon,
-    NgFor,
-    TranslateModule,
-  ],
-  standalone: true
+  imports: [MatButton, MatIcon, NgFor, TranslateModule],
+  standalone: true,
 })
 export class ListComponent implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
