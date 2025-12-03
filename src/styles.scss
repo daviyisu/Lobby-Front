@@ -1,13 +1,14 @@
 @use "src/scss/mixins" as mix;
+@use "src/scss/variables" as vars;
 
 html,
 body {
   height: 100%;
-  /*background-color: darkgray;*/
+  background-color: vars.$primary-two-900;
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Manrope, "Helvetica Neue", sans-serif;
 }
 
 .content-wrapper {

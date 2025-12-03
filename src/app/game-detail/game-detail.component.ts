@@ -11,12 +11,43 @@ import { ReviewService } from '../../services/review.service';
 import { Review } from '../../models/review';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
+import { NgIf, NgClass, NgFor, NgStyle } from '@angular/common';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { MatChip } from '@angular/material/chips';
+import {
+  MatCard,
+  MatCardHeader,
+  MatCardAvatar,
+  MatCardTitle,
+  MatCardSubtitle,
+  MatCardContent,
+  MatCardActions,
+} from '@angular/material/card';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-game-detail',
   templateUrl: './game-detail.component.html',
   styleUrls: ['./game-detail.component.scss'],
-  standalone: false,
+  imports: [
+    NgIf,
+    MatButton,
+    MatIcon,
+    NgClass,
+    NgFor,
+    MatChip,
+    MatCard,
+    MatCardHeader,
+    MatCardAvatar,
+    NgStyle,
+    MatCardTitle,
+    MatCardSubtitle,
+    MatCardContent,
+    MatCardActions,
+    TranslateModule,
+  ],
+  standalone: true,
 })
 export class GameDetailComponent implements OnInit {
   private imageService = inject(ImageService);

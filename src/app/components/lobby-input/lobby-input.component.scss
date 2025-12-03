@@ -1,0 +1,11 @@
+@use "src/scss/variables" as vars;
+
+.lobby-input {
+  border-radius: 8px;
+  background-color: vars.$primary-two-600;
+  border-width: 2px;
+  border-style: inset;
+  border-color: white;
+  width: 319px;
+  height: 36px;
+}

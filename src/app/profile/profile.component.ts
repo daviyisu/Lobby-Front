@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLinkActive, RouterLink } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
@@ -8,12 +8,31 @@ import { SteamSyncModalComponent } from '../steam-sync-modal/steam-sync-modal.co
 import { lastValueFrom } from 'rxjs';
 import { GameService } from '../../services/game.service';
 import { SyncSteamModalResponseInterface } from '../../models/sync-steam-modal-response-interface';
+import { MatButton } from '@angular/material/button';
+import { NgIf, NgFor } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
+import { GameSearchBarComponent } from '../game-search-bar/game-search-bar.component';
+import { MatTabNav, MatTabLink, MatTabNavPanel } from '@angular/material/tabs';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
-  standalone: false,
+  imports: [
+    MatButton,
+    NgIf,
+    MatIcon,
+    GameSearchBarComponent,
+    MatTabNav,
+    NgFor,
+    MatTabLink,
+    RouterLinkActive,
+    RouterLink,
+    MatTabNavPanel,
+    TranslateModule,
+  ],
+  standalone: true,
 })
 export class ProfileComponent implements OnInit {
   private loginService = inject(LoginService);
