@@ -21,6 +21,7 @@
 }
 
 .login-box {
+  padding: 30px 40px;
   background-color: vars.$primary-two-600;
   border-radius: 12px;
   width: 382px;
@@ -29,6 +30,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 20px
 }
 
 .login-box--title {

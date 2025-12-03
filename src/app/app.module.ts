@@ -44,6 +44,7 @@ import { SteamSyncModalComponent } from './steam-sync-modal/steam-sync-modal.com
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import {LobbyInputComponent} from "./components/lobby-input/lobby-input.component";
 
 export const globalImports = [
   TranslateModule.forRoot({
@@ -75,6 +76,7 @@ export const globalImports = [
     FooterComponent,
     RecentGamesComponent,
     SteamSyncModalComponent,
+    LobbyInputComponent
   ],
   bootstrap: [AppComponent],
   imports: [
