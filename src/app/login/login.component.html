@@ -1,5 +1,5 @@
 <div class="container">
-  <img class="logo" src="favicon.ico" />
+  <img class="logo" alt="" src="favicon.ico" />
   <h1 class="lobby-title">LOBBY</h1>
   <h2>{{ "auth.login" | translate }}</h2>
   <form class="column gap-sm" [formGroup]="loginForm" (ngSubmit)="login()">
@@ -29,10 +29,15 @@
     </mat-form-field>
     <button mat-button type="submit">{{ "auth.login" | translate }}</button>
   </form>
-  <span *ngIf="errorWithLogin" class="mat-mdc-form-field-error text-lg">{{
-    "auth.loginError" | translate
-  }}</span>
+  <span *ngIf="errorWithLogin" class="mat-mdc-form-field-error text-lg">{{'auth.loginError' | translate }}</span>
   <a class="underline-text cursor-pointer" (click)="goToRegister()">{{
     "auth.notAccountYet" | translate
   }}</a>
 </div>
+
+<!--<div class="container">-->
+<!--  <div class="login-box">-->
+<!--    <span class="login-box&#45;&#45;title">{{ "auth.login" | translate }}</span>-->
+<!--    <button></button>-->
+<!--  </div>-->
+<!--</div>-->
