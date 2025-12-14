@@ -2,12 +2,10 @@
 @use "src/scss/variables" as vars;
 
 .container {
+  min-height: 100vh;
   @include mix.column;
   @include mix.center;
-  @include mix.gap-sm;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  @include mix.gap;
 }
 
 .logo {
@@ -21,11 +19,10 @@
 }
 
 .login-box {
-  padding: 30px 40px;
+  padding: 50px 30px;
   background-color: vars.$primary-two-600;
   border-radius: 12px;
   width: 382px;
-  height: 279px;
   box-shadow: -6px 8px white;
   display: flex;
   flex-direction: column;
@@ -39,4 +36,19 @@
   font-weight: bold;
   font-family: Manrope, "Helvetica Neue", sans-serif;
   color: white;
+}
+
+.link-text {
+  color: white;
+  display: flex;
+  cursor: pointer;
+  font-size: 16px;
+  align-self: flex-end;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  @include mix.gap;
 }

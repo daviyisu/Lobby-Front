@@ -9,12 +9,13 @@ import { lastValueFrom } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LobbyInputComponent } from '../components/lobby-input/lobby-input.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { LobbyButtonComponent } from '../components/lobby-button/lobby-button.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  imports: [LobbyInputComponent, TranslateModule],
+  imports: [LobbyInputComponent, TranslateModule, LobbyButtonComponent],
   standalone: true,
 })
 export class LoginComponent {

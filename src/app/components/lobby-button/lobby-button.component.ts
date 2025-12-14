@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-lobby-button',
@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './lobby-button.component.html',
   styleUrl: './lobby-button.component.scss',
 })
-export class LobbyButtonComponent {}
+export class LobbyButtonComponent {
+  buttonText = input<string>('Continuar');
+}
