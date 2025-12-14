@@ -45,7 +45,7 @@
     "playing-text": "Actualmente jugando"
   },
   "auth": {
-    "login": "Iniciar sesión",
+    "login": "Inicia sesión",
     "register": "Registro",
     "notAccountYet": "¿Aún no tienes una cuenta? Registrate aquí",
     "alreadyHaveAccount": "¿Ya tienes una cuenta? Inicia sesión aquí",

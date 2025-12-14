@@ -8,4 +8,11 @@
   border-color: white;
   width: 319px;
   height: 36px;
+  padding-left: 12px;
+}
+
+input::placeholder {
+  color: white;
+  font-size: 14px;
+  opacity: 0.8;
 }

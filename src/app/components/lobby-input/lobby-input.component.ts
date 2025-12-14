@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-lobby-input',
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   standalone: true,
   styleUrl: './lobby-input.component.scss',
 })
-export class LobbyInputComponent {}
+export class LobbyInputComponent {
+  placeholder = input<string>('Escribe aquí...');
+}
