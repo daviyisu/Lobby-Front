@@ -18,6 +18,14 @@
   font-size: 3rem;
 }
 
+.main-title {
+  font-size: 400px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: bold;
+  color: vars.$secondary-two-500;
+  letter-spacing: 2rem;
+}
+
 .login-box {
   padding: 50px 30px;
   background-color: vars.$primary-two-600;
