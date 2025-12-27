@@ -26,16 +26,20 @@
   letter-spacing: 2rem;
 }
 
+.auth-form {
+  @include mix.column;
+  @include mix.center;
+  gap: 20px;
+}
+
 .login-box {
+  @include mix.column;
+  @include mix.center;
   padding: 50px 30px;
   background-color: vars.$primary-two-600;
   border-radius: 12px;
   width: 382px;
   box-shadow: -6px 8px white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 20px;
 }
 

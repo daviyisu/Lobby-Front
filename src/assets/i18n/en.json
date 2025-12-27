@@ -46,12 +46,13 @@
   },
   "auth": {
     "login": "Log in",
+    "loginButtonText": "Log in",
     "register": "Register",
-    "notAccountYet": "Don't have an account yet? Register here",
+    "notAccountYet": "O register here",
     "alreadyHaveAccount": "Already have an account? Log in here",
     "username": "Username",
     "password": "Password",
-    "confirmPassword": "Confirm the password",
+    "confirmPassword": "Confirm password",
     "notMatchPassword": "Passwords does not match",
     "loginError": "Username or password not correct",
     "usernameAlreadyExists": "Username already in use, please choose other one"

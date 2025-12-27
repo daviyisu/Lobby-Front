@@ -46,12 +46,13 @@
   },
   "auth": {
     "login": "Inicia sesión",
+    "loginButtonText": "Iniciar sesión",
     "register": "Registro",
-    "notAccountYet": "¿Aún no tienes una cuenta? Registrate aquí",
+    "notAccountYet": "O regístrate aquí",
     "alreadyHaveAccount": "¿Ya tienes una cuenta? Inicia sesión aquí",
     "username": "Nombre de usuario",
     "password": "Contraseña",
-    "confirmPassword": "Confirma la contraseña",
+    "confirmPassword": "Confirmar contraseña",
     "notMatchPassword": "Las contraseñas no coinciden",
     "loginError": "Usuario o contraseña no correctos",
     "usernameAlreadyExists": "Nombre de usuario ya en uso, por favor elige otro"

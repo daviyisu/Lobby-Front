@@ -3,10 +3,31 @@
   <div class="login-wrapper">
     <div class="login-box">
       <span class="login-box--title">{{ "auth.login" | translate }}</span>
-      <app-lobby-input [placeholder]="'Correo electrónico'"></app-lobby-input>
-      <app-lobby-input [placeholder]="'Contraseña'"></app-lobby-input>
-      <app-lobby-button [buttonText]="'Iniciar sesión'"></app-lobby-button>
+      <form class="auth-form" (ngSubmit)="login()" [formGroup]="loginForm">
+        <app-lobby-input
+          [control]="username"
+          [placeholder]="'auth.username' | translate"
+        ></app-lobby-input>
+        <app-lobby-input
+          [control]="password"
+          [placeholder]="'auth.password' | translate"
+        ></app-lobby-input>
+        @if (isRegister) {
+          <app-lobby-input
+            [control]="confirmPassword"
+            [placeholder]="'auth.confirmPassword' | translate"
+          ></app-lobby-input>
+        }
+
+        <app-lobby-button
+          [type]="'submit'"
+          [buttonText]="'auth.loginButtonText' | translate"
+        ></app-lobby-button>
+      </form>
     </div>
-    <a class="link-text">O registrate aquí</a>
+    <a (click)="toggleRegister()" class="link-text">{{
+      (isRegister ? "auth.alreadyHaveAccount" : "auth.notAccountYet")
+        | translate
+    }}</a>
   </div>
 </div>

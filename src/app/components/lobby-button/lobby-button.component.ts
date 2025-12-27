@@ -9,4 +9,5 @@ import { Component, input } from '@angular/core';
 })
 export class LobbyButtonComponent {
   buttonText = input<string>('Continuar');
+  type = input<'button' | 'submit' | 'reset'>('button');
 }
