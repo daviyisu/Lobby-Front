@@ -1,12 +1,11 @@
 @use "src/scss/mixins" as mix;
+@use "src/scss/variables" as vars;
 
 .container {
+  min-height: 100vh;
   @include mix.column;
   @include mix.center;
-  @include mix.gap-sm;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  @include mix.gap;
 }
 
 .logo {
@@ -17,4 +16,51 @@
 
 .lobby-title {
   font-size: 3rem;
+}
+
+.main-title {
+  font-size: 400px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: bold;
+  color: vars.$secondary-two-500;
+  letter-spacing: 2rem;
+}
+
+.auth-form {
+  @include mix.column;
+  @include mix.center;
+  gap: 20px;
+}
+
+.login-box {
+  @include mix.column;
+  @include mix.center;
+  padding: 50px 30px;
+  background-color: vars.$primary-two-600;
+  border-radius: 12px;
+  width: 382px;
+  box-shadow: -6px 8px white;
+  gap: 20px;
+}
+
+.login-box--title {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Manrope, "Helvetica Neue", sans-serif;
+  color: white;
+}
+
+.link-text {
+  color: white;
+  display: flex;
+  cursor: pointer;
+  font-size: 16px;
+  align-self: flex-end;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  @include mix.gap;
 }

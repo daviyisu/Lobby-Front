@@ -3,40 +3,52 @@ import { LoginService } from '../../services/login.service';
 import { UsernamePassRequest } from '../../models/auth';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { LoginFormRequiredValidator } from '../../utils/validators';
 import { lastValueFrom } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { LobbyInputComponent } from '../components/lobby-input/lobby-input.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { LobbyButtonComponent } from '../components/lobby-button/lobby-button.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  standalone: false,
+  imports: [
+    LobbyInputComponent,
+    TranslateModule,
+    LobbyButtonComponent,
+    ReactiveFormsModule,
+  ],
+  standalone: true,
 })
 export class LoginComponent {
-  hide = true;
+  private loginService = inject(LoginService);
+  private cookieService = inject(CookieService);
+  private router = inject(Router);
+
+  isRegister = false;
   errorWithLogin = false;
 
   private formBuilder = inject(FormBuilder);
-  loginForm = this.formBuilder.group({
+  loginForm: FormGroup = this.formBuilder.group({
     username: ['', LoginFormRequiredValidator],
-    password: ['', LoginFormRequiredValidator],
+    password: ['', Validators.required],
+    confirmPassword: [''],
   });
-
-  constructor(
-    private loginService: LoginService,
-    private cookieService: CookieService,
-    private router: Router,
-  ) {}
 
   async login(): Promise<void> {
     if (!this.loginForm.valid) {
       return;
     }
-    if (!this.loginForm.value.username || !this.loginForm.value.password) {
-      return;
-    }
+
     let request: UsernamePassRequest = {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password,
@@ -55,7 +67,20 @@ export class LoginComponent {
     }
   }
 
-  goToRegister(): void {
-    this.router.navigateByUrl('/register');
+  get username() {
+    return this.loginForm.get('username') as FormControl;
+  }
+
+  get password() {
+    return this.loginForm.get('password') as FormControl;
+  }
+
+  get confirmPassword() {
+    return this.loginForm.get('confirmPassword') as FormControl;
+  }
+
+  toggleRegister(): void {
+    this.loginForm.reset();
+    this.isRegister = !this.isRegister;
   }
 }
