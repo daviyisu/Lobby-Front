@@ -3,6 +3,7 @@ import { autoserializeAs } from 'dcerialize';
 export interface UsernamePassRequest {
   username: string;
   password: string;
+  confirmPassword?: string;
 }
 
 export class AuthResponse {

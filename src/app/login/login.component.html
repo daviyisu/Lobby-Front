@@ -3,7 +3,7 @@
   <div class="login-wrapper">
     <div class="login-box">
       <span class="login-box--title">{{ "auth.login" | translate }}</span>
-      <form class="auth-form" (ngSubmit)="login()" [formGroup]="loginForm">
+      <form class="auth-form" (ngSubmit)="submitAuth()" [formGroup]="loginForm">
         <app-lobby-input
           [control]="username"
           [placeholder]="'auth.username' | translate"

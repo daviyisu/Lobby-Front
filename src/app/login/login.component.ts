@@ -44,7 +44,7 @@ export class LoginComponent {
     confirmPassword: [''],
   });
 
-  async login(): Promise<void> {
+  async submitAuth(): Promise<void> {
     if (!this.loginForm.valid) {
       return;
     }
@@ -52,10 +52,15 @@ export class LoginComponent {
     let request: UsernamePassRequest = {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password,
+      confirmPassword: this.isRegister
+        ? this.loginForm.value.confirmPassword
+        : undefined,
     };
 
     try {
-      const response = await lastValueFrom(this.loginService.login(request));
+      const response = this.isRegister
+        ? await lastValueFrom(this.loginService.register(request))
+        : await lastValueFrom(this.loginService.login(request));
       this.cookieService.set('token', response.token, 31);
       this.router.navigateByUrl('/mygames');
     } catch (e) {
