@@ -2,10 +2,9 @@
 @use "src/scss/variables" as vars;
 
 .container {
-  min-height: 100vh;
   @include mix.column;
   @include mix.center;
-  @include mix.gap;
+  gap: 2rem;
 }
 
 .logo {
@@ -19,11 +18,26 @@
 }
 
 .main-title {
-  font-size: 400px;
+  font-size: 20rem;
   font-family: "DM Sans", sans-serif;
   font-weight: bold;
   color: vars.$secondary-two-500;
   letter-spacing: 2rem;
+
+  @media (max-width: 1400px) {
+    font-size: 10rem;
+    letter-spacing: 1rem;
+  }
+
+  @media (max-width: 800px) {
+    font-size: 7rem;
+    letter-spacing: 1rem;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 5rem;
+    letter-spacing: 0.5rem;
+  }
 }
 
 .auth-form {
@@ -38,9 +52,13 @@
   padding: 50px 30px;
   background-color: vars.$primary-two-600;
   border-radius: 12px;
-  width: 382px;
+  width: 100%;
   box-shadow: -6px 8px white;
   gap: 20px;
+
+  @media (max-width: 500px) {
+    width: 200px;
+  }
 }
 
 .login-box--title {

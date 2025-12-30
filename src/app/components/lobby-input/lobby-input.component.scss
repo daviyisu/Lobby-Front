@@ -6,9 +6,14 @@
   border-width: 2px;
   border-style: inset;
   border-color: white;
+  color: white;
   width: 319px;
   height: 36px;
   padding-left: 12px;
+
+  @media (max-width: 500px) {
+    width: 200px;
+  }
 }
 
 input::placeholder {
