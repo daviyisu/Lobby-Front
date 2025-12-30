@@ -26,6 +26,16 @@ app-footer {
   margin-top: auto;
 }
 
+// Prevent text selection
+// https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 mat-chip {
   width: fit-content;
 }
