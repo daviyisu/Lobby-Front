@@ -11,4 +11,5 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 export class LobbyInputComponent {
   placeholder = input<string>('Escribe aquí...');
   control = input.required<FormControl>();
+  type = input<string>('text');
 }

@@ -9,11 +9,13 @@
           [placeholder]="'auth.username' | translate"
         ></app-lobby-input>
         <app-lobby-input
+          [type]="'password'"
           [control]="password"
           [placeholder]="'auth.password' | translate"
         ></app-lobby-input>
         @if (isRegister) {
           <app-lobby-input
+            [type]="'password'"
             [control]="confirmPassword"
             [placeholder]="'auth.confirmPassword' | translate"
           ></app-lobby-input>
