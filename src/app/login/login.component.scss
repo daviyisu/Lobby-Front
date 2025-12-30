@@ -13,6 +13,26 @@
   padding-bottom: 2rem;
 }
 
+.cmd-cursor {
+  animation: blink-cursor 1s steps(1) infinite;
+}
+
+@keyframes blink-cursor {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.title-container {
+  @include mix.row;
+  gap: 1rem;
+}
+
 .lobby-title {
   font-size: 3rem;
 }

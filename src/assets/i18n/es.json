@@ -46,6 +46,7 @@
   },
   "auth": {
     "login": "Inicia sesión",
+    "createAccountButtonText": "Crear cuenta",
     "loginButtonText": "Iniciar sesión",
     "register": "Registro",
     "notAccountYet": "O regístrate aquí",

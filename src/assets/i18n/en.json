@@ -46,6 +46,7 @@
   },
   "auth": {
     "login": "Log in",
+    "createAccountButtonText": "Create account",
     "loginButtonText": "Log in",
     "register": "Register",
     "notAccountYet": "O register here",
