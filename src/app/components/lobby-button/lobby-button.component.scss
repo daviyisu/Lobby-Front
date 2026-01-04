@@ -1,0 +1,17 @@
+@use "src/scss/variables" as vars;
+
+.lobby-button {
+  padding: 10px 20px;
+  background-color: vars.$primary-two-600;
+  border-radius: 5px;
+  color: white;
+  box-shadow: white 0 5px 0;
+  cursor: pointer;
+  border-color: white;
+  font-size: 16px;
+
+  &:active {
+    box-shadow: none;
+    transform: translateY(5px);
+  }
+}

@@ -1,38 +1,49 @@
 <div class="container">
-  <img class="logo" src="favicon.ico" />
-  <h1 class="lobby-title">LOBBY</h1>
-  <h2>{{ "auth.login" | translate }}</h2>
-  <form class="column gap-sm" [formGroup]="loginForm" (ngSubmit)="login()">
-    <mat-form-field appearance="outline">
-      <mat-label>{{ "auth.username" | translate }}</mat-label>
-      <input matInput formControlName="username" />
-      <mat-error *ngIf="loginForm.get('username')?.hasError('required')">
-        {{ "forms.required" | translate }}
-      </mat-error>
-      <mat-error *ngIf="loginForm.get('username')?.hasError('minlength')">
-        {{ "forms.tooShort" | translate }}
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>{{ "auth.password" | translate }}</mat-label>
-      <input
-        matInput
-        formControlName="password"
-        [type]="hide ? 'password' : 'text'"
-      />
-      <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
-        {{ "forms.required" | translate }}
-      </mat-error>
-      <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
-        {{ "forms.tooShort" | translate }}
-      </mat-error>
-    </mat-form-field>
-    <button mat-button type="submit">{{ "auth.login" | translate }}</button>
-  </form>
-  <span *ngIf="errorWithLogin" class="mat-mdc-form-field-error text-lg">{{
-    "auth.loginError" | translate
-  }}</span>
-  <a class="underline-text cursor-pointer" (click)="goToRegister()">{{
-    "auth.notAccountYet" | translate
-  }}</a>
+  <section class="title-container no-select">
+    <h1 class="main-title">LOBBY</h1>
+    <h1 class="main-title cmd-cursor">_</h1>
+  </section>
+
+  <div class="login-wrapper">
+    <div class="login-box">
+      <span class="login-box--title">{{
+        (isRegister ? "auth.register" : "auth.login") | translate
+      }}</span>
+      <form class="auth-form" (ngSubmit)="submitAuth()" [formGroup]="loginForm">
+        <app-lobby-input
+          [control]="username"
+          [placeholder]="'auth.username' | translate"
+          [errorMessage]="getFormError(username)"
+        ></app-lobby-input>
+        <app-lobby-input
+          [type]="'password'"
+          [control]="password"
+          [placeholder]="'auth.password' | translate"
+          [errorMessage]="getFormError(password)"
+        ></app-lobby-input>
+        @if (isRegister) {
+          <app-lobby-input
+            [type]="'password'"
+            [control]="confirmPassword"
+            [placeholder]="'auth.confirmPassword' | translate"
+            [errorMessage]="getFormError(confirmPassword)"
+          ></app-lobby-input>
+        }
+
+        <app-lobby-button
+          [type]="'submit'"
+          [buttonText]="
+            (isRegister
+              ? 'auth.createAccountButtonText'
+              : 'auth.loginButtonText'
+            ) | translate
+          "
+        ></app-lobby-button>
+      </form>
+    </div>
+    <a (click)="toggleRegister()" class="link-text">{{
+      (isRegister ? "auth.alreadyHaveAccount" : "auth.notAccountYet")
+        | translate
+    }}</a>
+  </div>
 </div>

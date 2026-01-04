@@ -1,0 +1,9 @@
+<input
+  [formControl]="control()"
+  [placeholder]="placeholder()"
+  [type]="type()"
+  class="lobby-input"
+/>
+@if (errorMessage()) {
+  <p class="input-error-message">{{ errorMessage() }}</p>
+}

@@ -1,22 +1,39 @@
 @use "src/scss/mixins" as mix;
+@use "src/scss/variables" as vars;
 
 html,
 body {
   height: 100%;
-  /*background-color: darkgray;*/
+  background-color: vars.$primary-two-900;
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Manrope, "Helvetica Neue", sans-serif;
 }
 
 .content-wrapper {
   @include mix.column;
-  min-height: 100%;
+  min-height: 100vh;
+}
+
+.page-content {
+  flex: 1;
+  @include mix.column;
+  @include mix.center;
 }
 
 app-footer {
   margin-top: auto;
+}
+
+// Prevent text selection
+// https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 mat-chip {

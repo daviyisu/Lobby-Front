@@ -1,5 +1,10 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NewReviewDialogInterface } from '../../models/new-review-dialog.interface';
 import { ReviewService } from '../../services/review.service';
@@ -7,12 +12,28 @@ import {
   ReviewSummaryValidator,
   ReviewTextValidator,
 } from '../../utils/validators';
+import { NgIf, NgClass } from '@angular/common';
+import { MatFormField, MatInput, MatError } from '@angular/material/input';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-new-review',
   templateUrl: './new-review.component.html',
   styleUrls: ['./new-review.component.scss'],
-  standalone: false,
+  imports: [
+    NgIf,
+    ReactiveFormsModule,
+    MatFormField,
+    MatInput,
+    MatError,
+    MatIcon,
+    NgClass,
+    MatButton,
+    TranslateModule,
+  ],
+  standalone: true,
 })
 export class NewReviewComponent {
   /**

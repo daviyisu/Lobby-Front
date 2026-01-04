@@ -8,7 +8,7 @@ describe('CreateListModalComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [CreateListModalComponent],
+      imports: [CreateListModalComponent],
     });
     fixture = TestBed.createComponent(CreateListModalComponent);
     component = fixture.componentInstance;

@@ -45,13 +45,15 @@
     "playing-text": "Actualmente jugando"
   },
   "auth": {
-    "login": "Iniciar sesión",
+    "login": "Inicia sesión",
+    "createAccountButtonText": "Crear cuenta",
+    "loginButtonText": "Iniciar sesión",
     "register": "Registro",
-    "notAccountYet": "¿Aún no tienes una cuenta? Registrate aquí",
+    "notAccountYet": "O regístrate aquí",
     "alreadyHaveAccount": "¿Ya tienes una cuenta? Inicia sesión aquí",
     "username": "Nombre de usuario",
     "password": "Contraseña",
-    "confirmPassword": "Confirma la contraseña",
+    "confirmPassword": "Confirmar contraseña",
     "notMatchPassword": "Las contraseñas no coinciden",
     "loginError": "Usuario o contraseña no correctos",
     "usernameAlreadyExists": "Nombre de usuario ya en uso, por favor elige otro"
@@ -59,7 +61,8 @@
   "forms": {
     "required": "Este campo es obligatorio",
     "tooShort": "Demasiado corto",
-    "tooLarge": "Demasiados caracteres"
+    "tooLarge": "Demasiados caracteres",
+    "passwordNotMatch": "Las contraseñas no coinciden"
   },
   "gameStatus": {
     "COMPLETED": "Completado",

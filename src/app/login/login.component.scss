@@ -1,12 +1,10 @@
 @use "src/scss/mixins" as mix;
+@use "src/scss/variables" as vars;
 
 .container {
   @include mix.column;
   @include mix.center;
-  @include mix.gap-sm;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  gap: 2rem;
 }
 
 .logo {
@@ -15,6 +13,92 @@
   padding-bottom: 2rem;
 }
 
+.cmd-cursor {
+  animation: blink-cursor 1s steps(1) infinite;
+}
+
+@keyframes blink-cursor {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.title-container {
+  @include mix.row;
+  gap: 1rem;
+}
+
 .lobby-title {
   font-size: 3rem;
+}
+
+.main-title {
+  font-size: 20rem;
+  font-family: "DM Sans", sans-serif;
+  font-weight: bold;
+  color: vars.$secondary-two-500;
+  letter-spacing: 2rem;
+
+  @media (max-width: 1400px) {
+    font-size: 10rem;
+    letter-spacing: 1rem;
+  }
+
+  @media (max-width: 800px) {
+    font-size: 7rem;
+    letter-spacing: 1rem;
+  }
+
+  @media (max-width: 500px) {
+    font-size: 5rem;
+    letter-spacing: 0.5rem;
+  }
+}
+
+.auth-form {
+  @include mix.column;
+  @include mix.center;
+  gap: 20px;
+}
+
+.login-box {
+  @include mix.column;
+  @include mix.center;
+  padding: 50px 30px;
+  background-color: vars.$primary-two-600;
+  border-radius: 12px;
+  width: 100%;
+  box-shadow: -6px 8px white;
+  gap: 20px;
+
+  @media (max-width: 500px) {
+    width: 200px;
+  }
+}
+
+.login-box--title {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: Manrope, "Helvetica Neue", sans-serif;
+  color: white;
+}
+
+.link-text {
+  color: white;
+  display: flex;
+  cursor: pointer;
+  font-size: 16px;
+  align-self: flex-end;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  @include mix.gap;
 }

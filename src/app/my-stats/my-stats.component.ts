@@ -2,12 +2,15 @@ import { Component, inject, OnInit } from '@angular/core';
 import { GameService } from '../../services/game.service';
 import { CollectionStatusEnum } from '../../models/enums';
 import { ReviewService } from '../../services/review.service';
+import { MatIcon } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-my-stats',
   templateUrl: './my-stats.component.html',
   styleUrls: ['./my-stats.component.scss'],
-  standalone: false,
+  imports: [MatIcon, TranslateModule],
+  standalone: true,
 })
 export class MyStatsComponent implements OnInit {
   private gameService = inject(GameService);
