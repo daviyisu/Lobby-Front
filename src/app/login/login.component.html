@@ -13,17 +13,20 @@
         <app-lobby-input
           [control]="username"
           [placeholder]="'auth.username' | translate"
+          [errorMessage]="getFormError(username)"
         ></app-lobby-input>
         <app-lobby-input
           [type]="'password'"
           [control]="password"
           [placeholder]="'auth.password' | translate"
+          [errorMessage]="getFormError(password)"
         ></app-lobby-input>
         @if (isRegister) {
           <app-lobby-input
             [type]="'password'"
             [control]="confirmPassword"
             [placeholder]="'auth.confirmPassword' | translate"
+            [errorMessage]="getFormError(confirmPassword)"
           ></app-lobby-input>
         }
 

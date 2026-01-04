@@ -4,17 +4,20 @@ import { UsernamePassRequest } from '../../models/auth';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
+  ValidationErrors,
+  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { LoginFormRequiredValidator } from '../../utils/validators';
 import { lastValueFrom } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LobbyInputComponent } from '../components/lobby-input/lobby-input.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LobbyButtonComponent } from '../components/lobby-button/lobby-button.component';
 
 @Component({
@@ -31,21 +34,56 @@ import { LobbyButtonComponent } from '../components/lobby-button/lobby-button.co
 })
 export class LoginComponent {
   private loginService = inject(LoginService);
+  private translateService = inject(TranslateService);
   private cookieService = inject(CookieService);
   private router = inject(Router);
 
   isRegister = false;
   errorWithLogin = false;
 
+  confirmPasswordValidator: ValidatorFn = (
+    group: AbstractControl,
+  ): ValidationErrors | null => {
+    const passwordControl = group.get('password');
+    const confirmPasswordControl = group.get('confirmPassword');
+
+    if (!passwordControl || !confirmPasswordControl) {
+      return null;
+    }
+
+    const password = passwordControl.value;
+    const confirmPassword = confirmPasswordControl.value;
+
+    if (!password || !confirmPassword) {
+      confirmPasswordControl.setErrors(null);
+      return null;
+    }
+
+    if (password !== confirmPassword) {
+      confirmPasswordControl.setErrors({ passwordNoMatch: true });
+      return { passwordNoMatch: true };
+    }
+
+    if (confirmPasswordControl.hasError('passwordNoMatch')) {
+      confirmPasswordControl.setErrors(null);
+    }
+
+    return null;
+  };
+
   private formBuilder = inject(FormBuilder);
-  loginForm: FormGroup = this.formBuilder.group({
-    username: ['', LoginFormRequiredValidator],
-    password: ['', Validators.required],
-    confirmPassword: [''],
-  });
+  loginForm: FormGroup = this.formBuilder.group(
+    {
+      username: ['', LoginFormRequiredValidator],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+    },
+    { validators: this.confirmPasswordValidator },
+  );
 
   async submitAuth(): Promise<void> {
     if (!this.loginForm.valid) {
+      this.loginForm.markAllAsTouched();
       return;
     }
 
@@ -82,6 +120,28 @@ export class LoginComponent {
 
   get confirmPassword() {
     return this.loginForm.get('confirmPassword') as FormControl;
+  }
+
+  getFormError(control: FormControl): string | null {
+    console.log(control.errors);
+    if (control.touched && control.invalid) {
+      if (control.errors?.['required']) {
+        return this.translateService.instant('forms.required');
+      }
+
+      if (control.errors?.['minlength']) {
+        return this.translateService.instant('forms.tooShort');
+      }
+
+      if (control.errors?.['maxlength']) {
+        return this.translateService.instant('forms.tooLarge');
+      }
+
+      if (control.errors?.['passwordNoMatch']) {
+        return this.translateService.instant('forms.passwordNotMatch');
+      }
+    }
+    return null;
   }
 
   toggleRegister(): void {

@@ -61,7 +61,8 @@
   "forms": {
     "required": "Este campo es obligatorio",
     "tooShort": "Demasiado corto",
-    "tooLarge": "Demasiados caracteres"
+    "tooLarge": "Demasiados caracteres",
+    "passwordNotMatch": "Las contraseñas no coinciden"
   },
   "gameStatus": {
     "COMPLETED": "Completado",

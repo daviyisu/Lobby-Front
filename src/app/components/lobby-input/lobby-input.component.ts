@@ -12,4 +12,5 @@ export class LobbyInputComponent {
   placeholder = input<string>('Escribe aquí...');
   control = input.required<FormControl>();
   type = input<string>('text');
+  errorMessage = input<string | null>(null);
 }
