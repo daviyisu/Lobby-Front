@@ -17,4 +17,8 @@ export class TopMenuComponent {
     this.loginService.logout();
     this.router.navigateByUrl('login');
   }
+
+  protected navigateTo(route: string): void {
+    this.router.navigateByUrl(route);
+  }
 }

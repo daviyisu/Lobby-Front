@@ -1,9 +1,18 @@
 <div class="wrapper">
   <span class="title">Lobby_</span>
   <div class="main-buttons">
-    <app-lobby-button [buttonText]="'Colección'"></app-lobby-button>
-    <app-lobby-button [buttonText]="'Estadísticas'"></app-lobby-button>
-    <app-lobby-button [buttonText]="'Listas'"></app-lobby-button>
+    <app-lobby-button
+      [buttonText]="'Colección'"
+      (click)="navigateTo('mygames')"
+    ></app-lobby-button>
+    <app-lobby-button
+      [buttonText]="'Estadísticas'"
+      (click)="navigateTo('mystats')"
+    ></app-lobby-button>
+    <app-lobby-button
+      [buttonText]="'Listas'"
+      (click)="navigateTo('mylists')"
+    ></app-lobby-button>
     <app-lobby-button
       [buttonText]="'Temp Log out'"
       (click)="logout()"
