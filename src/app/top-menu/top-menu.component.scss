@@ -6,8 +6,9 @@
     @include mix.vertical-center;
     justify-content: space-between;
     height: 93px;
-    border: 4px;
-    border-color: white;
+    border: 4px solid white;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .title {
