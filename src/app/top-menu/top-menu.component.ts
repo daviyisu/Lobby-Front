@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { LobbyButtonComponent } from "../components/lobby-button/lobby-button.component";
+import { LobbyButtonComponent } from '../components/lobby-button/lobby-button.component';
 import { LoginService } from 'src/services/login.service';
 import { Router } from '@angular/router';
 
@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
   styleUrl: './top-menu.component.scss',
 })
 export class TopMenuComponent {
-private loginService = inject(LoginService);
-private router = inject(Router);
+  private loginService = inject(LoginService);
+  private router = inject(Router);
 
-protected logout(): void {
+  protected logout(): void {
     this.loginService.logout();
     this.router.navigateByUrl('login');
   }
