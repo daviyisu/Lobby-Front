@@ -1,10 +1,18 @@
 @use "src/scss/mixins" as mix;
 @use "src/scss/variables" as vars;
 
+:host {
+  @include mix.column;
+  @include mix.center;
+  min-height: 90vh;
+  width: 100%;
+}
+
 .container {
   @include mix.column;
   @include mix.center;
-  gap: 2rem;
+  flex: 1;
+  width: 100%;
 }
 
 .logo {
@@ -31,10 +39,6 @@
 .title-container {
   @include mix.row;
   gap: 1rem;
-}
-
-.lobby-title {
-  font-size: 3rem;
 }
 
 .main-title {
