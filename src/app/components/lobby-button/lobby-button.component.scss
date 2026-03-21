@@ -10,7 +10,8 @@
   border-color: white;
   font-size: 16px;
 
-  &:active {
+  &:active,
+  &.active {
     box-shadow: none;
     transform: translateY(5px);
   }

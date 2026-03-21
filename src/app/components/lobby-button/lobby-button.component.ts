@@ -8,6 +8,7 @@ import { Component, input } from '@angular/core';
   styleUrl: './lobby-button.component.scss',
 })
 export class LobbyButtonComponent {
+  keepActive = input<boolean>(false);
   buttonText = input<string>('Continuar');
   type = input<'button' | 'submit' | 'reset'>('button');
 }

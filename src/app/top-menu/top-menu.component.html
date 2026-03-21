@@ -1,22 +1,13 @@
 <div class="wrapper">
   <span class="title">Lobby_</span>
   <div class="main-buttons">
-    <app-lobby-button
-      [buttonText]="'Colección'"
-      (click)="navigateTo('mygames')"
-    ></app-lobby-button>
-    <app-lobby-button
-      [buttonText]="'Estadísticas'"
-      (click)="navigateTo('mystats')"
-    ></app-lobby-button>
-    <app-lobby-button
-      [buttonText]="'Listas'"
-      (click)="navigateTo('mylists')"
-    ></app-lobby-button>
-    <app-lobby-button
-      [buttonText]="'Temp Log out'"
-      (click)="logout()"
-    ></app-lobby-button>
+    @for (tab of tabs; track tab.id) {
+      <app-lobby-button
+        [buttonText]="tab.name"
+        (click)="selectTab(tab)"
+        [keepActive]="isTabSelected(tab)"
+      ></app-lobby-button>
+    }
   </div>
   <app-lobby-button [buttonText]="'username'"></app-lobby-button>
 </div>
