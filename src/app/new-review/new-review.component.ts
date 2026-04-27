@@ -12,7 +12,7 @@ import {
   ReviewSummaryValidator,
   ReviewTextValidator,
 } from '../../utils/validators';
-import { NgIf, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { MatFormField, MatInput, MatError } from '@angular/material/input';
 import { MatIcon } from '@angular/material/icon';
 import { MatButton } from '@angular/material/button';
@@ -23,7 +23,6 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './new-review.component.html',
   styleUrls: ['./new-review.component.scss'],
   imports: [
-    NgIf,
     ReactiveFormsModule,
     MatFormField,
     MatInput,

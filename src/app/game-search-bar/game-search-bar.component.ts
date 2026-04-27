@@ -16,7 +16,7 @@ import {
   MatAutocompleteTrigger,
   MatAutocomplete,
 } from '@angular/material/autocomplete';
-import { NgFor } from '@angular/common';
+
 import { MatOption } from '@angular/material/select';
 
 @Component({
@@ -29,7 +29,6 @@ import { MatOption } from '@angular/material/select';
     ReactiveFormsModule,
     MatAutocompleteTrigger,
     MatAutocomplete,
-    NgFor,
     MatOption,
   ],
   standalone: true,

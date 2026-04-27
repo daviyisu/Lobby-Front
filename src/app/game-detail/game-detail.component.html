@@ -1,169 +1,177 @@
-<div *ngIf="game" class="container-padding column gap-xxl center">
-  <div class="column gap">
-    <div class="game-header">
-      <div class="column gap">
-        <img
-          *ngIf="cover"
-          class="main-cover"
-          [src]="cover"
-          alt="Cover of the game"
-        />
-        <div class="column gap-sm">
-          <button
-            mat-flat-button
-            (click)="openNewReviewModal()"
-            color="primary"
-            class="btn primary"
-          >
-            <span class="text-md">
-              {{ "gameDetail.createReview" | translate }}
-            </span>
-          </button>
-          <button
-            *ngIf="gameStatus == CollectionStatusEnum.not_owned"
-            mat-flat-button
-            color="accent"
-            class="btn primary"
-            (click)="openAddGameModal()"
-          >
-            <mat-icon svgIcon="add"></mat-icon>
-            <span class="text-md">
-              {{ "gameDetail.addGame" | translate }}
-            </span>
-          </button>
-          <button
-            *ngIf="gameStatus != CollectionStatusEnum.not_owned"
-            [ngClass]="{
-              completed: gameStatus === CollectionStatusEnum.completed,
-              retired: gameStatus === CollectionStatusEnum.retired,
-              abandoned: gameStatus === CollectionStatusEnum.abandoned,
-              playing: gameStatus === CollectionStatusEnum.playing
-            }"
-            mat-flat-button
-            color="accent"
-            class="btn primary"
-            (click)="openAddGameModal()"
-          >
-            <mat-icon svgIcon="joystick"></mat-icon>
-            <span class="text-md">
-              {{ "gameStatus." + this.gameStatus | translate }}
-            </span>
-          </button>
-        </div>
-      </div>
-      <div class="column gap-sm">
-        <h1 *ngIf="game.name" class="game-title">{{ game.name }}</h1>
-        <div *ngIf="platforms && platforms.length > 0" class="row gap-sm">
-          <mat-chip *ngFor="let platform of platforms" class="chip blue-dark">
-            {{ platform }}
-          </mat-chip>
-        </div>
-        <div *ngIf="game.genres && game.genres.length > 0" class="row gap-sm">
-          <mat-chip *ngFor="let genre of game.genres">
-            {{ getGenreEnum()[genre] }}
-          </mat-chip>
-        </div>
-        <span *ngIf="game.firstReleaseDate" class="medium">
-          {{
-            "gameDetail.releaseDate"
-              | translate
-                : {
-                    day: game.firstReleaseDate.getDate(),
-                    month: game.firstReleaseDate.getMonth(),
-                    year: game.firstReleaseDate.getFullYear()
-                  }
-          }}
-        </span>
-        <div *ngIf="game.summary" class="description">
-          <p class="text-md">
-            {{ game.summary }}
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div *ngIf="screenshots.length > 0" class="column">
-    <h2>{{ "gameDetail.screenshots" | translate }}</h2>
-    <div class="screenshots">
-      <img
-        *ngFor="let screenshot of screenshots"
-        [src]="screenshot"
-        alt="Game screenshot"
-      />
-    </div>
-  </div>
-
-  <div *ngIf="reviews" class="review-container column gap">
-    <mat-card *ngFor="let review of reviews" appearance="outlined">
-      <mat-card-header>
-        <div
-          *ngIf="!review.userAvatar"
-          mat-card-avatar
-          class="review_avatar"
-        ></div>
-        <div
-          *ngIf="review.userAvatar"
-          [ngStyle]="{ 'background-image': 'url(' + review.userAvatar + ')' }"
-          mat-card-avatar
-          class="review-user-avatar"
-        ></div>
-        <mat-card-title>{{ review.writtenBy }}</mat-card-title>
-
-        <mat-card-subtitle>{{
-          formatDate(review.createdAt.toString())
-        }}</mat-card-subtitle>
-        <mat-card-subtitle>
-          <div class="review-summary row gap-sm center">
-            <span>{{ review.summary }}</span>
-            <span class="review_number">{{ review.rating }}</span>
-            <mat-icon
-              *ngIf="review.rating < 5"
-              class="bad"
-              svgIcon="bad"
-            ></mat-icon>
-            <mat-icon
-              *ngIf="review.rating >= 5 && review.rating <= 7"
-              class="good"
-              svgIcon="good"
-            ></mat-icon>
-            <mat-icon
-              *ngIf="review.rating >= 8 && review.rating <= 9"
-              class="very_good"
-              svgIcon="very_good"
-            ></mat-icon>
-            <mat-icon
-              *ngIf="review.rating == 10"
-              class="perfect"
-              svgIcon="perfect"
-            ></mat-icon>
+@if (game) {
+  <div class="container-padding column gap-xxl center">
+    <div class="column gap">
+      <div class="game-header">
+        <div class="column gap">
+          @if (cover) {
+            <img class="main-cover" [src]="cover" alt="Cover of the game" />
+          }
+          <div class="column gap-sm">
+            <button
+              mat-flat-button
+              (click)="openNewReviewModal()"
+              color="primary"
+              class="btn primary"
+            >
+              <span class="text-md">
+                {{ "gameDetail.createReview" | translate }}
+              </span>
+            </button>
+            @if (gameStatus == CollectionStatusEnum.not_owned) {
+              <button
+                mat-flat-button
+                color="accent"
+                class="btn primary"
+                (click)="openAddGameModal()"
+              >
+                <mat-icon svgIcon="add"></mat-icon>
+                <span class="text-md">
+                  {{ "gameDetail.addGame" | translate }}
+                </span>
+              </button>
+            }
+            @if (gameStatus != CollectionStatusEnum.not_owned) {
+              <button
+                [ngClass]="{
+                  completed: gameStatus === CollectionStatusEnum.completed,
+                  retired: gameStatus === CollectionStatusEnum.retired,
+                  abandoned: gameStatus === CollectionStatusEnum.abandoned,
+                  playing: gameStatus === CollectionStatusEnum.playing
+                }"
+                mat-flat-button
+                color="accent"
+                class="btn primary"
+                (click)="openAddGameModal()"
+              >
+                <mat-icon svgIcon="joystick"></mat-icon>
+                <span class="text-md">
+                  {{ "gameStatus." + this.gameStatus | translate }}
+                </span>
+              </button>
+            }
           </div>
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content class="review-text">
-        <p>
-          {{ review.review_text }}
-        </p>
-      </mat-card-content>
-      <mat-card-actions class="row gap-sm">
-        <button
-          (click)="updateReview(review)"
-          *ngIf="currentUser.id == review.userId"
-          mat-button
-        >
-          <mat-icon svgIcon="edit"></mat-icon>
-          {{ "comment.edit" | translate }}
-        </button>
-        <button
-          (click)="deleteReview(review.id)"
-          *ngIf="currentUser.id == review.userId"
-          color="warn"
-          mat-button
-        >
-          <mat-icon svgIcon="delete"></mat-icon>
-          {{ "comment.delete" | translate }}
-        </button>
-      </mat-card-actions>
-    </mat-card>
+        </div>
+        <div class="column gap-sm">
+          @if (game.name) {
+            <h1 class="game-title">{{ game.name }}</h1>
+          }
+          @if (platforms && platforms.length > 0) {
+            <div class="row gap-sm">
+              @for (platform of platforms; track platform) {
+                <mat-chip class="chip blue-dark">
+                  {{ platform }}
+                </mat-chip>
+              }
+            </div>
+          }
+          @if (game.genres && game.genres.length > 0) {
+            <div class="row gap-sm">
+              @for (genre of game.genres; track genre) {
+                <mat-chip>
+                  {{ getGenreEnum()[genre] }}
+                </mat-chip>
+              }
+            </div>
+          }
+          @if (game.firstReleaseDate) {
+            <span class="medium">
+              {{
+                "gameDetail.releaseDate"
+                  | translate
+                    : {
+                        day: game.firstReleaseDate.getDate(),
+                        month: game.firstReleaseDate.getMonth(),
+                        year: game.firstReleaseDate.getFullYear()
+                      }
+              }}
+            </span>
+          }
+          @if (game.summary) {
+            <div class="description">
+              <p class="text-md">
+                {{ game.summary }}
+              </p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+    @if (screenshots.length > 0) {
+      <div class="column">
+        <h2>{{ "gameDetail.screenshots" | translate }}</h2>
+        <div class="screenshots">
+          @for (screenshot of screenshots; track screenshot) {
+            <img [src]="screenshot" alt="Game screenshot" />
+          }
+        </div>
+      </div>
+    }
+    @if (reviews) {
+      <div class="review-container column gap">
+        @for (review of reviews; track review) {
+          <mat-card appearance="outlined">
+            <mat-card-header>
+              @if (!review.userAvatar) {
+                <div mat-card-avatar class="review_avatar"></div>
+              }
+              @if (review.userAvatar) {
+                <div
+                  [ngStyle]="{
+                    'background-image': 'url(' + review.userAvatar + ')'
+                  }"
+                  mat-card-avatar
+                  class="review-user-avatar"
+                ></div>
+              }
+              <mat-card-title>{{ review.writtenBy }}</mat-card-title>
+              <mat-card-subtitle>{{
+                formatDate(review.createdAt.toString())
+              }}</mat-card-subtitle>
+              <mat-card-subtitle>
+                <div class="review-summary row gap-sm center">
+                  <span>{{ review.summary }}</span>
+                  <span class="review_number">{{ review.rating }}</span>
+                  @if (review.rating < 5) {
+                    <mat-icon class="bad" svgIcon="bad"></mat-icon>
+                  }
+                  @if (review.rating >= 5 && review.rating <= 7) {
+                    <mat-icon class="good" svgIcon="good"></mat-icon>
+                  }
+                  @if (review.rating >= 8 && review.rating <= 9) {
+                    <mat-icon class="very_good" svgIcon="very_good"></mat-icon>
+                  }
+                  @if (review.rating == 10) {
+                    <mat-icon class="perfect" svgIcon="perfect"></mat-icon>
+                  }
+                </div>
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content class="review-text">
+              <p>
+                {{ review.review_text }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions class="row gap-sm">
+              @if (currentUser.id == review.userId) {
+                <button (click)="updateReview(review)" mat-button>
+                  <mat-icon svgIcon="edit"></mat-icon>
+                  {{ "comment.edit" | translate }}
+                </button>
+              }
+              @if (currentUser.id == review.userId) {
+                <button
+                  (click)="deleteReview(review.id)"
+                  color="warn"
+                  mat-button
+                >
+                  <mat-icon svgIcon="delete"></mat-icon>
+                  {{ "comment.delete" | translate }}
+                </button>
+              }
+            </mat-card-actions>
+          </mat-card>
+        }
+      </div>
+    }
   </div>
-</div>
+}

@@ -9,7 +9,7 @@ import { lastValueFrom } from 'rxjs';
 import { GameService } from '../../services/game.service';
 import { SyncSteamModalResponseInterface } from '../../models/sync-steam-modal-response-interface';
 import { MatButton } from '@angular/material/button';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatIcon } from '@angular/material/icon';
 import { GameSearchBarComponent } from '../game-search-bar/game-search-bar.component';
 import { MatTabNav, MatTabLink, MatTabNavPanel } from '@angular/material/tabs';
@@ -21,11 +21,9 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrls: ['./profile.component.scss'],
   imports: [
     MatButton,
-    NgIf,
     MatIcon,
     GameSearchBarComponent,
     MatTabNav,
-    NgFor,
     MatTabLink,
     RouterLinkActive,
     RouterLink,

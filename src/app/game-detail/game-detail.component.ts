@@ -11,7 +11,7 @@ import { ReviewService } from '../../services/review.service';
 import { Review } from '../../models/review';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
-import { NgIf, NgClass, NgFor, NgStyle } from '@angular/common';
+import { NgClass, NgStyle } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatChip } from '@angular/material/chips';
@@ -31,11 +31,9 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './game-detail.component.html',
   styleUrls: ['./game-detail.component.scss'],
   imports: [
-    NgIf,
     MatButton,
     MatIcon,
     NgClass,
-    NgFor,
     MatChip,
     MatCard,
     MatCardHeader,
