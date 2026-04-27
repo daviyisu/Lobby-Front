@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <span class="title">Lobby_</span>
+  <div class="main-buttons">
+    @for (tab of tabs; track tab.id) {
+      <app-lobby-button
+        [buttonText]="tab.name"
+        (click)="selectTab(tab)"
+        [keepActive]="isTabSelected(tab)"
+      ></app-lobby-button>
+    }
+  </div>
+  <app-lobby-button [buttonText]="'username'"></app-lobby-button>
+</div>

@@ -16,12 +16,6 @@ body {
   min-height: 100vh;
 }
 
-.page-content {
-  flex: 1;
-  @include mix.column;
-  @include mix.center;
-}
-
 app-footer {
   margin-top: auto;
 }

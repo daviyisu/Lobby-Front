@@ -8,18 +8,12 @@
     {{ "profile.logout" | translate }}
   </button>
   <div class="profile-photo">
-    <img
-      *ngIf="!user.avatar_url"
-      class="user-photo"
-      src="assets/img/default-photo.svg"
-      alt=""
-    />
-    <img
-      *ngIf="user.avatar_url"
-      class="user-photo"
-      [src]="user.avatar_url"
-      alt=""
-    />
+    @if (!user.avatar_url) {
+      <img class="user-photo" src="assets/img/default-photo.svg" alt="" />
+    }
+    @if (user.avatar_url) {
+      <img class="user-photo" [src]="user.avatar_url" alt="" />
+    }
     <h2 class="username">{{ user.username }}</h2>
   </div>
   <mat-icon
@@ -39,16 +33,17 @@
 </div>
 
 <nav mat-tab-nav-bar class="tab" [tabPanel]="tabPanel">
-  <a
-    mat-tab-link
-    *ngFor="let link of links"
-    id="tab-{{ link.route }}"
-    [routerLink]="link.route"
-    routerLinkActive
-    #rla="routerLinkActive"
-    [active]="rla.isActive"
-  >
-    <span class="tab__text">{{ link.label | translate }}</span>
-  </a>
+  @for (link of links; track link) {
+    <a
+      mat-tab-link
+      id="tab-{{ link.route }}"
+      [routerLink]="link.route"
+      routerLinkActive
+      #rla="routerLinkActive"
+      [active]="rla.isActive"
+    >
+      <span class="tab__text">{{ link.label | translate }}</span>
+    </a>
+  }
 </nav>
 <mat-tab-nav-panel #tabPanel> </mat-tab-nav-panel>

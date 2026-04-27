@@ -12,7 +12,7 @@ import {
 import { CreateListDialogInterface } from '../../../models/create-list-dialog.interface';
 import { GameList } from '../../../models/GameList';
 import { Router } from '@angular/router';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatFormField, MatInput, MatError } from '@angular/material/input';
 import { GameSearchBarComponent } from '../../game-search-bar/game-search-bar.component';
 import { MatChip, MatChipRemove } from '@angular/material/chips';
@@ -25,14 +25,12 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './create-list-modal.component.html',
   styleUrls: ['./create-list-modal.component.scss'],
   imports: [
-    NgIf,
     ReactiveFormsModule,
     FormsModule,
     MatFormField,
     MatInput,
     MatError,
     GameSearchBarComponent,
-    NgFor,
     MatChip,
     MatIcon,
     MatChipRemove,

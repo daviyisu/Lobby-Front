@@ -1,10 +1,10 @@
 <div class="modal-container">
-  <h2 *ngIf="!editReview">
-    {{ "newReview.newReview" | translate }} {{ data.gameName }}
-  </h2>
-  <h2 *ngIf="editReview">
-    {{ "editReview.editReview" | translate }} {{ data.gameName }}
-  </h2>
+  @if (!editReview) {
+    <h2>{{ "newReview.newReview" | translate }} {{ data.gameName }}</h2>
+  }
+  @if (editReview) {
+    <h2>{{ "editReview.editReview" | translate }} {{ data.gameName }}</h2>
+  }
   <form [formGroup]="form" class="column gap">
     <mat-form-field appearance="outline">
       <input
@@ -12,12 +12,16 @@
         formControlName="summary"
         placeholder="{{ 'newReview.summarize' | translate }}"
       />
-      <mat-error *ngIf="form.get('summary')?.hasError('required')">
-        {{ "forms.required" | translate }}
-      </mat-error>
-      <mat-error *ngIf="form.get('summary')?.hasError('minlength')">
-        {{ "forms.tooShort" | translate }}
-      </mat-error>
+      @if (form.get("summary")?.hasError("required")) {
+        <mat-error>
+          {{ "forms.required" | translate }}
+        </mat-error>
+      }
+      @if (form.get("summary")?.hasError("minlength")) {
+        <mat-error>
+          {{ "forms.tooShort" | translate }}
+        </mat-error>
+      }
     </mat-form-field>
     <mat-form-field appearance="outline">
       <textarea
@@ -27,15 +31,21 @@
         placeholder="{{ 'newReview.writeHere' | translate }}..."
       >
       </textarea>
-      <mat-error *ngIf="form.get('review')?.hasError('required')">
-        {{ "forms.required" | translate }}
-      </mat-error>
-      <mat-error *ngIf="form.get('review')?.hasError('minlength')">
-        {{ "forms.tooShort" | translate }}
-      </mat-error>
-      <mat-error *ngIf="form.get('review')?.hasError('maxlength')">
-        {{ "forms.tooLarge" | translate }}
-      </mat-error>
+      @if (form.get("review")?.hasError("required")) {
+        <mat-error>
+          {{ "forms.required" | translate }}
+        </mat-error>
+      }
+      @if (form.get("review")?.hasError("minlength")) {
+        <mat-error>
+          {{ "forms.tooShort" | translate }}
+        </mat-error>
+      }
+      @if (form.get("review")?.hasError("maxlength")) {
+        <mat-error>
+          {{ "forms.tooLarge" | translate }}
+        </mat-error>
+      }
     </mat-form-field>
     <div class="row gap center">
       <div class="column">
@@ -81,27 +91,29 @@
     >
       <span class="text-md"> {{ "global.back" | translate }} </span>
     </button>
-    <button
-      *ngIf="!editReview"
-      (click)="sendReview()"
-      mat-flat-button
-      color="primary"
-      class="btn primary"
-    >
-      <span class="text-md">
-        {{ "gameDetail.createReview" | translate }}
-      </span>
-    </button>
-    <button
-      *ngIf="editReview"
-      (click)="updateReview()"
-      mat-flat-button
-      color="primary"
-      class="btn primary"
-    >
-      <span class="text-md">
-        {{ "editReview.buttonText" | translate }}
-      </span>
-    </button>
+    @if (!editReview) {
+      <button
+        (click)="sendReview()"
+        mat-flat-button
+        color="primary"
+        class="btn primary"
+      >
+        <span class="text-md">
+          {{ "gameDetail.createReview" | translate }}
+        </span>
+      </button>
+    }
+    @if (editReview) {
+      <button
+        (click)="updateReview()"
+        mat-flat-button
+        color="primary"
+        class="btn primary"
+      >
+        <span class="text-md">
+          {{ "editReview.buttonText" | translate }}
+        </span>
+      </button>
+    }
   </div>
 </div>

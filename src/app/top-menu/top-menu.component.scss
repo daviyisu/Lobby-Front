@@ -1,0 +1,25 @@
+@use "src/scss/mixins" as mix;
+@use "src/scss/variables" as vars;
+
+.wrapper {
+  @include mix.row;
+  @include mix.vertical-center;
+  justify-content: space-between;
+  height: 93px;
+  border: 4px solid white;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.title {
+  font-family: "DM Sans";
+  font-weight: bold;
+  font-size: 40px;
+  color: vars.$secondary-two-600;
+}
+
+.main-buttons {
+  @include mix.row;
+  @include mix.vertical-center;
+  gap: 30px;
+}

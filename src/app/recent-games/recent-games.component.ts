@@ -4,7 +4,7 @@ import { Game } from '../../models/game';
 import { lastValueFrom } from 'rxjs';
 import { ImageService } from '../../services/image.service';
 import { Router } from '@angular/router';
-import { NgIf, NgFor } from '@angular/common';
+
 import { MatDivider } from '@angular/material/list';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,7 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
   selector: 'app-recent-games',
   templateUrl: './recent-games.component.html',
   styleUrls: ['./recent-games.component.scss'],
-  imports: [NgIf, NgFor, MatDivider, NgxSkeletonLoaderModule, TranslateModule],
+  imports: [MatDivider, NgxSkeletonLoaderModule, TranslateModule],
   standalone: true,
 })
 export class RecentGamesComponent implements OnInit {

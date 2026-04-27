@@ -13,7 +13,7 @@ import { GameService } from '../../services/game.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
-import { NgIf } from '@angular/common';
+
 import { MatFormField, MatInput, MatError } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { MatCheckbox } from '@angular/material/checkbox';
@@ -23,7 +23,6 @@ import { MatCheckbox } from '@angular/material/checkbox';
   templateUrl: './steam-sync-modal.component.html',
   styleUrls: ['./steam-sync-modal.component.scss'],
   imports: [
-    NgIf,
     ReactiveFormsModule,
     FormsModule,
     MatFormField,

@@ -1,11 +1,12 @@
 <div (click)="goToList(list.id)" class="list-container dark-when-hover">
   <div class="cards">
-    <img
-      *ngFor="let image of getImagesFrontView(); let i = index"
-      [class]="'card-' + i + ' shadow'"
-      [src]="image"
-      alt="Cover of the game"
-    />
+    @for (image of getImagesFrontView(); track image; let i = $index) {
+      <img
+        [class]="'card-' + i + ' shadow'"
+        [src]="image"
+        alt="Cover of the game"
+      />
+    }
   </div>
   <h2>{{ list.name }}</h2>
 </div>

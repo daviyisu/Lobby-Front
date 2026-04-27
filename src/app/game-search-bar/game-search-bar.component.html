@@ -7,12 +7,10 @@
     [matAutocomplete]="auto"
   />
   <mat-autocomplete #auto="matAutocomplete">
-    <mat-option
-      *ngFor="let option of queryResults"
-      [value]="option.name"
-      (click)="emitSelectedGame(option.id)"
-    >
-      {{ option.name }}
-    </mat-option>
+    @for (option of queryResults; track option) {
+      <mat-option [value]="option.name" (click)="emitSelectedGame(option.id)">
+        {{ option.name }}
+      </mat-option>
+    }
   </mat-autocomplete>
 </mat-form-field>
