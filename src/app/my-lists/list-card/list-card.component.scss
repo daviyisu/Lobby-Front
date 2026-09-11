@@ -1,47 +1,65 @@
 @use "src/scss/mixins" as mix;
 
-.card-0 {
-  z-index: 5;
-  transform: translateX(-20rem);
-}
-
-.card-1 {
-  position: absolute;
-  transform: translateX(-10rem);
-  z-index: 4;
-}
-
-.card-2 {
-  position: absolute;
-  z-index: 3;
-}
-
-.card-3 {
-  position: absolute;
-  transform: translateX(10rem);
-  z-index: 2;
-}
-
-.card-4 {
-  position: absolute;
-  transform: translateX(20rem);
-  z-index: 1;
-}
-
 .list-container {
   @include mix.center;
   @include mix.column;
   @include mix.gap-sm;
-  width: fit-content;
+  width: 100%;
+
+  h2 {
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
 }
 
+/**
+ * The covers are fanned out from the centre of the card. Both the cover size
+ * and the distance between covers scale with the viewport, so the fan always
+ * fits the screen instead of overflowing it.
+ */
 .cards {
-  display: flex;
+  --card-width: clamp(64px, 18vw, 264px);
+  --card-height: calc(var(--card-width) * 352 / 264);
+  --card-offset: calc(var(--card-width) * 0.6);
+
+  position: relative;
+  width: calc(var(--card-width) + var(--card-offset) * 4);
+  max-width: 100%;
+  height: var(--card-height);
 
   img {
-    width: 264px;
-    height: 352px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: var(--card-width);
+    height: var(--card-height);
+    object-fit: cover;
   }
+}
+
+.card-0 {
+  z-index: 5;
+  transform: translateX(calc(-50% - var(--card-offset) * 2));
+}
+
+.card-1 {
+  z-index: 4;
+  transform: translateX(calc(-50% - var(--card-offset)));
+}
+
+.card-2 {
+  z-index: 3;
+  transform: translateX(-50%);
+}
+
+.card-3 {
+  z-index: 2;
+  transform: translateX(calc(-50% + var(--card-offset)));
+}
+
+.card-4 {
+  z-index: 1;
+  transform: translateX(calc(-50% + var(--card-offset) * 2));
 }
 
 .shadow {

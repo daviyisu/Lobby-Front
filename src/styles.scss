@@ -1,5 +1,11 @@
 @use "src/scss/mixins" as mix;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;
@@ -8,6 +14,13 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
 }
 
 .content-wrapper {
@@ -44,16 +57,31 @@ mat-chip {
   }
 }
 
+/**
+ * Dialogs: never wider or taller than the screen, and scrollable when the
+ * content does not fit a small viewport.
+ */
+.cdk-overlay-pane {
+  max-width: calc(100vw - 2rem) !important;
+}
+
 .mat-mdc-dialog-surface {
   border-radius: 1.4rem !important;
   padding: 1.8em;
-  overflow-y: hidden !important;
+  overflow-y: auto !important;
+  max-height: calc(100vh - 2rem);
+
+  @include mix.xs {
+    padding: 1em;
+    border-radius: 1rem !important;
+  }
 }
 
 .modal-actions,
 .mat-mdc-dialog-actions {
   @include mix.gap;
   @include mix.vertical-center;
+  flex-wrap: wrap;
   justify-content: flex-end !important;
   margin-top: 1rem;
 }

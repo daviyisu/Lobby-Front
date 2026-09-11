@@ -118,3 +118,41 @@
     @include gap;
   }
 }
+
+/**
+ * Responsive mixins
+ */
+
+/**
+ * Game covers keep the IGDB cover ratio (264x374) while never growing
+ * wider than the space they are given.
+ */
+@mixin cover-image($width: 264px) {
+  width: $width;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 264 / 374;
+  object-fit: cover;
+}
+
+/**
+ * Wrapping row of game covers. Covers keep their natural size while there is
+ * room for it and shrink down to $min-width on narrow screens, so a phone
+ * still shows two per row instead of one oversized cover.
+ */
+@mixin cover-grid($min-width: 140px, $max-width: 264px) {
+  @include row;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  > * {
+    width: clamp($min-width, 40vw, $max-width);
+  }
+}
+
+/**
+ * Font size that scales with the viewport between two bounds.
+ */
+@mixin fluid-text($min, $preferred, $max) {
+  font-size: clamp($min, $preferred, $max);
+}

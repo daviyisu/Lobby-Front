@@ -5,6 +5,7 @@
   @include mix.gap;
   text-align: center;
   font-size: large;
+  width: min(30rem, 100%);
 }
 
 .option {
@@ -14,10 +15,15 @@
   align-items: center;
   cursor: pointer;
 
+  mat-icon {
+    flex: 0 0 auto;
+  }
+
   &__text {
     display: flex;
     flex-grow: 1;
     justify-content: center;
+    min-width: 0;
   }
 
   .completed {

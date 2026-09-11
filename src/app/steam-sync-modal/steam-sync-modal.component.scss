@@ -4,7 +4,12 @@
   @include mix.column;
   @include mix.center;
   @include mix.gap;
-  max-width: 400px;
+  width: min(400px, 100%);
+
+  form,
+  mat-form-field {
+    width: 100%;
+  }
 
   .steam-icon {
     transform: scale(3);
@@ -13,13 +18,17 @@
 }
 
 .lobby-icon {
-  width: 63px;
-  height: 63px;
+  width: clamp(40px, 12vw, 63px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
 }
 
 .arrow-icon {
-  width: 25rem;
-  height: 200px;
+  /* Keeps the 2:1 proportion the fixed 400x200 size used to give it. */
+  width: clamp(4rem, 30vw, 25rem);
+  height: auto;
+  aspect-ratio: 2 / 1;
 }
 
 .steam-avatar {
@@ -30,11 +39,15 @@
 .flow-image {
   @include mix.row;
   @include mix.center;
+  @include mix.gap-sm;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .last-step-sync {
   @include mix.column;
   @include mix.gap;
   @include mix.center;
-  max-width: 600px;
+  width: min(600px, 100%);
+  text-align: center;
 }
