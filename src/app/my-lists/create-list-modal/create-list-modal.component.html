@@ -1,6 +1,8 @@
 <div class="modal-container">
-  <h2 *ngIf="!editMode">{{ "myLists.createListModal.title" | translate }}</h2>
-  <h2 *ngIf="editMode">
+  <h2 class="modal-title" *ngIf="!editMode">
+    {{ "myLists.createListModal.title" | translate }}
+  </h2>
+  <h2 class="modal-title" *ngIf="editMode">
     {{ "myLists.createListModal.editTitle" | translate }}
   </h2>
   <form>
@@ -44,9 +46,8 @@
     </button>
     <button
       (click)="closeModal()"
-      mat-flat-button
-      color="accent"
-      class="btn primary"
+      mat-stroked-button
+      class="btn primary btn-secondary"
     >
       <span class="text-md"> {{ "global.back" | translate }} </span>
     </button>

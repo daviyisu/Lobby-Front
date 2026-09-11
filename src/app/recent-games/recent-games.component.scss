@@ -1,16 +1,48 @@
 @use "src/scss/mixins" as mix;
 
+/**
+ * One centred content column, so the list does not stretch to the full width
+ * of a large monitor.
+ */
+.recent {
+  align-items: center;
+
+  > * {
+    width: 100%;
+    max-width: 68rem;
+  }
+}
+
+/**
+ * Each recently added game is a row that behaves like a card: the cover on
+ * the left, the name and summary on the right, stacking once there is no
+ * room for both.
+ */
 .recent-game {
-  align-items: flex-start;
+  align-items: center;
+  padding: 1rem;
+  border-radius: var(--lobby-radius-lg);
+  background-color: var(--lobby-surface);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background-color var(--lobby-duration) var(--lobby-ease),
+    border-color var(--lobby-duration) var(--lobby-ease),
+    box-shadow var(--lobby-duration) var(--lobby-ease);
 
   .column {
     min-width: 0;
   }
 
-  /**
-   * The cover sits next to the description on wide screens and on top of it
-   * once there is no room left for both.
-   */
+  &:hover {
+    border-color: var(--lobby-border);
+    box-shadow: var(--lobby-shadow-md);
+
+    .game-cover {
+      box-shadow: var(--lobby-shadow-lg);
+    }
+  }
+
   @include mix.sm {
     @include mix.column;
     align-items: center;
@@ -18,22 +50,34 @@
   }
 }
 
+.game-name {
+  @include mix.fluid-text(1.125rem, 3.5vw, 1.375rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
 .game-cover {
-  @include mix.cover-image(264px);
+  @include mix.cover-image(200px);
   flex: 0 0 auto;
+  border-radius: var(--lobby-radius-md);
+  background-color: var(--lobby-neutral-100);
+  box-shadow: var(--lobby-shadow-sm);
+  transition: box-shadow var(--lobby-duration) var(--lobby-ease);
 
   @include mix.sm {
-    width: min(264px, 55vw);
+    width: min(200px, 50vw);
   }
 }
 
 .game-summary {
   @include mix.text-md;
-  align-self: flex-end;
-
-  @include mix.sm {
-    align-self: auto;
-  }
+  color: var(--lobby-text-muted);
+  align-self: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .no-games {
@@ -41,11 +85,16 @@
   @include mix.column;
   @include mix.gap-lg;
   width: 100%;
-  height: 100%;
+  padding: 3rem 1rem;
   text-align: center;
 
   &--image {
-    width: min(22rem, 60vw);
-    opacity: 0.8;
+    width: min(14rem, 45vw);
+    opacity: 0.9;
+  }
+
+  p {
+    max-width: 30rem;
+    color: var(--lobby-text-muted);
   }
 }

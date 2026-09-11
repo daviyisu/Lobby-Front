@@ -1,4 +1,4 @@
-<div *ngIf="game" class="container-padding column gap-xxl center">
+<div *ngIf="game" class="detail container-padding column gap-xl enter">
   <div class="column gap">
     <div class="game-header">
       <div class="column gap">
@@ -21,9 +21,8 @@
           </button>
           <button
             *ngIf="gameStatus == CollectionStatusEnum.not_owned"
-            mat-flat-button
-            color="accent"
-            class="btn primary"
+            mat-stroked-button
+            class="btn primary btn-secondary"
             (click)="openAddGameModal()"
           >
             <mat-icon svgIcon="add"></mat-icon>
@@ -41,7 +40,7 @@
             }"
             mat-flat-button
             color="accent"
-            class="btn primary"
+            class="btn primary status-button"
             (click)="openAddGameModal()"
           >
             <mat-icon svgIcon="joystick"></mat-icon>
@@ -69,7 +68,7 @@
             {{ getGenreEnum()[genre] }}
           </mat-chip>
         </div>
-        <span *ngIf="game.firstReleaseDate" class="medium">
+        <span *ngIf="game.firstReleaseDate" class="release-date">
           {{
             "gameDetail.releaseDate"
               | translate
@@ -90,7 +89,7 @@
   </div>
 
   <div *ngIf="screenshots.length > 0" class="screenshots-section column">
-    <h2>{{ "gameDetail.screenshots" | translate }}</h2>
+    <h2 class="section-title">{{ "gameDetail.screenshots" | translate }}</h2>
     <div class="screenshots">
       <img
         *ngFor="let screenshot of screenshots"

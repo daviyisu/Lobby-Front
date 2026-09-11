@@ -3,18 +3,17 @@
 .modal-container {
   @include mix.column;
   @include mix.gap;
-  width: min(420px, 100%);
+  width: min(28rem, 100%);
 }
 
 .game-chips-container {
   @include mix.row;
   @include mix.gap-sm;
   flex-wrap: wrap;
+  max-height: 14rem;
+  overflow-y: auto;
 
-  .game-chip {
-    @include mix.row;
-    color: red;
-    align-items: center;
-    overflow: hidden;
+  &:empty {
+    display: none;
   }
 }

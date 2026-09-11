@@ -2,7 +2,7 @@
   <div class="column gap-lg">
     <button
       mat-flat-button
-      color="accent"
+      color="primary"
       class="btn primary"
       (click)="openCreateListModal()"
     >
@@ -11,7 +11,7 @@
         {{ "myLists.createList" | translate }}
       </span>
     </button>
-    <div class="column center gap">
+    <div class="column center gap-lg">
       <ng-container *ngIf="userLists">
         <app-list-card
           [list]="list"

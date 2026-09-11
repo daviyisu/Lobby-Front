@@ -3,12 +3,6 @@
 .container {
   margin-bottom: 3rem;
   @include mix.default-container-padding;
-
-  .title {
-    font-weight: 500;
-    text-align: center;
-    overflow-wrap: anywhere;
-  }
 }
 
 .games-grid {
@@ -20,8 +14,47 @@
   }
 }
 
-.game-cover {
-  @include mix.cover-image(100%);
+/**
+ * A game card: cover, then title underneath. The whole card lifts as one
+ * object on hover so the click target reads clearly.
+ */
+.game {
+  @include mix.column;
+  @include mix.gap-sm;
+  align-items: center;
+  cursor: pointer;
+  transition: transform var(--lobby-duration) var(--lobby-ease);
+
+  .game-cover {
+    @include mix.cover-image(100%);
+    border-radius: var(--lobby-radius-md);
+    background-color: var(--lobby-neutral-100);
+    box-shadow: var(--lobby-shadow-sm);
+    transition:
+      box-shadow var(--lobby-duration) var(--lobby-ease),
+      filter var(--lobby-duration) var(--lobby-ease);
+  }
+
+  .title {
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 1.35;
+    text-align: center;
+    color: var(--lobby-text);
+    overflow-wrap: anywhere;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+
+    .game-cover {
+      box-shadow: var(--lobby-shadow-lg);
+    }
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
 }
 
 .game-skeleton {
@@ -34,12 +67,16 @@
   @include mix.column;
   @include mix.gap-lg;
   width: 100%;
-  height: 100%;
+  padding: 3rem 1rem 4rem;
   text-align: center;
-  padding: 1rem;
 
   &--image {
-    width: min(22rem, 60vw);
-    opacity: 0.8;
+    width: min(14rem, 45vw);
+    opacity: 0.9;
+  }
+
+  p {
+    max-width: 30rem;
+    color: var(--lobby-text-muted);
   }
 }

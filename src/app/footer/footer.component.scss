@@ -3,18 +3,22 @@
 .footer {
   @include mix.row;
   @include mix.center;
-  bottom: 0;
-  position: relative;
-  margin: 0;
   width: 100%;
-  background-color: blueviolet;
-  min-height: 2.5rem;
-  padding: 0.5rem 1rem;
+  min-height: 3rem;
+  margin: 0;
+  padding: 0.875rem 1rem;
   text-align: center;
+  background-color: var(--lobby-surface);
+  border-top: 1px solid var(--lobby-border);
 
   &__text {
-    color: white;
-    text-decoration: unset;
-    font-size: large;
+    color: var(--lobby-text-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color var(--lobby-duration-fast) var(--lobby-ease);
+
+    &:hover {
+      color: var(--lobby-brand-700);
+    }
   }
 }

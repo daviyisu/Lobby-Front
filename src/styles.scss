@@ -1,3 +1,4 @@
+@use "src/scss/tokens";
 @use "src/scss/mixins" as mix;
 
 *,
@@ -9,12 +10,18 @@
 html,
 body {
   height: 100%;
-  /*background-color: darkgray;*/
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--lobby-text);
+  background-color: var(--lobby-bg);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img,
@@ -23,58 +30,316 @@ video {
   max-width: 100%;
 }
 
+/**
+ * Headings carry the layout's rhythm, so they get their margins from the
+ * components that place them rather than from the user agent.
+ */
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  color: var(--lobby-text);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--lobby-brand-700);
+  text-decoration-color: var(--lobby-brand-200);
+  text-underline-offset: 0.2em;
+  transition: color var(--lobby-duration-fast) var(--lobby-ease);
+
+  &:hover {
+    color: var(--lobby-brand-800);
+  }
+}
+
+/**
+ * One visible focus treatment everywhere, shown only for keyboard users.
+ */
+:focus-visible {
+  outline: 2px solid var(--lobby-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--lobby-radius-xs);
+}
+
+::selection {
+  background: var(--lobby-brand-100);
+  color: var(--lobby-brand-900);
+}
+
 .content-wrapper {
   @include mix.column;
   min-height: 100%;
+  background-color: var(--lobby-bg);
 }
 
 app-footer {
   margin-top: auto;
 }
 
+/**
+ * Page surface: the sheet that routed content sits on, so content reads as
+ * a card over the app background rather than as loose text.
+ */
+.page {
+  background-color: var(--lobby-surface);
+  border-radius: var(--lobby-radius-lg);
+  box-shadow: var(--lobby-shadow-sm);
+  border: 1px solid var(--lobby-border);
+}
+
+.section-title {
+  @include mix.fluid-text(1.375rem, 3.5vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.text-muted {
+  color: var(--lobby-text-muted);
+}
+
+/**
+ * Interactive surfaces. `.interactive` gives anything clickable the same
+ * lift, and the same restraint when the user prefers reduced motion.
+ */
+.interactive {
+  cursor: pointer;
+  transition:
+    transform var(--lobby-duration) var(--lobby-ease),
+    box-shadow var(--lobby-duration) var(--lobby-ease);
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+}
+
+/**
+ * Content that appears after data loads, so pages resolve instead of
+ * snapping into place.
+ */
+.enter {
+  animation: lobby-enter var(--lobby-duration-slow) var(--lobby-ease-out) both;
+}
+
+@keyframes lobby-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/**
+ * Collection status and review rating share one colour language across the
+ * detail page, the status dialog and the review form: `--status-strong` for
+ * the colour itself and `--status-soft` for its tinted surface.
+ */
+.completed {
+  --status-soft: var(--lobby-success-soft);
+  --status-strong: var(--lobby-success);
+  color: var(--status-strong);
+}
+
+.abandoned {
+  --status-soft: var(--lobby-danger-soft);
+  --status-strong: var(--lobby-danger);
+  color: var(--status-strong);
+}
+
+.retired {
+  --status-soft: var(--lobby-info-soft);
+  --status-strong: var(--lobby-info);
+  color: var(--status-strong);
+}
+
+.playing {
+  --status-soft: var(--lobby-warning-soft);
+  --status-strong: var(--lobby-warning);
+  color: var(--status-strong);
+}
+
+/**
+ * Tab navigation under the profile banner.
+ */
+.tab {
+  background-color: var(--lobby-surface);
+  border-bottom: 1px solid var(--lobby-border);
+
+  .mdc-tab {
+    transition: background-color var(--lobby-duration) var(--lobby-ease);
+
+    &:hover {
+      background-color: var(--lobby-neutral-50);
+    }
+  }
+
+  .mdc-tab__text-label {
+    color: var(--lobby-text-muted);
+    font-weight: 500;
+    transition: color var(--lobby-duration) var(--lobby-ease);
+  }
+
+  .mdc-tab--active .mdc-tab__text-label {
+    color: var(--lobby-brand-700);
+  }
+
+  .mdc-tab-indicator__content--underline {
+    border-color: var(--lobby-brand-700);
+    border-top-width: 3px;
+    border-radius: var(--lobby-radius-pill) var(--lobby-radius-pill) 0 0;
+  }
+
+  @include mix.xs {
+    .mdc-tab {
+      min-width: 0;
+      padding: 0 0.5rem;
+    }
+  }
+}
+
 mat-chip {
   width: fit-content;
 }
 
-.chip {
-  &.blue-dark {
-    background-color: cornflowerblue !important;
+/**
+ * Chips are labels here, not controls: flat, quiet, and readable.
+ */
+.mat-mdc-standard-chip {
+  --mat-chip-container-shape-radius: var(--lobby-radius-pill);
+  --mat-chip-elevated-container-color: var(--lobby-neutral-100);
+  --mat-chip-label-text-color: var(--lobby-neutral-700);
+  --mat-chip-label-text-size: 0.8125rem;
+
+  &.chip.blue-dark {
+    --mat-chip-elevated-container-color: var(--lobby-brand-50);
+    --mat-chip-label-text-color: var(--lobby-brand-800);
+    background-color: var(--lobby-brand-50) !important;
+    box-shadow: inset 0 0 0 1px var(--lobby-brand-100);
   }
 }
 
 .mat-mdc-snack-bar-container {
   &.blue-snackbar {
-    --mat-snackbar-container-color: #2196f3;
+    --mat-snackbar-container-color: var(--lobby-brand-800);
     --mat-mdc-snack-bar-button-color: #fff;
     --mat-snackbar-supporting-text-color: #fff;
   }
 }
 
+/**
+ * Buttons: pill shaped, with a little lift on the filled ones.
+ */
+.mat-mdc-button-base {
+  --mat-button-protected-container-shape: var(--lobby-radius-pill);
+  --mat-button-filled-container-shape: var(--lobby-radius-pill);
+  --mat-button-outlined-container-shape: var(--lobby-radius-pill);
+  --mat-button-text-container-shape: var(--lobby-radius-pill);
+  letter-spacing: 0.01em;
+  transition:
+    box-shadow var(--lobby-duration) var(--lobby-ease),
+    transform var(--lobby-duration-fast) var(--lobby-ease),
+    background-color var(--lobby-duration-fast) var(--lobby-ease);
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
 .btn {
   &.primary {
-    border-radius: 1rem;
+    border-radius: var(--lobby-radius-pill);
     width: fit-content;
+    padding: 0 1.25rem;
+    height: 42px;
+  }
+}
+
+.mat-mdc-unelevated-button:not(:disabled),
+.mat-mdc-raised-button:not(:disabled) {
+  box-shadow: var(--lobby-shadow-sm);
+
+  &:hover {
+    box-shadow: var(--lobby-shadow-md);
   }
 }
 
 /**
- * Dialogs: never wider or taller than the screen, and scrollable when the
- * content does not fit a small viewport.
+ * Secondary actions — "Back", "Edit list", "Add game" — are quiet outlines,
+ * so the one filled button in a view is always the primary action.
+ */
+.btn-secondary {
+  --mat-button-outlined-label-text-color: var(--lobby-text);
+  --mat-button-outlined-outline-color: var(--lobby-border-strong);
+  --mat-button-outlined-state-layer-color: var(--lobby-neutral-900);
+  background-color: var(--lobby-surface);
+
+  &:hover {
+    --mat-button-outlined-outline-color: var(--lobby-brand-400);
+    color: var(--lobby-brand-800);
+  }
+}
+
+/**
+ * Form fields sit on the surface colour with a soft, rounded outline.
+ */
+.mat-mdc-form-field {
+  --mat-form-field-outlined-container-shape: var(--lobby-radius-sm);
+  --mat-form-field-outlined-outline-color: var(--lobby-border-strong);
+  --mat-form-field-outlined-hover-outline-color: var(--lobby-brand-400);
+  --mat-form-field-filled-container-shape: var(--lobby-radius-sm);
+  width: 100%;
+}
+
+/**
+ * Dialogs: never wider or taller than the screen, scrollable when the
+ * content does not fit, and they arrive with a small rise.
  */
 .cdk-overlay-pane {
   max-width: calc(100vw - 2rem) !important;
 }
 
+.cdk-overlay-dark-backdrop {
+  background: rgba(20, 26, 32, 0.48);
+  backdrop-filter: blur(2px);
+}
+
 .mat-mdc-dialog-surface {
-  border-radius: 1.4rem !important;
-  padding: 1.8em;
+  border-radius: var(--lobby-radius-xl) !important;
+  padding: 1.75rem;
   overflow-y: auto !important;
   max-height: calc(100vh - 2rem);
+  box-shadow: var(--lobby-shadow-lg) !important;
+  animation: lobby-enter var(--lobby-duration) var(--lobby-ease-out) both;
 
   @include mix.xs {
-    padding: 1em;
-    border-radius: 1rem !important;
+    padding: 1.25rem;
+    border-radius: var(--lobby-radius-lg) !important;
   }
+}
+
+.modal-title {
+  @include mix.fluid-text(1.25rem, 4.5vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.modal-subtitle {
+  color: var(--lobby-text-muted);
+  font-size: 0.9375rem;
 }
 
 .modal-actions,
@@ -83,5 +348,37 @@ mat-chip {
   @include mix.vertical-center;
   flex-wrap: wrap;
   justify-content: flex-end !important;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+}
+
+/**
+ * Skeletons share the surface palette instead of the library default grey.
+ */
+ngx-skeleton-loader .skeleton-loader {
+  background-color: var(--lobby-neutral-100) !important;
+  border-radius: var(--lobby-radius-md) !important;
+}
+
+/**
+ * Honour the OS setting: keep the interface legible, drop the movement.
+ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --lobby-duration-fast: 1ms;
+    --lobby-duration: 1ms;
+    --lobby-duration-slow: 1ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .interactive:hover {
+    transform: none;
+  }
 }

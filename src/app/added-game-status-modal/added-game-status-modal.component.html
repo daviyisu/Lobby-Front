@@ -7,14 +7,15 @@
     <mat-icon class="completed" svgIcon="joystick"></mat-icon>
     <div class="option__text">
       <div class="column gap-sm">
-        <span class="text-lg">{{ "addGameStatus.completed" | translate }}</span>
+        <span class="option-name">{{
+          "addGameStatus.completed" | translate
+        }}</span>
         <span class="subtitle">{{
           "addGameStatus.completed-text" | translate
         }}</span>
       </div>
     </div>
   </div>
-  <mat-divider></mat-divider>
   <div
     (click)="addGame(CollectionStatusEnum.played)"
     class="option"
@@ -23,14 +24,15 @@
     <mat-icon svgIcon="joystick"></mat-icon>
     <div class="option__text">
       <div class="column gap-sm">
-        <span>{{ "addGameStatus.played" | translate }}</span>
+        <span class="option-name">{{
+          "addGameStatus.played" | translate
+        }}</span>
         <span class="subtitle">{{
           "addGameStatus.played-text" | translate
         }}</span>
       </div>
     </div>
   </div>
-  <mat-divider></mat-divider>
   <div
     (click)="addGame(CollectionStatusEnum.abandoned)"
     class="option"
@@ -39,14 +41,15 @@
     <mat-icon class="abandoned" svgIcon="joystick"></mat-icon>
     <div class="option__text">
       <div class="column gap-sm">
-        {{ "addGameStatus.abandoned" | translate }}
+        <span class="option-name">{{
+          "addGameStatus.abandoned" | translate
+        }}</span>
         <span class="subtitle">{{
           "addGameStatus.abandoned-text" | translate
         }}</span>
       </div>
     </div>
   </div>
-  <mat-divider></mat-divider>
   <div
     (click)="addGame(CollectionStatusEnum.retired)"
     class="option"
@@ -55,14 +58,15 @@
     <mat-icon class="retired" svgIcon="joystick"></mat-icon>
     <div class="option__text">
       <div class="column gap-sm">
-        {{ "addGameStatus.retired" | translate }}
+        <span class="option-name">{{
+          "addGameStatus.retired" | translate
+        }}</span>
         <span class="subtitle">{{
           "addGameStatus.retired-text" | translate
         }}</span>
       </div>
     </div>
   </div>
-  <mat-divider></mat-divider>
   <div
     (click)="addGame(CollectionStatusEnum.playing)"
     class="option"
@@ -71,7 +75,9 @@
     <mat-icon class="playing" svgIcon="joystick"></mat-icon>
     <div class="option__text">
       <div class="column gap-sm">
-        {{ "addGameStatus.playing" | translate }}
+        <span class="option-name">{{
+          "addGameStatus.playing" | translate
+        }}</span>
         <span class="subtitle">{{
           "addGameStatus.playing-text" | translate
         }}</span>

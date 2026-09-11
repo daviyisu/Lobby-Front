@@ -6,10 +6,22 @@
   grid-template-areas: "start photo end";
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem 1.25rem;
-  background-color: #006ba6;
+  padding: 2rem 1.5rem 2.25rem;
   min-height: 250px;
   width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(
+      120% 140% at 50% -20%,
+      var(--lobby-brand-500) 0%,
+      transparent 60%
+    ),
+    linear-gradient(
+      165deg,
+      var(--lobby-brand-700) 0%,
+      var(--lobby-brand-800) 100%
+    );
+  color: var(--lobby-text-on-brand);
 
   .banner__start {
     grid-area: start;
@@ -20,7 +32,7 @@
   .banner__end {
     grid-area: end;
     @include mix.vertical-center;
-    @include mix.gap-lg;
+    @include mix.gap;
     justify-content: flex-end;
     min-width: 0;
   }
@@ -33,29 +45,78 @@
     min-width: 0;
 
     .username {
-      color: floralwhite;
+      color: var(--lobby-text-on-brand);
       margin: 0;
       text-align: center;
       overflow-wrap: anywhere;
+      @include mix.fluid-text(1.25rem, 4vw, 1.625rem);
+      font-weight: 600;
+      letter-spacing: -0.01em;
     }
   }
 
+  /**
+   * On the brand banner the logout button reads as glass rather than as a
+   * second accent colour competing with the avatar.
+   */
   .logout-button {
     min-width: fit-content;
+    --mat-button-protected-container-color: rgba(255, 255, 255, 0.14);
+    --mat-button-protected-label-text-color: var(--lobby-text-on-brand);
+    --mat-button-protected-state-layer-color: #ffffff;
+    --mat-button-protected-container-elevation-shadow: none;
+    --mat-button-protected-hover-container-elevation-shadow: none;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24) !important;
+
+    &:hover {
+      --mat-button-protected-container-color: rgba(255, 255, 255, 0.24);
+    }
   }
 
+  /**
+   * On the banner the search field is a solid white pill, so it reads as an
+   * input against the brand background instead of a faint outline.
+   */
   .search-bar {
     flex: 1 1 200px;
     min-width: 0;
-    max-width: 370px;
+    max-width: 340px;
+    --mat-form-field-outlined-outline-color: transparent;
+    --mat-form-field-outlined-hover-outline-color: transparent;
+    --mat-form-field-outlined-container-shape: var(--lobby-radius-pill);
+
+    ::ng-deep .mat-mdc-text-field-wrapper {
+      background-color: var(--lobby-surface);
+      border-radius: var(--lobby-radius-pill);
+    }
   }
 
+  /**
+   * The steam and recents icons read as quiet glass buttons on the banner,
+   * so they look clickable without competing with the avatar.
+   */
   .new-icon,
   .steam-icon {
     flex: 0 0 auto;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 25%;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0.5rem;
+    border-radius: var(--lobby-radius-pill);
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+    color: var(--lobby-text-on-brand);
+    transition:
+      background-color var(--lobby-duration) var(--lobby-ease),
+      transform var(--lobby-duration) var(--lobby-ease);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.22);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
   }
 }
 
@@ -70,10 +131,7 @@
       "start end"
       "photo photo";
     justify-content: space-between;
-
-    .banner__end {
-      @include mix.gap;
-    }
+    padding: 1.25rem 1.25rem 2rem;
 
     .search-bar {
       flex: 0 1 200px;
@@ -89,8 +147,9 @@
       "photo"
       "end";
     justify-content: stretch;
-    padding: 1rem;
-    gap: 0.75rem;
+    padding: 1rem 1rem 1.5rem;
+    gap: 1rem;
+    min-height: 0;
 
     .banner__end {
       justify-content: center;
@@ -109,22 +168,24 @@
 }
 
 .user-photo {
-  width: clamp(80px, 12vw, 150px);
+  width: clamp(80px, 12vw, 132px);
   height: auto;
+  aspect-ratio: 1;
+  border-radius: var(--lobby-radius-pill);
+  object-fit: cover;
+  background: var(--lobby-brand-100);
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.24),
+    var(--lobby-shadow-lg);
 }
 
+/**
+ * Tabs sit on the page surface directly under the banner and stay in reach
+ * while the page scrolls. Their colours live in styles.scss, with the rest
+ * of the Material theming.
+ */
 .tab {
-  background-color: cornflowerblue;
-
-  &__text {
-    color: floralwhite;
-  }
-
-  /* Keeps the three tabs on screen instead of paginating them on a phone. */
-  @include mix.xs {
-    ::ng-deep .mdc-tab {
-      min-width: 0;
-      padding: 0 0.5rem;
-    }
-  }
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }

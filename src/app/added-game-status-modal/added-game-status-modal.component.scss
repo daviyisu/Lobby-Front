@@ -2,57 +2,67 @@
 
 .container {
   @include mix.column;
-  @include mix.gap;
-  text-align: center;
-  font-size: large;
+  @include mix.gap-sm;
   width: min(30rem, 100%);
 }
 
+/**
+ * Each status is a selectable row: icon, name, and a one line explanation.
+ * The selected one is filled with its own status colour so the current
+ * state is obvious the moment the dialog opens.
+ */
 .option {
   @include mix.row;
-  @include mix.padding-sm;
-  @include mix.gap-sm;
+  @include mix.gap;
   align-items: center;
+  padding: 0.875rem 1rem;
+  border-radius: var(--lobby-radius-md);
+  border: 1px solid transparent;
   cursor: pointer;
+  text-align: left;
+  transition:
+    background-color var(--lobby-duration) var(--lobby-ease),
+    border-color var(--lobby-duration) var(--lobby-ease),
+    transform var(--lobby-duration-fast) var(--lobby-ease);
 
   mat-icon {
     flex: 0 0 auto;
+    width: 1.75rem;
+    height: 1.75rem;
+    color: var(--lobby-neutral-400);
   }
 
   &__text {
     display: flex;
     flex-grow: 1;
-    justify-content: center;
     min-width: 0;
   }
 
-  .completed {
-    color: green;
-  }
-
-  .abandoned {
-    color: red;
-  }
-
-  .retired {
-    color: blue;
-  }
-
-  .playing {
-    color: darkgoldenrod;
+  .option-name {
+    font-weight: 500;
+    font-size: 1rem;
   }
 
   .subtitle {
     @include mix.text-sm;
-    color: grey;
+    color: var(--lobby-text-muted);
+  }
+
+  &:hover {
+    background-color: var(--lobby-neutral-50);
+    border-color: var(--lobby-border);
+  }
+
+  &:active {
+    transform: scale(0.99);
   }
 }
 
 .selected {
-  background-color: #e0e0e0;
-  border-radius: 10px;
-}
+  background-color: var(--lobby-brand-50);
+  border-color: var(--lobby-brand-200);
 
-.option:hover {
-  opacity: 0.5;
+  .option-name {
+    color: var(--lobby-brand-800);
+  }
 }

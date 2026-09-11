@@ -3,11 +3,10 @@
 .modal-container {
   @include mix.column;
   @include mix.gap;
-  width: min(28rem, 100%);
+  width: min(30rem, 100%);
 
   .rating {
-    width: fit-content;
-    border-radius: 2rem;
+    width: 7rem;
   }
 
   /**
@@ -16,25 +15,42 @@
    */
   .rating-row {
     flex-wrap: wrap;
+    justify-content: flex-start;
+
+    /* The four faces stay on one line and wrap together, never 3 + 1. */
+    .rating-icons {
+      align-items: center;
+      flex-wrap: nowrap;
+    }
 
     mat-icon {
       flex: 0 0 auto;
+      width: 2rem;
+      height: 2rem;
+      color: var(--lobby-neutral-300);
+      transition:
+        color var(--lobby-duration) var(--lobby-ease),
+        transform var(--lobby-duration) var(--lobby-ease);
     }
   }
 
   .bad {
-    color: red;
+    color: var(--lobby-danger) !important;
+    transform: scale(1.1);
   }
 
   .good {
-    color: green;
+    color: var(--lobby-success) !important;
+    transform: scale(1.1);
   }
 
   .very_good {
-    color: blue;
+    color: var(--lobby-info) !important;
+    transform: scale(1.1);
   }
 
   .perfect {
-    color: darkturquoise;
+    color: var(--lobby-special) !important;
+    transform: scale(1.1);
   }
 }

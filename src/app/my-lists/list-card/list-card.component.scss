@@ -1,24 +1,55 @@
 @use "src/scss/mixins" as mix;
 
+/**
+ * A list is presented as a fan of its covers on a card. Hovering fans the
+ * covers out a little further, which reads as "open me".
+ */
+:host {
+  display: block;
+  width: 100%;
+  max-width: 52rem;
+}
+
 .list-container {
   @include mix.center;
   @include mix.column;
-  @include mix.gap-sm;
+  @include mix.gap;
   width: 100%;
+  padding: 2rem 1rem 1.75rem;
+  background-color: var(--lobby-surface);
+  border: 1px solid var(--lobby-border);
+  border-radius: var(--lobby-radius-lg);
+  box-shadow: var(--lobby-shadow-sm);
+  cursor: pointer;
+  transition:
+    box-shadow var(--lobby-duration) var(--lobby-ease),
+    transform var(--lobby-duration) var(--lobby-ease),
+    border-color var(--lobby-duration) var(--lobby-ease);
 
   h2 {
     text-align: center;
     overflow-wrap: anywhere;
+    @include mix.fluid-text(1.125rem, 3.5vw, 1.375rem);
+    font-weight: 600;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--lobby-shadow-lg);
+    border-color: var(--lobby-brand-200);
+
+    .cards {
+      --card-offset: calc(var(--card-width) * 0.68);
+    }
   }
 }
 
 /**
- * The covers are fanned out from the centre of the card. Both the cover size
- * and the distance between covers scale with the viewport, so the fan always
- * fits the screen instead of overflowing it.
+ * Both the cover size and the distance between covers scale with the
+ * viewport, so the fan always fits the screen instead of overflowing it.
  */
 .cards {
-  --card-width: clamp(64px, 18vw, 264px);
+  --card-width: clamp(64px, 18vw, 208px);
   --card-height: calc(var(--card-width) * 352 / 264);
   --card-offset: calc(var(--card-width) * 0.6);
 
@@ -26,6 +57,7 @@
   width: calc(var(--card-width) + var(--card-offset) * 4);
   max-width: 100%;
   height: var(--card-height);
+  transition: none;
 
   img {
     position: absolute;
@@ -34,6 +66,9 @@
     width: var(--card-width);
     height: var(--card-height);
     object-fit: cover;
+    border-radius: var(--lobby-radius-sm);
+    background-color: var(--lobby-neutral-100);
+    transition: transform var(--lobby-duration-slow) var(--lobby-ease-out);
   }
 }
 
@@ -63,5 +98,5 @@
 }
 
 .shadow {
-  box-shadow: 10px 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--lobby-shadow-md);
 }

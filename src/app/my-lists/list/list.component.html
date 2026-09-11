@@ -2,9 +2,8 @@
   <div class="list-header row gap">
     <h1 class="list-title">{{ list.name }}</h1>
     <button
-      mat-flat-button
-      color="accent"
-      class="btn primary"
+      mat-stroked-button
+      class="btn primary btn-secondary"
       (click)="editList()"
     >
       <mat-icon svgIcon="edit"></mat-icon>
@@ -13,10 +12,10 @@
       </span>
     </button>
   </div>
-  <div class="games-grid">
+  <div class="games-grid enter">
     <div
       *ngFor="let game of list.games"
-      class="game column center gap-sm dark-when-hover"
+      class="game"
       (click)="navigateToGameDetail(game.id)"
     >
       <img

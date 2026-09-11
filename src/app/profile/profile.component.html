@@ -27,18 +27,14 @@
   <div class="banner__end">
     <mat-icon
       (click)="openSteamSyncModal()"
-      class="steam-icon dark-when-hover"
+      class="steam-icon"
       svgIcon="steam"
     ></mat-icon>
     <app-game-search-bar
       (selectedGameId)="goToGame($event)"
       class="search-bar"
     ></app-game-search-bar>
-    <mat-icon
-      (click)="goToRecents()"
-      class="new-icon dark-when-hover"
-      svgIcon="new"
-    ></mat-icon>
+    <mat-icon (click)="goToRecents()" class="new-icon" svgIcon="new"></mat-icon>
   </div>
 </div>
 

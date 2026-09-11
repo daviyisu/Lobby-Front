@@ -1,8 +1,8 @@
 <div class="modal-container">
-  <h2 *ngIf="!editReview">
+  <h2 class="modal-title" *ngIf="!editReview">
     {{ "newReview.newReview" | translate }} {{ data.gameName }}
   </h2>
-  <h2 *ngIf="editReview">
+  <h2 class="modal-title" *ngIf="editReview">
     {{ "editReview.editReview" | translate }} {{ data.gameName }}
   </h2>
   <form [formGroup]="form" class="column gap">
@@ -50,34 +50,35 @@
           />
         </mat-form-field>
       </div>
-      <mat-icon
-        [ngClass]="form.value.rating < 5 ? 'bad' : ''"
-        svgIcon="bad"
-      ></mat-icon>
-      <mat-icon
-        [ngClass]="
-          form.value.rating >= 5 && form.value.rating <= 7 ? 'good' : ''
-        "
-        svgIcon="good"
-      ></mat-icon>
-      <mat-icon
-        [ngClass]="
-          form.value.rating >= 8 && form.value.rating <= 9 ? 'very_good' : ''
-        "
-        svgIcon="very_good"
-      ></mat-icon>
-      <mat-icon
-        [ngClass]="form.value.rating == 10 ? 'perfect' : ''"
-        svgIcon="perfect"
-      ></mat-icon>
+      <div class="rating-icons row gap-sm">
+        <mat-icon
+          [ngClass]="form.value.rating < 5 ? 'bad' : ''"
+          svgIcon="bad"
+        ></mat-icon>
+        <mat-icon
+          [ngClass]="
+            form.value.rating >= 5 && form.value.rating <= 7 ? 'good' : ''
+          "
+          svgIcon="good"
+        ></mat-icon>
+        <mat-icon
+          [ngClass]="
+            form.value.rating >= 8 && form.value.rating <= 9 ? 'very_good' : ''
+          "
+          svgIcon="very_good"
+        ></mat-icon>
+        <mat-icon
+          [ngClass]="form.value.rating == 10 ? 'perfect' : ''"
+          svgIcon="perfect"
+        ></mat-icon>
+      </div>
     </div>
   </form>
   <div class="modal-actions">
     <button
       (click)="closeModal()"
-      mat-flat-button
-      color="accent"
-      class="btn primary"
+      mat-stroked-button
+      class="btn primary btn-secondary"
     >
       <span class="text-md"> {{ "global.back" | translate }} </span>
     </button>

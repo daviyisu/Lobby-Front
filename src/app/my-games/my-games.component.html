@@ -6,10 +6,10 @@
       [theme]="{ height: '100%', width: '100%', margin: '0' }"
     ></ngx-skeleton-loader>
   </div>
-  <div class="games-grid">
+  <div *ngIf="userGames" class="games-grid enter">
     <div
       *ngFor="let game of userGames"
-      class="game column center gap-sm dark-when-hover"
+      class="game"
       (click)="navigateToGameDetail(game.id)"
     >
       <img
@@ -21,7 +21,7 @@
     </div>
   </div>
 </div>
-<div *ngIf="userGames?.length === 0" class="no-games">
-  <img class="no-games--image" src="favicon.ico" />
+<div *ngIf="userGames?.length === 0" class="no-games enter">
+  <img class="no-games--image" src="favicon.ico" alt="" />
   <p class="text-lg">{{ "noElements.noGames" | translate }}</p>
 </div>

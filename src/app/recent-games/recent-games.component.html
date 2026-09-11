@@ -1,31 +1,32 @@
-<div class="container-padding column">
-  <h1>{{ "recentGames.title" | translate }}</h1>
+<div class="recent container-padding column gap-lg">
+  <h1 class="section-title">{{ "recentGames.title" | translate }}</h1>
   <ng-container *ngIf="recentGames">
-    <div class="column" *ngFor="let game of recentGames">
+    <div class="column gap-sm enter">
       <div
+        *ngFor="let game of recentGames"
         (click)="goToGame(game.id)"
-        class="recent-game row gap padding dark-when-hover"
+        class="recent-game row gap-lg"
       >
         <img
           class="game-cover"
           [src]="imageService.getIgdbImage(game.coverImageId)"
+          alt="Cover of the game"
         />
-        <div class="column gap">
-          <span class="text-lg semi-bold">{{ game.name }}</span>
+        <div class="column gap-sm">
+          <span class="game-name">{{ game.name }}</span>
           <span class="game-summary">{{ game.summary }}</span>
         </div>
       </div>
-      <mat-divider></mat-divider>
     </div>
     <div *ngIf="recentGames.length === 0" class="no-games">
-      <img class="no-games--image" src="favicon.ico" />
+      <img class="no-games--image" src="favicon.ico" alt="" />
       <p class="text-lg">{{ "noElements.noRecentGames" | translate }}</p>
     </div>
   </ng-container>
   <div *ngIf="!recentGames" class="column gap">
     <ngx-skeleton-loader
       *ngFor="let loader of loaders"
-      [theme]="{ height: '400px', width: '100%', margin: '0' }"
+      [theme]="{ height: '240px', width: '100%', margin: '0' }"
     ></ngx-skeleton-loader>
   </div>
 </div>

@@ -3,13 +3,19 @@
 .list-header {
   align-items: center;
   flex-wrap: wrap;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--lobby-border);
+  margin-bottom: 0.5rem;
 }
 
 .list-title {
-  @include mix.fluid-text(1.75rem, 6vw, 2.5rem);
-  line-height: 1.2;
+  @include mix.fluid-text(1.75rem, 6vw, 2.25rem);
+  line-height: 1.15;
   margin: 0;
   overflow-wrap: anywhere;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .games-grid {
@@ -21,11 +27,38 @@
   }
 }
 
-.game-cover {
-  @include mix.cover-image(100%);
-}
+.game {
+  @include mix.column;
+  @include mix.gap-sm;
+  align-items: center;
+  cursor: pointer;
+  transition: transform var(--lobby-duration) var(--lobby-ease);
 
-.title {
-  text-align: center;
-  overflow-wrap: anywhere;
+  .game-cover {
+    @include mix.cover-image(100%);
+    border-radius: var(--lobby-radius-md);
+    background-color: var(--lobby-neutral-100);
+    box-shadow: var(--lobby-shadow-sm);
+    transition: box-shadow var(--lobby-duration) var(--lobby-ease);
+  }
+
+  .title {
+    font-weight: 500;
+    font-size: 0.9375rem;
+    line-height: 1.35;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+
+    .game-cover {
+      box-shadow: var(--lobby-shadow-lg);
+    }
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
 }

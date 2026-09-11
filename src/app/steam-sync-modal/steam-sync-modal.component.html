@@ -1,6 +1,6 @@
 <ng-container *ngIf="!steamUser">
   <div class="modal-container">
-    <h1>{{ "steamSync.title" | translate }}</h1>
+    <h1 class="modal-title">{{ "steamSync.title" | translate }}</h1>
     <div class="row gap-lg">
       <img class="lobby-icon" src="favicon.ico" />
       <img class="lobby-icon" src="assets/img/steam_icon.png" />
@@ -24,14 +24,13 @@
     <span *ngIf="showPrivateError" class="mat-mdc-form-field-error">{{
       "steamSync.showPrivateError" | translate
     }}</span>
-    <span class="text-sm">{{ "steamSync.reminder" | translate }}</span>
+    <span class="text-sm reminder">{{ "steamSync.reminder" | translate }}</span>
   </div>
   <div class="modal-actions">
     <button
-      mat-flat-button
+      mat-stroked-button
       (click)="closeModal()"
-      color="accent"
-      class="btn primary"
+      class="btn primary btn-secondary"
     >
       <span class="text-md"> {{ "global.back" | translate }} </span>
     </button>
@@ -52,7 +51,7 @@
 
 <ng-container *ngIf="steamUser">
   <div class="last-step-sync">
-    <h1>{{ "steamSync.title" | translate }}</h1>
+    <h1 class="modal-title">{{ "steamSync.title" | translate }}</h1>
     <div class="flow-image">
       <div class="column gap-sm center">
         <span class="semi-bold">{{ "steamSync.yourAccount" | translate }}</span>
@@ -83,10 +82,9 @@
   </div>
   <div class="modal-actions">
     <button
-      mat-flat-button
+      mat-stroked-button
       (click)="closeModal()"
-      color="accent"
-      class="btn primary"
+      class="btn primary btn-secondary"
     >
       <span class="text-md"> {{ "global.back" | translate }} </span>
     </button>

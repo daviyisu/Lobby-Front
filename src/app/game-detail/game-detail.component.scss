@@ -4,28 +4,54 @@ mat-chip {
   pointer-events: none;
 }
 
+/**
+ * One content column: the header, the screenshots and the reviews all share
+ * the same left edge and the same maximum width.
+ */
+.detail {
+  align-items: center;
+
+  > * {
+    width: 100%;
+    max-width: 68rem;
+  }
+}
+
 .description {
-  max-width: 40rem;
+  max-width: 44rem;
+  color: var(--lobby-text-muted);
+  line-height: 1.65;
+}
+
+.release-date {
+  color: var(--lobby-text-muted);
+  font-size: 0.9375rem;
 }
 
 .main-cover {
   align-self: flex-start;
   @include mix.cover-image(264px);
+  border-radius: var(--lobby-radius-lg);
+  background-color: var(--lobby-neutral-100);
+  box-shadow: var(--lobby-shadow-md);
 }
 
 .game-title {
-  @include mix.fluid-text(2rem, 7vw, 3rem);
+  @include mix.fluid-text(2rem, 7vw, 2.75rem);
   line-height: 1.1;
+  letter-spacing: -0.02em;
   overflow-wrap: anywhere;
 }
 
 .review_avatar {
   background-image: url("/assets/img/default-photo.svg");
   background-size: cover;
+  background-color: var(--lobby-neutral-100);
 }
 
 .review-user-avatar {
   background-size: cover;
+  background-position: center;
 }
 
 .screenshots-section {
@@ -35,7 +61,7 @@ mat-chip {
 .screenshots {
   @include mix.row;
   width: 100%;
-  @include mix.gap-xl;
+  @include mix.gap-lg;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
@@ -45,10 +71,17 @@ mat-chip {
     min-width: 0;
     max-width: 480px;
     height: auto;
-  }
+    border-radius: var(--lobby-radius-md);
+    background-color: var(--lobby-neutral-100);
+    box-shadow: var(--lobby-shadow-sm);
+    transition:
+      transform var(--lobby-duration) var(--lobby-ease),
+      box-shadow var(--lobby-duration) var(--lobby-ease);
 
-  @include mix.md {
-    @include mix.gap-lg;
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--lobby-shadow-lg);
+    }
   }
 
   @include mix.xs {
@@ -59,7 +92,7 @@ mat-chip {
 .game-header {
   max-width: 100%;
   @include mix.row;
-  @include mix.gap;
+  @include mix.gap-xl;
   @include mix.column-gap-at-900;
 
   > .column {
@@ -67,29 +100,36 @@ mat-chip {
   }
 }
 
-.completed {
-  color: green;
-}
-
-.abandoned {
-  color: red;
-}
-
-.retired {
-  color: blue;
-}
-
-.playing {
-  color: darkgoldenrod;
+/**
+ * Collection status reuses the status colour family (defined in styles.scss),
+ * so a button's colour says what the status is at a glance.
+ */
+.status-button {
+  --mat-button-filled-container-color: var(--status-soft);
+  --mat-button-filled-label-text-color: var(--status-strong);
+  box-shadow: inset 0 0 0 1px var(--status-strong) !important;
 }
 
 .review-container {
   width: 100%;
 
+  mat-card {
+    border-radius: var(--lobby-radius-lg);
+    border-color: var(--lobby-border);
+    background-color: var(--lobby-surface);
+    box-shadow: var(--lobby-shadow-xs);
+    transition: box-shadow var(--lobby-duration) var(--lobby-ease);
+
+    &:hover {
+      box-shadow: var(--lobby-shadow-sm);
+    }
+  }
+
   .review-summary {
     padding-top: 0.5rem;
-    color: black;
-    font-size: medium;
+    color: var(--lobby-text);
+    font-size: 1rem;
+    font-weight: 500;
     flex-wrap: wrap;
 
     mat-icon {
@@ -99,25 +139,30 @@ mat-chip {
 
   .review-text {
     padding-top: 1rem;
+    color: var(--lobby-text-muted);
+    line-height: 1.65;
   }
 
   .review_number {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
   }
 
   .bad {
-    color: red;
+    color: var(--lobby-danger);
   }
 
   .good {
-    color: green;
+    color: var(--lobby-success);
   }
 
   .very_good {
-    color: blue;
+    color: var(--lobby-info);
   }
 
   .perfect {
-    color: darkturquoise;
+    color: var(--lobby-special);
   }
 }
