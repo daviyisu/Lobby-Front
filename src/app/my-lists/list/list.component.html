@@ -1,5 +1,5 @@
 <div class="container-padding column gap">
-  <div class="row gap">
+  <div class="list-header row gap">
     <h1 class="list-title">{{ list.name }}</h1>
     <button
       mat-flat-button
@@ -13,13 +13,14 @@
       </span>
     </button>
   </div>
-  <div class="row gap-lg flex-wrap center">
+  <div class="games-grid">
     <div
       *ngFor="let game of list.games"
-      class="column center gap-sm dark-when-hover"
+      class="game column center gap-sm dark-when-hover"
       (click)="navigateToGameDetail(game.id)"
     >
       <img
+        class="game-cover"
         src="https://images.igdb.com/igdb/image/upload/t_cover_big/{{
           game.coverImageId
         }}.jpg"

@@ -2,7 +2,10 @@
   <h1>{{ "recentGames.title" | translate }}</h1>
   <ng-container *ngIf="recentGames">
     <div class="column" *ngFor="let game of recentGames">
-      <div (click)="goToGame(game.id)" class="row gap padding dark-when-hover">
+      <div
+        (click)="goToGame(game.id)"
+        class="recent-game row gap padding dark-when-hover"
+      >
         <img
           class="game-cover"
           [src]="imageService.getIgdbImage(game.coverImageId)"

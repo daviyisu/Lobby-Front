@@ -1,13 +1,39 @@
 @use "src/scss/mixins" as mix;
 
+.recent-game {
+  align-items: flex-start;
+
+  .column {
+    min-width: 0;
+  }
+
+  /**
+   * The cover sits next to the description on wide screens and on top of it
+   * once there is no room left for both.
+   */
+  @include mix.sm {
+    @include mix.column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
 .game-cover {
-  width: 264px;
-  height: 374px;
+  @include mix.cover-image(264px);
+  flex: 0 0 auto;
+
+  @include mix.sm {
+    width: min(264px, 55vw);
+  }
 }
 
 .game-summary {
   @include mix.text-md;
   align-self: flex-end;
+
+  @include mix.sm {
+    align-self: auto;
+  }
 }
 
 .no-games {
@@ -16,9 +42,10 @@
   @include mix.gap-lg;
   width: 100%;
   height: 100%;
+  text-align: center;
 
   &--image {
-    width: 22rem;
+    width: min(22rem, 60vw);
     opacity: 0.8;
   }
 }
