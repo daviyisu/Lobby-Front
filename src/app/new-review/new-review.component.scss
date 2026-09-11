@@ -3,11 +3,23 @@
 .modal-container {
   @include mix.column;
   @include mix.gap;
-  min-width: 23rem;
+  width: min(28rem, 100%);
 
   .rating {
     width: fit-content;
     border-radius: 2rem;
+  }
+
+  /**
+   * The rating icons keep their size and move to their own line rather than
+   * being squashed to nothing next to the rating field.
+   */
+  .rating-row {
+    flex-wrap: wrap;
+
+    mat-icon {
+      flex: 0 0 auto;
+    }
   }
 
   .bad {

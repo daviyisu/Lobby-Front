@@ -3,8 +3,7 @@
 .modal-container {
   @include mix.column;
   @include mix.gap;
-  min-width: 23rem;
-  width: 420px;
+  width: min(420px, 100%);
 }
 
 .game-chips-container {

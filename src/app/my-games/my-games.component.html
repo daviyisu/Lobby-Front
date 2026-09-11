@@ -1,29 +1,24 @@
-<div class="container flex-wrap row gap-lg center">
-  <div *ngIf="!userGames" class="column gap-sm">
-    <div class="row gap-lg">
-      <ngx-skeleton-loader
-        *ngFor="let loader of loaders"
-        [theme]="{ height: '374px', width: '264px', margin: '0' }"
-      ></ngx-skeleton-loader>
-    </div>
-    <div class="row gap-lg">
-      <ngx-skeleton-loader
-        *ngFor="let loader of loaders"
-        [theme]="{ height: '374px', width: '264px', margin: '0' }"
-      ></ngx-skeleton-loader>
-    </div>
+<div class="container">
+  <div *ngIf="!userGames" class="games-grid">
+    <ngx-skeleton-loader
+      *ngFor="let loader of loaders"
+      class="game-skeleton"
+      [theme]="{ height: '100%', width: '100%', margin: '0' }"
+    ></ngx-skeleton-loader>
   </div>
-  <div
-    *ngFor="let game of userGames"
-    class="column center gap-sm dark-when-hover"
-    (click)="navigateToGameDetail(game.id)"
-  >
-    <img
-      class="game-cover"
-      [src]="imageService.getIgdbImage(game.coverImageId)"
-      alt="Cover of the game"
-    />
-    <span class="title"> {{ game.name }} </span>
+  <div class="games-grid">
+    <div
+      *ngFor="let game of userGames"
+      class="game column center gap-sm dark-when-hover"
+      (click)="navigateToGameDetail(game.id)"
+    >
+      <img
+        class="game-cover"
+        [src]="imageService.getIgdbImage(game.coverImageId)"
+        alt="Cover of the game"
+      />
+      <span class="title"> {{ game.name }} </span>
+    </div>
   </div>
 </div>
 <div *ngIf="userGames?.length === 0" class="no-games">

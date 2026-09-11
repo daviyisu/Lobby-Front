@@ -1,3 +1,31 @@
+@use "src/scss/mixins" as mix;
+
+.list-header {
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .list-title {
-  font-size: 2.5rem;
+  @include mix.fluid-text(1.75rem, 6vw, 2.5rem);
+  line-height: 1.2;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.games-grid {
+  @include mix.cover-grid;
+  @include mix.gap-lg;
+
+  @include mix.xs {
+    @include mix.gap;
+  }
+}
+
+.game-cover {
+  @include mix.cover-image(100%);
+}
+
+.title {
+  text-align: center;
+  overflow-wrap: anywhere;
 }

@@ -10,13 +10,13 @@ mat-chip {
 
 .main-cover {
   align-self: flex-start;
-  width: 264px;
-  height: 374px;
+  @include mix.cover-image(264px);
 }
 
 .game-title {
-  font-size: 3rem;
-  line-height: 2.5rem;
+  @include mix.fluid-text(2rem, 7vw, 3rem);
+  line-height: 1.1;
+  overflow-wrap: anywhere;
 }
 
 .review_avatar {
@@ -28,16 +28,43 @@ mat-chip {
   background-size: cover;
 }
 
+.screenshots-section {
+  width: 100%;
+}
+
 .screenshots {
   @include mix.row;
+  width: 100%;
   @include mix.gap-xl;
-  @include mix.column-gap-at-900;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+
+  img {
+    flex: 1 1 320px;
+    min-width: 0;
+    max-width: 480px;
+    height: auto;
+  }
+
+  @include mix.md {
+    @include mix.gap-lg;
+  }
+
+  @include mix.xs {
+    @include mix.gap;
+  }
 }
 
 .game-header {
+  max-width: 100%;
   @include mix.row;
   @include mix.gap;
   @include mix.column-gap-at-900;
+
+  > .column {
+    min-width: 0;
+  }
 }
 
 .completed {
@@ -63,6 +90,11 @@ mat-chip {
     padding-top: 0.5rem;
     color: black;
     font-size: medium;
+    flex-wrap: wrap;
+
+    mat-icon {
+      flex: 0 0 auto;
+    }
   }
 
   .review-text {

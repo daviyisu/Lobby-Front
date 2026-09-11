@@ -1,5 +1,11 @@
-.bar-container {
-  height: 100px;
+:host {
+  display: block;
+  min-width: 0;
   width: 100%;
-  min-width: 200px;
+}
+
+.bar-container {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
