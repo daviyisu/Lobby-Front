@@ -28,6 +28,11 @@
   gap: var(--space-8) var(--space-5);
 }
 
+.overline {
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
 .lb-muted {
   color: var(--text-muted);
 }
@@ -267,6 +272,11 @@ $statuses: playing, completed, played, abandoned, retired;
 .mat-mdc-menu-item .check {
   margin-left: auto;
   color: var(--primary-text);
+}
+
+.menu-loading {
+  padding: var(--space-3) var(--space-4);
+  color: var(--text-muted);
 }
 
 /* Buttons with a Material Symbol or image before the label */

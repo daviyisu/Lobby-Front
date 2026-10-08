@@ -2,7 +2,13 @@
   "global": {
     "back": "Atrás",
     "continue": "Continuar",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "undo": "Deshacer",
+    "cancel": "Cancelar",
+    "saving": "Guardando…",
+    "loading": "Cargando…",
+    "error": "Algo ha fallado. Inténtalo de nuevo.",
+    "moreOptions": "Más opciones"
   },
   "profile": {
     "collection": "Colección",
@@ -19,19 +25,59 @@
     "totalReviews": "Total de reseñas escritas:"
   },
   "gameDetail": {
-    "createReview": "Crear reseña",
-    "addGame": "Añadir juego a colección",
-    "screenshots": "Capturas de pantalla",
-    "releaseDate": "Fecha de lanzamiento: {{day}}/{{month}}/{{year}}"
+    "createReview": "Escribir reseña",
+    "addGame": "Añadir a colección",
+    "screenshots": "Capturas",
+    "releaseDate": "Fecha de lanzamiento: {{day}}/{{month}}/{{year}}",
+    "editReview": "Editar tu reseña",
+    "reviews": "Reseñas",
+    "statusLabel": "Estado en tu colección",
+    "inCollection": "En tu colección",
+    "notInCollection": "No está en tu colección",
+    "addHint": "Añádelo y elige luego en qué punto estás.",
+    "remove": "Quitar de la colección",
+    "average": "Nota media {{value}}",
+    "reviewCount": "de {{count}} reseñas en Lobby",
+    "noReviews": "Aún nadie lo ha puntuado. ¡Sé el primero!",
+    "screenshotAlt": "Captura {{n}}",
+    "emptyReviews": {
+      "title": "Todavía no hay reseñas",
+      "text": "Cuenta qué te pareció y ayuda a otros a decidir."
+    },
+    "deleteReview": {
+      "title": "¿Borrar tu reseña?",
+      "text": "Se borrará para siempre, junto con su nota.",
+      "confirm": "Borrar reseña"
+    },
+    "toast": {
+      "added": "Añadido a tu colección como Jugando",
+      "removed": "Quitado de tu colección",
+      "moved": "Movido a {{status}}",
+      "addedToList": "Añadido a {{list}}",
+      "reviewPublished": "Reseña publicada",
+      "reviewUpdated": "Reseña actualizada",
+      "reviewDeleted": "Reseña borrada"
+    }
   },
   "newReview": {
-    "newReview": "Nueva reseña para",
-    "summarize": "Resume en una frase corta tu opinión",
-    "writeHere": "Escribe aquí tu reseña"
+    "newReview": "Reseña de",
+    "summarize": "Tu opinión en una frase",
+    "writeHere": "Qué te gustó, qué no, a quién se lo recomendarías…",
+    "subtitle": "Tu nota y tu opinión se verán en la ficha del juego.",
+    "ratingLabel": "Tu nota",
+    "ratingLow": "0 · nada recomendable",
+    "ratingHigh": "10 · obra maestra",
+    "ratingRequired": "Elige una nota de 0 a 10",
+    "summaryLabel": "Resumen",
+    "summaryError": "Escribe entre 5 y 255 caracteres",
+    "textLabel": "Reseña",
+    "textError": "Escribe entre 5 y 1000 caracteres",
+    "publish": "Publicar reseña",
+    "saveError": "No se ha podido guardar la reseña. Revisa tu conexión e inténtalo de nuevo."
   },
   "editReview": {
-    "editReview": "Editar reseña para",
-    "buttonText": "Editar"
+    "editReview": "Editar reseña de",
+    "buttonText": "Guardar cambios"
   },
   "addGameStatus": {
     "completed": "Completado",
@@ -157,5 +203,11 @@
       "text": "Prueba con otro filtro o mira toda tu colección.",
       "action": "Ver todos"
     }
+  },
+  "rating": {
+    "label": "Nota {{value}} de 10"
+  },
+  "review": {
+    "you": "(tú)"
   }
 }

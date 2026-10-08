@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,7 +28,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
-import { AddedGameStatusModalComponent } from './added-game-status-modal/added-game-status-modal.component';
 import { MatListModule } from '@angular/material/list';
 import { MyListsComponent } from './my-lists/my-lists.component';
 import { ListComponent } from './my-lists/list/list.component';
@@ -49,6 +50,15 @@ import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
 import { GameCardComponent } from './game-card/game-card.component';
 import { StatusBadgeComponent } from './status-badge/status-badge.component';
 import { EmptyStateComponent } from './empty-state/empty-state.component';
+import { StatusSelectorComponent } from './status-selector/status-selector.component';
+import { RatingBadgeComponent } from './rating-badge/rating-badge.component';
+import { RatingInputComponent } from './rating-input/rating-input.component';
+import { ReviewCardComponent } from './review-card/review-card.component';
+import { RelativeTimePipe } from './review-card/relative-time.pipe';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+
+// Spanish dates ("24 de febrero de 2017") for the date pipe.
+registerLocaleData(localeEs);
 
 export const globalImports = [
   TranslateModule.forRoot({
@@ -67,7 +77,6 @@ export const globalImports = [
     MyStatsComponent,
     GameDetailComponent,
     NewReviewComponent,
-    AddedGameStatusModalComponent,
     MyListsComponent,
     ListComponent,
     LoginComponent,
@@ -84,6 +93,12 @@ export const globalImports = [
     GameCardComponent,
     StatusBadgeComponent,
     EmptyStateComponent,
+    StatusSelectorComponent,
+    RatingBadgeComponent,
+    RatingInputComponent,
+    ReviewCardComponent,
+    RelativeTimePipe,
+    ConfirmDialogComponent,
   ],
   bootstrap: [AppComponent],
   imports: [

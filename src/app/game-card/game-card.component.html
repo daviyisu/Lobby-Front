@@ -13,11 +13,9 @@
   </span>
   <span class="info">
     <span class="title">{{ game.name }}</span>
-    <span
+    <app-rating-badge
       *ngIf="game.rating !== undefined && game.rating !== null"
-      class="lb-rating lb-rating--{{ ratingTier }}"
-    >
-      <span class="lb-ic" aria-hidden="true">star</span>{{ game.rating }}
-    </span>
+      [value]="game.rating"
+    ></app-rating-badge>
   </span>
 </a>

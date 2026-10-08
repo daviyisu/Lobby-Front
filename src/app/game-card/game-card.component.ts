@@ -12,9 +12,4 @@ export class GameCardComponent {
   protected imageService = inject(ImageService);
 
   @Input({ required: true }) game!: CollectionGame;
-
-  get ratingTier(): string {
-    const r = this.game.rating ?? 0;
-    return r === 10 ? 'perfect' : r >= 8 ? 'high' : r >= 5 ? 'mid' : 'low';
-  }
 }

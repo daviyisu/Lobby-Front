@@ -1,0 +1,69 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  background: var(--primary-soft);
+  color: var(--primary-text);
+  display: grid;
+  place-items: center;
+  font: 700 15px/1 var(--font-sans);
+  flex: none;
+}
+
+.who {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font: 600 15px/20px var(--font-sans);
+}
+
+.you {
+  margin-left: var(--space-1);
+  color: var(--text-subtle);
+  font-weight: 500;
+}
+
+.when {
+  font: 500 13px/18px var(--font-sans);
+  color: var(--text-subtle);
+}
+
+.summary {
+  margin: 0;
+  font: 700 17px/24px var(--font-sans);
+}
+
+.text {
+  margin: 0;
+  max-width: var(--prose-max);
+  color: var(--text-muted);
+  white-space: pre-line;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-1);
+  margin-left: calc(var(--space-3) * -1);
+  --mat-button-text-container-height: var(--control-h-sm);
+  --mat-button-text-label-text-color: var(--text-muted);
+}

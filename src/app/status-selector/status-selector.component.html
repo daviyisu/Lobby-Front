@@ -1,0 +1,23 @@
+<div
+  class="seg"
+  role="radiogroup"
+  [attr.aria-label]="'gameDetail.statusLabel' | translate"
+>
+  <button
+    *ngFor="let o of options; let i = index"
+    type="button"
+    role="radio"
+    class="opt opt--{{ o.key }}"
+    [attr.aria-checked]="o.status === status"
+    [attr.tabindex]="o.status === status ? 0 : -1"
+    [disabled]="disabled"
+    (click)="select(o.status)"
+    (keydown)="move($event, i)"
+  >
+    <span class="lb-ic" aria-hidden="true">{{ o.icon }}</span>
+    {{ "gameStatus." + o.status | translate }}
+  </button>
+</div>
+<p class="help" aria-live="polite">
+  {{ "addGameStatus." + status.toLowerCase() + "-text" | translate }}
+</p>

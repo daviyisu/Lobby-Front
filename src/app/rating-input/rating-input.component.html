@@ -1,0 +1,23 @@
+<div
+  class="scale"
+  role="radiogroup"
+  [attr.aria-label]="'newReview.ratingLabel' | translate"
+  (keydown)="move($event)"
+>
+  <button
+    *ngFor="let n of steps"
+    type="button"
+    role="radio"
+    class="n is-{{ tier(n) }}"
+    [attr.aria-checked]="n === value"
+    [attr.tabindex]="n === (value ?? 0) ? 0 : -1"
+    [disabled]="disabled"
+    (click)="select(n)"
+  >
+    {{ n }}
+  </button>
+</div>
+<div class="ends">
+  <span>{{ "newReview.ratingLow" | translate }}</span>
+  <span>{{ "newReview.ratingHigh" | translate }}</span>
+</div>

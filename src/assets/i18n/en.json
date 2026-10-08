@@ -2,7 +2,13 @@
   "global": {
     "back": "Back",
     "continue": "Continue",
-    "close": "Close"
+    "close": "Close",
+    "undo": "Undo",
+    "cancel": "Cancel",
+    "saving": "Saving…",
+    "loading": "Loading…",
+    "error": "Something went wrong. Please try again.",
+    "moreOptions": "More options"
   },
   "profile": {
     "collection": "Collection",
@@ -19,19 +25,59 @@
     "totalReviews": "Total of reviews written:"
   },
   "gameDetail": {
-    "createReview": "Create review",
-    "addGame": "Add game to collection",
+    "createReview": "Write a review",
+    "addGame": "Add to collection",
     "screenshots": "Screenshots",
-    "releaseDate": "Released date: {{day}}/{{month}}/{{year}}"
+    "releaseDate": "Released date: {{day}}/{{month}}/{{year}}",
+    "editReview": "Edit your review",
+    "reviews": "Reviews",
+    "statusLabel": "Status in your collection",
+    "inCollection": "In your collection",
+    "notInCollection": "Not in your collection",
+    "addHint": "Add it, then pick where you're at.",
+    "remove": "Remove from collection",
+    "average": "Average {{value}}",
+    "reviewCount": "from {{count}} reviews on Lobby",
+    "noReviews": "No one has rated it yet. Be the first!",
+    "screenshotAlt": "Screenshot {{n}}",
+    "emptyReviews": {
+      "title": "No reviews yet",
+      "text": "Say what you thought and help others decide."
+    },
+    "deleteReview": {
+      "title": "Delete your review?",
+      "text": "It will be gone for good, along with its rating.",
+      "confirm": "Delete review"
+    },
+    "toast": {
+      "added": "Added to your collection as Playing",
+      "removed": "Removed from your collection",
+      "moved": "Moved to {{status}}",
+      "addedToList": "Added to {{list}}",
+      "reviewPublished": "Review published",
+      "reviewUpdated": "Review updated",
+      "reviewDeleted": "Review deleted"
+    }
   },
   "newReview": {
-    "newReview": "New review for",
-    "summarize": "Summarize your thoughts in a short sentence",
-    "writeHere": "Write here your review"
+    "newReview": "Review of",
+    "summarize": "Your opinion in one sentence",
+    "writeHere": "What you liked, what you didn't, who you'd recommend it to…",
+    "subtitle": "Your rating and opinion will show on the game's page.",
+    "ratingLabel": "Your rating",
+    "ratingLow": "0 · not recommended",
+    "ratingHigh": "10 · masterpiece",
+    "ratingRequired": "Pick a rating from 0 to 10",
+    "summaryLabel": "Summary",
+    "summaryError": "Write between 5 and 255 characters",
+    "textLabel": "Review",
+    "textError": "Write between 5 and 1000 characters",
+    "publish": "Publish review",
+    "saveError": "The review couldn't be saved. Check your connection and try again."
   },
   "editReview": {
-    "editReview": "Edit review for",
-    "buttonText": "Edit"
+    "editReview": "Edit review of",
+    "buttonText": "Save changes"
   },
   "addGameStatus": {
     "completed": "Completed",
@@ -157,5 +203,11 @@
       "text": "Try another filter or see your whole collection.",
       "action": "See all"
     }
+  },
+  "rating": {
+    "label": "Rated {{value}} out of 10"
+  },
+  "review": {
+    "you": "(you)"
   }
 }
