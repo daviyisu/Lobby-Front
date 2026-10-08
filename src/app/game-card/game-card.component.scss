@@ -1,0 +1,54 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  color: inherit;
+  text-decoration: none;
+}
+
+.cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface-3);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--duration-base),
+    box-shadow var(--duration-base);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.card:hover .cover,
+.card:focus-visible .cover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.badge {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+}
+
+.info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.title {
+  font: 600 15px/20px var(--font-sans);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

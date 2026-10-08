@@ -1,14 +1,15 @@
 {
   "global": {
     "back": "Back",
-    "continue": "Continue"
+    "continue": "Continue",
+    "close": "Close"
   },
   "profile": {
     "collection": "Collection",
     "statistics": "Statistics",
     "lists": "Lists",
     "logout": "Log out",
-    "searchBarPlaceholder": "Search your games here!"
+    "searchBarPlaceholder": "Search for a game to add…"
   },
   "stats": {
     "gamesOwned": "Games owned:",
@@ -106,5 +107,55 @@
     "noGames": "You haven't added any games to your collection yet. Use the search bar to add your favorite games!",
     "noLists": "You haven't created any list yet!",
     "noRecentGames": "There have been no recent games for a week"
+  },
+  "nav": {
+    "label": "Main",
+    "collection": "Collection",
+    "lists": "Lists",
+    "stats": "Statistics",
+    "recent": "What's new"
+  },
+  "topBar": {
+    "search": "Search",
+    "steamSync": "Sync with Steam",
+    "userMenu": "User menu"
+  },
+  "theme": {
+    "label": "Theme",
+    "system": "Automatic",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "language": {
+    "label": "Language",
+    "es": "Español",
+    "en": "English"
+  },
+  "footer": {
+    "igdb": "Data from IGDB"
+  },
+  "collection": {
+    "title": "Collection",
+    "count": "{{count}} games",
+    "playingNow": "{{count}} playing now",
+    "addGame": "Add game",
+    "filterLabel": "Filter by status",
+    "all": "All",
+    "coverAlt": "Cover of {{name}}",
+    "sort": {
+      "recent": "Recent",
+      "az": "A–Z"
+    },
+    "empty": {
+      "title": "Your collection is empty",
+      "text": "Search for a game and add it, or bring in your whole Steam library at once.",
+      "search": "Search for a game",
+      "steam": "Import from Steam"
+    },
+    "emptyFilter": {
+      "title": "No games with this status",
+      "text": "Try another filter or see your whole collection.",
+      "action": "See all"
+    }
   }
 }

@@ -1,0 +1,23 @@
+<a class="card" [routerLink]="['/gamedetail', game.id]">
+  <span class="cover">
+    <img
+      [src]="imageService.getIgdbImage(game.coverImageId)"
+      [alt]="'collection.coverAlt' | translate: { name: game.name }"
+      loading="lazy"
+    />
+    <app-status-badge
+      *ngIf="game.status"
+      class="badge"
+      [status]="game.status"
+    ></app-status-badge>
+  </span>
+  <span class="info">
+    <span class="title">{{ game.name }}</span>
+    <span
+      *ngIf="game.rating !== undefined && game.rating !== null"
+      class="lb-rating lb-rating--{{ ratingTier }}"
+    >
+      <span class="lb-ic" aria-hidden="true">star</span>{{ game.rating }}
+    </span>
+  </span>
+</a>

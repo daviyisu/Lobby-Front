@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { ProfileComponent } from './profile/profile.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
   HTTP_INTERCEPTORS,
@@ -12,7 +11,8 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 import { MyGamesComponent } from './my-games/my-games.component';
 import { MyStatsComponent } from './my-stats/my-stats.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -44,6 +44,11 @@ import { SteamSyncModalComponent } from './steam-sync-modal/steam-sync-modal.com
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
+import { GameCardComponent } from './game-card/game-card.component';
+import { StatusBadgeComponent } from './status-badge/status-badge.component';
+import { EmptyStateComponent } from './empty-state/empty-state.component';
 
 export const globalImports = [
   TranslateModule.forRoot({
@@ -58,7 +63,6 @@ export const globalImports = [
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileComponent,
     MyGamesComponent,
     MyStatsComponent,
     GameDetailComponent,
@@ -75,6 +79,11 @@ export const globalImports = [
     FooterComponent,
     RecentGamesComponent,
     SteamSyncModalComponent,
+    TopBarComponent,
+    BottomNavComponent,
+    GameCardComponent,
+    StatusBadgeComponent,
+    EmptyStateComponent,
   ],
   bootstrap: [AppComponent],
   imports: [
@@ -85,7 +94,8 @@ export const globalImports = [
     MatButtonModule,
     MatDialogModule,
     MatGridListModule,
-    MatTabsModule,
+    MatMenuModule,
+    MatDividerModule,
     MatChipsModule,
     MatIconModule,
     ReactiveFormsModule,

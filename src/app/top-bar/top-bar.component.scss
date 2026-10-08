@@ -1,0 +1,155 @@
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: block;
+}
+
+.bar {
+  height: var(--appbar-h);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.bar__in {
+  position: relative;
+  max-width: var(--content-max);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font: 800 19px/1 var(--font-sans);
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: var(--space-1);
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 40px;
+    padding: 0 var(--space-3);
+    border-radius: var(--radius-full);
+    color: var(--text-muted);
+    font: 600 14px/20px var(--font-sans);
+    text-decoration: none;
+
+    &:hover {
+      background: var(--surface-2);
+      color: var(--text);
+    }
+
+    &.is-active {
+      background: var(--primary-soft);
+      color: var(--primary-text);
+    }
+  }
+}
+
+.search {
+  flex: 1;
+  min-width: 0;
+  max-width: 440px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  app-game-search-bar {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.search__close,
+.search-toggle {
+  display: none !important;
+}
+
+.end {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.avatar-btn {
+  border: 0;
+  padding: 0;
+  margin-left: var(--space-1);
+  background: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  background: var(--primary-soft);
+  color: var(--primary-text);
+  display: grid;
+  place-items: center;
+  font: 700 13px/1 var(--font-sans);
+}
+
+@media (max-width: 1199px) {
+  .nav .lb-ic {
+    display: none;
+  }
+
+  .bar__in {
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 599px) {
+  .bar {
+    height: 56px;
+  }
+
+  .bar__in {
+    padding: 0 var(--space-4);
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .search {
+    display: none;
+  }
+
+  .search-toggle {
+    display: inline-flex !important;
+    margin-left: auto;
+  }
+
+  .is-searching {
+    .search {
+      display: flex;
+      position: absolute;
+      inset: 0;
+      max-width: none;
+      padding: 0 var(--space-2) 0 var(--space-4);
+      background: var(--surface);
+    }
+
+    .search__close {
+      display: inline-flex !important;
+    }
+  }
+}

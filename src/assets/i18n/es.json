@@ -1,14 +1,15 @@
 {
   "global": {
     "back": "Atrás",
-    "continue": "Continuar"
+    "continue": "Continuar",
+    "close": "Cerrar"
   },
   "profile": {
     "collection": "Colección",
     "statistics": "Estadísticas",
     "lists": "Listas",
     "logout": "Cerrar sesión",
-    "searchBarPlaceholder": "¡Busca tus juegos aquí!"
+    "searchBarPlaceholder": "Busca un juego para añadirlo…"
   },
   "stats": {
     "gamesOwned": "Juegos en propiedad:",
@@ -106,5 +107,55 @@
     "noGames": "Aún no has añadido ningún juego a tu coleccion, ¡usa la barra de búsqueda para añadir tus juegos favoritos!",
     "noLists": "¡Aún no has creado ninguna lista!",
     "noRecentGames": "No hay juegos recientes desde hace una semana"
+  },
+  "nav": {
+    "label": "Principal",
+    "collection": "Colección",
+    "lists": "Listas",
+    "stats": "Estadísticas",
+    "recent": "Novedades"
+  },
+  "topBar": {
+    "search": "Buscar",
+    "steamSync": "Sincronizar con Steam",
+    "userMenu": "Menú de usuario"
+  },
+  "theme": {
+    "label": "Tema",
+    "system": "Automático",
+    "light": "Claro",
+    "dark": "Oscuro"
+  },
+  "language": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "English"
+  },
+  "footer": {
+    "igdb": "Datos de IGDB"
+  },
+  "collection": {
+    "title": "Colección",
+    "count": "{{count}} juegos",
+    "playingNow": "{{count}} jugando ahora",
+    "addGame": "Añadir juego",
+    "filterLabel": "Filtrar por estado",
+    "all": "Todos",
+    "coverAlt": "Carátula de {{name}}",
+    "sort": {
+      "recent": "Recientes",
+      "az": "A–Z"
+    },
+    "empty": {
+      "title": "Tu colección está vacía",
+      "text": "Busca un juego y añádelo, o trae tu biblioteca de Steam de una vez.",
+      "search": "Buscar un juego",
+      "steam": "Importar de Steam"
+    },
+    "emptyFilter": {
+      "title": "Ningún juego con este estado",
+      "text": "Prueba con otro filtro o mira toda tu colección.",
+      "action": "Ver todos"
+    }
   }
 }
