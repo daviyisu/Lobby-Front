@@ -61,7 +61,8 @@ export class MyGamesComponent implements OnInit {
 
   get visibleGames(): CollectionGame[] {
     let games = this.userGames ?? [];
-    if (this.statusFilter) {
+    // Without per-game statuses from the API a filter would hide everything.
+    if (this.statusFilter && this.hasStatuses) {
       games = games.filter((g) => g.status === this.statusFilter);
     }
     if (this.sort === 'az') {

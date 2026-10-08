@@ -22,7 +22,18 @@
     "gamesAbandoned": "Juegos abandonados:",
     "gamesCompleted": "Juegos completados:",
     "gamesPlaying": "Juegos que estás jugando actualmente:",
-    "totalReviews": "Total de reseñas escritas:"
+    "totalReviews": "Total de reseñas escritas:",
+    "title": "Estadísticas",
+    "collection": "Juegos en colección",
+    "collectionFoot": "Todo lo que has añadido a Lobby",
+    "completed": "Completados",
+    "completedFoot": "{{pct}}% de tu colección",
+    "playing": "Jugando ahora",
+    "playingFoot": "Partidas en curso",
+    "reviews": "Reseñas escritas",
+    "reviewsFoot": "Tus opiniones en Lobby",
+    "byStatus": "Tu colección por estado",
+    "noStatus": "Cuando des un estado a tus juegos, aquí verás cómo se reparten."
   },
   "gameDetail": {
     "createReview": "Escribir reseña",
@@ -209,5 +220,38 @@
   },
   "review": {
     "you": "(tú)"
+  },
+  "lists": {
+    "title": "Listas",
+    "summary": "{{count}} listas",
+    "count": "{{count}} juegos",
+    "new": "Nueva lista",
+    "empty": {
+      "title": "Aún no tienes listas",
+      "text": "Agrupa juegos como quieras: favoritos, pendientes, para recomendar…"
+    },
+    "emptyList": {
+      "title": "Esta lista está vacía",
+      "text": "Añade los juegos que quieras agrupar aquí.",
+      "action": "Añadir juegos"
+    },
+    "dialog": {
+      "subtitle": "Agrupa juegos como quieras: favoritos, pendientes, para recomendar…",
+      "name": "Nombre",
+      "games": "Juegos",
+      "searchPlaceholder": "Busca un juego para añadirlo a la lista…",
+      "remove": "Quitar {{name}}",
+      "needGames": "Añade al menos un juego para poder guardar la lista.",
+      "create": "Crear lista"
+    },
+    "delete": {
+      "title": "¿Borrar la lista {{name}}?",
+      "text": "Los juegos seguirán en tu colección."
+    },
+    "toast": {
+      "created": "Lista {{name}} creada",
+      "updated": "Lista actualizada",
+      "deleted": "Lista {{name}} borrada"
+    }
   }
 }

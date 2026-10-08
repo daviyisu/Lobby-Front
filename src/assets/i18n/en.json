@@ -22,7 +22,18 @@
     "gamesAbandoned": "Games abandoned:",
     "gamesCompleted": "Games completed:",
     "gamesPlaying": "Games you are currently playing:",
-    "totalReviews": "Total of reviews written:"
+    "totalReviews": "Total of reviews written:",
+    "title": "Statistics",
+    "collection": "Games in collection",
+    "collectionFoot": "Everything you've added to Lobby",
+    "completed": "Completed",
+    "completedFoot": "{{pct}}% of your collection",
+    "playing": "Playing now",
+    "playingFoot": "Games in progress",
+    "reviews": "Reviews written",
+    "reviewsFoot": "Your opinions on Lobby",
+    "byStatus": "Your collection by status",
+    "noStatus": "Once you give your games a status, you'll see how they break down here."
   },
   "gameDetail": {
     "createReview": "Write a review",
@@ -209,5 +220,38 @@
   },
   "review": {
     "you": "(you)"
+  },
+  "lists": {
+    "title": "Lists",
+    "summary": "{{count}} lists",
+    "count": "{{count}} games",
+    "new": "New list",
+    "empty": {
+      "title": "You don't have any lists yet",
+      "text": "Group games however you like: favorites, backlog, to recommend…"
+    },
+    "emptyList": {
+      "title": "This list is empty",
+      "text": "Add the games you want to group here.",
+      "action": "Add games"
+    },
+    "dialog": {
+      "subtitle": "Group games however you like: favorites, backlog, to recommend…",
+      "name": "Name",
+      "games": "Games",
+      "searchPlaceholder": "Search for a game to add to the list…",
+      "remove": "Remove {{name}}",
+      "needGames": "Add at least one game to save the list.",
+      "create": "Create list"
+    },
+    "delete": {
+      "title": "Delete the list {{name}}?",
+      "text": "The games will stay in your collection."
+    },
+    "toast": {
+      "created": "List {{name}} created",
+      "updated": "List updated",
+      "deleted": "List {{name}} deleted"
+    }
   }
 }

@@ -1,8 +1,8 @@
 import { Component, inject, Input } from '@angular/core';
-import { Router } from '@angular/router';
 import { GameList } from '../../../models/GameList';
 import { ImageService } from '../../../services/image.service';
 
+/** A list shown as a 2×2 mosaic of its first covers, its name and size. */
 @Component({
   selector: 'app-list-card',
   templateUrl: './list-card.component.html',
@@ -10,27 +10,16 @@ import { ImageService } from '../../../services/image.service';
   standalone: false,
 })
 export class ListCardComponent {
-  private router = inject(Router);
   private imageService = inject(ImageService);
 
-  private placeholderImage = 'assets/img/gamelist_placeholder.png';
+  @Input({ required: true }) list!: GameList;
 
-  @Input() list!: GameList;
-
-  getImagesFrontView(): string[] {
-    let images: string[] = [];
-    this.list.games.slice(0, 5).forEach((game) => {
-      if (game.coverImageId) {
-        images.push(this.imageService.getIgdbImage(game.coverImageId));
-      }
-    });
-    while (images.length < 5) {
-      images.push(this.placeholderImage);
-    }
-    return images;
-  }
-
-  goToList(id: number) {
-    this.router.navigate(['/list', id]);
+  /** Four mosaic slots: a cover URL, or null for an empty slot. */
+  get mosaic(): (string | null)[] {
+    const covers = (this.list.games ?? [])
+      .filter((g) => g.coverImageId)
+      .slice(0, 4)
+      .map((g) => this.imageService.getIgdbImage(g.coverImageId));
+    return [...covers, null, null, null, null].slice(0, 4);
   }
 }

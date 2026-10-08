@@ -1,7 +1,17 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 import { GameService } from '../../services/game.service';
-import { CollectionStatusEnum } from '../../models/enums';
 import { ReviewService } from '../../services/review.service';
+import { CollectionStatusEnum } from '../../models/enums';
+import { STATUS_META } from '../../models/collection-game';
+
+interface StatusCount {
+  status: CollectionStatusEnum;
+  key: string;
+  icon: string;
+  count: number;
+}
 
 @Component({
   selector: 'app-my-stats',
@@ -12,32 +22,52 @@ import { ReviewService } from '../../services/review.service';
 export class MyStatsComponent implements OnInit {
   private gameService = inject(GameService);
   private reviewService = inject(ReviewService);
+  private translate = inject(TranslateService);
 
   collectionCount?: number;
-
-  countDroppedGames?: number;
-
-  countCompletedGames?: number;
-
-  countPlayingGames?: number;
-
-  countTotalReviews?: number;
+  reviewCount?: number;
+  byStatus?: StatusCount[];
 
   ngOnInit() {
     this.gameService
       .getCountUserGames()
       .subscribe((count) => (this.collectionCount = count));
-    this.gameService
-      .getCountCollectionByStatus(CollectionStatusEnum.abandoned)
-      .subscribe((count) => (this.countDroppedGames = count));
-    this.gameService
-      .getCountCollectionByStatus(CollectionStatusEnum.completed)
-      .subscribe((count) => (this.countCompletedGames = count));
-    this.gameService
-      .getCountCollectionByStatus(CollectionStatusEnum.playing)
-      .subscribe((count) => (this.countPlayingGames = count));
     this.reviewService
       .countReviews()
-      .subscribe((count) => (this.countTotalReviews = count));
+      .subscribe((count) => (this.reviewCount = count));
+    forkJoin(
+      STATUS_META.map((m) =>
+        this.gameService.getCountCollectionByStatus(m.status),
+      ),
+    ).subscribe((counts) => {
+      this.byStatus = STATUS_META.map((m, i) => ({ ...m, count: counts[i] }));
+    });
   }
+
+  count(status: string): number | undefined {
+    return this.byStatus?.find((s) => s.status === status)?.count;
+  }
+
+  /** Games that have a status; the breakdown bar is relative to this. */
+  get statusTotal(): number {
+    return this.byStatus?.reduce((sum, s) => sum + s.count, 0) ?? 0;
+  }
+
+  get completedShare(): number | null {
+    const completed = this.count(CollectionStatusEnum.completed);
+    if (completed === undefined || !this.collectionCount) {
+      return null;
+    }
+    return Math.round((completed / this.collectionCount) * 100);
+  }
+
+  get barLabel(): string {
+    return (this.byStatus ?? [])
+      .map(
+        (s) => `${this.translate.instant('gameStatus.' + s.status)} ${s.count}`,
+      )
+      .join(', ');
+  }
+
+  protected readonly Status = CollectionStatusEnum;
 }

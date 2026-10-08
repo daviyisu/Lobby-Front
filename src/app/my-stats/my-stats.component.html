@@ -1,44 +1,112 @@
-<div class="stat first_stat">
-  <mat-icon class="icon" svgIcon="collection"></mat-icon>
-  <div class="text">
-    <span class="subtitle">{{ "stats.gamesOwned" | translate }}</span>
-    <span class="number">{{ collectionCount }}</span>
-  </div>
-  <mat-icon class="icon" svgIcon="collection"></mat-icon>
-</div>
+<main class="lb-page">
+  <h1 class="h1">{{ "stats.title" | translate }}</h1>
 
-<div class="stat second_stat">
-  <mat-icon class="icon" svgIcon="cancel"></mat-icon>
-  <div class="text">
-    <span class="subtitle">{{ "stats.gamesAbandoned" | translate }}</span>
-    <span class="number"> {{ countDroppedGames }}</span>
-  </div>
-  <mat-icon class="icon" svgIcon="cancel"></mat-icon>
-</div>
+  <div class="kpis">
+    <div class="kpi">
+      <div class="kpi__top">
+        {{ "stats.collection" | translate }}
+        <span class="kpi__icon neutral"
+          ><span class="lb-ic" aria-hidden="true">grid_view</span></span
+        >
+      </div>
+      <div class="kpi__num" *ngIf="collectionCount !== undefined; else numSkel">
+        {{ collectionCount }}
+      </div>
+      <div class="kpi__foot">{{ "stats.collectionFoot" | translate }}</div>
+    </div>
 
-<div class="stat third_stat">
-  <mat-icon class="icon" svgIcon="done"></mat-icon>
-  <div class="text">
-    <span class="subtitle">{{ "stats.gamesCompleted" | translate }}</span>
-    <span class="number">{{ countCompletedGames }}</span>
-  </div>
-  <mat-icon class="icon" svgIcon="done"></mat-icon>
-</div>
+    <div class="kpi">
+      <div class="kpi__top">
+        {{ "stats.completed" | translate }}
+        <span class="kpi__icon completed"
+          ><span class="lb-ic" aria-hidden="true">emoji_events</span></span
+        >
+      </div>
+      <div
+        class="kpi__num"
+        *ngIf="count(Status.completed) !== undefined; else numSkel"
+      >
+        {{ count(Status.completed) }}
+      </div>
+      <div class="kpi__foot">
+        <ng-container *ngIf="completedShare !== null">{{
+          "stats.completedFoot" | translate: { pct: completedShare }
+        }}</ng-container>
+      </div>
+    </div>
 
-<div class="stat fourth_stat">
-  <mat-icon class="icon" svgIcon="joystick"></mat-icon>
-  <div class="text">
-    <span class="subtitle">{{ "stats.gamesPlaying" | translate }}</span>
-    <span class="number">{{ countPlayingGames }}</span>
-  </div>
-  <mat-icon class="icon" svgIcon="joystick"></mat-icon>
-</div>
+    <div class="kpi">
+      <div class="kpi__top">
+        {{ "stats.playing" | translate }}
+        <span class="kpi__icon playing"
+          ><span class="lb-ic" aria-hidden="true">sports_esports</span></span
+        >
+      </div>
+      <div
+        class="kpi__num"
+        *ngIf="count(Status.playing) !== undefined; else numSkel"
+      >
+        {{ count(Status.playing) }}
+      </div>
+      <div class="kpi__foot">{{ "stats.playingFoot" | translate }}</div>
+    </div>
 
-<div class="stat fifth_stat">
-  <mat-icon class="icon" svgIcon="rate"></mat-icon>
-  <div class="text">
-    <span class="subtitle">{{ "stats.totalReviews" | translate }}</span>
-    <span class="number">{{ countTotalReviews }}</span>
+    <div class="kpi">
+      <div class="kpi__top">
+        {{ "stats.reviews" | translate }}
+        <span class="kpi__icon brand"
+          ><span class="lb-ic" aria-hidden="true">rate_review</span></span
+        >
+      </div>
+      <div class="kpi__num" *ngIf="reviewCount !== undefined; else numSkel">
+        {{ reviewCount }}
+      </div>
+      <div class="kpi__foot">{{ "stats.reviewsFoot" | translate }}</div>
+    </div>
   </div>
-  <mat-icon class="icon" svgIcon="rate"></mat-icon>
-</div>
+
+  <section class="breakdown">
+    <div class="lb-spread">
+      <h2 class="h3">{{ "stats.byStatus" | translate }}</h2>
+      <span *ngIf="byStatus" class="total">{{
+        "collection.count" | translate: { count: statusTotal }
+      }}</span>
+    </div>
+    <ng-container *ngIf="byStatus; else barSkel">
+      <div
+        *ngIf="statusTotal; else noStatus"
+        class="bar"
+        role="img"
+        [attr.aria-label]="barLabel"
+      >
+        <ng-container *ngFor="let s of byStatus">
+          <span
+            *ngIf="s.count"
+            [style.flex-grow]="s.count"
+            [style.background]="'var(--status-' + s.key + ')'"
+          ></span>
+        </ng-container>
+      </div>
+      <ul class="legend">
+        <li *ngFor="let s of byStatus">
+          <span
+            class="lb-dot"
+            [style.background]="'var(--status-' + s.key + ')'"
+          ></span>
+          {{ "gameStatus." + s.status | translate }}
+          <b>{{ s.count }}</b>
+        </li>
+      </ul>
+    </ng-container>
+    <ng-template #barSkel
+      ><div class="lb-skel" style="height: 12px"></div
+    ></ng-template>
+    <ng-template #noStatus>
+      <p class="lb-muted">{{ "stats.noStatus" | translate }}</p>
+    </ng-template>
+  </section>
+</main>
+
+<ng-template #numSkel>
+  <div class="lb-skel" style="height: 44px; width: 64px"></div>
+</ng-template>

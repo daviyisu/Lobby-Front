@@ -1,50 +1,118 @@
-@use "src/scss/mixins" as mix;
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
 
-.stat {
-  @include mix.row;
-  @include mix.center;
-  width: 100%;
-  height: 300px;
+.kpi,
+.breakdown {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+}
 
-  .icon {
-    width: 5%;
-    height: auto;
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.kpi__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-muted);
+  font: 600 14px/20px var(--font-sans);
+}
+
+.kpi__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: grid;
+  place-items: center;
+
+  &.neutral {
+    background: var(--surface-2);
+    color: var(--text-muted);
+  }
+
+  @each $k in completed, playing {
+    &.#{$k} {
+      background: var(--status-#{$k}-soft);
+      color: var(--status-#{$k});
+    }
+  }
+
+  &.brand {
+    background: var(--primary-soft);
+    color: var(--primary-text);
   }
 }
 
-.text {
-  @include mix.column;
-  @include mix.center;
-  @include mix.gap-sm;
-  padding: 4rem 10rem;
+.kpi__num {
+  font: 800 40px/44px var(--font-sans);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
 
-  .subtitle {
-    font-size: 3rem;
-    white-space: nowrap;
+.kpi__foot,
+.total {
+  min-height: 18px;
+  font: 500 13px/18px var(--font-sans);
+  color: var(--text-muted);
+}
+
+.breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.bar {
+  display: flex;
+  gap: 2px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--surface-2);
+
+  span {
+    flex-basis: 0;
+  }
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font: 500 13px/18px var(--font-sans);
+  color: var(--text-muted);
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
-  .number {
-    font-size: 10rem;
-    padding-top: 5rem;
+  b {
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
   }
 }
 
-.first_stat {
-  background: #9ad2cb;
-}
+@media (max-width: 599px) {
+  .kpis {
+    grid-template-columns: 1fr 1fr;
+  }
 
-.second_stat {
-  background: #d7ebba;
-}
-
-.third_stat {
-  background: #feffbe;
-}
-
-.fourth_stat {
-  background: #ebd494;
-}
-
-.fifth_stat {
-  background: #ffbf81;
+  .kpi__num {
+    font-size: 32px;
+    line-height: 36px;
+  }
 }

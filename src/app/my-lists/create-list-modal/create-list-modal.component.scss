@@ -1,21 +1,86 @@
-@use "src/scss/mixins" as mix;
-
-.modal-container {
-  @include mix.column;
-  @include mix.gap;
-  min-width: 23rem;
-  width: 420px;
+.dialog {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
-.game-chips-container {
-  @include mix.row;
-  @include mix.gap-sm;
-  flex-wrap: wrap;
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
 
-  .game-chip {
-    @include mix.row;
-    color: red;
-    align-items: center;
-    overflow: hidden;
+.title {
+  font: 700 22px/30px var(--font-sans);
+  letter-spacing: -0.01em;
+}
+
+.sub,
+.hint {
+  margin: 2px 0 0;
+  color: var(--text-muted);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font: 600 14px/20px var(--font-sans);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 32px;
+  padding: 0 4px 0 12px;
+  border-radius: var(--radius-full);
+  background: var(--surface-2);
+  font: 600 13px/18px var(--font-sans);
+}
+
+.chip__remove {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+
+  .lb-ic {
+    font-size: 16px;
   }
+
+  &:hover {
+    background: var(--surface-3);
+    color: var(--text);
+  }
+}
+
+.alert {
+  display: flex;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.delete {
+  --mat-button-text-label-text-color: var(--danger);
+  margin-right: auto;
 }

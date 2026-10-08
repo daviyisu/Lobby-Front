@@ -1,27 +1,42 @@
-<div class="container-padding">
-  <div class="column gap-lg">
+<main class="lb-page">
+  <div class="lb-spread">
+    <div>
+      <h1 class="h1">{{ "lists.title" | translate }}</h1>
+      <p *ngIf="userLists?.length" class="summary lb-muted">
+        {{ "lists.summary" | translate: { count: userLists?.length } }}
+      </p>
+    </div>
     <button
+      *ngIf="userLists?.length"
       mat-flat-button
-      color="accent"
-      class="btn primary"
       (click)="openCreateListModal()"
     >
-      <mat-icon svgIcon="add"></mat-icon>
-      <span class="text-md">
-        {{ "myLists.createList" | translate }}
-      </span>
+      <span class="lb-ic" aria-hidden="true">add</span>
+      {{ "myLists.createList" | translate }}
     </button>
-    <div class="column center gap">
-      <ng-container *ngIf="userLists">
-        <app-list-card
-          [list]="list"
-          *ngFor="let list of userLists"
-        ></app-list-card>
-        <div *ngIf="userLists.length === 0" class="no-games">
-          <img class="no-games--image" src="favicon.ico" />
-          <p class="text-lg">{{ "noElements.noLists" | translate }}</p>
-        </div>
-      </ng-container>
-    </div>
   </div>
-</div>
+
+  <div *ngIf="!userLists" class="grid" aria-busy="true">
+    <div *ngFor="let l of loaders" class="lb-skel skel"></div>
+  </div>
+
+  <div *ngIf="userLists?.length" class="grid">
+    <app-list-card *ngFor="let list of userLists" [list]="list"></app-list-card>
+    <button class="new" type="button" (click)="openCreateListModal()">
+      <span class="lb-ic" aria-hidden="true">add</span>
+      {{ "lists.new" | translate }}
+    </button>
+  </div>
+
+  <app-empty-state
+    *ngIf="userLists?.length === 0"
+    icon="bookmarks"
+    [title]="'lists.empty.title' | translate"
+    [text]="'lists.empty.text' | translate"
+  >
+    <button mat-flat-button (click)="openCreateListModal()">
+      <span class="lb-ic" aria-hidden="true">add</span>
+      {{ "myLists.createList" | translate }}
+    </button>
+  </app-empty-state>
+</main>

@@ -1,65 +1,100 @@
-<div class="modal-container">
-  <h2 *ngIf="!editMode">{{ "myLists.createListModal.title" | translate }}</h2>
-  <h2 *ngIf="editMode">
-    {{ "myLists.createListModal.editTitle" | translate }}
-  </h2>
-  <form>
-    <mat-form-field appearance="outline">
-      <input
-        matInput
-        [formControl]="listNameFormControl"
-        placeholder="{{
-          'myLists.createListModal.namePlaceholder' | translate
-        }}"
-      />
-      <mat-error *ngIf="listNameFormControl.hasError('required')">
-        {{ "forms.required" | translate }}
-      </mat-error>
-    </mat-form-field>
-  </form>
-  <app-game-search-bar
-    (selectedGameId)="addGameToList($event)"
-  ></app-game-search-bar>
-  <div class="game-chips-container">
-    <mat-chip class="chip with-icon" *ngFor="let game of initialGamesToAdd">
-      <span class="chip__text">{{ game.name }}</span>
-      <ng-container *ngIf="editMode">
-        <mat-icon matChipRemove (click)="deleteGame(game.id)" svgIcon="cancel">
-        </mat-icon>
-      </ng-container>
-    </mat-chip>
+<div class="dialog">
+  <header class="head">
+    <div>
+      <h2 class="title">
+        {{
+          (editMode
+            ? "myLists.createListModal.editTitle"
+            : "myLists.createListModal.title"
+          ) | translate
+        }}
+      </h2>
+      <p class="sub">{{ "lists.dialog.subtitle" | translate }}</p>
+    </div>
+    <button
+      type="button"
+      mat-icon-button
+      (click)="close()"
+      [attr.aria-label]="'global.close' | translate"
+    >
+      <span class="lb-ic" aria-hidden="true">close</span>
+    </button>
+  </header>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ "lists.dialog.name" | translate }}</mat-label>
+    <input
+      matInput
+      [formControl]="listNameFormControl"
+      maxlength="60"
+      [placeholder]="'myLists.createListModal.namePlaceholder' | translate"
+      (keydown.enter)="save()"
+    />
+    <mat-hint align="end"
+      >{{ listNameFormControl.value?.length ?? 0 }}/60</mat-hint
+    >
+    <mat-error>{{ "forms.required" | translate }}</mat-error>
+  </mat-form-field>
+
+  <div class="field">
+    <span class="label">{{ "lists.dialog.games" | translate }}</span>
+    <app-game-search-bar
+      placeholder="lists.dialog.searchPlaceholder"
+      (selectedGameId)="addGame($event)"
+    ></app-game-search-bar>
+    <div *ngIf="games.length; else noGames" class="chips">
+      <span class="chip" *ngFor="let game of games">
+        {{ game.name }}
+        <button
+          type="button"
+          class="chip__remove"
+          (click)="removeGame(game.id)"
+          [attr.aria-label]="
+            'lists.dialog.remove' | translate: { name: game.name }
+          "
+        >
+          <span class="lb-ic" aria-hidden="true">close</span>
+        </button>
+      </span>
+    </div>
+    <ng-template #noGames>
+      <p class="hint">{{ "lists.dialog.needGames" | translate }}</p>
+    </ng-template>
   </div>
+
+  <p *ngIf="saveError" class="alert" role="alert">
+    <span class="lb-ic" aria-hidden="true">error</span>
+    {{ "global.error" | translate }}
+  </p>
+
   <div class="modal-actions">
     <button
       *ngIf="editMode"
-      mat-flat-button
-      color="warn"
-      class="btn primary"
+      type="button"
+      mat-button
+      class="delete"
       (click)="deleteList()"
     >
-      <mat-icon svgIcon="delete"></mat-icon>
-      <span class="text-md">
-        {{ "list.deleteList" | translate }}
-      </span>
+      <span class="lb-ic" aria-hidden="true">delete</span>
+      {{ "list.deleteList" | translate }}
+    </button>
+    <button type="button" mat-button (click)="close()">
+      {{ "global.cancel" | translate }}
     </button>
     <button
-      (click)="closeModal()"
+      type="button"
       mat-flat-button
-      color="accent"
-      class="btn primary"
+      [disabled]="!canSave || saving"
+      (click)="save()"
     >
-      <span class="text-md"> {{ "global.back" | translate }} </span>
-    </button>
-    <button
-      [disabled]="initialGamesToAdd.length === 0 || !listNameFormControl.valid"
-      mat-flat-button
-      (click)="!editMode ? createList() : updateList()"
-      color="primary"
-      class="btn primary"
-    >
-      <span class="text-md">
-        {{ "myLists.createListModal.done" | translate }}
-      </span>
+      {{
+        (saving
+          ? "global.saving"
+          : editMode
+            ? "editReview.buttonText"
+            : "lists.dialog.create"
+        ) | translate
+      }}
     </button>
   </div>
 </div>

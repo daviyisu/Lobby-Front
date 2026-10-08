@@ -1,12 +1,24 @@
-import { Component, Inject, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
+import { TranslateService } from '@ngx-translate/core';
+import { lastValueFrom } from 'rxjs';
 import { Game } from '../../../models/game';
 import { GameService } from '../../../services/game.service';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ListService } from '../../../services/list-service.service';
-import { FormControl, Validators } from '@angular/forms';
 import { CreateListDialogInterface } from '../../../models/create-list-dialog.interface';
 import { GameList } from '../../../models/GameList';
-import { Router } from '@angular/router';
+import {
+  ConfirmDialogComponent,
+  ConfirmDialogData,
+} from '../../confirm-dialog/confirm-dialog.component';
+
+/** Dialog result when the list was deleted from the edit dialog. */
+export const LIST_DELETED = 'deleted';
 
 @Component({
   selector: 'app-create-list-modal',
@@ -17,76 +29,106 @@ import { Router } from '@angular/router';
 export class CreateListModalComponent implements OnInit {
   private gameService = inject(GameService);
   private listService = inject(ListService);
-  public createListDialogRef = inject(MatDialogRef<CreateListModalComponent>);
-  private router = inject(Router);
-
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: CreateListDialogInterface,
-  ) {}
+  private dialog = inject(MatDialog);
+  private translate = inject(TranslateService);
+  private dialogRef = inject(MatDialogRef<CreateListModalComponent>);
+  data = inject<CreateListDialogInterface | null>(MAT_DIALOG_DATA, {
+    optional: true,
+  });
 
   editMode = false;
-  listNameFormControl = new FormControl('', Validators.required);
-  initialGamesToAdd: Game[] = [];
+  saving = false;
+  saveError = false;
+  listNameFormControl = new FormControl('', [
+    Validators.required,
+    Validators.maxLength(60),
+  ]);
+  games: Game[] = [];
 
   ngOnInit() {
-    if (this.data) {
+    if (this.data?.list) {
       this.editMode = true;
       this.listNameFormControl.setValue(this.data.list.name);
-      this.initialGamesToAdd = this.data.list.games;
+      this.games = [...(this.data.list.games ?? [])];
     }
   }
 
-  addGameToList(id: number): void {
+  get canSave(): boolean {
+    return this.listNameFormControl.valid && this.games.length > 0;
+  }
+
+  addGame(id: number): void {
+    if (this.games.some((g) => g.id === id)) {
+      return;
+    }
     this.gameService
       .getGameById(id)
-      .subscribe((game) => this.initialGamesToAdd.push(game));
+      .subscribe((game) => (this.games = [...this.games, game]));
   }
 
-  closeModal(): void {
-    this.createListDialogRef.close();
+  removeGame(id: number): void {
+    this.games = this.games.filter((game) => game.id !== id);
   }
 
-  deleteList(): void {
-    this.listService.deleteList(this.data.list.id).subscribe(() => {
-      this.router
-        .navigateByUrl('mylists')
-        .then((r) => this.createListDialogRef.close());
-    });
+  close(): void {
+    this.dialogRef.close();
   }
 
-  deleteGame(id: number): void {
-    this.initialGamesToAdd = this.initialGamesToAdd.filter(
-      (game) => game.id !== id,
-    );
-  }
-
-  createList(): void {
-    if (this.listNameFormControl.valid) {
-      this.listService
-        .createList(this.listNameFormControl.value!, this.initialGamesToAdd)
-        .subscribe((createdList) => {
-          this.createListDialogRef.close(createdList);
-        });
+  async save(): Promise<void> {
+    if (!this.canSave) {
+      this.listNameFormControl.markAsTouched();
+      return;
+    }
+    const name = this.listNameFormControl.value!.trim();
+    this.saving = true;
+    this.saveError = false;
+    try {
+      const list = await lastValueFrom(
+        this.editMode && this.data
+          ? this.listService.updateList(
+              this.data.list.id,
+              new GameList(
+                this.data.list.id,
+                name,
+                this.data.list.user,
+                this.games,
+              ),
+            )
+          : this.listService.createList(name, this.games),
+      );
+      this.dialogRef.close(list);
+    } catch {
+      this.saveError = true;
+    } finally {
+      this.saving = false;
     }
   }
 
-  updateList(): void {
-    if (
-      this.listNameFormControl.valid &&
-      this.listNameFormControl.value != null
-    ) {
-      const updatedList = new GameList(
-        this.data.list.id,
-        this.listNameFormControl.value,
-        this.data.list.user,
-        this.initialGamesToAdd,
-      );
-
-      this.listService
-        .updateList(this.data.list.id, updatedList)
-        .subscribe((updatedList) => {
-          this.createListDialogRef.close(updatedList);
-        });
+  async deleteList(): Promise<void> {
+    if (!this.data) {
+      return;
+    }
+    const confirmRef = this.dialog.open<
+      ConfirmDialogComponent,
+      ConfirmDialogData
+    >(ConfirmDialogComponent, {
+      width: '440px',
+      data: {
+        title: this.translate.instant('lists.delete.title', {
+          name: this.data.list.name,
+        }),
+        text: this.translate.instant('lists.delete.text'),
+        confirm: this.translate.instant('list.deleteList'),
+      },
+    });
+    if (!(await lastValueFrom(confirmRef.afterClosed()))) {
+      return;
+    }
+    try {
+      await lastValueFrom(this.listService.deleteList(this.data.list.id));
+      this.dialogRef.close(LIST_DELETED);
+    } catch {
+      this.saveError = true;
     }
   }
 }

@@ -1,49 +1,46 @@
-@use "src/scss/mixins" as mix;
-
-.card-0 {
-  z-index: 5;
-  transform: translateX(-20rem);
-}
-
-.card-1 {
-  position: absolute;
-  transform: translateX(-10rem);
-  z-index: 4;
-}
-
-.card-2 {
-  position: absolute;
-  z-index: 3;
-}
-
-.card-3 {
-  position: absolute;
-  transform: translateX(10rem);
-  z-index: 2;
-}
-
-.card-4 {
-  position: absolute;
-  transform: translateX(20rem);
-  z-index: 1;
-}
-
-.list-container {
-  @include mix.center;
-  @include mix.column;
-  @include mix.gap-sm;
-  width: fit-content;
-}
-
-.cards {
+.card {
   display: flex;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+}
 
-  img {
-    width: 264px;
-    height: 352px;
+.mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: var(--space-3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--duration-base),
+    box-shadow var(--duration-base);
+
+  img,
+  .slot {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 10px;
+    background: var(--surface-2);
   }
 }
 
-.shadow {
-  box-shadow: 10px 2px 5px rgba(0, 0, 0, 0.3);
+.card:hover .mosaic,
+.card:focus-visible .mosaic {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.name {
+  font: 600 17px/24px var(--font-sans);
+}
+
+.meta {
+  font: 500 13px/18px var(--font-sans);
+  color: var(--text-muted);
 }
