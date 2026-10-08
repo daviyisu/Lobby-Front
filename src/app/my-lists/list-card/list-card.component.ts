@@ -14,6 +14,11 @@ export class ListCardComponent {
 
   @Input({ required: true }) list!: GameList;
 
+  /** The API can omit `games` for an empty list. */
+  get gameCount(): number {
+    return this.list.games?.length ?? 0;
+  }
+
   /** Four mosaic slots: a cover URL, or null for an empty slot. */
   get mosaic(): (string | null)[] {
     const covers = (this.list.games ?? [])
