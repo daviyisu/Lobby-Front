@@ -1,0 +1,35 @@
+<article class="card">
+  <header class="head">
+    <img
+      *ngIf="review.userAvatar; else initialsTpl"
+      class="avatar"
+      [src]="review.userAvatar"
+      alt=""
+    />
+    <ng-template #initialsTpl>
+      <span class="avatar" aria-hidden="true">{{ initials }}</span>
+    </ng-template>
+    <div class="who">
+      <div class="name">
+        {{ review.writtenBy }}
+        <span *ngIf="own" class="you">{{ "review.you" | translate }}</span>
+      </div>
+      <time class="when" [attr.datetime]="review.createdAt">{{
+        review.createdAt | relativeTime
+      }}</time>
+    </div>
+    <app-rating-badge [value]="review.rating"></app-rating-badge>
+  </header>
+  <p class="summary">{{ review.summary }}</p>
+  <p class="text">{{ review.review_text }}</p>
+  <div *ngIf="own" class="actions">
+    <button mat-button (click)="edit.emit()">
+      <span class="lb-ic" aria-hidden="true">edit</span>
+      {{ "comment.edit" | translate }}
+    </button>
+    <button mat-button (click)="delete.emit()">
+      <span class="lb-ic" aria-hidden="true">delete</span>
+      {{ "comment.delete" | translate }}
+    </button>
+  </div>
+</article>

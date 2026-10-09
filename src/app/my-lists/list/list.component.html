@@ -1,31 +1,42 @@
-<div class="container-padding column gap">
-  <div class="row gap">
-    <h1 class="list-title">{{ list.name }}</h1>
-    <button
-      mat-flat-button
-      color="accent"
-      class="btn primary"
-      (click)="editList()"
-    >
-      <mat-icon svgIcon="edit"></mat-icon>
-      <span class="text-md">
-        {{ "list.editList" | translate }}
-      </span>
+<main class="lb-page">
+  <a mat-button class="back" routerLink="/mylists">
+    <span class="lb-ic" aria-hidden="true">arrow_back</span>
+    {{ "lists.title" | translate }}
+  </a>
+
+  <div class="lb-spread">
+    <div>
+      <h1 class="h1" *ngIf="list; else titleSkel">{{ list.name }}</h1>
+      <ng-template #titleSkel>
+        <div class="lb-skel" style="height: 40px; width: 280px"></div>
+      </ng-template>
+      <p *ngIf="list" class="summary lb-muted">
+        {{ "lists.count" | translate: { count: games.length } }}
+      </p>
+    </div>
+    <button *ngIf="list" mat-stroked-button (click)="editList()">
+      <span class="lb-ic" aria-hidden="true">edit</span>
+      {{ "list.editList" | translate }}
     </button>
   </div>
-  <div class="row gap-lg flex-wrap center">
-    <div
-      *ngFor="let game of list.games"
-      class="column center gap-sm dark-when-hover"
-      (click)="navigateToGameDetail(game.id)"
-    >
-      <img
-        src="https://images.igdb.com/igdb/image/upload/t_cover_big/{{
-          game.coverImageId
-        }}.jpg"
-        alt="Cover of the game"
-      />
-      <span class="title"> {{ game.name }} </span>
-    </div>
+
+  <div *ngIf="!list" class="lb-grid" aria-busy="true">
+    <div *ngFor="let l of loaders" class="lb-skel cover-skel"></div>
   </div>
-</div>
+
+  <div *ngIf="games.length" class="lb-grid">
+    <app-game-card *ngFor="let game of games" [game]="game"></app-game-card>
+  </div>
+
+  <app-empty-state
+    *ngIf="list && !games.length"
+    icon="bookmarks"
+    [title]="'lists.emptyList.title' | translate"
+    [text]="'lists.emptyList.text' | translate"
+  >
+    <button mat-flat-button (click)="editList()">
+      <span class="lb-ic" aria-hidden="true">add</span>
+      {{ "lists.emptyList.action" | translate }}
+    </button>
+  </app-empty-state>
+</main>

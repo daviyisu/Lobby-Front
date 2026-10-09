@@ -1,17 +1,40 @@
-@use "src/scss/mixins" as mix;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html,
 body {
   height: 100%;
-  /*background-color: darkgray;*/
 }
+
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font: 400 15px/22px var(--font-sans);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+a {
+  color: var(--primary-text);
+}
+
+:where(button, a, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
 }
 
 .content-wrapper {
-  @include mix.column;
+  display: flex;
+  flex-direction: column;
   min-height: 100%;
 }
 
@@ -19,41 +42,42 @@ app-footer {
   margin-top: auto;
 }
 
-mat-chip {
-  width: fit-content;
+/* Material Symbols in <mat-icon fontSet="material-symbols-rounded"> */
+.material-symbols-rounded {
+  font-family: var(--font-icons);
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  direction: ltr;
+  font-feature-settings: "liga";
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 500,
+    "GRAD" 0,
+    "opsz" 24;
+  -webkit-font-smoothing: antialiased;
 }
 
-.chip {
-  &.blue-dark {
-    background-color: cornflowerblue !important;
-  }
-}
-
-.mat-mdc-snack-bar-container {
-  &.blue-snackbar {
-    --mat-snackbar-container-color: #2196f3;
-    --mat-mdc-snack-bar-button-color: #fff;
-    --mat-snackbar-supporting-text-color: #fff;
-  }
-}
-
-.btn {
-  &.primary {
-    border-radius: 1rem;
-    width: fit-content;
-  }
+/* Toasts */
+.mat-mdc-snack-bar-container.blue-snackbar {
+  --mat-snack-bar-container-color: var(--text);
+  --mat-snack-bar-supporting-text-color: var(--text-inverse);
+  --mat-snack-bar-button-color: var(--text-inverse);
 }
 
 .mat-mdc-dialog-surface {
-  border-radius: 1.4rem !important;
-  padding: 1.8em;
+  padding: var(--space-6);
   overflow-y: hidden !important;
 }
 
 .modal-actions,
 .mat-mdc-dialog-actions {
-  @include mix.gap;
-  @include mix.vertical-center;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   justify-content: flex-end !important;
-  margin-top: 1rem;
+  margin-top: var(--space-6);
 }

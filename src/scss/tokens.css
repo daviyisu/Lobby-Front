@@ -1,0 +1,136 @@
+/* Lobby 2.0 design tokens — generated from the Lobby 2.0 design system (tokens.json). Do not edit by hand. */
+:root, [data-theme="light"] {
+  --bg: #f7f7f9;
+  --surface: #ffffff;
+  --surface-2: #f0f1f4;
+  --surface-3: #e6e8ed;
+  --border: #e3e5ea;
+  --border-control: #8b91a0;
+  --text: #14161b;
+  --text-muted: #4f5563;
+  --text-subtle: #646a79;
+  --text-inverse: #ffffff;
+  --brand: #ff2a2a;
+  --primary: #e0242b;
+  --primary-hover: #c81d24;
+  --on-primary: #ffffff;
+  --primary-soft: #fdeaea;
+  --primary-text: #b8181f;
+  --focus: var(--primary);
+  --success: #146c34;
+  --danger: #b42318;
+  --danger-soft: #fdecea;
+  --warning: #8a5300;
+  --warning-soft: #fdf3d7;
+  --status-playing: #1d4ed8;
+  --status-playing-soft: #e6efff;
+  --status-completed: #146c34;
+  --status-completed-soft: #e3f6e9;
+  --status-played: #4b5563;
+  --status-played-soft: #eef0f3;
+  --status-abandoned: #c2410c;
+  --status-abandoned-soft: #fdeee4;
+  --status-retired: #6d28d9;
+  --status-retired-soft: #f0e9ff;
+  --rating-low: #c2410c;
+  --rating-low-soft: #fdeee4;
+  --rating-mid: #8a5300;
+  --rating-mid-soft: #fdf3d7;
+  --rating-high: #146c34;
+  --rating-high-soft: #e3f6e9;
+  --rating-perfect: var(--on-primary);
+  --scrim: rgba(15, 17, 21, 0.48);
+  --cover-scrim: rgba(15, 17, 21, 0.72);
+  --shadow-sm: 0 1px 2px rgba(20, 22, 27, 0.06), 0 1px 3px rgba(20, 22, 27, 0.08);
+  --shadow-md: 0 4px 12px rgba(20, 22, 27, 0.08), 0 2px 4px rgba(20, 22, 27, 0.06);
+  --shadow-lg: 0 16px 40px rgba(20, 22, 27, 0.16), 0 4px 12px rgba(20, 22, 27, 0.08);
+}
+[data-theme="dark"] {
+  --bg: #0f1115;
+  --surface: #171a21;
+  --surface-2: #1f232c;
+  --surface-3: #2a2f3a;
+  --border: #2a2f3a;
+  --border-control: #6e7585;
+  --text: #f2f3f6;
+  --text-muted: #a9afbc;
+  --text-subtle: #8a90a0;
+  --text-inverse: #14161b;
+  --brand: #ff2a2a;
+  --primary: #ff6b6f;
+  --primary-hover: #ff8a8d;
+  --on-primary: #1a0b0c;
+  --primary-soft: #3a1a1c;
+  --primary-text: #ff8a8d;
+  --focus: var(--primary);
+  --success: #5fd08a;
+  --danger: #ff8a7a;
+  --danger-soft: #3a1c19;
+  --warning: #e6b84a;
+  --warning-soft: #332a12;
+  --status-playing: #7aa7ff;
+  --status-playing-soft: #1b2a4a;
+  --status-completed: #5fd08a;
+  --status-completed-soft: #16301f;
+  --status-played: #b4bac6;
+  --status-played-soft: #262b35;
+  --status-abandoned: #ff9a62;
+  --status-abandoned-soft: #3a2216;
+  --status-retired: #b794ff;
+  --status-retired-soft: #2a2142;
+  --rating-low: #ff9a62;
+  --rating-low-soft: #3a2216;
+  --rating-mid: #e6b84a;
+  --rating-mid-soft: #332a12;
+  --rating-high: #5fd08a;
+  --rating-high-soft: #16301f;
+  --rating-perfect: var(--on-primary);
+  --scrim: rgba(0, 0, 0, 0.64);
+  --cover-scrim: rgba(0, 0, 0, 0.72);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+  --appbar-h: 64px;
+  --bottomnav-h: 64px;
+  --control-h: 44px;
+  --control-h-sm: 36px;
+  --cover-min: 160px;
+  --content-max: 1280px;
+  --prose-max: 680px;
+  --dialog-w: 480px;
+  --bp-mobile: 600px;
+  --bp-tablet: 900px;
+  --bp-desktop: 1200px;
+  --disabled: 0.45;
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-icons: "Material Symbols Rounded";
+}
+.display { font-family: var(--font-sans); font-size: 48px; line-height: 52px; font-weight: 800; letter-spacing: -0.02em; }
+.h1 { font-family: var(--font-sans); font-size: 32px; line-height: 40px; font-weight: 700; letter-spacing: -0.015em; }
+.h2 { font-family: var(--font-sans); font-size: 22px; line-height: 30px; font-weight: 700; letter-spacing: -0.01em; }
+.h3 { font-family: var(--font-sans); font-size: 17px; line-height: 24px; font-weight: 600; }
+.stat { font-family: var(--font-sans); font-size: 40px; line-height: 44px; font-weight: 800; letter-spacing: -0.02em; }
+.body-lg { font-family: var(--font-sans); font-size: 17px; line-height: 27px; font-weight: 400; }
+.body { font-family: var(--font-sans); font-size: 15px; line-height: 22px; font-weight: 400; }
+.label { font-family: var(--font-sans); font-size: 14px; line-height: 20px; font-weight: 600; }
+.caption { font-family: var(--font-sans); font-size: 13px; line-height: 18px; font-weight: 500; }
+.overline { font-family: var(--font-sans); font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.06em; }

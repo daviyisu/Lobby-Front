@@ -1,0 +1,25 @@
+<nav class="bottom" [attr.aria-label]="'nav.label' | translate">
+  <ng-container
+    *ngTemplateOutlet="links; context: { $implicit: start }"
+  ></ng-container>
+  <button class="item item--search" type="button" (click)="shell.focusSearch()">
+    <span class="lb-ic" aria-hidden="true">search</span>
+    {{ "topBar.search" | translate }}
+  </button>
+  <ng-container
+    *ngTemplateOutlet="links; context: { $implicit: end }"
+  ></ng-container>
+</nav>
+
+<ng-template #links let-items>
+  <a
+    *ngFor="let link of items"
+    class="item"
+    [routerLink]="link.route"
+    routerLinkActive="is-active"
+    ariaCurrentWhenActive="page"
+  >
+    <span class="lb-ic" aria-hidden="true">{{ link.icon }}</span>
+    {{ link.label | translate }}
+  </a>
+</ng-template>

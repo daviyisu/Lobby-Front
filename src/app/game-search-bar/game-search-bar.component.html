@@ -1,18 +1,31 @@
-<mat-form-field class="bar-container">
+<label class="search">
+  <span class="lb-ic" aria-hidden="true">search</span>
   <input
-    type="text"
+    #input
+    type="search"
     [placeholder]="getSearchBarPlaceholder()"
     [formControl]="gameSearch"
-    matInput
     [matAutocomplete]="auto"
+    [attr.aria-label]="getSearchBarPlaceholder()"
   />
-  <mat-autocomplete #auto="matAutocomplete">
-    <mat-option
-      *ngFor="let option of queryResults"
-      [value]="option.name"
-      (click)="emitSelectedGame(option.id)"
-    >
-      {{ option.name }}
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field>
+  <kbd *ngIf="showShortcut" class="kbd">Ctrl K</kbd>
+</label>
+<mat-autocomplete #auto="matAutocomplete" class="search-results">
+  <mat-option
+    *ngFor="let option of queryResults"
+    [value]="option.name"
+    (onSelectionChange)="$event.isUserInput && emitSelectedGame(option.id)"
+  >
+    <span class="result">
+      <img
+        class="result__art"
+        [src]="imageService.getIgdbImage(option.coverImageId)"
+        alt=""
+        loading="lazy"
+      />
+      <span class="result__body">
+        <span class="result__title">{{ option.name }}</span>
+      </span>
+    </span>
+  </mat-option>
+</mat-autocomplete>

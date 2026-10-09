@@ -1,169 +1,202 @@
-<div *ngIf="game" class="container-padding column gap-xxl center">
-  <div class="column gap">
-    <div class="game-header">
-      <div class="column gap">
-        <img
-          *ngIf="cover"
-          class="main-cover"
-          [src]="cover"
-          alt="Cover of the game"
-        />
-        <div class="column gap-sm">
-          <button
-            mat-flat-button
-            (click)="openNewReviewModal()"
-            color="primary"
-            class="btn primary"
-          >
-            <span class="text-md">
-              {{ "gameDetail.createReview" | translate }}
-            </span>
-          </button>
-          <button
-            *ngIf="gameStatus == CollectionStatusEnum.not_owned"
-            mat-flat-button
-            color="accent"
-            class="btn primary"
-            (click)="openAddGameModal()"
-          >
-            <mat-icon svgIcon="add"></mat-icon>
-            <span class="text-md">
-              {{ "gameDetail.addGame" | translate }}
-            </span>
-          </button>
-          <button
-            *ngIf="gameStatus != CollectionStatusEnum.not_owned"
-            [ngClass]="{
-              completed: gameStatus === CollectionStatusEnum.completed,
-              retired: gameStatus === CollectionStatusEnum.retired,
-              abandoned: gameStatus === CollectionStatusEnum.abandoned,
-              playing: gameStatus === CollectionStatusEnum.playing
-            }"
-            mat-flat-button
-            color="accent"
-            class="btn primary"
-            (click)="openAddGameModal()"
-          >
-            <mat-icon svgIcon="joystick"></mat-icon>
-            <span class="text-md">
-              {{ "gameStatus." + this.gameStatus | translate }}
-            </span>
-          </button>
+<main class="lb-page">
+  <button mat-button class="back" (click)="back()">
+    <span class="lb-ic" aria-hidden="true">arrow_back</span>
+    {{ "global.back" | translate }}
+  </button>
+
+  <section *ngIf="!game" class="hero" aria-busy="true">
+    <div class="lb-skel cover-skel"></div>
+    <div class="main">
+      <div class="lb-skel" style="height: 48px; width: 60%"></div>
+      <div class="lb-skel" style="height: 18px; width: 40%"></div>
+      <div class="lb-skel" style="height: 120px"></div>
+    </div>
+  </section>
+
+  <section *ngIf="game" class="hero">
+    <img
+      class="cover"
+      [src]="cover"
+      [alt]="'collection.coverAlt' | translate: { name: game.name }"
+    />
+
+    <div class="main">
+      <div>
+        <h1 class="title">{{ game.name }}</h1>
+        <div class="meta">
+          <span *ngIf="game.firstReleaseDate">{{
+            game.firstReleaseDate
+              | date: "longDate" : undefined : translate.currentLang
+          }}</span>
+          <span class="lb-tag" *ngFor="let p of platforms">{{ p }}</span>
+          <span class="lb-tag" *ngFor="let g of genres">{{
+            g | translate
+          }}</span>
         </div>
       </div>
-      <div class="column gap-sm">
-        <h1 *ngIf="game.name" class="game-title">{{ game.name }}</h1>
-        <div *ngIf="platforms && platforms.length > 0" class="row gap-sm">
-          <mat-chip *ngFor="let platform of platforms" class="chip blue-dark">
-            {{ platform }}
-          </mat-chip>
-        </div>
-        <div *ngIf="game.genres && game.genres.length > 0" class="row gap-sm">
-          <mat-chip *ngFor="let genre of game.genres">
-            {{ getGenreEnum()[genre] }}
-          </mat-chip>
-        </div>
-        <span *ngIf="game.firstReleaseDate" class="medium">
-          {{
-            "gameDetail.releaseDate"
-              | translate
-                : {
-                    day: game.firstReleaseDate.getDate(),
-                    month: game.firstReleaseDate.getMonth(),
-                    year: game.firstReleaseDate.getFullYear()
-                  }
-          }}
-        </span>
-        <div *ngIf="game.summary" class="description">
-          <p class="text-md">
-            {{ game.summary }}
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div *ngIf="screenshots.length > 0" class="column">
-    <h2>{{ "gameDetail.screenshots" | translate }}</h2>
-    <div class="screenshots">
-      <img
-        *ngFor="let screenshot of screenshots"
-        [src]="screenshot"
-        alt="Game screenshot"
-      />
-    </div>
-  </div>
-
-  <div *ngIf="reviews" class="review-container column gap">
-    <mat-card *ngFor="let review of reviews" appearance="outlined">
-      <mat-card-header>
-        <div
-          *ngIf="!review.userAvatar"
-          mat-card-avatar
-          class="review_avatar"
-        ></div>
-        <div
-          *ngIf="review.userAvatar"
-          [ngStyle]="{ 'background-image': 'url(' + review.userAvatar + ')' }"
-          mat-card-avatar
-          class="review-user-avatar"
-        ></div>
-        <mat-card-title>{{ review.writtenBy }}</mat-card-title>
-
-        <mat-card-subtitle>{{
-          formatDate(review.createdAt.toString())
-        }}</mat-card-subtitle>
-        <mat-card-subtitle>
-          <div class="review-summary row gap-sm center">
-            <span>{{ review.summary }}</span>
-            <span class="review_number">{{ review.rating }}</span>
-            <mat-icon
-              *ngIf="review.rating < 5"
-              class="bad"
-              svgIcon="bad"
-            ></mat-icon>
-            <mat-icon
-              *ngIf="review.rating >= 5 && review.rating <= 7"
-              class="good"
-              svgIcon="good"
-            ></mat-icon>
-            <mat-icon
-              *ngIf="review.rating >= 8 && review.rating <= 9"
-              class="very_good"
-              svgIcon="very_good"
-            ></mat-icon>
-            <mat-icon
-              *ngIf="review.rating == 10"
-              class="perfect"
-              svgIcon="perfect"
-            ></mat-icon>
+      <div class="collection">
+        <div class="lb-spread collection__head">
+          <span class="overline">{{
+            (!statusLoaded
+              ? "gameDetail.statusLabel"
+              : owned
+                ? "gameDetail.inCollection"
+                : "gameDetail.notInCollection"
+            ) | translate
+          }}</span>
+          <div class="collection__tools">
+            <button
+              mat-button
+              [matMenuTriggerFor]="listsMenu"
+              (menuOpened)="loadLists()"
+            >
+              <span class="lb-ic" aria-hidden="true">bookmark_add</span>
+              {{ "list.gamesToAdd" | translate }}
+            </button>
+            <button
+              *ngIf="owned"
+              mat-icon-button
+              [matMenuTriggerFor]="moreMenu"
+              [attr.aria-label]="'global.moreOptions' | translate"
+            >
+              <span class="lb-ic" aria-hidden="true">more_horiz</span>
+            </button>
           </div>
-        </mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content class="review-text">
-        <p>
-          {{ review.review_text }}
-        </p>
-      </mat-card-content>
-      <mat-card-actions class="row gap-sm">
+        </div>
+
+        <div
+          *ngIf="!statusLoaded"
+          class="lb-skel"
+          style="height: 68px"
+          aria-busy="true"
+        ></div>
+
+        <app-status-selector
+          *ngIf="statusLoaded && owned"
+          [status]="status"
+          [disabled]="savingStatus"
+          (statusChange)="changeStatus($event)"
+        ></app-status-selector>
+
+        <div *ngIf="statusLoaded && !owned" class="add">
+          <p class="lb-muted">{{ "gameDetail.addHint" | translate }}</p>
+          <button
+            mat-flat-button
+            [disabled]="savingStatus"
+            (click)="addToCollection()"
+          >
+            <span class="lb-ic" aria-hidden="true">add</span>
+            {{ "gameDetail.addGame" | translate }}
+          </button>
+        </div>
+      </div>
+
+      <div class="rating">
+        <ng-container *ngIf="averageRating !== null; else noRating">
+          <app-rating-badge
+            [value]="averageRating"
+            [large]="true"
+          ></app-rating-badge>
+          <div>
+            <div class="rating__title">
+              {{
+                "gameDetail.average"
+                  | translate
+                    : {
+                        value:
+                          (averageRating
+                          | number: "1.0-1" : translate.currentLang)
+                      }
+              }}
+            </div>
+            <div class="rating__sub">
+              {{
+                "gameDetail.reviewCount" | translate: { count: reviews.length }
+              }}
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #noRating>
+          <div class="rating__sub">
+            {{ "gameDetail.noReviews" | translate }}
+          </div>
+        </ng-template>
         <button
-          (click)="updateReview(review)"
-          *ngIf="currentUser.id == review.userId"
-          mat-button
+          mat-stroked-button
+          class="rating__cta"
+          (click)="openReview(ownReview)"
         >
-          <mat-icon svgIcon="edit"></mat-icon>
-          {{ "comment.edit" | translate }}
+          <span class="lb-ic" aria-hidden="true">rate_review</span>
+          {{
+            (ownReview ? "gameDetail.editReview" : "gameDetail.createReview")
+              | translate
+          }}
         </button>
-        <button
-          (click)="deleteReview(review.id)"
-          *ngIf="currentUser.id == review.userId"
-          color="warn"
-          mat-button
-        >
-          <mat-icon svgIcon="delete"></mat-icon>
-          {{ "comment.delete" | translate }}
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-</div>
+      </div>
+
+      <p *ngIf="game.summary" class="summary">{{ game.summary }}</p>
+    </div>
+  </section>
+
+  <section *ngIf="screenshots.length" class="block">
+    <h2 class="h2">{{ "gameDetail.screenshots" | translate }}</h2>
+    <div class="shots">
+      <a
+        *ngFor="let shot of screenshots; let i = index"
+        [href]="imageService.getIgdbImage(shot, 't_1080p')"
+        target="_blank"
+        rel="noopener"
+      >
+        <img
+          [src]="imageService.getIgdbImage(shot, 't_screenshot_med')"
+          [alt]="'gameDetail.screenshotAlt' | translate: { n: i + 1 }"
+          loading="lazy"
+        />
+      </a>
+    </div>
+  </section>
+
+  <section *ngIf="game" class="block reviews">
+    <h2 class="h2">
+      {{ "gameDetail.reviews" | translate }}
+      <span class="count" *ngIf="reviews.length">{{ reviews.length }}</span>
+    </h2>
+    <app-review-card
+      *ngFor="let review of sortedReviews"
+      [review]="review"
+      [own]="review === ownReview"
+      (edit)="openReview(review)"
+      (delete)="deleteReview(review)"
+    ></app-review-card>
+    <app-empty-state
+      *ngIf="!reviews.length"
+      icon="rate_review"
+      [title]="'gameDetail.emptyReviews.title' | translate"
+      [text]="'gameDetail.emptyReviews.text' | translate"
+    ></app-empty-state>
+  </section>
+</main>
+
+<mat-menu #listsMenu="matMenu">
+  <ng-container *ngIf="lists; else loadingLists">
+    <button mat-menu-item *ngFor="let list of lists" (click)="addToList(list)">
+      <span class="lb-ic" aria-hidden="true">bookmarks</span>
+      <span>{{ list.name }}</span>
+    </button>
+    <button mat-menu-item *ngIf="!lists.length" (click)="goToLists()">
+      <span class="lb-ic" aria-hidden="true">add</span>
+      <span>{{ "myLists.createList" | translate }}</span>
+    </button>
+  </ng-container>
+  <ng-template #loadingLists>
+    <div class="menu-loading">{{ "global.loading" | translate }}</div>
+  </ng-template>
+</mat-menu>
+
+<mat-menu #moreMenu="matMenu" xPosition="before">
+  <button mat-menu-item (click)="removeFromCollection()">
+    <span class="lb-ic" aria-hidden="true">remove_circle</span>
+    <span>{{ "gameDetail.remove" | translate }}</span>
+  </button>
+</mat-menu>

@@ -1,36 +1,94 @@
 {
   "global": {
     "back": "Back",
-    "continue": "Continue"
+    "continue": "Continue",
+    "close": "Close",
+    "undo": "Undo",
+    "cancel": "Cancel",
+    "saving": "Saving…",
+    "loading": "Loading…",
+    "error": "Something went wrong. Please try again.",
+    "moreOptions": "More options"
   },
   "profile": {
     "collection": "Collection",
     "statistics": "Statistics",
     "lists": "Lists",
     "logout": "Log out",
-    "searchBarPlaceholder": "Search your games here!"
+    "searchBarPlaceholder": "Search for a game to add…"
   },
   "stats": {
     "gamesOwned": "Games owned:",
     "gamesAbandoned": "Games abandoned:",
     "gamesCompleted": "Games completed:",
     "gamesPlaying": "Games you are currently playing:",
-    "totalReviews": "Total of reviews written:"
+    "totalReviews": "Total of reviews written:",
+    "title": "Statistics",
+    "collection": "Games in collection",
+    "collectionFoot": "Everything you've added to Lobby",
+    "completed": "Completed",
+    "completedFoot": "{{pct}}% of your collection",
+    "playing": "Playing now",
+    "playingFoot": "Games in progress",
+    "reviews": "Reviews written",
+    "reviewsFoot": "Your opinions on Lobby",
+    "byStatus": "Your collection by status",
+    "noStatus": "Once you give your games a status, you'll see how they break down here."
   },
   "gameDetail": {
-    "createReview": "Create review",
-    "addGame": "Add game to collection",
+    "createReview": "Write a review",
+    "addGame": "Add to collection",
     "screenshots": "Screenshots",
-    "releaseDate": "Released date: {{day}}/{{month}}/{{year}}"
+    "releaseDate": "Released date: {{day}}/{{month}}/{{year}}",
+    "editReview": "Edit your review",
+    "reviews": "Reviews",
+    "statusLabel": "Status in your collection",
+    "inCollection": "In your collection",
+    "notInCollection": "Not in your collection",
+    "addHint": "Add it, then pick where you're at.",
+    "remove": "Remove from collection",
+    "average": "Average {{value}}",
+    "reviewCount": "from {{count}} reviews on Lobby",
+    "noReviews": "No one has rated it yet. Be the first!",
+    "screenshotAlt": "Screenshot {{n}}",
+    "emptyReviews": {
+      "title": "No reviews yet",
+      "text": "Say what you thought and help others decide."
+    },
+    "deleteReview": {
+      "title": "Delete your review?",
+      "text": "It will be gone for good, along with its rating.",
+      "confirm": "Delete review"
+    },
+    "toast": {
+      "added": "Added to your collection as Playing",
+      "removed": "Removed from your collection",
+      "moved": "Moved to {{status}}",
+      "addedToList": "Added to {{list}}",
+      "reviewPublished": "Review published",
+      "reviewUpdated": "Review updated",
+      "reviewDeleted": "Review deleted"
+    }
   },
   "newReview": {
-    "newReview": "New review for",
-    "summarize": "Summarize your thoughts in a short sentence",
-    "writeHere": "Write here your review"
+    "newReview": "Review of",
+    "summarize": "Your opinion in one sentence",
+    "writeHere": "What you liked, what you didn't, who you'd recommend it to…",
+    "subtitle": "Your rating and opinion will show on the game's page.",
+    "ratingLabel": "Your rating",
+    "ratingLow": "0 · not recommended",
+    "ratingHigh": "10 · masterpiece",
+    "ratingRequired": "Pick a rating from 0 to 10",
+    "summaryLabel": "Summary",
+    "summaryError": "Write between 5 and 255 characters",
+    "textLabel": "Review",
+    "textError": "Write between 5 and 1000 characters",
+    "publish": "Publish review",
+    "saveError": "The review couldn't be saved. Check your connection and try again."
   },
   "editReview": {
-    "editReview": "Edit review for",
-    "buttonText": "Edit"
+    "editReview": "Edit review of",
+    "buttonText": "Save changes"
   },
   "addGameStatus": {
     "completed": "Completed",
@@ -52,9 +110,22 @@
     "username": "Username",
     "password": "Password",
     "confirmPassword": "Confirm the password",
-    "notMatchPassword": "Passwords does not match",
-    "loginError": "Username or password not correct",
-    "usernameAlreadyExists": "Username already in use, please choose other one"
+    "notMatchPassword": "The passwords don't match",
+    "loginError": "Wrong username or password",
+    "usernameAlreadyExists": "That username is already taken. Try another one.",
+    "welcome": "Welcome to Lobby",
+    "tagline": "Your video game collection, always at hand.",
+    "registerTitle": "Create your account",
+    "registerTagline": "Save, rate and organize all your games.",
+    "usernameHint": "Between 4 and 30 characters",
+    "passwordHint": "Between 4 and 30 characters",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "loggingIn": "Logging in…",
+    "noAccount": "Don't have an account yet?",
+    "createAccount": "Create account",
+    "creatingAccount": "Creating account…",
+    "haveAccount": "Already have an account?"
   },
   "forms": {
     "required": "This field is required",
@@ -88,10 +159,17 @@
     "gamesToAdd": "Add game to list"
   },
   "recentGames": {
-    "title": "Recently added"
+    "title": "What's new",
+    "subtitle": "Games added in the last few days",
+    "empty": {
+      "title": "Nothing new this week"
+    },
+    "error": {
+      "title": "What's new couldn't be loaded"
+    }
   },
   "steamSync": {
-    "title": "Synchronization with Steam",
+    "title": "Import your Steam library",
     "explanation": "With Steam synchronization, you can register the games from your Steam account in Lobby.",
     "reminder": "Remember that your Steam account must be public for the synchronization to work.",
     "yourAccount": "Your Steam account:",
@@ -99,12 +177,133 @@
     "textBtn": "Synchronize",
     "checkBox": "Use my Steam avatar as my avatar in Lobby",
     "showAccountNotExistsError": "The Steam account was not found",
-    "showPrivateError": "The Steam account is private! Go to Account Details and then Privacy on Steam to change it",
-    "snackBarSuccess": "Your Steam library has been successfully synchronized!"
+    "showPrivateError": "Your Steam account is private. Make it public in Steam → Account details → Privacy and try again.",
+    "snackBarSuccess": "Your Steam library has been successfully synchronized!",
+    "step": "Step {{n}} of 2",
+    "idLabel": "Steam ID",
+    "idPlaceholder": "E.g. 76561198000000000",
+    "idHint": "You'll find it on your Steam profile",
+    "searching": "Searching…",
+    "syncing": "Syncing…",
+    "syncError": "Your library couldn't be synced. Try again in a few minutes."
   },
   "noElements": {
     "noGames": "You haven't added any games to your collection yet. Use the search bar to add your favorite games!",
     "noLists": "You haven't created any list yet!",
     "noRecentGames": "There have been no recent games for a week"
+  },
+  "nav": {
+    "label": "Main",
+    "collection": "Collection",
+    "lists": "Lists",
+    "stats": "Statistics",
+    "recent": "What's new"
+  },
+  "topBar": {
+    "search": "Search",
+    "steamSync": "Sync with Steam",
+    "userMenu": "User menu"
+  },
+  "theme": {
+    "label": "Theme",
+    "system": "Automatic",
+    "light": "Light",
+    "dark": "Dark"
+  },
+  "language": {
+    "label": "Language",
+    "es": "Español",
+    "en": "English"
+  },
+  "footer": {
+    "igdb": "Data from IGDB"
+  },
+  "collection": {
+    "title": "Collection",
+    "count": "{{count}} games",
+    "playingNow": "{{count}} playing now",
+    "addGame": "Add game",
+    "filterLabel": "Filter by status",
+    "all": "All",
+    "coverAlt": "Cover of {{name}}",
+    "sort": {
+      "recent": "Recent",
+      "az": "A–Z"
+    },
+    "empty": {
+      "title": "Your collection is empty",
+      "text": "Search for a game and add it, or bring in your whole Steam library at once.",
+      "search": "Search for a game",
+      "steam": "Import from Steam"
+    },
+    "emptyFilter": {
+      "title": "No games with this status",
+      "text": "Try another filter or see your whole collection.",
+      "action": "See all"
+    }
+  },
+  "rating": {
+    "label": "Rated {{value}} out of 10"
+  },
+  "review": {
+    "you": "(you)"
+  },
+  "lists": {
+    "title": "Lists",
+    "summary": "{{count}} lists",
+    "count": "{{count}} games",
+    "new": "New list",
+    "empty": {
+      "title": "You don't have any lists yet",
+      "text": "Group games however you like: favorites, backlog, to recommend…"
+    },
+    "emptyList": {
+      "title": "This list is empty",
+      "text": "Add the games you want to group here.",
+      "action": "Add games"
+    },
+    "dialog": {
+      "subtitle": "Group games however you like: favorites, backlog, to recommend…",
+      "name": "Name",
+      "games": "Games",
+      "searchPlaceholder": "Search for a game to add to the list…",
+      "remove": "Remove {{name}}",
+      "needGames": "Add at least one game to save the list.",
+      "create": "Create list"
+    },
+    "delete": {
+      "title": "Delete the list {{name}}?",
+      "text": "The games will stay in your collection."
+    },
+    "toast": {
+      "created": "List {{name}} created",
+      "updated": "List updated",
+      "deleted": "List {{name}} deleted"
+    }
+  },
+  "genres": {
+    "2": "Point-and-click",
+    "4": "Fighting",
+    "5": "Shooter",
+    "7": "Music",
+    "8": "Platform",
+    "9": "Puzzle",
+    "10": "Racing",
+    "11": "Real Time Strategy (RTS)",
+    "12": "Role-playing (RPG)",
+    "13": "Simulator",
+    "14": "Sport",
+    "15": "Strategy",
+    "16": "Turn-based strategy (TBS)",
+    "24": "Tactical",
+    "25": "Hack and slash/Beat 'em up",
+    "26": "Quiz/Trivia",
+    "30": "Pinball",
+    "31": "Adventure",
+    "32": "Indie",
+    "33": "Arcade",
+    "34": "Visual Novel",
+    "35": "Card & Board Game",
+    "36": "MOBA"
   }
 }

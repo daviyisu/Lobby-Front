@@ -1,21 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { SteamSyncModalComponent } from './steam-sync-modal.component';
+import {
+  provideDialog,
+  provideTestEnvironment,
+  testImports,
+} from '../../testing/test-providers';
 
 describe('SteamSyncModalComponent', () => {
-  let component: SteamSyncModalComponent;
-  let fixture: ComponentFixture<SteamSyncModalComponent>;
-
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SteamSyncModalComponent],
+      imports: [...testImports, SteamSyncModalComponent],
+      providers: [...provideTestEnvironment(), ...provideDialog()],
     });
-    fixture = TestBed.createComponent(SteamSyncModalComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(SteamSyncModalComponent);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

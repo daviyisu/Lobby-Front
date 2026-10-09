@@ -1,10 +1,15 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { lastValueFrom } from 'rxjs';
 import { GameList } from '../../../models/GameList';
 import { ListService } from '../../../services/list-service.service';
-import { lastValueFrom } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
-import { CreateListModalComponent } from '../create-list-modal/create-list-modal.component';
+import {
+  CreateListModalComponent,
+  LIST_DELETED,
+} from '../create-list-modal/create-list-modal.component';
+import { ToastService } from '../../../services/toast.service';
+import { CollectionGame } from '../../../models/collection-game';
 
 @Component({
   selector: 'app-list',
@@ -13,41 +18,46 @@ import { CreateListModalComponent } from '../create-list-modal/create-list-modal
   standalone: false,
 })
 export class ListComponent implements OnInit {
-  private activatedRoute = inject(ActivatedRoute);
+  private route = inject(ActivatedRoute);
   private router = inject(Router);
   private listService = inject(ListService);
-  private dialogRef = inject(MatDialog);
+  private dialog = inject(MatDialog);
+  private toast = inject(ToastService);
 
-  list!: GameList;
+  list?: GameList;
+  loaders = Array(6).fill(0);
 
-  async ngOnInit(): Promise<void> {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
-    if (id) {
-      this.list = await lastValueFrom(this.listService.getListById(+id));
-    }
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      this.list = undefined;
+      if (id) {
+        this.listService
+          .getListById(+id)
+          .subscribe((list) => (this.list = list));
+      }
+    });
+  }
+
+  get games(): CollectionGame[] {
+    return this.list?.games ?? [];
   }
 
   async editList(): Promise<void> {
-    const dialogRef = this.dialogRef.open(CreateListModalComponent, {
-      data: {
-        list: this.list,
-      },
-    });
-    const updatedList = (await lastValueFrom(
-      dialogRef.afterClosed(),
-    )) as GameList;
-    if (updatedList) {
-      this.list = updatedList;
+    if (!this.list) {
+      return;
     }
-  }
-
-  navigateToGameDetail(id: number) {
-    this.router.navigateByUrl('gamedetail/' + id);
-  }
-
-  async addGameToList(gameToAddId: number): Promise<void> {
-    this.list = await lastValueFrom(
-      this.listService.addGameToList(this.list.id, gameToAddId),
-    );
+    const ref = this.dialog.open(CreateListModalComponent, {
+      data: { list: this.list },
+      width: '520px',
+    });
+    const result = await lastValueFrom(ref.afterClosed());
+    if (result === LIST_DELETED) {
+      this.toast.show('lists.toast.deleted', { name: this.list.name });
+      this.router.navigateByUrl('/mylists');
+    } else if (result) {
+      this.list = result as GameList;
+      this.toast.show('lists.toast.updated');
+    }
   }
 }

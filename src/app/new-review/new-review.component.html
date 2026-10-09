@@ -1,107 +1,87 @@
-<div class="modal-container">
-  <h2 *ngIf="!editReview">
-    {{ "newReview.newReview" | translate }} {{ data.gameName }}
-  </h2>
-  <h2 *ngIf="editReview">
-    {{ "editReview.editReview" | translate }} {{ data.gameName }}
-  </h2>
-  <form [formGroup]="form" class="column gap">
-    <mat-form-field appearance="outline">
-      <input
-        matInput
-        formControlName="summary"
-        placeholder="{{ 'newReview.summarize' | translate }}"
-      />
-      <mat-error *ngIf="form.get('summary')?.hasError('required')">
-        {{ "forms.required" | translate }}
-      </mat-error>
-      <mat-error *ngIf="form.get('summary')?.hasError('minlength')">
-        {{ "forms.tooShort" | translate }}
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <textarea
-        rows="5"
-        matInput
-        formControlName="review"
-        placeholder="{{ 'newReview.writeHere' | translate }}..."
-      >
-      </textarea>
-      <mat-error *ngIf="form.get('review')?.hasError('required')">
-        {{ "forms.required" | translate }}
-      </mat-error>
-      <mat-error *ngIf="form.get('review')?.hasError('minlength')">
-        {{ "forms.tooShort" | translate }}
-      </mat-error>
-      <mat-error *ngIf="form.get('review')?.hasError('maxlength')">
-        {{ "forms.tooLarge" | translate }}
-      </mat-error>
-    </mat-form-field>
-    <div class="row gap center">
-      <div class="column">
-        <mat-form-field appearance="outline" class="rating">
-          <input
-            matInput
-            max="10"
-            formControlName="rating"
-            min="0"
-            type="number"
-            placeholder="Rating..."
-          />
-        </mat-form-field>
-      </div>
-      <mat-icon
-        [ngClass]="form.value.rating < 5 ? 'bad' : ''"
-        svgIcon="bad"
-      ></mat-icon>
-      <mat-icon
-        [ngClass]="
-          form.value.rating >= 5 && form.value.rating <= 7 ? 'good' : ''
-        "
-        svgIcon="good"
-      ></mat-icon>
-      <mat-icon
-        [ngClass]="
-          form.value.rating >= 8 && form.value.rating <= 9 ? 'very_good' : ''
-        "
-        svgIcon="very_good"
-      ></mat-icon>
-      <mat-icon
-        [ngClass]="form.value.rating == 10 ? 'perfect' : ''"
-        svgIcon="perfect"
-      ></mat-icon>
+<form class="dialog" [formGroup]="form" (ngSubmit)="save()">
+  <header class="head">
+    <div>
+      <h2 class="title">
+        {{
+          (editReview ? "editReview.editReview" : "newReview.newReview")
+            | translate
+        }}
+        {{ data.gameName }}
+      </h2>
+      <p class="sub">{{ "newReview.subtitle" | translate }}</p>
     </div>
-  </form>
+    <button
+      type="button"
+      mat-icon-button
+      (click)="close()"
+      [attr.aria-label]="'global.close' | translate"
+    >
+      <span class="lb-ic" aria-hidden="true">close</span>
+    </button>
+  </header>
+
+  <div class="field">
+    <span class="label" id="rating-label">{{
+      "newReview.ratingLabel" | translate
+    }}</span>
+    <app-rating-input
+      formControlName="rating"
+      aria-labelledby="rating-label"
+    ></app-rating-input>
+    <span
+      *ngIf="form.controls.rating.touched && form.controls.rating.invalid"
+      class="error"
+      >{{ "newReview.ratingRequired" | translate }}</span
+    >
+  </div>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ "newReview.summaryLabel" | translate }}</mat-label>
+    <input
+      matInput
+      formControlName="summary"
+      [maxlength]="summaryMax"
+      [placeholder]="'newReview.summarize' | translate"
+    />
+    <mat-hint align="end"
+      >{{ form.controls.summary.value?.length ?? 0 }}/{{ summaryMax }}</mat-hint
+    >
+    <mat-error>{{ "newReview.summaryError" | translate }}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>{{ "newReview.textLabel" | translate }}</mat-label>
+    <textarea
+      matInput
+      rows="6"
+      formControlName="review"
+      [maxlength]="textMax"
+      [placeholder]="'newReview.writeHere' | translate"
+    ></textarea>
+    <mat-hint align="end"
+      >{{ form.controls.review.value?.length ?? 0 }}/{{ textMax }}</mat-hint
+    >
+    <mat-error>{{ "newReview.textError" | translate }}</mat-error>
+  </mat-form-field>
+
+  <p *ngIf="saveError" class="alert" role="alert">
+    <span class="lb-ic" aria-hidden="true">error</span>
+    {{ "newReview.saveError" | translate }}
+  </p>
+
   <div class="modal-actions">
-    <button
-      (click)="closeModal()"
-      mat-flat-button
-      color="accent"
-      class="btn primary"
-    >
-      <span class="text-md"> {{ "global.back" | translate }} </span>
+    <button type="button" mat-button (click)="close()">
+      {{ "global.cancel" | translate }}
     </button>
-    <button
-      *ngIf="!editReview"
-      (click)="sendReview()"
-      mat-flat-button
-      color="primary"
-      class="btn primary"
-    >
-      <span class="text-md">
-        {{ "gameDetail.createReview" | translate }}
-      </span>
-    </button>
-    <button
-      *ngIf="editReview"
-      (click)="updateReview()"
-      mat-flat-button
-      color="primary"
-      class="btn primary"
-    >
-      <span class="text-md">
-        {{ "editReview.buttonText" | translate }}
-      </span>
+    <button type="submit" mat-flat-button [disabled]="saving">
+      {{
+        (saving
+          ? "global.saving"
+          : editReview
+            ? "editReview.buttonText"
+            : "newReview.publish"
+        ) | translate
+      }}
     </button>
   </div>
-</div>
+</form>

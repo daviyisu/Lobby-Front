@@ -1,28 +1,47 @@
-@use "src/scss/mixins" as mix;
+.dialog {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
 
-.modal-container {
-  @include mix.column;
-  @include mix.gap;
-  min-width: 23rem;
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
 
-  .rating {
-    width: fit-content;
-    border-radius: 2rem;
-  }
+.title {
+  font: 700 22px/30px var(--font-sans);
+  letter-spacing: -0.01em;
+}
 
-  .bad {
-    color: red;
-  }
+.sub {
+  margin: 2px 0 0;
+  color: var(--text-muted);
+}
 
-  .good {
-    color: green;
-  }
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 
-  .very_good {
-    color: blue;
-  }
+.label {
+  font: 600 14px/20px var(--font-sans);
+}
 
-  .perfect {
-    color: darkturquoise;
-  }
+.error {
+  color: var(--danger);
+  font: 500 13px/18px var(--font-sans);
+}
+
+.alert {
+  display: flex;
+  gap: var(--space-2);
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--danger-soft);
+  color: var(--danger);
 }

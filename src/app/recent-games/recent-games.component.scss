@@ -1,24 +1,8 @@
-@use "src/scss/mixins" as mix;
-
-.game-cover {
-  width: 264px;
-  height: 374px;
+.summary {
+  margin: 4px 0 0;
 }
 
-.game-summary {
-  @include mix.text-md;
-  align-self: flex-end;
-}
-
-.no-games {
-  @include mix.center;
-  @include mix.column;
-  @include mix.gap-lg;
-  width: 100%;
-  height: 100%;
-
-  &--image {
-    width: 22rem;
-    opacity: 0.8;
-  }
+.cover-skel {
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-md);
 }

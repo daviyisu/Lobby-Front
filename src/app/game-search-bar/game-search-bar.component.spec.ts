@@ -1,21 +1,21 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { GameSearchBarComponent } from './game-search-bar.component';
+import {
+  provideTestEnvironment,
+  testImports,
+} from '../../testing/test-providers';
 
 describe('GameSearchBarComponent', () => {
-  let component: GameSearchBarComponent;
-  let fixture: ComponentFixture<GameSearchBarComponent>;
-
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GameSearchBarComponent],
+      imports: [...testImports, GameSearchBarComponent],
+      providers: [...provideTestEnvironment()],
     });
-    fixture = TestBed.createComponent(GameSearchBarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(GameSearchBarComponent);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

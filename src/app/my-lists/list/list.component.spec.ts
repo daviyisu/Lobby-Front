@@ -1,21 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { ListComponent } from './list.component';
+import { MyListsModule } from '../my-lists.module';
+import {
+  provideTestEnvironment,
+  testImports,
+} from '../../../testing/test-providers';
 
 describe('ListComponent', () => {
-  let component: ListComponent;
-  let fixture: ComponentFixture<ListComponent>;
-
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ListComponent],
+      imports: [...testImports, MyListsModule],
+      providers: [...provideTestEnvironment()],
     });
-    fixture = TestBed.createComponent(ListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(ListComponent);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

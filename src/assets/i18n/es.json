@@ -1,36 +1,94 @@
 {
   "global": {
     "back": "Atrás",
-    "continue": "Continuar"
+    "continue": "Continuar",
+    "close": "Cerrar",
+    "undo": "Deshacer",
+    "cancel": "Cancelar",
+    "saving": "Guardando…",
+    "loading": "Cargando…",
+    "error": "Algo ha fallado. Inténtalo de nuevo.",
+    "moreOptions": "Más opciones"
   },
   "profile": {
     "collection": "Colección",
     "statistics": "Estadísticas",
     "lists": "Listas",
     "logout": "Cerrar sesión",
-    "searchBarPlaceholder": "¡Busca tus juegos aquí!"
+    "searchBarPlaceholder": "Busca un juego para añadirlo…"
   },
   "stats": {
     "gamesOwned": "Juegos en propiedad:",
     "gamesAbandoned": "Juegos abandonados:",
     "gamesCompleted": "Juegos completados:",
     "gamesPlaying": "Juegos que estás jugando actualmente:",
-    "totalReviews": "Total de reseñas escritas:"
+    "totalReviews": "Total de reseñas escritas:",
+    "title": "Estadísticas",
+    "collection": "Juegos en colección",
+    "collectionFoot": "Todo lo que has añadido a Lobby",
+    "completed": "Completados",
+    "completedFoot": "{{pct}}% de tu colección",
+    "playing": "Jugando ahora",
+    "playingFoot": "Partidas en curso",
+    "reviews": "Reseñas escritas",
+    "reviewsFoot": "Tus opiniones en Lobby",
+    "byStatus": "Tu colección por estado",
+    "noStatus": "Cuando des un estado a tus juegos, aquí verás cómo se reparten."
   },
   "gameDetail": {
-    "createReview": "Crear reseña",
-    "addGame": "Añadir juego a colección",
-    "screenshots": "Capturas de pantalla",
-    "releaseDate": "Fecha de lanzamiento: {{day}}/{{month}}/{{year}}"
+    "createReview": "Escribir reseña",
+    "addGame": "Añadir a colección",
+    "screenshots": "Capturas",
+    "releaseDate": "Fecha de lanzamiento: {{day}}/{{month}}/{{year}}",
+    "editReview": "Editar tu reseña",
+    "reviews": "Reseñas",
+    "statusLabel": "Estado en tu colección",
+    "inCollection": "En tu colección",
+    "notInCollection": "No está en tu colección",
+    "addHint": "Añádelo y elige luego en qué punto estás.",
+    "remove": "Quitar de la colección",
+    "average": "Nota media {{value}}",
+    "reviewCount": "de {{count}} reseñas en Lobby",
+    "noReviews": "Aún nadie lo ha puntuado. ¡Sé el primero!",
+    "screenshotAlt": "Captura {{n}}",
+    "emptyReviews": {
+      "title": "Todavía no hay reseñas",
+      "text": "Cuenta qué te pareció y ayuda a otros a decidir."
+    },
+    "deleteReview": {
+      "title": "¿Borrar tu reseña?",
+      "text": "Se borrará para siempre, junto con su nota.",
+      "confirm": "Borrar reseña"
+    },
+    "toast": {
+      "added": "Añadido a tu colección como Jugando",
+      "removed": "Quitado de tu colección",
+      "moved": "Movido a {{status}}",
+      "addedToList": "Añadido a {{list}}",
+      "reviewPublished": "Reseña publicada",
+      "reviewUpdated": "Reseña actualizada",
+      "reviewDeleted": "Reseña borrada"
+    }
   },
   "newReview": {
-    "newReview": "Nueva reseña para",
-    "summarize": "Resume en una frase corta tu opinión",
-    "writeHere": "Escribe aquí tu reseña"
+    "newReview": "Reseña de",
+    "summarize": "Tu opinión en una frase",
+    "writeHere": "Qué te gustó, qué no, a quién se lo recomendarías…",
+    "subtitle": "Tu nota y tu opinión se verán en la ficha del juego.",
+    "ratingLabel": "Tu nota",
+    "ratingLow": "0 · nada recomendable",
+    "ratingHigh": "10 · obra maestra",
+    "ratingRequired": "Elige una nota de 0 a 10",
+    "summaryLabel": "Resumen",
+    "summaryError": "Escribe entre 5 y 255 caracteres",
+    "textLabel": "Reseña",
+    "textError": "Escribe entre 5 y 1000 caracteres",
+    "publish": "Publicar reseña",
+    "saveError": "No se ha podido guardar la reseña. Revisa tu conexión e inténtalo de nuevo."
   },
   "editReview": {
-    "editReview": "Editar reseña para",
-    "buttonText": "Editar"
+    "editReview": "Editar reseña de",
+    "buttonText": "Guardar cambios"
   },
   "addGameStatus": {
     "completed": "Completado",
@@ -53,8 +111,21 @@
     "password": "Contraseña",
     "confirmPassword": "Confirma la contraseña",
     "notMatchPassword": "Las contraseñas no coinciden",
-    "loginError": "Usuario o contraseña no correctos",
-    "usernameAlreadyExists": "Nombre de usuario ya en uso, por favor elige otro"
+    "loginError": "Usuario o contraseña incorrectos",
+    "usernameAlreadyExists": "Ese nombre de usuario ya está en uso. Prueba con otro.",
+    "welcome": "Bienvenido a Lobby",
+    "tagline": "Tu colección de videojuegos, siempre a mano.",
+    "registerTitle": "Crea tu cuenta",
+    "registerTagline": "Guarda, puntúa y organiza todos tus juegos.",
+    "usernameHint": "Entre 4 y 30 caracteres",
+    "passwordHint": "Entre 4 y 30 caracteres",
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña",
+    "loggingIn": "Entrando…",
+    "noAccount": "¿Aún no tienes cuenta?",
+    "createAccount": "Crear cuenta",
+    "creatingAccount": "Creando cuenta…",
+    "haveAccount": "¿Ya tienes cuenta?"
   },
   "forms": {
     "required": "Este campo es obligatorio",
@@ -88,23 +159,151 @@
     "gamesToAdd": "Añadir juego a lista"
   },
   "recentGames": {
-    "title": "Recientemente añadidos"
+    "title": "Novedades",
+    "subtitle": "Juegos añadidos en los últimos días",
+    "empty": {
+      "title": "Nada nuevo esta semana"
+    },
+    "error": {
+      "title": "No se han podido cargar las novedades"
+    }
   },
   "steamSync": {
-    "title": "Sincronización con Steam",
+    "title": "Importa tu biblioteca de Steam",
     "explanation": "Con la sincronización de Steam podrás registrar los juegos de tu cuenta de Steam en Lobby.",
     "reminder": "Recuerda que tu cuenta de Steam debe ser pública para que la sincronización funcione.",
     "yourAccount": "Tu cuenta de Steam:",
-    "message": "Estás apunto de sincronizar tu biblioteca de Steam con tu cuenta de Lobby, todos los juegos que tengas en propiedad en Steam se añadirán a tu colección en Lobby.",
+    "message": "Estás a punto de sincronizar tu biblioteca de Steam con tu cuenta de Lobby. Todos los juegos que tengas en propiedad en Steam se añadirán a tu colección en Lobby.",
     "textBtn": "Sincronizar",
     "checkBox": "Usar mi avatar de Steam como mi avatar en Lobby",
     "showAccountNotExistsError": "La cuenta de Steam no fue encontrada",
-    "showPrivateError": "¡La cuenta de Steam es privada! Ve a Detalles de la cuenta y privacidad en Steam para cambiarlo",
-    "snackBarSuccess": "¡Tu biblioteca de Steam ha sido sincronizada correctamente!"
+    "showPrivateError": "Tu cuenta de Steam es privada. Hazla pública en Steam → Detalles de la cuenta → Privacidad y vuelve a intentarlo.",
+    "snackBarSuccess": "¡Tu biblioteca de Steam ha sido sincronizada correctamente!",
+    "step": "Paso {{n}} de 2",
+    "idLabel": "ID de Steam",
+    "idPlaceholder": "Ej. 76561198000000000",
+    "idHint": "Lo encontrarás en tu perfil de Steam",
+    "searching": "Buscando…",
+    "syncing": "Sincronizando…",
+    "syncError": "No se ha podido sincronizar tu biblioteca. Inténtalo de nuevo en unos minutos."
   },
   "noElements": {
     "noGames": "Aún no has añadido ningún juego a tu coleccion, ¡usa la barra de búsqueda para añadir tus juegos favoritos!",
     "noLists": "¡Aún no has creado ninguna lista!",
     "noRecentGames": "No hay juegos recientes desde hace una semana"
+  },
+  "nav": {
+    "label": "Principal",
+    "collection": "Colección",
+    "lists": "Listas",
+    "stats": "Estadísticas",
+    "recent": "Novedades"
+  },
+  "topBar": {
+    "search": "Buscar",
+    "steamSync": "Sincronizar con Steam",
+    "userMenu": "Menú de usuario"
+  },
+  "theme": {
+    "label": "Tema",
+    "system": "Automático",
+    "light": "Claro",
+    "dark": "Oscuro"
+  },
+  "language": {
+    "label": "Idioma",
+    "es": "Español",
+    "en": "English"
+  },
+  "footer": {
+    "igdb": "Datos de IGDB"
+  },
+  "collection": {
+    "title": "Colección",
+    "count": "{{count}} juegos",
+    "playingNow": "{{count}} jugando ahora",
+    "addGame": "Añadir juego",
+    "filterLabel": "Filtrar por estado",
+    "all": "Todos",
+    "coverAlt": "Carátula de {{name}}",
+    "sort": {
+      "recent": "Recientes",
+      "az": "A–Z"
+    },
+    "empty": {
+      "title": "Tu colección está vacía",
+      "text": "Busca un juego y añádelo, o trae tu biblioteca de Steam de una vez.",
+      "search": "Buscar un juego",
+      "steam": "Importar de Steam"
+    },
+    "emptyFilter": {
+      "title": "Ningún juego con este estado",
+      "text": "Prueba con otro filtro o mira toda tu colección.",
+      "action": "Ver todos"
+    }
+  },
+  "rating": {
+    "label": "Nota {{value}} de 10"
+  },
+  "review": {
+    "you": "(tú)"
+  },
+  "lists": {
+    "title": "Listas",
+    "summary": "{{count}} listas",
+    "count": "{{count}} juegos",
+    "new": "Nueva lista",
+    "empty": {
+      "title": "Aún no tienes listas",
+      "text": "Agrupa juegos como quieras: favoritos, pendientes, para recomendar…"
+    },
+    "emptyList": {
+      "title": "Esta lista está vacía",
+      "text": "Añade los juegos que quieras agrupar aquí.",
+      "action": "Añadir juegos"
+    },
+    "dialog": {
+      "subtitle": "Agrupa juegos como quieras: favoritos, pendientes, para recomendar…",
+      "name": "Nombre",
+      "games": "Juegos",
+      "searchPlaceholder": "Busca un juego para añadirlo a la lista…",
+      "remove": "Quitar {{name}}",
+      "needGames": "Añade al menos un juego para poder guardar la lista.",
+      "create": "Crear lista"
+    },
+    "delete": {
+      "title": "¿Borrar la lista {{name}}?",
+      "text": "Los juegos seguirán en tu colección."
+    },
+    "toast": {
+      "created": "Lista {{name}} creada",
+      "updated": "Lista actualizada",
+      "deleted": "Lista {{name}} borrada"
+    }
+  },
+  "genres": {
+    "2": "Point and click",
+    "4": "Lucha",
+    "5": "Disparos",
+    "7": "Música",
+    "8": "Plataformas",
+    "9": "Puzles",
+    "10": "Carreras",
+    "11": "Estrategia en tiempo real",
+    "12": "Rol (RPG)",
+    "13": "Simulación",
+    "14": "Deportes",
+    "15": "Estrategia",
+    "16": "Estrategia por turnos",
+    "24": "Táctico",
+    "25": "Hack and slash / Beat 'em up",
+    "26": "Preguntas / Trivia",
+    "30": "Pinball",
+    "31": "Aventura",
+    "32": "Indie",
+    "33": "Arcade",
+    "34": "Novela visual",
+    "35": "Cartas y juegos de mesa",
+    "36": "MOBA"
   }
 }

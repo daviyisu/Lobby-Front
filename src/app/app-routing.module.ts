@@ -1,16 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MyGamesComponent } from './my-games/my-games.component';
-import { MyStatsComponent } from './my-stats/my-stats.component';
-import { GameDetailComponent } from './game-detail/game-detail.component';
-import { MyListsComponent } from './my-lists/my-lists.component';
-import { ListComponent } from './my-lists/list/list.component';
-import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { AuthGuard } from '../services/auth.guard';
-import { RegisterComponent } from './register/register.component';
-import { RecentGamesComponent } from './recent-games/recent-games.component';
 
+/** Every section is a lazy chunk, loaded when its route is first visited. */
 const routes: Routes = [
   {
     path: '',
@@ -25,37 +18,45 @@ const routes: Routes = [
       },
       {
         path: 'mygames',
-        component: MyGamesComponent,
+        loadChildren: () =>
+          import('./my-games/my-games.module').then((m) => m.MyGamesModule),
       },
       {
         path: 'mystats',
-        component: MyStatsComponent,
-      },
-      {
-        path: 'mylists',
-        component: MyListsComponent,
+        loadChildren: () =>
+          import('./my-stats/my-stats.module').then((m) => m.MyStatsModule),
       },
       {
         path: 'gamedetail/:id',
-        component: GameDetailComponent,
-      },
-      {
-        path: 'list/:id',
-        component: ListComponent,
+        loadChildren: () =>
+          import('./game-detail/game-detail.module').then(
+            (m) => m.GameDetailModule,
+          ),
       },
       {
         path: 'recent',
-        component: RecentGamesComponent,
+        loadChildren: () =>
+          import('./recent-games/recent-games.module').then(
+            (m) => m.RecentGamesModule,
+          ),
+      },
+      {
+        // "mylists" and "mylists/:id".
+        path: 'mylists',
+        loadChildren: () =>
+          import('./my-lists/my-lists.module').then((m) => m.MyListsModule),
+      },
+      {
+        // Old list URLs keep working.
+        path: 'list/:id',
+        redirectTo: '/mylists/:id',
       },
     ],
   },
   {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
+    // Declares "login" and "register".
+    path: '',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 

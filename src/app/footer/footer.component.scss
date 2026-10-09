@@ -1,19 +1,17 @@
-@use "src/scss/mixins" as mix;
-
 .footer {
-  @include mix.row;
-  @include mix.center;
-  bottom: 0;
-  position: relative;
-  margin: 0;
-  width: 100%;
-  background-color: blueviolet;
-  height: 2.5rem;
-  padding-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  padding: var(--space-6) var(--space-4);
+  border-top: 1px solid var(--border);
+  font: 500 13px/18px var(--font-sans);
 
-  &__text {
-    color: white;
-    text-decoration: unset;
-    font-size: large;
+  a {
+    color: var(--text-subtle);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--text);
+      text-decoration: underline;
+    }
   }
 }

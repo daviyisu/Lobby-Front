@@ -17,12 +17,13 @@ export class ImageService {
   }
 
   /**
-   * Method to build the IGDB image with the image id
+   * Method to build the IGDB image with the image id, at an IGDB size
+   * (t_cover_big, t_screenshot_med, t_1080p…)
    */
-  getIgdbImage(imageId: string | undefined): string {
+  getIgdbImage(imageId: string | undefined, size = 't_cover_big'): string {
     let igdbImage = 'assets/img/gamelist_placeholder.png';
     return imageId
-      ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${imageId}.jpg`
+      ? `https://images.igdb.com/igdb/image/upload/${size}/${imageId}.jpg`
       : igdbImage;
   }
 }

@@ -1,9 +1,12 @@
-import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { lastValueFrom } from 'rxjs';
 import { NewReviewDialogInterface } from '../../models/new-review-dialog.interface';
 import { ReviewService } from '../../services/review.service';
 import {
+  INPUT_REVIEW_SUMMARY_MAX_LENGTH,
+  INPUT_REVIEW_TEXT_MAX_LENGTH,
   ReviewSummaryValidator,
   ReviewTextValidator,
 } from '../../utils/validators';
@@ -15,68 +18,60 @@ import {
   standalone: false,
 })
 export class NewReviewComponent {
-  /**
-   * Form group
-   */
-  form: FormGroup;
+  data = inject<NewReviewDialogInterface>(MAT_DIALOG_DATA);
+  private dialogRef = inject(MatDialogRef<NewReviewComponent>);
+  private reviewService = inject(ReviewService);
 
-  /**
-   * Whether the modal was open to edit the review
-   */
-  editReview = false;
+  readonly summaryMax = INPUT_REVIEW_SUMMARY_MAX_LENGTH;
+  readonly textMax = INPUT_REVIEW_TEXT_MAX_LENGTH;
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: NewReviewDialogInterface,
-    private builder: FormBuilder,
-    public newReviewDialogRef: MatDialogRef<NewReviewComponent>,
-    private reviewService: ReviewService,
-  ) {
-    this.editReview = !!this.data.review;
-    this.form = this.builder.group({
-      summary: [
-        this.editReview ? this.data.review.summary : '',
-        ReviewSummaryValidator,
-      ],
-      review: [
-        this.editReview ? this.data.review.review_text : '',
-        ReviewTextValidator,
-      ],
-      rating: [
-        this.editReview ? this.data.review.rating : '',
-        Validators.required,
-      ],
-    });
-  }
+  /** Whether the dialog edits an existing review. */
+  editReview = !!this.data.review;
+  saving = false;
+  saveError = false;
 
-  sendReview(): void {
-    if (this.form.valid) {
-      this.reviewService
-        .addReview(
-          this.data.gameId,
-          this.form.value.rating,
-          this.form.value.review,
-          this.form.value.summary,
-        )
-        .subscribe();
-      this.closeModal(true);
+  form = inject(FormBuilder).group({
+    summary: [this.data.review?.summary ?? '', ReviewSummaryValidator],
+    review: [this.data.review?.review_text ?? '', ReviewTextValidator],
+    rating: [
+      (this.data.review?.rating ?? null) as number | null,
+      Validators.required,
+    ],
+  });
+
+  async save(): Promise<void> {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+    const { summary, review, rating } = this.form.getRawValue();
+    this.saving = true;
+    this.saveError = false;
+    try {
+      await lastValueFrom(
+        this.editReview
+          ? this.reviewService.editReview(
+              this.data.review.id,
+              review!,
+              summary!,
+              rating!,
+            )
+          : this.reviewService.addReview(
+              this.data.gameId,
+              rating!,
+              review!,
+              summary!,
+            ),
+      );
+      this.dialogRef.close(true);
+    } catch {
+      this.saveError = true;
+    } finally {
+      this.saving = false;
     }
   }
 
-  updateReview(): void {
-    if (this.form.valid) {
-      this.reviewService
-        .editReview(
-          this.data.review.id,
-          this.form.value.review,
-          this.form.value.summary,
-          this.form.value.rating,
-        )
-        .subscribe();
-      this.closeModal(true);
-    }
-  }
-
-  closeModal(needRefresh?: boolean): void {
-    this.newReviewDialogRef.close(needRefresh);
+  close(): void {
+    this.dialogRef.close(false);
   }
 }

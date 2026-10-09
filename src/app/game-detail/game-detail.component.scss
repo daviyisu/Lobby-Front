@@ -1,91 +1,161 @@
-@use "src/scss/mixins" as mix;
-
-mat-chip {
-  pointer-events: none;
-}
-
-.description {
-  max-width: 40rem;
-}
-
-.main-cover {
+.back {
   align-self: flex-start;
-  width: 264px;
-  height: 374px;
+  margin: calc(var(--space-4) * -1) 0 calc(var(--space-4) * -1)
+    calc(var(--space-3) * -1);
 }
 
-.game-title {
-  font-size: 3rem;
-  line-height: 2.5rem;
+.hero {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--space-8);
+  align-items: start;
 }
 
-.review_avatar {
-  background-image: url("/assets/img/default-photo.svg");
-  background-size: cover;
-}
-
-.review-user-avatar {
-  background-size: cover;
-}
-
-.screenshots {
-  @include mix.row;
-  @include mix.gap-xl;
-  @include mix.column-gap-at-900;
-}
-
-.game-header {
-  @include mix.row;
-  @include mix.gap;
-  @include mix.column-gap-at-900;
-}
-
-.completed {
-  color: green;
-}
-
-.abandoned {
-  color: red;
-}
-
-.retired {
-  color: blue;
-}
-
-.playing {
-  color: darkgoldenrod;
-}
-
-.review-container {
+.cover,
+.cover-skel {
   width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
 
-  .review-summary {
-    padding-top: 0.5rem;
-    color: black;
-    font-size: medium;
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-width: 0;
+}
+
+.title {
+  font: 800 48px/52px var(--font-sans);
+  letter-spacing: -0.02em;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  color: var(--text-muted);
+  font: 500 14px/20px var(--font-sans);
+}
+
+.collection {
+  padding: var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.collection__head {
+  margin: calc(var(--space-2) * -1) 0 var(--space-3);
+}
+
+.collection__tools {
+  display: flex;
+  align-items: center;
+  --mat-button-text-container-height: var(--control-h-sm);
+}
+
+.add {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+
+  p {
+    margin: 0;
+  }
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.rating__title {
+  font-weight: 700;
+}
+
+.rating__sub {
+  font: 500 13px/18px var(--font-sans);
+  color: var(--text-subtle);
+}
+
+.rating__cta {
+  margin-left: auto;
+}
+
+.summary {
+  margin: 0;
+  max-width: var(--prose-max);
+  font: 400 17px/27px var(--font-sans);
+  color: var(--text-muted);
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.shots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    background: var(--surface-3);
+  }
+}
+
+.reviews {
+  max-width: 760px;
+}
+
+.count {
+  color: var(--text-subtle);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 160px 1fr;
+    gap: var(--space-5);
   }
 
-  .review-text {
-    padding-top: 1rem;
+  .title {
+    font-size: 32px;
+    line-height: 40px;
   }
 
-  .review_number {
-    font-size: 1.5rem;
+  .shots {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 599px) {
+  .hero {
+    grid-template-columns: 1fr;
   }
 
-  .bad {
-    color: red;
+  .cover,
+  .cover-skel {
+    max-width: 160px;
   }
 
-  .good {
-    color: green;
-  }
-
-  .very_good {
-    color: blue;
-  }
-
-  .perfect {
-    color: darkturquoise;
+  .rating__cta {
+    margin-left: 0;
+    width: 100%;
   }
 }
