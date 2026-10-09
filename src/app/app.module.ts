@@ -12,7 +12,6 @@ import {
 } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MyGamesComponent } from './my-games/my-games.component';
@@ -20,15 +19,10 @@ import { MyStatsComponent } from './my-stats/my-stats.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { GameDetailComponent } from './game-detail/game-detail.component';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatIconModule } from '@angular/material/icon';
 import { NewReviewComponent } from './new-review/new-review.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
 import { MyListsComponent } from './my-lists/my-lists.component';
 import { ListComponent } from './my-lists/list/list.component';
 import { LoginComponent } from './login/login.component';
@@ -44,7 +38,6 @@ import { RecentGamesComponent } from './recent-games/recent-games.component';
 import { SteamSyncModalComponent } from './steam-sync-modal/steam-sync-modal.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
 import { GameCardComponent } from './game-card/game-card.component';
@@ -110,21 +103,14 @@ export const globalImports = [
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
-    MatGridListModule,
     MatMenuModule,
     MatDividerModule,
-    MatChipsModule,
-    MatIconModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatSelectModule,
-    MatCardModule,
-    MatListModule,
     FormsModule,
     MatAutocompleteModule,
     MatCheckboxModule,
     MatSnackBarModule,
-    NgxSkeletonLoaderModule,
   ],
   providers: [
     {

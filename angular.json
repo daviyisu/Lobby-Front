@@ -28,7 +28,6 @@
               "src/scss/tokens.css",
               "src/scss/theme.scss",
               "src/styles.scss",
-              "src/scss/displays.scss",
               "src/scss/components.scss"
             ],
             "scripts": [],
@@ -90,7 +89,6 @@
               "src/scss/tokens.css",
               "src/scss/theme.scss",
               "src/styles.scss",
-              "src/scss/displays.scss",
               "src/scss/components.scss"
             ],
             "scripts": []

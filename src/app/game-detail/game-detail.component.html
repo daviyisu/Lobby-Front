@@ -28,8 +28,10 @@
             game.firstReleaseDate
               | date: "longDate" : undefined : translate.currentLang
           }}</span>
-          <span class="tag" *ngFor="let p of platforms">{{ p }}</span>
-          <span class="tag" *ngFor="let g of genres">{{ g }}</span>
+          <span class="lb-tag" *ngFor="let p of platforms">{{ p }}</span>
+          <span class="lb-tag" *ngFor="let g of genres">{{
+            g | translate
+          }}</span>
         </div>
       </div>
 

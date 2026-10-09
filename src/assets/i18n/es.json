@@ -280,5 +280,30 @@
       "updated": "Lista actualizada",
       "deleted": "Lista {{name}} borrada"
     }
+  },
+  "genres": {
+    "2": "Point and click",
+    "4": "Lucha",
+    "5": "Disparos",
+    "7": "Música",
+    "8": "Plataformas",
+    "9": "Puzles",
+    "10": "Carreras",
+    "11": "Estrategia en tiempo real",
+    "12": "Rol (RPG)",
+    "13": "Simulación",
+    "14": "Deportes",
+    "15": "Estrategia",
+    "16": "Estrategia por turnos",
+    "24": "Táctico",
+    "25": "Hack and slash / Beat 'em up",
+    "26": "Preguntas / Trivia",
+    "30": "Pinball",
+    "31": "Aventura",
+    "32": "Indie",
+    "33": "Arcade",
+    "34": "Novela visual",
+    "35": "Cartas y juegos de mesa",
+    "36": "MOBA"
   }
 }

@@ -88,9 +88,12 @@ export class GameDetailComponent implements OnInit {
       .subscribe((user) => (this.currentUser = user));
   }
 
+  /** Translation keys of the game's known genres. */
   get genres(): string[] {
-    const names = genresEnum as Record<number, string>;
-    return (this.game?.genres ?? []).map((g) => names[g]).filter(Boolean);
+    const known = genresEnum as Record<number, string>;
+    return (this.game?.genres ?? [])
+      .filter((g) => known[g])
+      .map((g) => 'genres.' + g);
   }
 
   get owned(): boolean {
