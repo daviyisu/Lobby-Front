@@ -1,21 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { MyStatsComponent } from './my-stats.component';
+import { MyStatsModule } from './my-stats.module';
+import {
+  provideTestEnvironment,
+  testImports,
+} from '../../testing/test-providers';
 
 describe('MyStatsComponent', () => {
-  let component: MyStatsComponent;
-  let fixture: ComponentFixture<MyStatsComponent>;
-
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [MyStatsComponent],
+      imports: [...testImports, MyStatsModule],
+      providers: [...provideTestEnvironment()],
     });
-    fixture = TestBed.createComponent(MyStatsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(MyStatsComponent);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

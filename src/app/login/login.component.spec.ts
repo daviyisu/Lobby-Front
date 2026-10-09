@@ -1,21 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
+import { AuthModule } from '../auth/auth.module';
+import {
+  provideTestEnvironment,
+  testImports,
+} from '../../testing/test-providers';
 
 describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
-
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent],
+      imports: [...testImports, AuthModule],
+      providers: [...provideTestEnvironment()],
     });
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(LoginComponent);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

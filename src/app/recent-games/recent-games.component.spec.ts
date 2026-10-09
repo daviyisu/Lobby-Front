@@ -1,21 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { RecentGamesComponent } from './recent-games.component';
+import { RecentGamesModule } from './recent-games.module';
+import {
+  provideTestEnvironment,
+  testImports,
+} from '../../testing/test-providers';
 
 describe('RecentGamesComponent', () => {
-  let component: RecentGamesComponent;
-  let fixture: ComponentFixture<RecentGamesComponent>;
-
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RecentGamesComponent],
+      imports: [...testImports, RecentGamesModule],
+      providers: [...provideTestEnvironment()],
     });
-    fixture = TestBed.createComponent(RecentGamesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(RecentGamesComponent);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

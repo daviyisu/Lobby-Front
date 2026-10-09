@@ -1,21 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { NewReviewComponent } from './new-review.component';
+import { GameDetailModule } from '../game-detail/game-detail.module';
+import {
+  provideDialog,
+  provideTestEnvironment,
+  testImports,
+} from '../../testing/test-providers';
 
 describe('NewReviewComponent', () => {
-  let component: NewReviewComponent;
-  let fixture: ComponentFixture<NewReviewComponent>;
-
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NewReviewComponent],
+      imports: [...testImports, GameDetailModule],
+      providers: [
+        ...provideTestEnvironment(),
+        ...provideDialog({ gameId: 1, gameName: 'Celeste' }),
+      ],
     });
-    fixture = TestBed.createComponent(NewReviewComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(NewReviewComponent);
+    fixture.detectChanges();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 });

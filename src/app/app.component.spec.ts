@@ -1,25 +1,25 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { AppModule } from './app.module';
+import { provideTestEnvironment } from '../testing/test-providers';
 
 describe('AppComponent', () => {
-  beforeEach(() =>
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent],
-    }),
-  );
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+      imports: [AppModule],
+      providers: [...provideTestEnvironment()],
+    });
   });
 
-  it('should render title', () => {
+  it('should create', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'lobby-front app is running!',
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('applies a theme to the document', () => {
+    TestBed.createComponent(AppComponent);
+    expect(['light', 'dark']).toContain(
+      document.documentElement.getAttribute('data-theme') ?? '',
     );
   });
 });
