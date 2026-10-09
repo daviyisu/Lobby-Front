@@ -10,6 +10,18 @@ import { TranslateService } from '@ngx-translate/core';
 export class RelativeTimePipe implements PipeTransform {
   private translate = inject(TranslateService);
 
+  /** Impure so it follows language changes; formatters are cached per language. */
+  private static formats = new Map<string, Intl.RelativeTimeFormat>();
+
+  private format(lang: string): Intl.RelativeTimeFormat {
+    let format = RelativeTimePipe.formats.get(lang);
+    if (!format) {
+      format = new Intl.RelativeTimeFormat(lang, { numeric: 'auto' });
+      RelativeTimePipe.formats.set(lang, format);
+    }
+    return format;
+  }
+
   transform(value: Date | string | null | undefined): string {
     if (!value) {
       return '';
@@ -24,10 +36,7 @@ export class RelativeTimePipe implements PipeTransform {
       ['hour', 3600],
       ['minute', 60],
     ];
-    const format = new Intl.RelativeTimeFormat(
-      this.translate.currentLang || 'en',
-      { numeric: 'auto' },
-    );
+    const format = this.format(this.translate.currentLang || 'en');
     for (const [unit, size] of units) {
       if (Math.abs(seconds) >= size) {
         return format.format(Math.round(seconds / size), unit);

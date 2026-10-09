@@ -25,7 +25,10 @@ export class StatusSelectorComponent {
     }
   }
 
-  /** Arrow keys move the selection, as in a native radio group. */
+  /**
+   * Arrow keys move the focus between options; Enter or Space selects the
+   * focused one. Each selection saves, so arrows must not select on their own.
+   */
   move(event: KeyboardEvent, index: number): void {
     const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[
       event.key
@@ -35,7 +38,6 @@ export class StatusSelectorComponent {
     }
     event.preventDefault();
     const next = (index + step + this.options.length) % this.options.length;
-    this.select(this.options[next].status);
     const buttons = (event.currentTarget as HTMLElement).parentElement
       ?.children;
     (buttons?.[next] as HTMLElement | undefined)?.focus();

@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, map, switchMap, tap } from 'rxjs';
 import { Game } from '../../models/game';
 import { NewReviewComponent } from '../new-review/new-review.component';
 import {
@@ -46,8 +46,13 @@ export class GameDetailComponent implements OnInit {
   screenshots: string[] = [];
   platforms: string[] = [];
 
+  /** Id of the game on screen; responses for any other id are dropped. */
+  private gameId?: number;
+
   /** Status of the game in the current user's collection. */
   status = CollectionStatusEnum.not_owned;
+  /** False until the status is known, so "Add" can't overwrite it. */
+  statusLoaded = false;
   savingStatus = false;
 
   reviews: Review[] = [];
@@ -59,36 +64,54 @@ export class GameDetailComponent implements OnInit {
   protected readonly CollectionStatusEnum = CollectionStatusEnum;
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.game = undefined;
-      this.screenshots = [];
-      this.platforms = [];
-      this.reviews = [];
-      this.lists = undefined;
-      this.status = CollectionStatusEnum.not_owned;
-      this.gameService.getGameById(params['id']).subscribe((game) => {
+    this.route.paramMap
+      .pipe(
+        map((params) => Number(params.get('id'))),
+        tap((id) => this.reset(id)),
+        // Cancels the previous game's request when the id changes.
+        switchMap((id) => this.gameService.getGameById(id)),
+      )
+      .subscribe((game) => {
         this.game = game;
         this.cover = this.imageService.getIgdbImage(game.coverImageId);
-        this.imageService
-          .getScreenshotsByGame(game.id)
-          .subscribe((screenshots) => {
-            this.screenshots = screenshots.slice(0, 6).map((s) => s.imageId);
-          });
-        this.gameService
-          .getPlatformsFromGame(game.id)
-          .subscribe((platforms) => (this.platforms = platforms ?? []));
-        this.gameService
-          .getStatus(game.id)
-          .subscribe((status) => (this.status = status));
+        // Set by reset() before the request that brought this game.
+        const id = this.gameId as number;
+        // Late answers for a game we already left are ignored.
+        this.imageService.getScreenshotsByGame(id).subscribe((shots) => {
+          if (id === this.gameId) {
+            this.screenshots = shots.slice(0, 6).map((s) => s.imageId);
+          }
+        });
+        this.gameService.getPlatformsFromGame(id).subscribe((platforms) => {
+          if (id === this.gameId) {
+            this.platforms = platforms ?? [];
+          }
+        });
+        this.gameService.getStatus(id).subscribe((status) => {
+          if (id === this.gameId) {
+            this.status = status;
+            this.statusLoaded = true;
+          }
+        });
         this.refreshReviews();
       });
-    });
     this.userService
       .getCurrentUser()
       .subscribe((user) => (this.currentUser = user));
   }
 
-  /** Translation keys of the game's known genres. */
+  private reset(id: number): void {
+    this.gameId = id;
+    this.game = undefined;
+    this.screenshots = [];
+    this.platforms = [];
+    this.reviews = [];
+    this.lists = undefined;
+    this.status = CollectionStatusEnum.not_owned;
+    this.statusLoaded = false;
+    this.savingStatus = false;
+  }
+
   get genres(): string[] {
     const known = genresEnum as Record<number, string>;
     return (this.game?.genres ?? [])
@@ -119,7 +142,8 @@ export class GameDetailComponent implements OnInit {
   }
 
   back(): void {
-    if (window.history.length > 1) {
+    // Only go back when the previous page was inside Lobby.
+    if (this.router.lastSuccessfulNavigation?.previousNavigation) {
       this.location.back();
     } else {
       this.router.navigateByUrl('/mygames');
@@ -136,22 +160,33 @@ export class GameDetailComponent implements OnInit {
 
   /**
    * Saves the new status straight away and offers Undo, instead of asking
-   * for confirmation.
+   * for confirmation. The game id is captured so that Undo, or a late
+   * response, always applies to the game that was changed.
    */
-  changeStatus(next: CollectionStatusEnum, offerUndo = true): void {
-    if (!this.game) {
+  changeStatus(
+    next: CollectionStatusEnum,
+    offerUndo = true,
+    gameId = this.gameId,
+  ): void {
+    if (gameId === undefined || (gameId === this.gameId && this.savingStatus)) {
       return;
     }
-    const previous = this.status;
-    this.status = next;
-    this.savingStatus = true;
-    this.gameService.addGame(next, this.game.id).subscribe({
+    const onScreen = () => gameId === this.gameId;
+    const previous = onScreen() ? this.status : undefined;
+    if (onScreen()) {
+      this.status = next;
+      this.savingStatus = true;
+    }
+    this.gameService.addGame(next, gameId).subscribe({
       next: () => {
-        this.savingStatus = false;
+        if (onScreen()) {
+          this.savingStatus = false;
+        }
         this.gameService.setUserGames();
-        const undo = offerUndo
-          ? () => this.changeStatus(previous, false)
-          : undefined;
+        if (!offerUndo || previous === undefined) {
+          return;
+        }
+        const undo = () => this.changeStatus(previous, false, gameId);
         if (next === CollectionStatusEnum.not_owned) {
           this.toast.show('gameDetail.toast.removed', undefined, undo);
         } else if (previous === CollectionStatusEnum.not_owned) {
@@ -165,8 +200,12 @@ export class GameDetailComponent implements OnInit {
         }
       },
       error: () => {
-        this.savingStatus = false;
-        this.status = previous;
+        if (onScreen()) {
+          this.savingStatus = false;
+          if (previous !== undefined) {
+            this.status = previous;
+          }
+        }
         this.toast.show('global.error');
       },
     });
@@ -239,10 +278,14 @@ export class GameDetailComponent implements OnInit {
   }
 
   private refreshReviews(): void {
-    if (this.game) {
-      this.reviewService
-        .getReviewsFromGame(this.game.id)
-        .subscribe((reviews) => (this.reviews = reviews));
+    const id = this.gameId;
+    if (id === undefined) {
+      return;
     }
+    this.reviewService.getReviewsFromGame(id).subscribe((reviews) => {
+      if (id === this.gameId) {
+        this.reviews = reviews;
+      }
+    });
   }
 }

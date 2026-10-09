@@ -38,6 +38,23 @@ describe('StatusSelectorComponent', () => {
     expect(emitted).toEqual([CollectionStatusEnum.completed]);
   });
 
+  it('moves focus with the arrow keys without selecting', () => {
+    const fixture = TestBed.createComponent(StatusSelectorComponent);
+    fixture.componentInstance.status = CollectionStatusEnum.playing;
+    const changes: CollectionStatusEnum[] = [];
+    fixture.componentInstance.statusChange.subscribe((s) => changes.push(s));
+    fixture.detectChanges();
+    const buttons = fixture.nativeElement.querySelectorAll('button');
+    document.body.appendChild(fixture.nativeElement);
+    buttons[0].focus();
+    buttons[0].dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }),
+    );
+    expect(document.activeElement).toBe(buttons[1]);
+    expect(changes).toEqual([]);
+    fixture.nativeElement.remove();
+  });
+
   it('emits nothing while disabled', () => {
     component.disabled = true;
     component.select(CollectionStatusEnum.completed);

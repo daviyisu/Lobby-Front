@@ -59,7 +59,24 @@ export class MyGamesComponent implements OnInit {
     return this.userGames?.filter((g) => g.status === status).length ?? 0;
   }
 
+  /**
+   * The filtered, sorted games. Memoized: the template reads it several
+   * times per change detection, and sorting a large collection is not free.
+   */
   get visibleGames(): CollectionGame[] {
+    const key = [this.userGames, this.statusFilter, this.sort] as const;
+    const last = this.visibleKey;
+    if (!last || key.some((part, i) => part !== last[i])) {
+      this.visibleKey = key;
+      this.visibleCache = this.computeVisibleGames();
+    }
+    return this.visibleCache;
+  }
+
+  private visibleKey?: readonly unknown[];
+  private visibleCache: CollectionGame[] = [];
+
+  private computeVisibleGames(): CollectionGame[] {
     let games = this.userGames ?? [];
     // Without per-game statuses from the API a filter would hide everything.
     if (this.statusFilter && this.hasStatuses) {

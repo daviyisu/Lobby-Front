@@ -7,7 +7,7 @@ import { ListComponent } from './list/list.component';
 import { ListCardComponent } from './list-card/list-card.component';
 import { CreateListModalComponent } from './create-list-modal/create-list-modal.component';
 
-/** Lists: the lists page ("mylists") and a single list ("list/:id"). */
+/** Lists: the lists page ("mylists") and a single list ("mylists/:id"). */
 @NgModule({
   declarations: [
     MyListsComponent,
@@ -19,8 +19,8 @@ import { CreateListModalComponent } from './create-list-modal/create-list-modal.
     SharedModule,
     GameSearchBarComponent,
     RouterModule.forChild([
-      { path: 'mylists', component: MyListsComponent },
-      { path: 'list/:id', component: ListComponent },
+      { path: '', component: MyListsComponent },
+      { path: ':id', component: ListComponent },
     ]),
   ],
 })

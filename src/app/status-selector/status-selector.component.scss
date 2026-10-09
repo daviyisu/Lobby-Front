@@ -46,7 +46,7 @@
     }
   }
 
-  &:disabled {
+  &[aria-disabled="true"] {
     cursor: progress;
   }
 }

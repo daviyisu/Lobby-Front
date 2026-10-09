@@ -41,10 +41,15 @@ const routes: Routes = [
           ),
       },
       {
-        // Declares "mylists" and "list/:id".
-        path: '',
+        // "mylists" and "mylists/:id".
+        path: 'mylists',
         loadChildren: () =>
           import('./my-lists/my-lists.module').then((m) => m.MyListsModule),
+      },
+      {
+        // Old list URLs keep working.
+        path: 'list/:id',
+        redirectTo: '/mylists/:id',
       },
     ],
   },

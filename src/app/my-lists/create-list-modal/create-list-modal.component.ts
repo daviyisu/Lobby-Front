@@ -41,6 +41,8 @@ export class CreateListModalComponent implements OnInit {
   saveError = false;
   listNameFormControl = new FormControl('', [
     Validators.required,
+    // At least one visible character: the name is saved trimmed.
+    Validators.pattern(/\S/),
     Validators.maxLength(60),
   ]);
   games: Game[] = [];
@@ -75,6 +77,9 @@ export class CreateListModalComponent implements OnInit {
   }
 
   async save(): Promise<void> {
+    if (this.saving) {
+      return;
+    }
     if (!this.canSave) {
       this.listNameFormControl.markAsTouched();
       return;

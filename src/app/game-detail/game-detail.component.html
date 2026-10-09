@@ -38,8 +38,12 @@
       <div class="collection">
         <div class="lb-spread collection__head">
           <span class="overline">{{
-            (owned ? "gameDetail.inCollection" : "gameDetail.notInCollection")
-              | translate
+            (!statusLoaded
+              ? "gameDetail.statusLabel"
+              : owned
+                ? "gameDetail.inCollection"
+                : "gameDetail.notInCollection"
+            ) | translate
           }}</span>
           <div class="collection__tools">
             <button
@@ -61,14 +65,21 @@
           </div>
         </div>
 
+        <div
+          *ngIf="!statusLoaded"
+          class="lb-skel"
+          style="height: 68px"
+          aria-busy="true"
+        ></div>
+
         <app-status-selector
-          *ngIf="owned"
+          *ngIf="statusLoaded && owned"
           [status]="status"
           [disabled]="savingStatus"
           (statusChange)="changeStatus($event)"
         ></app-status-selector>
 
-        <div *ngIf="!owned" class="add">
+        <div *ngIf="statusLoaded && !owned" class="add">
           <p class="lb-muted">{{ "gameDetail.addHint" | translate }}</p>
           <button
             mat-flat-button

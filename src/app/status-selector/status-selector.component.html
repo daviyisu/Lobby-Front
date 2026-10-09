@@ -1,6 +1,7 @@
 <div
   class="seg"
   role="radiogroup"
+  [attr.aria-busy]="disabled"
   [attr.aria-label]="'gameDetail.statusLabel' | translate"
 >
   <button
@@ -10,7 +11,7 @@
     class="opt opt--{{ o.key }}"
     [attr.aria-checked]="o.status === status"
     [attr.tabindex]="o.status === status ? 0 : -1"
-    [disabled]="disabled"
+    [attr.aria-disabled]="disabled"
     (click)="select(o.status)"
     (keydown)="move($event, i)"
   >

@@ -1,4 +1,4 @@
-<a class="card" [routerLink]="['/list', list.id]">
+<a class="card" [routerLink]="['/mylists', list.id]">
   <span class="mosaic">
     <ng-container *ngFor="let cover of mosaic">
       <img *ngIf="cover; else emptySlot" [src]="cover" alt="" loading="lazy" />
