@@ -56,6 +56,7 @@ import { RatingInputComponent } from './rating-input/rating-input.component';
 import { ReviewCardComponent } from './review-card/review-card.component';
 import { RelativeTimePipe } from './review-card/relative-time.pipe';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { AuthCardComponent } from './auth-card/auth-card.component';
 
 // Spanish dates ("24 de febrero de 2017") for the date pipe.
 registerLocaleData(localeEs);
@@ -99,6 +100,7 @@ export const globalImports = [
     ReviewCardComponent,
     RelativeTimePipe,
     ConfirmDialogComponent,
+    AuthCardComponent,
   ],
   bootstrap: [AppComponent],
   imports: [

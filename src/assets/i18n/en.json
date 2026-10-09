@@ -110,9 +110,22 @@
     "username": "Username",
     "password": "Password",
     "confirmPassword": "Confirm the password",
-    "notMatchPassword": "Passwords does not match",
-    "loginError": "Username or password not correct",
-    "usernameAlreadyExists": "Username already in use, please choose other one"
+    "notMatchPassword": "The passwords don't match",
+    "loginError": "Wrong username or password",
+    "usernameAlreadyExists": "That username is already taken. Try another one.",
+    "welcome": "Welcome to Lobby",
+    "tagline": "Your video game collection, always at hand.",
+    "registerTitle": "Create your account",
+    "registerTagline": "Save, rate and organize all your games.",
+    "usernameHint": "Between 4 and 30 characters",
+    "passwordHint": "Between 4 and 30 characters",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "loggingIn": "Logging in…",
+    "noAccount": "Don't have an account yet?",
+    "createAccount": "Create account",
+    "creatingAccount": "Creating account…",
+    "haveAccount": "Already have an account?"
   },
   "forms": {
     "required": "This field is required",
@@ -146,10 +159,17 @@
     "gamesToAdd": "Add game to list"
   },
   "recentGames": {
-    "title": "Recently added"
+    "title": "What's new",
+    "subtitle": "Games added in the last few days",
+    "empty": {
+      "title": "Nothing new this week"
+    },
+    "error": {
+      "title": "What's new couldn't be loaded"
+    }
   },
   "steamSync": {
-    "title": "Synchronization with Steam",
+    "title": "Import your Steam library",
     "explanation": "With Steam synchronization, you can register the games from your Steam account in Lobby.",
     "reminder": "Remember that your Steam account must be public for the synchronization to work.",
     "yourAccount": "Your Steam account:",
@@ -157,8 +177,15 @@
     "textBtn": "Synchronize",
     "checkBox": "Use my Steam avatar as my avatar in Lobby",
     "showAccountNotExistsError": "The Steam account was not found",
-    "showPrivateError": "The Steam account is private! Go to Account Details and then Privacy on Steam to change it",
-    "snackBarSuccess": "Your Steam library has been successfully synchronized!"
+    "showPrivateError": "Your Steam account is private. Make it public in Steam → Account details → Privacy and try again.",
+    "snackBarSuccess": "Your Steam library has been successfully synchronized!",
+    "step": "Step {{n}} of 2",
+    "idLabel": "Steam ID",
+    "idPlaceholder": "E.g. 76561198000000000",
+    "idHint": "You'll find it on your Steam profile",
+    "searching": "Searching…",
+    "syncing": "Syncing…",
+    "syncError": "Your library couldn't be synced. Try again in a few minutes."
   },
   "noElements": {
     "noGames": "You haven't added any games to your collection yet. Use the search bar to add your favorite games!",

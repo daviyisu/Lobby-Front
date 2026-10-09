@@ -1,52 +1,73 @@
-<div class="container">
-  <img class="logo" src="favicon.ico" />
-  <h1 class="lobby-title">LOBBY</h1>
-  <h2>{{ "auth.register" | translate }}</h2>
-  <form
-    class="column gap-sm"
-    [formGroup]="registerForm"
-    (ngSubmit)="register()"
-  >
+<app-auth-card
+  [title]="'auth.registerTitle' | translate"
+  [subtitle]="'auth.registerTagline' | translate"
+>
+  <form class="form" [formGroup]="registerForm" (ngSubmit)="register()">
     <mat-form-field appearance="outline">
       <mat-label>{{ "auth.username" | translate }}</mat-label>
-      <input matInput formControlName="username" />
-      <mat-error *ngIf="registerForm.get('username')?.hasError('required')">
-        {{ "forms.required" | translate }}
-      </mat-error>
-      <mat-error *ngIf="registerForm.get('username')?.hasError('minlength')">
-        {{ "forms.tooShort" | translate }}
-      </mat-error>
+      <span matPrefix class="lb-ic prefix" aria-hidden="true">person</span>
+      <input matInput formControlName="username" autocomplete="username" />
+      <mat-hint>{{ "auth.usernameHint" | translate }}</mat-hint>
+      <mat-error>{{ "auth.usernameHint" | translate }}</mat-error>
     </mat-form-field>
+
     <mat-form-field appearance="outline">
       <mat-label>{{ "auth.password" | translate }}</mat-label>
+      <span matPrefix class="lb-ic prefix" aria-hidden="true">lock</span>
       <input
         matInput
         formControlName="password"
+        autocomplete="new-password"
         [type]="hide ? 'password' : 'text'"
       />
-      <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
-        {{ "forms.required" | translate }}
-      </mat-error>
-      <mat-error *ngIf="registerForm.get('password')?.hasError('minlength')">
-        {{ "forms.tooShort" | translate }}
-      </mat-error>
+      <button
+        matSuffix
+        mat-icon-button
+        type="button"
+        (click)="hide = !hide"
+        [attr.aria-label]="
+          (hide ? 'auth.showPassword' : 'auth.hidePassword') | translate
+        "
+      >
+        <span class="lb-ic" aria-hidden="true">{{
+          hide ? "visibility" : "visibility_off"
+        }}</span>
+      </button>
+      <mat-hint>{{ "auth.passwordHint" | translate }}</mat-hint>
+      <mat-error>{{ "auth.passwordHint" | translate }}</mat-error>
     </mat-form-field>
+
     <mat-form-field appearance="outline">
       <mat-label>{{ "auth.confirmPassword" | translate }}</mat-label>
+      <span matPrefix class="lb-ic prefix" aria-hidden="true">lock</span>
       <input
         matInput
         formControlName="confirmPassword"
+        autocomplete="new-password"
         [type]="hide ? 'password' : 'text'"
       />
+      <mat-error>{{
+        (registerForm.controls.confirmPassword.hasError("mismatch")
+          ? "auth.notMatchPassword"
+          : "auth.passwordHint"
+        ) | translate
+      }}</mat-error>
     </mat-form-field>
-    <button mat-button type="submit">{{ "auth.register" | translate }}</button>
+
+    <p *ngIf="error" class="alert" role="alert">
+      <span class="lb-ic" aria-hidden="true">error</span>
+      {{ error | translate }}
+    </p>
+
+    <button mat-flat-button type="submit" class="submit" [disabled]="loading">
+      {{
+        (loading ? "auth.creatingAccount" : "auth.createAccount") | translate
+      }}
+    </button>
   </form>
-  <span
-    *ngIf="usernameAlreadyExists"
-    class="mat-mdc-form-field-error text-lg"
-    >{{ "auth.usernameAlreadyExists" | translate }}</span
-  >
-  <a class="underline-text cursor-pointer" (click)="goToLogin()">{{
-    "auth.alreadyHaveAccount" | translate
-  }}</a>
-</div>
+
+  <ng-container footer>
+    {{ "auth.haveAccount" | translate }}
+    <a routerLink="/login">{{ "auth.login" | translate }}</a>
+  </ng-container>
+</app-auth-card>

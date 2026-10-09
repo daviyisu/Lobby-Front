@@ -1,106 +1,99 @@
-<ng-container *ngIf="!steamUser">
-  <div class="modal-container">
-    <h1>{{ "steamSync.title" | translate }}</h1>
-    <div class="row gap-lg">
-      <img class="lobby-icon" src="favicon.ico" />
-      <img class="lobby-icon" src="assets/img/steam_icon.png" />
+<div class="dialog">
+  <header class="head">
+    <div class="marks" aria-hidden="true">
+      <img src="assets/img/steam_icon.png" alt="" width="40" height="40" />
+      <span class="lb-ic">arrow_forward</span>
+      <img src="favicon.ico" alt="" width="40" height="40" />
     </div>
-    <p class="text-md">{{ "steamSync.explanation" | translate }}</p>
-    <form class="column">
-      <mat-form-field appearance="outline">
-        <input
-          matInput
-          [formControl]="steamIdFormControl"
-          placeholder="Escribe tu ID de Steam"
-        />
-        <mat-error *ngIf="steamIdFormControl.hasError('required')">
-          {{ "forms.required" | translate }}
-        </mat-error>
-      </mat-form-field>
-    </form>
-    <span *ngIf="showAccountNotExistsError" class="mat-mdc-form-field-error">{{
-      "steamSync.showAccountNotExistsError" | translate
-    }}</span>
-    <span *ngIf="showPrivateError" class="mat-mdc-form-field-error">{{
-      "steamSync.showPrivateError" | translate
-    }}</span>
-    <span class="text-sm">{{ "steamSync.reminder" | translate }}</span>
-  </div>
-  <div class="modal-actions">
     <button
-      mat-flat-button
-      (click)="closeModal()"
-      color="accent"
-      class="btn primary"
+      type="button"
+      mat-icon-button
+      (click)="close()"
+      [attr.aria-label]="'global.close' | translate"
     >
-      <span class="text-md"> {{ "global.back" | translate }} </span>
+      <span class="lb-ic" aria-hidden="true">close</span>
     </button>
-    <button
-      mat-flat-button
-      [disabled]="loading"
-      type="submit"
-      color="primary"
-      (click)="checkSteamId()"
-      class="btn primary"
-    >
-      <span class="text-md">
-        {{ "global.continue" | translate }}
-      </span>
-    </button>
-  </div>
-</ng-container>
+  </header>
 
-<ng-container *ngIf="steamUser">
-  <div class="last-step-sync">
-    <h1>{{ "steamSync.title" | translate }}</h1>
-    <div class="flow-image">
-      <div class="column gap-sm center">
-        <span class="semi-bold">{{ "steamSync.yourAccount" | translate }}</span>
-        <img
-          *ngIf="steamUser.avatar"
-          class="lobby-icon"
-          src="{{ steamUser.avatar }}"
-        />
-        <img
-          *ngIf="!steamUser.avatar"
-          class="lobby-icon"
-          src="assets/img/steam_icon.png"
-        />
-        <span class="text-md">{{ steamUser.username }}</span>
+  <div>
+    <h2 class="title">{{ "steamSync.title" | translate }}</h2>
+    <p class="sub">
+      {{
+        (steamUser ? "steamSync.message" : "steamSync.explanation") | translate
+      }}
+    </p>
+    <p class="step">
+      {{ "steamSync.step" | translate: { n: steamUser ? 2 : 1 } }}
+    </p>
+  </div>
+
+  <!-- Step 1: find the account -->
+  <form *ngIf="!steamUser" class="body" (ngSubmit)="checkSteamId()">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ "steamSync.idLabel" | translate }}</mat-label>
+      <input
+        matInput
+        [formControl]="steamIdFormControl"
+        [placeholder]="'steamSync.idPlaceholder' | translate"
+        autocomplete="off"
+      />
+      <mat-hint>{{ "steamSync.idHint" | translate }}</mat-hint>
+      <mat-error>{{ "forms.required" | translate }}</mat-error>
+    </mat-form-field>
+    <p class="alert alert--warning">
+      <span class="lb-ic" aria-hidden="true">info</span>
+      {{ "steamSync.reminder" | translate }}
+    </p>
+  </form>
+
+  <!-- Step 2: confirm the import -->
+  <div *ngIf="steamUser" class="body">
+    <div class="account">
+      <img
+        class="account__avatar"
+        [src]="steamUser.avatar || 'assets/img/steam_icon.png'"
+        alt=""
+      />
+      <div>
+        <div class="account__label">
+          {{ "steamSync.yourAccount" | translate }}
+        </div>
+        <div class="account__name">{{ steamUser.username }}</div>
       </div>
-      <img src="assets/img/arrow.png" class="arrow-icon" />
-      <img src="favicon.ico" class="lobby-icon" />
     </div>
-    <p class="text-md">{{ "steamSync.message" | translate }}</p>
     <mat-checkbox
       *ngIf="steamUser.avatar"
-      (change)="wantToKeepSteamAvatar = !wantToKeepSteamAvatar"
-    >
-      <span class="text-md">{{
-        "steamSync.checkBox" | translate
-      }}</span></mat-checkbox
+      [(ngModel)]="wantToKeepSteamAvatar"
+      >{{ "steamSync.checkBox" | translate }}</mat-checkbox
     >
   </div>
+
+  <p *ngIf="error" class="alert alert--danger" role="alert">
+    <span class="lb-ic" aria-hidden="true">error</span>
+    {{ error | translate }}
+  </p>
+
   <div class="modal-actions">
-    <button
-      mat-flat-button
-      (click)="closeModal()"
-      color="accent"
-      class="btn primary"
-    >
-      <span class="text-md"> {{ "global.back" | translate }} </span>
+    <button type="button" mat-button (click)="steamUser ? back() : close()">
+      {{ (steamUser ? "global.back" : "global.cancel") | translate }}
     </button>
     <button
+      *ngIf="!steamUser"
+      type="button"
+      mat-flat-button
+      [disabled]="loading"
+      (click)="checkSteamId()"
+    >
+      {{ (loading ? "steamSync.searching" : "global.continue") | translate }}
+    </button>
+    <button
+      *ngIf="steamUser"
+      type="button"
       mat-flat-button
       [disabled]="loading"
       (click)="synchronizeSteamLibrary()"
-      type="submit"
-      color="primary"
-      class="btn primary"
     >
-      <span class="text-md">
-        {{ "steamSync.textBtn" | translate }}
-      </span>
+      {{ (loading ? "steamSync.syncing" : "steamSync.textBtn") | translate }}
     </button>
   </div>
-</ng-container>
+</div>

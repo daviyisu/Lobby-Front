@@ -111,8 +111,21 @@
     "password": "Contraseña",
     "confirmPassword": "Confirma la contraseña",
     "notMatchPassword": "Las contraseñas no coinciden",
-    "loginError": "Usuario o contraseña no correctos",
-    "usernameAlreadyExists": "Nombre de usuario ya en uso, por favor elige otro"
+    "loginError": "Usuario o contraseña incorrectos",
+    "usernameAlreadyExists": "Ese nombre de usuario ya está en uso. Prueba con otro.",
+    "welcome": "Bienvenido a Lobby",
+    "tagline": "Tu colección de videojuegos, siempre a mano.",
+    "registerTitle": "Crea tu cuenta",
+    "registerTagline": "Guarda, puntúa y organiza todos tus juegos.",
+    "usernameHint": "Entre 4 y 30 caracteres",
+    "passwordHint": "Entre 4 y 30 caracteres",
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña",
+    "loggingIn": "Entrando…",
+    "noAccount": "¿Aún no tienes cuenta?",
+    "createAccount": "Crear cuenta",
+    "creatingAccount": "Creando cuenta…",
+    "haveAccount": "¿Ya tienes cuenta?"
   },
   "forms": {
     "required": "Este campo es obligatorio",
@@ -146,19 +159,33 @@
     "gamesToAdd": "Añadir juego a lista"
   },
   "recentGames": {
-    "title": "Recientemente añadidos"
+    "title": "Novedades",
+    "subtitle": "Juegos añadidos en los últimos días",
+    "empty": {
+      "title": "Nada nuevo esta semana"
+    },
+    "error": {
+      "title": "No se han podido cargar las novedades"
+    }
   },
   "steamSync": {
-    "title": "Sincronización con Steam",
+    "title": "Importa tu biblioteca de Steam",
     "explanation": "Con la sincronización de Steam podrás registrar los juegos de tu cuenta de Steam en Lobby.",
     "reminder": "Recuerda que tu cuenta de Steam debe ser pública para que la sincronización funcione.",
     "yourAccount": "Tu cuenta de Steam:",
-    "message": "Estás apunto de sincronizar tu biblioteca de Steam con tu cuenta de Lobby, todos los juegos que tengas en propiedad en Steam se añadirán a tu colección en Lobby.",
+    "message": "Estás a punto de sincronizar tu biblioteca de Steam con tu cuenta de Lobby. Todos los juegos que tengas en propiedad en Steam se añadirán a tu colección en Lobby.",
     "textBtn": "Sincronizar",
     "checkBox": "Usar mi avatar de Steam como mi avatar en Lobby",
     "showAccountNotExistsError": "La cuenta de Steam no fue encontrada",
-    "showPrivateError": "¡La cuenta de Steam es privada! Ve a Detalles de la cuenta y privacidad en Steam para cambiarlo",
-    "snackBarSuccess": "¡Tu biblioteca de Steam ha sido sincronizada correctamente!"
+    "showPrivateError": "Tu cuenta de Steam es privada. Hazla pública en Steam → Detalles de la cuenta → Privacidad y vuelve a intentarlo.",
+    "snackBarSuccess": "¡Tu biblioteca de Steam ha sido sincronizada correctamente!",
+    "step": "Paso {{n}} de 2",
+    "idLabel": "ID de Steam",
+    "idPlaceholder": "Ej. 76561198000000000",
+    "idHint": "Lo encontrarás en tu perfil de Steam",
+    "searching": "Buscando…",
+    "syncing": "Sincronizando…",
+    "syncError": "No se ha podido sincronizar tu biblioteca. Inténtalo de nuevo en unos minutos."
   },
   "noElements": {
     "noGames": "Aún no has añadido ningún juego a tu coleccion, ¡usa la barra de búsqueda para añadir tus juegos favoritos!",
