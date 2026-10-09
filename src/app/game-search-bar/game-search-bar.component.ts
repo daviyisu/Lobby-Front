@@ -10,7 +10,9 @@ import {
 } from '@angular/core';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { GameService } from '../../services/game.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { NgFor, NgIf } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { Game } from '../../models/game';
 import { TranslateService } from '@ngx-translate/core';
 import { ImageService } from '../../services/image.service';
@@ -19,7 +21,8 @@ import { ImageService } from '../../services/image.service';
   selector: 'app-game-search-bar',
   templateUrl: './game-search-bar.component.html',
   styleUrls: ['./game-search-bar.component.scss'],
-  standalone: false,
+  standalone: true,
+  imports: [NgIf, NgFor, ReactiveFormsModule, MatAutocompleteModule],
 })
 export class GameSearchBarComponent implements OnInit {
   private gameService = inject(GameService);

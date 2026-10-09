@@ -1,7 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { lastValueFrom, Subject } from 'rxjs';
-import { SteamSyncModalComponent } from '../app/steam-sync-modal/steam-sync-modal.component';
 import { SyncSteamModalResponseInterface } from '../models/sync-steam-modal-response-interface';
 import { GameService } from './game.service';
 
@@ -27,7 +26,13 @@ export class ShellService {
   }
 
   async openSteamSync(): Promise<void> {
-    const modalRef = this.dialog.open(SteamSyncModalComponent);
+    // Loaded on demand: the dialog and its form fields stay out of the initial bundle.
+    const { SteamSyncModalComponent } = await import(
+      '../app/steam-sync-modal/steam-sync-modal.component'
+    );
+    const modalRef = this.dialog.open(SteamSyncModalComponent, {
+      width: '520px',
+    });
     const data: SyncSteamModalResponseInterface | undefined =
       await lastValueFrom(modalRef.afterClosed());
     if (data) {

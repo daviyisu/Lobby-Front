@@ -1,6 +1,16 @@
 import { Component, inject } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormControl, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { NgIf } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HttpErrorResponse } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
 import { SteamUser } from '../../models/steam-user';
@@ -12,12 +22,22 @@ import { SyncSteamModalResponseInterface } from '../../models/sync-steam-modal-r
 /**
  * Two steps: find the Steam account by ID, then confirm the import.
  * Closes with the avatar choice once the library is synchronized.
+ * Standalone so the shell can load it only when it is opened.
  */
 @Component({
   selector: 'app-steam-sync-modal',
   templateUrl: './steam-sync-modal.component.html',
   styleUrls: ['./steam-sync-modal.component.scss'],
-  standalone: false,
+  standalone: true,
+  imports: [
+    NgIf,
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule,
+    MatButtonModule,
+    MatInputModule,
+    MatCheckboxModule,
+  ],
 })
 export class SteamSyncModalComponent {
   private dialogRef = inject(MatDialogRef<SteamSyncModalComponent>);
